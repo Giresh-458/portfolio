@@ -1,0 +1,9 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs><radialGradient id="g" cx="0" cy="0" r="1" gradientTransform="translate(842 183) rotate(135) scale(542)"><stop stop-color="#E50914" stop-opacity=".35"/><stop offset="1" stop-color="#0B0B0B" stop-opacity="0"/></radialGradient></defs>
+  <rect width="1200" height="630" fill="#0B0B0B"/><rect width="1200" height="630" fill="url(#g)"/>
+  <text x="84" y="122" fill="#E50914" font-family="Arial Black, sans-serif" font-size="48" font-weight="900">AM.</text>
+  <text x="84" y="297" fill="#fff" font-family="Arial Black, sans-serif" font-size="76" font-weight="900">BUILDING INTELLIGENT</text>
+  <text x="84" y="383" fill="#E50914" font-family="Arial Black, sans-serif" font-size="76" font-weight="900">SYSTEMS WITH AI</text>
+  <text x="88" y="476" fill="#A1A1AA" font-family="Arial, sans-serif" font-size="28" letter-spacing="4">GENAI ENGINEER · RESEARCHER · FULL-STACK DEVELOPER</text>
+  <g stroke="#E50914" stroke-opacity=".28"><circle cx="1040" cy="125" r="55"/><circle cx="1040" cy="125" r="88"/><path d="M912 98L1040 125L1117 231"/></g>
+</svg>

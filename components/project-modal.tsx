@@ -1,0 +1,106 @@
+"use client";
+
+import * as Dialog from "@radix-ui/react-dialog";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { ExternalLink, Github, X } from "lucide-react";
+import Image from "next/image";
+import { Button } from "@/components/ui/button";
+import { TechBadge } from "@/components/ui/tech-badge";
+import type { Project } from "@/types";
+
+interface ProjectModalProps {
+  project: Project | null;
+  open: boolean;
+  onOpenChange: (open: boolean) => void;
+}
+
+export function ProjectModal({ project, open, onOpenChange }: ProjectModalProps) {
+  const reduceMotion = useReducedMotion();
+
+  return (
+    <Dialog.Root open={open} onOpenChange={onOpenChange}>
+      <AnimatePresence>
+        {open && project ? (
+          <Dialog.Portal forceMount>
+            <Dialog.Overlay asChild>
+              <motion.div
+                initial={reduceMotion ? undefined : { opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={reduceMotion ? undefined : { opacity: 0 }}
+                className="fixed inset-0 z-[100] bg-black/80 backdrop-blur-md"
+              />
+            </Dialog.Overlay>
+            <Dialog.Content asChild onOpenAutoFocus={(event) => event.preventDefault()}>
+              <motion.div
+                initial={reduceMotion ? undefined : { opacity: 0, y: 24, scale: 0.97 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                exit={reduceMotion ? undefined : { opacity: 0, y: 16, scale: 0.98 }}
+                transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+                className="glass-strong fixed left-1/2 top-1/2 z-[101] max-h-[90vh] w-[calc(100%-2rem)] max-w-5xl -translate-x-1/2 -translate-y-1/2 overflow-y-auto rounded-2xl shadow-2xl"
+              >
+                <div className="relative aspect-[16/6] min-h-64 overflow-hidden">
+                  <Image src={project.image} alt="" fill className="object-cover" sizes="(max-width: 1024px) 100vw, 1024px" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-surface via-surface/20 to-transparent" />
+                  <Dialog.Close asChild>
+                    <Button variant="outline" size="icon" className="absolute right-4 top-4 rounded-full bg-black/50" aria-label="Close project details">
+                      <X className="size-5" />
+                    </Button>
+                  </Dialog.Close>
+                  <div className="absolute inset-x-0 bottom-0 p-6 md:p-8">
+                    <p className="mb-2 font-mono text-xs uppercase tracking-[0.24em] text-netflix">{project.eyebrow}</p>
+                    <Dialog.Title className="font-display text-3xl font-black tracking-tight text-white md:text-5xl">
+                      {project.title}
+                    </Dialog.Title>
+                  </div>
+                </div>
+                <div className="grid gap-8 p-6 md:grid-cols-[1.5fr_1fr] md:p-8">
+                  <div className="space-y-6">
+                    {[
+                      ["Problem", project.problem],
+                      ["Architecture", project.architecture],
+                      ["Dataset", project.dataset],
+                      ["Models", project.models],
+                      ["Results", project.results]
+                    ].map(([label, value]) => (
+                      <div key={label}>
+                        <h3 className="mb-2 text-sm font-bold uppercase tracking-wider text-white">{label}</h3>
+                        <p className="leading-7 text-zinc-400">{value}</p>
+                      </div>
+                    ))}
+                  </div>
+                  <aside>
+                    <h3 className="mb-3 text-sm font-bold uppercase tracking-wider text-white">Contributions</h3>
+                    <ul className="space-y-3 text-sm leading-6 text-zinc-400">
+                      {project.contributions.map((item) => (
+                        <li key={item} className="flex gap-3">
+                          <span className="mt-2 size-1.5 shrink-0 rounded-full bg-netflix" />
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                    <div className="mt-6 flex flex-wrap gap-2">
+                      {project.tech.map((tech) => <TechBadge key={tech}>{tech}</TechBadge>)}
+                    </div>
+                    <div className="mt-8 grid gap-3">
+                      <Button asChild>
+                        <a href={project.githubUrl} target="_blank" rel="noreferrer">
+                          <Github className="size-4" /> View source
+                        </a>
+                      </Button>
+                      <Button asChild variant="outline">
+                        <a href={project.liveUrl}>
+                          <ExternalLink className="size-4" /> Live experience
+                        </a>
+                      </Button>
+                    </div>
+                  </aside>
+                </div>
+                <Dialog.Description className="sr-only">{project.description}</Dialog.Description>
+              </motion.div>
+            </Dialog.Content>
+          </Dialog.Portal>
+        ) : null}
+      </AnimatePresence>
+    </Dialog.Root>
+  );
+}

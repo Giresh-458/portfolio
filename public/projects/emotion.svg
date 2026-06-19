@@ -1,0 +1,19 @@
+<svg width="1200" height="675" viewBox="0 0 1200 675" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="a" x1="86" y1="48" x2="1107" y2="648" gradientUnits="userSpaceOnUse"><stop stop-color="#3B050B"/><stop offset=".5" stop-color="#17080A"/><stop offset="1" stop-color="#050505"/></linearGradient>
+    <filter id="b"><feGaussianBlur stdDeviation="45"/></filter>
+  </defs>
+  <rect width="1200" height="675" fill="url(#a)"/>
+  <circle cx="602" cy="320" r="210" fill="#E50914" fill-opacity=".12" filter="url(#b)"/>
+  <g stroke="#E50914" stroke-opacity=".36">
+    <circle cx="602" cy="320" r="142"/><circle cx="602" cy="320" r="92"/><circle cx="602" cy="320" r="44"/>
+    <path d="M168 168L458 285M1044 151L748 276M201 528L469 377M1004 531L738 375"/>
+  </g>
+  <g fill="#E50914">
+    <circle cx="168" cy="168" r="12"/><circle cx="1044" cy="151" r="12"/><circle cx="201" cy="528" r="12"/><circle cx="1004" cy="531" r="12"/>
+  </g>
+  <g fill="#fff" fill-opacity=".78" font-family="Arial, sans-serif" font-size="20" letter-spacing="4">
+    <text x="99" y="136">VISION</text><text x="1007" y="119">AUDIO</text><text x="137" y="574">TEXT</text><text x="945" y="577">FUSION</text>
+  </g>
+  <path d="M570 291C587 269 616 269 633 291C650 313 647 345 602 379C557 345 553 313 570 291Z" fill="#E50914"/>
+</svg>
