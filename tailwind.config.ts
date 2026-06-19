@@ -35,7 +35,7 @@ const config: Config = {
       },
       fontFamily: {
         sans: ["Inter", "sans-serif"],
-        display: ["Bebas Neue", "Arial Black", "sans-serif"],
+        display: ["Poppins", "Bebas Neue", "Arial Black", "sans-serif"],
         mono: ["ui-monospace", "SFMono-Regular", "monospace"]
       },
       backgroundImage: {
