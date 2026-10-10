@@ -1,6 +1,13 @@
-# AI Cinema Portfolio
+# Giresh Velaga — AI × Full-Stack Portfolio
 
-Production Next.js 14 portfolio with a cinematic Netflix-inspired interface, typed content architecture, accessible motion, GitHub analytics, and downloadable PDF routes. Framework settings live in `next.config.mjs`, the configuration format supported by Next.js 14.
+A personal portfolio for AI engineering and full-stack product work. The visual direction is cinematic and Demon Slayer-inspired, using original SVG artwork, animated water-like paths, ember particles, a blade-light sweep, and motion-reactive project cards instead of a wall of static anime images.
+
+## Built with
+
+- Next.js 14, React 18, TypeScript
+- Tailwind CSS, Framer Motion, Lucide
+- Original SVG project artwork and canvas particle animation
+- GitHub REST API for live public repository, language, and recent activity data
 
 ## Local development
 
@@ -10,42 +17,31 @@ copy .env.example .env.local
 npm run dev
 ```
 
-Update identity, links, content, and metrics in `lib/data.ts`. Replace `public/profile.svg` with an optimized portrait while retaining the same path, or update the image source in `components/sections/about-section.tsx`.
+Open `http://localhost:3000`. The public GitHub analytics endpoint defaults to `Giresh-458`; set `GITHUB_USERNAME` only if you want to use a different account.
 
 ## Environment variables
 
 ```env
-GITHUB_USERNAME=your-github-username
-GITHUB_TOKEN=github_pat_with_read_only_public_repo_access
-NEXT_PUBLIC_SITE_URL=https://your-domain.vercel.app
-```
+GITHUB_USERNAME=Giresh-458
+GITHUB_TOKEN=
+NEXT_PUBLIC_SITE_URL=https://your-deployed-domain.example
+``
 
-`GITHUB_TOKEN` is server-only and must never use the `NEXT_PUBLIC_` prefix. The site renders deterministic fallback analytics when GitHub variables are absent or rate-limited.
+- `GITHUB_TOKEN` is optional and stays server-side. A token can help with API rate limits.
+- `NEXT_PUBLIC_SITE_URL` should be set to the real deployed origin before publishing, so metadata and canonical URLs point to the correct site.
+- Analytics use live public GitHub data. If GitHub is unavailable or rate-limited, the page displays an unavailable message rather than fabricated activity statistics.
 
-## Vercel deployment
+## Deployment
 
-1. Push the repository to GitHub, GitLab, or Bitbucket.
-2. In Vercel, select **Add New → Project** and import the repository.
-3. Keep **Framework Preset** set to `Next.js`.
-4. Keep **Root Directory** as the repository root.
-5. Use `npm install` as the install command and `npm run build` as the build command.
-6. Add `GITHUB_USERNAME`, `GITHUB_TOKEN`, and `NEXT_PUBLIC_SITE_URL` under **Project Settings → Environment Variables** for Production, Preview, and Development as appropriate.
-7. Deploy once, then update `NEXT_PUBLIC_SITE_URL` to the final Vercel or custom domain and redeploy.
-8. Under **Settings → Functions**, use the default Node.js region nearest the primary recruiter audience. GitHub responses are cached at the route level.
-9. Under **Settings → Deployment Protection**, keep production public and protect preview deployments if they contain unreleased resume data.
-10. Add a custom domain, enable automatic HTTPS, and verify `/robots.txt`, `/sitemap.xml`, `/api/github`, and `/api/download/resume`.
+1. Import the repository into Vercel.
+2. Keep the framework preset as **Next.js** and the root directory as the repository root.
+3. Set `NEXT_PUBLIC_SITE_URL` to the production domain.
+4. Optionally set a server-only `GITHUB_TOKEN` in Vercel environment variables.
+5. Deploy and verify the homepage, project links, contact form, and `/api/github`.
 
-## Recommended Vercel settings
+A resume PDF has not been added yet. Add a verified resume before exposing a download link.
 
-- Node.js: current Vercel-supported LTS
-- Build machine: Standard
-- Function region: nearest primary audience
-- Speed Insights: enabled
-- Web Analytics: enabled
-- Deployment skew protection: enabled
-- Git LFS: unnecessary for the included SVG assets
-
-## Quality gates
+## Quality checks
 
 ```bash
 npm run typecheck
