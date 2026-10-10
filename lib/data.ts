@@ -11,7 +11,7 @@ import type { Project, ResearchTopic, SkillCategory, Stat } from "@/types";
 
 export const siteConfig = {
   name: "Giresh Komal Velaga",
-  role: "AI + Full-Stack Developer",
+  role: "Aspiring AI Engineer · Full-Stack Developer",
   email: "gireshvelaga@gmail.com",
   github: "https://github.com/Giresh-458",
   linkedin: "",
