@@ -32,9 +32,10 @@ export function ProjectsSection() {
             <button type="button" onClick={() => setSelected(project)} className="block w-full text-left" aria-label={`Open details for ${project.title}`}>
               <div className="relative aspect-[16/9] overflow-hidden">
                 <Image src={project.image} alt="" fill className="object-cover transition duration-700 group-hover:scale-105" sizes="(max-width: 768px) 86vw, 520px" />
-                <motion.div className="absolute inset-0 bg-gradient-to-t from-surface via-surface/20 to-transparent" animate={reduceMotion ? undefined : { opacity: [0.9, 1, 0.9] }} transition={{ duration: 5 + index * 0.25, repeat: Infinity, ease: "easeInOut" }} />\n                <motion.div aria-hidden className="pointer-events-none absolute -left-1/2 top-[-80%] h-[250%] w-1/3 rotate-[24deg] bg-gradient-to-r from-transparent via-white/[0.08] to-transparent opacity-0 group-hover:opacity-100" animate={reduceMotion ? undefined : { x: ["0%", "550%"] }} transition={{ duration: 1.1, ease: "easeInOut" }} />
-                <span className="absolute left-5 top-5 rounded-full border border-white/15 bg-black/50 px-3 py-1 font-mono text-[10px] uppercase tracking-[0.2em] text-white backdrop-blur-md">
-                  {project.eyebrow}
+                <motion.div className="absolute inset-0 bg-gradient-to-t from-surface via-surface/20 to-transparent" animate={reduceMotion ? undefined : { opacity: [0.9, 1, 0.9] }} transition={{ duration: 5 + index * 0.25, repeat: Infinity, ease: "easeInOut" }} />
+                <motion.div aria-hidden className="pointer-events-none absolute -left-1/2 top-[-80%] h-[250%] w-1/3 rotate-[24deg] bg-gradient-to-r from-transparent via-white/[0.08] to-transparent opacity-0 group-hover:opacity-100" animate={reduceMotion ? undefined : { x: ["0%", "550%"] }} transition={{ duration: 1.1, ease: "easeInOut" }} />
+                <span className="absolute left-5 top-5 rounded-full border border-white/15 bg-black/50 px-3 py-1 font-mono text-[10px] uppercase tracking-[0.16em] text-white backdrop-blur-md">
+                  <span className="mr-2 text-[#75E0D9]">{String(index + 1).padStart(2, "0")}</span>{project.eyebrow}
                 </span>
                 <span className="absolute bottom-5 right-5 grid size-12 place-items-center rounded-full bg-white text-black opacity-0 shadow-xl transition group-hover:opacity-100">
                   <Play className="size-5 fill-current" />
@@ -54,9 +55,11 @@ export function ProjectsSection() {
               <Button asChild variant="ghost" size="sm">
                 <a href={project.githubUrl} target="_blank" rel="noreferrer" aria-label={`${project.title} GitHub repository`}><Github className="size-4" /> GitHub</a>
               </Button>
-              <Button asChild variant="ghost" size="sm">
-                <a href={project.liveUrl} aria-label={`${project.title} live demo`}><ArrowUpRight className="size-4" /> Live demo</a>
-              </Button>
+              {project.liveUrl ? (
+                <Button asChild variant="ghost" size="sm">
+                  <a href={project.liveUrl} target="_blank" rel="noreferrer" aria-label={`${project.title} live demo`}><ArrowUpRight className="size-4" /> Live demo</a>
+                </Button>
+              ) : null}
             </div>
           </motion.article>
         ))}
