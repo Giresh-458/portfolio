@@ -113,7 +113,7 @@ export function BreathingScene() {
         <path d="M0 850C153 815 222 864 365 837S592 822 739 858" stroke="#40C9E4" strokeOpacity=".16" strokeWidth="2" />
       </svg>
 
-      <svg className="pointer-events-none absolute inset-0 h-full w-full" viewBox="0 0 1600 900" preserveAspectRatio="none" fill="none" aria-hidden="true">
+      <svg className="pointer-events-none absolute inset-0 z-[5] h-full w-full" viewBox="0 0 1600 900" preserveAspectRatio="none" fill="none" aria-hidden="true">
         {active.id === "tanjiro" ? <>
           <motion.path d="M640 760C760 682 766 556 890 503C1028 443 1225 529 1460 287" stroke={active.accent} strokeWidth="19" strokeLinecap="round" opacity=".7" filter="url(#glow-water)" animate={reduceMotion ? undefined : { pathLength: [0.65, 1, 0.65], opacity: [.22, .75, .22] }} transition={{ duration: 6.8, repeat: Infinity, ease: "easeInOut" }} />
           <motion.path d="M600 770C720 690 806 620 928 593C1100 553 1258 642 1530 431" stroke="#E9FFFF" strokeWidth="3.5" strokeLinecap="round" strokeDasharray="4 15" animate={reduceMotion ? undefined : { strokeDashoffset: [0, -160] }} transition={{ duration: 7, repeat: Infinity, ease: "linear" }} opacity=".85" />
