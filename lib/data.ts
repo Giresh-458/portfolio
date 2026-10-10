@@ -14,7 +14,7 @@ export const siteConfig = {
   role: "AI + Full-Stack Developer",
   email: "gireshvelaga@gmail.com",
   github: "https://github.com/Giresh-458",
-  linkedin: "https://www.linkedin.com/",
+  linkedin: "",
   siteUrl: process.env.NEXT_PUBLIC_SITE_URL ?? "https://github.com/Giresh-458/portfolio",
   description:
     "Computer Science student at IIIT Sri City building AI systems and full-stack products, from retrieval and agent workflows to user-facing applications."
@@ -24,7 +24,7 @@ export const stats: Stat[] = [
   { label: "Public repositories", value: 12 },
   { label: "Engineering tracks", value: 2 },
   { label: "Featured projects", value: 7 },
-  { label: "Build mindset", value: 100, suffix: "%" }
+  { label: "Live demos", value: 2 }
 ];
 
 export const projects: Project[] = [
