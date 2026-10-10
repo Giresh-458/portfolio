@@ -208,10 +208,19 @@ a, button { -webkit-tap-highlight-color: transparent; }
 }
 .crow-flight-scene {
   isolation: isolate;
+  height: clamp(190px, 22vw, 250px);
   background:
     linear-gradient(180deg, rgba(18,11,24,.35), rgba(5,7,13,.2)),
     radial-gradient(ellipse at 73% 28%, rgba(206,34,57,.19), transparent 35%),
     linear-gradient(115deg, #0B101A 0%, #140D19 56%, #09090F 100%);
+  box-shadow: 0 22px 54px rgba(0,0,0,.23), inset 0 0 0 1px rgba(245,221,204,.04);
+}
+.crow-scene-art { filter: saturate(.94) contrast(1.04); }
+.dispatch-petal {
+  z-index: 2;
+  background: linear-gradient(140deg, #ffe1e6, #ed7c9a 70%);
+  border-radius: 100% 0 100% 0;
+  box-shadow: 0 0 10px rgba(241,109,151,.5);
 }
 .crow-haze {
   background:
@@ -226,7 +235,6 @@ a, button { -webkit-tap-highlight-color: transparent; }
   .section-shell > * {
     padding-inline: 1.25rem;
   }
-  .crow-flight-scene {
-    height: 180px;
-  }
+  .crow-flight-scene { height: 180px; }
+  .dispatch-petal { transform-origin: center; }
 }
