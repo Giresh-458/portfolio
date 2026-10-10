@@ -13,6 +13,14 @@ export function BreathingScene() {
   const [activeIndex, setActiveIndex] = useState(0);
   const reduceMotion = useReducedMotion();
   const active = characters[activeIndex];
+  const idleMotion = active.id === "tanjiro"
+    ? { scale: [1.02, 1.08, 1.02], x: [0, -5, 0], y: [2, -4, 2], rotate: [0, -0.35, 0] }
+    : active.id === "nezuko"
+      ? { scale: [1.02, 1.07, 1.02], x: [0, 3, 0], y: [0, -3, 0], rotate: [0, 0.3, 0] }
+      : active.id === "zenitsu"
+        ? { scale: [1.03, 1.11, 1.03], x: [0, -3, 1, 0], y: [1, -2, 1], rotate: [0, -0.25, 0] }
+        : { scale: [1.03, 1.09, 1.03], x: [-4, 4, -3], y: [1, -2, 1], rotate: [-0.45, 0.45, -0.45] };
+  const idleDuration = active.id === "zenitsu" ? 2.4 : active.id === "inosuke" ? 3.8 : 6.2;
 
   return (
     <div className="relative mx-auto w-full max-w-[590px]">
@@ -20,14 +28,23 @@ export function BreathingScene() {
       <div className="relative overflow-hidden rounded-t-[1.35rem] border border-white/10 bg-[#10131B] shadow-[0_26px_90px_rgba(0,0,0,.5)]">
         <AnimatePresence mode="wait">
           <motion.div key={active.id} initial={reduceMotion ? { opacity: 1 } : { opacity: 0, scale: 1.08, x: 16 }}
-            animate={reduceMotion ? { opacity: 1, scale: 1, x: 0 } : { opacity: 1, x: 0, scale: [1.01, 1.06, 1.01] }}
-            exit={reduceMotion ? { opacity: 1 } : { opacity: 0, scale: 1.02, x: -12 }}
-            transition={reduceMotion ? { duration: 0.01 } : { opacity: { duration: 0.35 }, x: { duration: 0.55 }, scale: { duration: 16, repeat: Infinity, ease: "easeInOut" } }}
-            className="relative aspect-[4/5] w-full overflow-hidden sm:aspect-[5/6]" aria-label={active.name + ", " + active.style} role="img"
-            style={{ backgroundImage: "url('" + active.image + "')", backgroundSize: "cover", backgroundPosition: active.imagePosition }}>
-            <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(5,8,14,.05)_0%,rgba(5,8,14,.06)_34%,rgba(5,8,14,.35)_57%,rgba(5,8,14,.96)_100%)]" />
+            animate={reduceMotion ? { opacity: 1, x: 0 } : { opacity: 1, x: 0 }}
+            exit={reduceMotion ? { opacity: 1 } : { opacity: 0, x: -16 }}
+            transition={reduceMotion ? { duration: 0.01 } : { opacity: { duration: 0.35 }, x: { duration: 0.45 } }}
+            className="relative aspect-[4/5] w-full overflow-hidden sm:aspect-[5/6]" aria-label={active.name + ", " + active.style} role="img">
+            <motion.div
+              aria-hidden="true"
+              className="pointer-events-none absolute -inset-[4%] z-0 bg-cover bg-center"
+              style={{ backgroundImage: "url('" + active.image + "')", backgroundSize: "cover", backgroundPosition: active.imagePosition, willChange: reduceMotion ? "auto" : "transform" }}
+              animate={reduceMotion ? { scale: 1 } : idleMotion}
+              transition={reduceMotion ? { duration: 0.01 } : { duration: idleDuration, repeat: Infinity, ease: "easeInOut" }}
+            />
+            <motion.div aria-hidden="true" className="pointer-events-none absolute inset-0 z-[1]" animate={reduceMotion ? { opacity: 0.25 } : { opacity: [0.16, 0.44, 0.16], scale: [0.98, 1.03, 0.98] }} transition={reduceMotion ? { duration: 0.01 } : { duration: idleDuration * 0.8, repeat: Infinity, ease: "easeInOut" }} style={{ background: "radial-gradient(ellipse at 52% 42%, " + active.accent + "35, transparent 64%)", mixBlendMode: "screen" }} />
+            <div className="pointer-events-none absolute inset-0 z-[2] bg-[linear-gradient(180deg,rgba(5,8,14,.04)_0%,rgba(5,8,14,.06)_34%,rgba(5,8,14,.34)_57%,rgba(5,8,14,.96)_100%)]" />
             <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(90deg,rgba(5,8,14,.42),transparent_40%,rgba(5,8,14,.12))]" />
-            <svg className="pointer-events-none absolute inset-0 h-full w-full" viewBox="0 0 500 600" fill="none" aria-hidden="true">
+            <svg className="pointer-events-none absolute inset-0 z-[3] h-full w-full" viewBox="0 0 500 600" fill="none" aria-hidden="true">
+              <motion.path d={active.id === "zenitsu" ? "M70 40L205 242L173 276L315 478" : "M68 540L443 82"} stroke={active.accent} strokeWidth={active.id === "zenitsu" ? 3 : 2} strokeLinecap="round" strokeLinejoin="round" strokeDasharray="130 560" opacity=".78"
+                animate={reduceMotion ? undefined : { strokeDashoffset: [650, 0, -650], opacity: [0, .9, 0] }} transition={{ duration: active.id === "zenitsu" ? 2.4 : 4.4, repeat: Infinity, ease: "easeInOut", delay: .3 }} />
               {active.id === "tanjiro" ? <>
                 <motion.path d="M-20 430C80 355 42 287 153 244C254 205 328 284 520 176" stroke={active.accent} strokeWidth="7" strokeLinecap="round" opacity=".85" animate={reduceMotion ? undefined : { pathLength: [0.28, 1, 0.28], opacity: [0.24, 0.84, 0.24] }} transition={{ duration: 5.8, repeat: Infinity, ease: "easeInOut" }} />
                 <motion.path d="M-15 492C105 407 112 349 211 338C317 326 364 404 515 303" stroke="#D9FAF6" strokeWidth="2.5" strokeLinecap="round" strokeDasharray="4 12" opacity=".7" animate={reduceMotion ? undefined : { strokeDashoffset: [0, -92] }} transition={{ duration: 6.2, repeat: Infinity, ease: "linear" }} />
@@ -48,7 +65,7 @@ export function BreathingScene() {
             </svg>
             <div className="pointer-events-none absolute left-5 top-5 z-10 flex items-center gap-2 border border-white/20 bg-[#080B12]/60 px-3 py-2 backdrop-blur-md">
               <span className="size-1.5 rounded-full" style={{ backgroundColor: active.accent, boxShadow: "0 0 14px " + active.accent }} />
-              <span className="font-mono text-[9px] uppercase tracking-[0.18em] text-[#F5F0E9]">Corps archive / {active.index}</span>
+              <span className="font-mono text-[9px] uppercase tracking-[0.18em] text-[#F5F0E9]">CHARACTER / {active.index}</span>
             </div>
             <div className="pointer-events-none absolute bottom-0 left-0 right-0 z-10 p-5 sm:p-7">
               <p className="font-mono text-[9px] uppercase tracking-[0.2em]" style={{ color: active.accent }}>{active.shortStyle}</p>
@@ -73,7 +90,7 @@ export function BreathingScene() {
           </button>
         ))}
       </div>
-      <p className="mt-2 text-right font-mono text-[8px] uppercase tracking-[0.15em] text-[#596678]">Select a fighter to change the breathing effect</p>
+      <p className="mt-2 text-right font-mono text-[8px] uppercase tracking-[0.15em] text-[#596678]">Choose a fighter · change the breathing style</p>
     </div>
   );
 }
