@@ -8,10 +8,10 @@ const characters = [
     name: "Tanjiro Kamado",
     style: "Water Breathing · Hinokami Kagura",
     technique: "水の呼吸",
-    image: "https://images6.alphacoders.com/139/thumb-1920-1398038.png",
-    thumb: "https://images6.alphacoders.com/139/thumb-1920-1398038.png",
-    position: "64% center",
-    mobilePosition: "67% center",
+    image: "https://www.pixiewall.com/content/wallpapers/medium/66/pixiewall-tanjiro-demon-slayer-rooftop-battle-4k-bnl0gf.jpg",
+    thumb: "https://www.pixiewall.com/content/wallpapers/medium/66/pixiewall-tanjiro-demon-slayer-rooftop-battle-4k-bnl0gf.jpg",
+    position: "40% 35%",
+    mobilePosition: "66% 30%",
     accent: "#39D8F3",
     secondary: "#ED493D",
     number: "01"
@@ -88,9 +88,9 @@ export function BreathingScene() {
             backgroundImage: "url('" + active.image + "')",
             backgroundRepeat: "no-repeat",
             backgroundSize: "cover",
-            backgroundPosition: active.position,
-            backgroundColor: "#080C17",
-            ["--scene-mobile-position" as string]: active.mobilePosition
+            ["--scene-position" as string]: active.position,
+            ["--scene-mobile-position" as string]: active.mobilePosition,
+            backgroundColor: "#080C17"
           }}
           initial={reduceMotion ? { opacity: 1 } : { opacity: 0, scale: 1.08, x: 24 }}
           animate={reduceMotion ? { opacity: 1, scale: 1, x: 0 } : { opacity: 1, scale: [1.015, 1.07, 1.015], x: [0, -7, 0] }}
