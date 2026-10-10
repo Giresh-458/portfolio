@@ -40,24 +40,6 @@ export interface SkillCategory {
   skills: Skill[];
 }
 
-export interface Publication {
-  id: string;
-  title: string;
-  venue: string;
-  year: string;
-  abstract: string;
-  methodology: string;
-  results: string;
-  futureWork: string;
-  tech: string[];
-}
-
-export interface TimelineItem {
-  period: string;
-  title: string;
-  description: string;
-}
-
 export interface GitHubRepo {
   name: string;
   url: string;
