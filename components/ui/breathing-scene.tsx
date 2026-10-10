@@ -3,7 +3,7 @@ import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { useState } from "react";
 
 const characters = [
-  { id: "tanjiro", name: "Tanjiro Kamado", style: "Water Breathing · Hinokami Kagura", shortStyle: "WATER / HINOKAMI", image: "https://demonslayer-anime.com/hta/assets/img/chara/img_chara_tanjiro.jpg", imagePosition: "center 25%", accent: "#62D6E0", secondary: "#F16A50", index: "01" },
+  { id: "tanjiro", name: "Tanjiro Kamado", style: "Water Breathing · Hinokami Kagura", shortStyle: "WATER / HINOKAMI", image: "https://demonslayer-anime.com/mugentrain/assets/img/character/img_cha_01.jpg", imagePosition: "center 25%", accent: "#62D6E0", secondary: "#F16A50", index: "01" },
   { id: "nezuko", name: "Nezuko Kamado", style: "Blood Demon Art", shortStyle: "BLOOD DEMON ART", image: "https://demonslayer-anime.com/hta/assets/img/chara/img_chara_nezuko.jpg", imagePosition: "center 24%", accent: "#F18CB5", secondary: "#D64F68", index: "02" },
   { id: "zenitsu", name: "Zenitsu Agatsuma", style: "Thunder Breathing", shortStyle: "THUNDER BREATHING", image: "https://demonslayer-anime.com/hta/assets/img/chara/img_chara_zennitsu.jpg", imagePosition: "center 24%", accent: "#F5D36A", secondary: "#EBA449", index: "03" },
   { id: "inosuke", name: "Inosuke Hashibira", style: "Beast Breathing", shortStyle: "BEAST BREATHING", image: "https://demonslayer-anime.com/hta/assets/img/chara/img_chara_inosuke.jpg", imagePosition: "center 25%", accent: "#B7D8ED", secondary: "#5F96B7", index: "04" }
