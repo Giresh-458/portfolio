@@ -1,6 +1,6 @@
 # Giresh Velaga — AI × Full-Stack Portfolio
 
-A personal portfolio for AI engineering and full-stack product work. The visual direction is cinematic and Demon Slayer-inspired, using original SVG artwork, animated water-like paths, ember particles, a blade-light sweep, and motion-reactive project cards instead of a wall of static anime images.
+A personal portfolio for AI engineering and full-stack product work. The visual direction is Demon Slayer-inspired: ink-black Taisho-night scenery, a rising red moon, a checkered haori motif, original swordsman-inspired SVG artwork, animated Water Breathing ribbons and Hinokami flame trails, drifting petals and embers, and project mission dossiers. The anime aesthetic frames the work; the project content remains about real engineering.
 
 ## Built with
 
