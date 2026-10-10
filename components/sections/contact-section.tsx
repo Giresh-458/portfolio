@@ -84,24 +84,6 @@ export function ContactSection() {
               <span className="absolute right-3 top-3 border border-[#E7C6AF]/20 bg-[#08080D]/65 px-2 py-1 font-mono text-[8px] uppercase tracking-[.16em] text-[#E0B3A9]">Corps post</span>
             </div>
             <p className="font-mono text-[9px] uppercase tracking-[.22em] text-[#F17477]">Direct channels / 01</p>
-              <div className="crow-moon absolute right-[18%] top-1 size-24 rounded-full" />
-              <motion.svg className="relative z-10 h-[125px] w-full max-w-[330px]" viewBox="0 0 360 140" fill="none" aria-label="Kasugai crow messenger illustration" role="img" animate={reduceMotion ? undefined : { y: [0, -3, 0], rotate: [0, .5, 0] }} transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}>
-                <path d="M66 113C113 96 147 86 179 89C202 89 224 102 249 103" stroke="#8E6870" strokeOpacity=".55" strokeWidth="2"/>
-                <path d="M108 100C87 84 80 61 98 42C117 24 149 34 162 52C175 69 171 84 153 91L144 108Z" fill="#090A10" stroke="#6B555E" strokeWidth="1.5"/>
-                <path d="M115 57C96 38 96 20 111 13C135 25 147 37 148 52L165 64L147 82L132 78Z" fill="#17141E" stroke="#705460" strokeWidth="1.5"/>
-                <path d="M145 47L194 57L166 69L148 62Z" fill="#D9A36F"/>
-                <circle cx="144" cy="48" r="3.5" fill="#F3C96B"/><circle cx="145" cy="48" r="1.5" fill="#08080E"/>
-                <path d="M112 75C78 84 69 106 89 117C107 126 137 116 149 95" fill="#10121A" stroke="#6B555E" strokeWidth="1.3"/>
-                <path d="M97 96L80 116L110 107L125 92" fill="#211B27" stroke="#6B555E" strokeWidth="1.3"/>
-                <path d="M126 102L124 121M143 101L149 119" stroke="#D9A36F" strokeWidth="3" strokeLinecap="round"/>
-                <path d="M200 75L242 51L261 74L233 101Z" fill="#EEDCC8" stroke="#A9877D" strokeWidth="1.4"/>
-                <path d="M211 75L232 91L251 63" stroke="#B73B47" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                <path d="M203 76L233 91L260 72" stroke="#A9877D" strokeWidth="1.3" strokeLinecap="round"/>
-                <motion.path d="M274 42C292 22 311 33 300 48C291 60 272 56 274 42ZM302 57C326 38 342 55 325 68C311 78 296 70 302 57Z" fill="#E96B8B" fillOpacity=".75" animate={reduceMotion ? undefined : { x: [0, 8, -2, 0], y: [0, -5, 4, 0], opacity: [.45, .95, .55, .45] }} transition={{ duration: 6.5, repeat: Infinity, ease: "easeInOut" }}/>
-              </motion.svg>
-              <span className="absolute bottom-2 left-0 font-mono text-[8px] uppercase tracking-[.22em] text-[#8E7B83]">Crow dispatch / outgoing message</span>
-            </div>
-            <p className="font-mono text-[9px] uppercase tracking-[.22em] text-[#F17477]">Direct channels / 01</p>
             <h3 className="mt-4 font-display text-3xl uppercase leading-tight text-[#F2E3D2] md:text-4xl">Let’s talk about the work.</h3>
             <p className="mt-4 leading-7 text-[#B3A8AB]">For a role, a technical question or an ambitious idea, email is the simplest way to reach me.</p>
           </div>
