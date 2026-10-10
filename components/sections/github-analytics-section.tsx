@@ -19,8 +19,6 @@ function AnalyticsSkeleton() {
   );
 }
 
-const levels = ["bg-white/[0.05]", "bg-netflix/20", "bg-netflix/40", "bg-netflix/65", "bg-netflix"];
-
 export function GitHubAnalyticsSection() {
   const [data, setData] = useState<GitHubAnalytics | null>(null);
   const [error, setError] = useState(false);
@@ -50,7 +48,6 @@ export function GitHubAnalyticsSection() {
       ) : null}
       {data ? (
         <motion.div initial={reduceMotion ? undefined : { opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="space-y-5">
-          {data.isFallback ? <p className="font-mono text-xs uppercase tracking-wider text-amber-500">Demo metrics · configure GITHUB_USERNAME for live data</p> : null}
           <div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
             {[
               { icon: BookOpen, label: "Public repositories", value: data.publicRepos },
@@ -65,37 +62,29 @@ export function GitHubAnalyticsSection() {
               </GlassCard>
             ))}
           </div>
-          <div className="grid gap-5 xl:grid-cols-[1.45fr_0.55fr]">
-            <GlassCard className="p-6 md:p-8">
-              <div className="mb-6 flex items-center justify-between gap-4">
-                <h3 className="text-lg font-bold text-white">Contribution velocity</h3>
-                <span className="font-mono text-xs text-zinc-600">Last 52 weeks</span>
+          <GlassCard className="p-6 md:p-8">
+            <div className="mb-6 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+              <div>
+                <h3 className="text-lg font-bold text-white">Language mix across public repositories</h3>
+                <p className="mt-1 text-sm text-zinc-500">Calculated from each repository’s reported primary language, not lines of code.</p>
               </div>
-              <div className="overflow-x-auto">
-                <div className="grid min-w-[730px] grid-flow-col grid-rows-7 gap-1" aria-label="GitHub contribution graph">
-                  {data.contributions.map((value, index) => (
-                    <span key={`${index}-${value}`} title={`${value} contributions`} className={`size-3 rounded-[3px] ${levels[Math.min(value, 4)]}`} />
-                  ))}
+              <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#75E0D9]/65">Live GitHub data</span>
+            </div>
+            <div className="flex h-2 overflow-hidden rounded-full bg-white/[0.05]">
+              {data.languages.map((language) => (
+                <span key={language.name} className="h-full transition-[width] duration-700" style={{ width: `${language.percentage}%`, backgroundColor: language.color }} />
+              ))}
+            </div>
+            <div className="mt-5 flex flex-wrap gap-x-5 gap-y-3">
+              {data.languages.map((language) => (
+                <div key={language.name} className="flex items-center gap-2 text-sm">
+                  <span className="size-2.5 rounded-full" style={{ backgroundColor: language.color }} />
+                  <span className="text-zinc-300">{language.name}</span>
+                  <span className="font-mono text-xs text-zinc-600">{language.percentage}%</span>
                 </div>
-              </div>
-            </GlassCard>
-            <GlassCard className="p-6 md:p-8">
-              <h3 className="text-lg font-bold text-white">Top languages</h3>
-              <div className="mt-6 h-2 overflow-hidden rounded-full bg-white/5">
-                {data.languages.map((language) => (
-                  <span key={language.name} className="inline-block h-full" style={{ width: `${language.percentage}%`, backgroundColor: language.color }} />
-                ))}
-              </div>
-              <div className="mt-6 space-y-3">
-                {data.languages.map((language) => (
-                  <div key={language.name} className="flex items-center justify-between text-sm">
-                    <span className="flex items-center gap-2 text-zinc-300"><span className="size-2.5 rounded-full" style={{ backgroundColor: language.color }} />{language.name}</span>
-                    <span className="font-mono text-xs text-zinc-600">{language.percentage}%</span>
-                  </div>
-                ))}
-              </div>
-            </GlassCard>
-          </div>
+              ))}
+            </div>
+          </GlassCard>
           <div className="grid gap-5 lg:grid-cols-2">
             <GlassCard className="p-6 md:p-8">
               <h3 className="text-lg font-bold text-white">Top repositories</h3>
