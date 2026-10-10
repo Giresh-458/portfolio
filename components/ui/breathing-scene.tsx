@@ -99,7 +99,19 @@ export function BreathingScene() {
       </AnimatePresence>
 
       <div className="hero-scene-wash absolute inset-0" />
+      <div className="blood-moon-orb pointer-events-none absolute" />
       <div className="hero-moon-glow pointer-events-none absolute inset-0" />
+      <svg className="scene-architecture pointer-events-none absolute inset-0 h-full w-full" viewBox="0 0 1600 900" preserveAspectRatio="none" fill="none" aria-hidden="true">
+        <path d="M0 630L96 574L159 600L253 520L320 574L405 492L489 560L565 520L670 604L740 550V900H0Z" fill="#07101C" fillOpacity=".88" />
+        <path d="M0 720L95 661L174 687L267 624L357 680L442 609L532 683L625 631L758 704V900H0Z" fill="#080C15" fillOpacity=".9" />
+        <path d="M0 777L68 760L112 711L155 757L196 735L241 780V900H0Z" fill="#05070D" />
+        <path d="M60 729L152 729L152 785M43 729L168 729L152 704L119 690L86 704Z" stroke="#C93C49" strokeOpacity=".3" strokeWidth="3" />
+        <path d="M182 786L266 786L266 820M162 786L284 786L265 761L223 744L181 761Z" stroke="#D3A88D" strokeOpacity=".22" strokeWidth="3" />
+        <path d="M337 696L430 696L430 748M315 696L452 696L430 670L392 649L354 670Z" stroke="#D3A88D" strokeOpacity=".28" strokeWidth="3" />
+        <path d="M347 696L347 673L392 648L437 673L437 696M359 687L425 687M370 673L392 661L414 673" stroke="#D3A88D" strokeOpacity=".25" strokeWidth="2" />
+        <path d="M510 732L584 732L584 778M494 732L602 732L585 709L548 691L511 709Z" stroke="#C93C49" strokeOpacity=".28" strokeWidth="3" />
+        <path d="M0 850C153 815 222 864 365 837S592 822 739 858" stroke="#40C9E4" strokeOpacity=".16" strokeWidth="2" />
+      </svg>
 
       <svg className="pointer-events-none absolute inset-0 h-full w-full" viewBox="0 0 1600 900" preserveAspectRatio="none" fill="none" aria-hidden="true">
         {active.id === "tanjiro" ? <>
