@@ -15,25 +15,33 @@ const workflow = [
 export function AILabSection() {
   const reduceMotion = useReducedMotion();
   return (
-    <section id="ai-lab" className="section-shell scroll-mt-20">
-      <SectionHeader eyebrow="AI engineering" title="More than a model call." description="I’m interested in the system around the model: retrieval, routing, tool use, validation and a useful user experience." />
-      <div className="grid gap-5 lg:grid-cols-[.8fr_1.2fr]">
-        <motion.div initial={reduceMotion ? undefined : { opacity: 0, y: 16 }} whileInView={reduceMotion ? undefined : { opacity: 1, y: 0 }} viewport={viewport} className="rounded-2xl border border-white/[0.085] bg-[#0D131E] p-6 md:p-8">
-          <p className="text-sm font-semibold text-[#E1E8EF]">A reliable AI workflow</p>
-          <p className="mt-2 text-sm leading-6 text-[#929EAF]">A useful result depends on more than generation.</p>
+    <section id="ai-lab" className="section-shell section-forge scroll-mt-20">
+      <SectionHeader eyebrow="The swordsmith's forge · 鍛錬" title="From model call to reliable system." description="The hard work lives around the model: retrieval, routing, tools, evaluation, guardrails and the experience people actually use." />
+      <div className="grid gap-5 lg:grid-cols-[.88fr_1.12fr]">
+        <motion.div initial={reduceMotion ? undefined : { opacity: 0, y: 18 }} whileInView={reduceMotion ? undefined : { opacity: 1, y: 0 }} viewport={viewport} className="slayer-panel p-6 md:p-8">
+          <div className="flex items-center justify-between"><span className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#F28B6F]">Workflow / inspection</span><span className="size-2 rounded-full bg-[#E64A43] shadow-[0_0_16px_rgba(230,74,67,.65)]" /></div>
+          <h3 className="mt-4 font-display text-3xl uppercase text-[#F4E6D6]">A reliable AI workflow</h3>
+          <p className="mt-2 text-sm leading-6 text-[#AFA3A7]">A useful result depends on more than generation.</p>
           <div className="mt-7 space-y-3">
             {workflow.map((step, index) => {
               const Icon = step.icon;
-              return <div key={step.title} className="flex items-start gap-4 rounded-xl border border-white/[0.07] bg-white/[0.02] p-4">
-                <span className="grid size-10 shrink-0 place-items-center rounded-lg border border-[#54CBD4]/20 bg-[#54CBD4]/[0.07] text-[#62D5DE]"><Icon className="size-5" /></span>
-                <div className="min-w-0 flex-1"><div className="flex items-center gap-2"><span className="font-mono text-[10px] text-[#667B8F]">0{index + 1}</span><h3 className="font-semibold text-[#E4EAF0]">{step.title}</h3></div><p className="mt-1 text-sm leading-6 text-[#929EAF]">{step.description}</p></div>
-                {index < workflow.length - 1 ? <ArrowRight className="mt-2 size-4 shrink-0 text-[#526D7C]" /> : null}
+              return <div key={step.title} className="forge-step flex items-start gap-4 border border-[#E6A181]/15 bg-black/25 p-4 transition-colors hover:border-[#E95648]/55">
+                <span className="grid size-10 shrink-0 place-items-center border border-[#EA785D]/35 bg-[#E95648]/[0.08] text-[#FF9B7D]"><Icon className="size-5" /></span>
+                <div className="min-w-0 flex-1"><div className="flex items-center gap-2"><span className="font-mono text-[9px] text-[#E98570]">0{index + 1}</span><h3 className="font-semibold text-[#EADBD0]">{step.title}</h3></div><p className="mt-1 text-sm leading-6 text-[#AFA3A7]">{step.description}</p></div>
+                {index < workflow.length - 1 ? <ArrowRight className="mt-2 size-4 shrink-0 text-[#E98570]/60" /> : null}
               </div>;
             })}
           </div>
+          <div className="mt-7 border-t border-[#E6A181]/15 pt-4 font-mono text-[8px] uppercase tracking-[0.18em] text-[#967A78]">Observe · Evaluate · Improve</div>
         </motion.div>
-        <motion.div variants={reduceMotion ? undefined : stagger} initial={reduceMotion ? undefined : "hidden"} whileInView={reduceMotion ? undefined : "visible"} viewport={viewport} className="grid gap-4 sm:grid-cols-2">
-          {researchTopics.map((topic) => <motion.div key={topic.name} variants={reduceMotion ? undefined : fadeUp}><GlassCard className="h-full rounded-2xl border border-white/[0.085] bg-[#0D131E] p-5 transition-colors hover:border-[#54CBD4]/30 md:p-6"><topic.icon className="size-5 text-[#62D5DE]" /><h3 className="mt-4 font-semibold text-[#E3E9F0]">{topic.name}</h3><p className="mt-2 text-sm leading-6 text-[#929EAF]">{topic.description}</p></GlassCard></motion.div>)}
+        <motion.div variants={reduceMotion ? undefined : stagger} initial={reduceMotion ? undefined : "hidden"} whileInView={reduceMotion ? undefined : "visible"} viewport={viewport} className="grid gap-3 sm:grid-cols-2">
+          {researchTopics.map((topic, index) => <motion.div key={topic.name} variants={reduceMotion ? undefined : fadeUp}>
+            <GlassCard className="slayer-panel h-full border-[#D9866A]/20 p-5 transition-colors hover:border-[#F0755C]/55 md:p-6">
+              <div className="flex items-center justify-between"><topic.icon className="size-5 text-[#F28B6F]" /><span className="font-mono text-[8px] tracking-[0.17em] text-[#886D71]">FORGE / {String(index + 1).padStart(2, "0")}</span></div>
+              <h3 className="mt-4 font-semibold text-[#F1E2D5]">{topic.name}</h3>
+              <p className="mt-2 text-sm leading-6 text-[#AFA3A7]">{topic.description}</p>
+            </GlassCard>
+          </motion.div>)}
         </motion.div>
       </div>
     </section>

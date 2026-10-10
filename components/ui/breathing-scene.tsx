@@ -3,94 +3,163 @@ import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { useState } from "react";
 
 const characters = [
-  { id: "tanjiro", name: "Tanjiro Kamado", style: "Water Breathing · Hinokami Kagura", shortStyle: "WATER / HINOKAMI", image: "https://demonslayer-anime.com/mugentrain/assets/img/character/img_cha_01.jpg", imagePosition: "center 25%", accent: "#62D6E0", secondary: "#F16A50", index: "01" },
-  { id: "nezuko", name: "Nezuko Kamado", style: "Blood Demon Art", shortStyle: "BLOOD DEMON ART", image: "https://demonslayer-anime.com/hta/assets/img/chara/img_chara_nezuko.jpg", imagePosition: "center 24%", accent: "#F18CB5", secondary: "#D64F68", index: "02" },
-  { id: "zenitsu", name: "Zenitsu Agatsuma", style: "Thunder Breathing", shortStyle: "THUNDER BREATHING", image: "https://demonslayer-anime.com/hta/assets/img/chara/img_chara_zennitsu.jpg", imagePosition: "center 24%", accent: "#F5D36A", secondary: "#EBA449", index: "03" },
-  { id: "inosuke", name: "Inosuke Hashibira", style: "Beast Breathing", shortStyle: "BEAST BREATHING", image: "https://demonslayer-anime.com/hta/assets/img/chara/img_chara_inosuke.jpg", imagePosition: "center 25%", accent: "#B7D8ED", secondary: "#5F96B7", index: "04" }
+  {
+    id: "tanjiro",
+    name: "Tanjiro Kamado",
+    style: "Water Breathing · Hinokami Kagura",
+    technique: "水の呼吸",
+    image: "https://images4.alphacoders.com/102/thumb-1920-1024188.jpg",
+    thumb: "https://images4.alphacoders.com/102/thumb-1920-1024188.jpg",
+    position: "64% center",
+    mobilePosition: "67% center",
+    accent: "#39D8F3",
+    secondary: "#ED493D",
+    number: "01"
+  },
+  {
+    id: "nezuko",
+    name: "Nezuko Kamado",
+    style: "Blood Demon Art",
+    technique: "血鬼術",
+    image: "https://images.alphacoders.com/124/1248321.jpg",
+    thumb: "https://images.alphacoders.com/124/1248321.jpg",
+    position: "68% center",
+    mobilePosition: "67% center",
+    accent: "#FF5DB9",
+    secondary: "#F42E62",
+    number: "02"
+  },
+  {
+    id: "zenitsu",
+    name: "Zenitsu Agatsuma",
+    style: "Thunder Breathing",
+    technique: "雷の呼吸",
+    image: "https://cdn.shopify.com/s/files/1/0704/8249/3629/files/ds-thunder-breathing-zenitsu_e4ea811f-0065-45b4-81f1-b6e4df437e2c.png?v=1774510425",
+    thumb: "https://cdn.shopify.com/s/files/1/0704/8249/3629/files/ds-thunder-breathing-zenitsu_e4ea811f-0065-45b4-81f1-b6e4df437e2c.png?v=1774510425",
+    position: "66% center",
+    mobilePosition: "70% center",
+    accent: "#FFD951",
+    secondary: "#FFAE36",
+    number: "03"
+  },
+  {
+    id: "inosuke",
+    name: "Inosuke Hashibira",
+    style: "Beast Breathing",
+    technique: "獣の呼吸",
+    image: "https://img2.wallspic.com/crops/0/6/3/2/7/172360/172360-anime-inosuke_walpaper-hashibira_inosuke-nezuko_kamado-tanjiro_kamado-2560x1440.jpg",
+    thumb: "https://img2.wallspic.com/crops/0/6/3/2/7/172360/172360-anime-inosuke_walpaper-hashibira_inosuke-nezuko_kamado-tanjiro_kamado-2560x1440.jpg",
+    position: "62% center",
+    mobilePosition: "70% center",
+    accent: "#9FE2EF",
+    secondary: "#76A8FF",
+    number: "04"
+  }
+];
+
+const petals = [
+  { left: "8%", top: "18%", size: 11, delay: 0, duration: 12 },
+  { left: "34%", top: "8%", size: 8, delay: 3, duration: 15 },
+  { left: "58%", top: "15%", size: 10, delay: 1.5, duration: 13 },
+  { left: "76%", top: "12%", size: 7, delay: 5, duration: 16 },
+  { left: "91%", top: "38%", size: 12, delay: 2, duration: 14 },
+  { left: "42%", top: "58%", size: 7, delay: 4, duration: 11 },
+  { left: "14%", top: "64%", size: 10, delay: 1, duration: 17 },
+  { left: "69%", top: "74%", size: 8, delay: 6, duration: 13 },
+  { left: "84%", top: "60%", size: 7, delay: 2.5, duration: 15 },
+  { left: "27%", top: "40%", size: 6, delay: 7, duration: 12 }
 ];
 
 export function BreathingScene() {
   const [activeIndex, setActiveIndex] = useState(0);
   const reduceMotion = useReducedMotion();
   const active = characters[activeIndex];
-  const idleMotion = active.id === "tanjiro"
-    ? { scale: [1.02, 1.08, 1.02], x: [0, -5, 0], y: [2, -4, 2], rotate: [0, -0.35, 0] }
-    : active.id === "nezuko"
-      ? { scale: [1.02, 1.07, 1.02], x: [0, 3, 0], y: [0, -3, 0], rotate: [0, 0.3, 0] }
-      : active.id === "zenitsu"
-        ? { scale: [1.03, 1.11, 1.03], x: [0, -3, 1, 0], y: [1, -2, 1], rotate: [0, -0.25, 0] }
-        : { scale: [1.03, 1.09, 1.03], x: [-4, 4, -3], y: [1, -2, 1], rotate: [-0.45, 0.45, -0.45] };
-  const idleDuration = active.id === "zenitsu" ? 2.4 : active.id === "inosuke" ? 3.8 : 6.2;
 
   return (
-    <div className="relative mx-auto w-full max-w-[590px]">
-      <div className="pointer-events-none absolute -inset-5 rounded-[2rem] opacity-70 blur-2xl transition-colors duration-700" style={{ background: "radial-gradient(ellipse at 58% 35%, " + active.accent + "24, transparent 62%), radial-gradient(ellipse at 50% 80%, " + active.secondary + "20, transparent 60%)" }} />
-      <div className="relative overflow-hidden rounded-t-[1.35rem] border border-white/10 bg-[#10131B] shadow-[0_26px_90px_rgba(0,0,0,.5)]">
-        <AnimatePresence mode="wait">
-          <motion.div key={active.id} initial={reduceMotion ? { opacity: 1 } : { opacity: 0, scale: 1.08, x: 16 }}
-            animate={reduceMotion ? { opacity: 1, x: 0 } : { opacity: 1, x: 0 }}
-            exit={reduceMotion ? { opacity: 1 } : { opacity: 0, x: -16 }}
-            transition={reduceMotion ? { duration: 0.01 } : { opacity: { duration: 0.35 }, x: { duration: 0.45 } }}
-            className="relative aspect-[4/5] w-full overflow-hidden sm:aspect-[5/6]" aria-label={active.name + ", " + active.style} role="img">
-            <motion.div
-              aria-hidden="true"
-              className="pointer-events-none absolute -inset-[4%] z-0 bg-cover bg-center"
-              style={{ backgroundImage: "url('" + active.image + "')", backgroundSize: "cover", backgroundPosition: active.imagePosition, willChange: reduceMotion ? "auto" : "transform" }}
-              animate={reduceMotion ? { scale: 1 } : idleMotion}
-              transition={reduceMotion ? { duration: 0.01 } : { duration: idleDuration, repeat: Infinity, ease: "easeInOut" }}
-            />
-            <motion.div aria-hidden="true" className="pointer-events-none absolute inset-0 z-[1]" animate={reduceMotion ? { opacity: 0.25 } : { opacity: [0.16, 0.44, 0.16], scale: [0.98, 1.03, 0.98] }} transition={reduceMotion ? { duration: 0.01 } : { duration: idleDuration * 0.8, repeat: Infinity, ease: "easeInOut" }} style={{ background: "radial-gradient(ellipse at 52% 42%, " + active.accent + "35, transparent 64%)", mixBlendMode: "screen" }} />
-            <div className="pointer-events-none absolute inset-0 z-[2] bg-[linear-gradient(180deg,rgba(5,8,14,.04)_0%,rgba(5,8,14,.06)_34%,rgba(5,8,14,.34)_57%,rgba(5,8,14,.96)_100%)]" />
-            <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(90deg,rgba(5,8,14,.42),transparent_40%,rgba(5,8,14,.12))]" />
-            <svg className="pointer-events-none absolute inset-0 z-[3] h-full w-full" viewBox="0 0 500 600" fill="none" aria-hidden="true">
-              <motion.path d={active.id === "zenitsu" ? "M70 40L205 242L173 276L315 478" : "M68 540L443 82"} stroke={active.accent} strokeWidth={active.id === "zenitsu" ? 3 : 2} strokeLinecap="round" strokeLinejoin="round" strokeDasharray="130 560" opacity=".78"
-                animate={reduceMotion ? undefined : { strokeDashoffset: [650, 0, -650], opacity: [0, .9, 0] }} transition={{ duration: active.id === "zenitsu" ? 2.4 : 4.4, repeat: Infinity, ease: "easeInOut", delay: .3 }} />
-              {active.id === "tanjiro" ? <>
-                <motion.path d="M-20 430C80 355 42 287 153 244C254 205 328 284 520 176" stroke={active.accent} strokeWidth="7" strokeLinecap="round" opacity=".85" animate={reduceMotion ? undefined : { pathLength: [0.28, 1, 0.28], opacity: [0.24, 0.84, 0.24] }} transition={{ duration: 5.8, repeat: Infinity, ease: "easeInOut" }} />
-                <motion.path d="M-15 492C105 407 112 349 211 338C317 326 364 404 515 303" stroke="#D9FAF6" strokeWidth="2.5" strokeLinecap="round" strokeDasharray="4 12" opacity=".7" animate={reduceMotion ? undefined : { strokeDashoffset: [0, -92] }} transition={{ duration: 6.2, repeat: Infinity, ease: "linear" }} />
-                <motion.path d="M365 600C389 534 462 519 514 468" stroke={active.secondary} strokeWidth="10" strokeLinecap="round" animate={reduceMotion ? undefined : { pathLength: [0.1, 1, 0.1], opacity: [0.1, 0.8, 0.1] }} transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut", delay: .5 }} />
-              </> : null}
-              {active.id === "nezuko" ? <>
-                <motion.path d="M-20 423C73 306 143 493 234 405C323 320 405 437 520 306" stroke={active.accent} strokeWidth="7" strokeLinecap="round" opacity=".8" animate={reduceMotion ? undefined : { pathLength: [0.18, 1, 0.18], opacity: [0.2, 0.9, 0.2] }} transition={{ duration: 4.9, repeat: Infinity, ease: "easeInOut" }} />
-                <motion.path d="M-15 510C103 447 124 561 236 498C341 439 428 542 518 432" stroke={active.secondary} strokeWidth="3" strokeLinecap="round" strokeDasharray="5 10" animate={reduceMotion ? undefined : { strokeDashoffset: [0, -75] }} transition={{ duration: 5.4, repeat: Infinity, ease: "linear" }} />
-              </> : null}
-              {active.id === "zenitsu" ? <>
-                <motion.path d="M65 65L148 187L112 224L220 336L173 384L294 534" stroke={active.accent} strokeWidth="6" strokeLinejoin="round" strokeLinecap="round" animate={reduceMotion ? undefined : { opacity: [0.08, 1, 0.18, 0.85, 0.08], pathLength: [0.15, 1, 0.15] }} transition={{ duration: 2.8, repeat: Infinity, ease: "easeInOut" }} />
-                <motion.path d="M467 105L397 221L427 252L354 365" stroke="#FFF5C7" strokeWidth="2.5" strokeLinejoin="round" strokeLinecap="round" animate={reduceMotion ? undefined : { opacity: [0, .9, 0] }} transition={{ duration: 2.1, repeat: Infinity, ease: "easeInOut", delay: .6 }} />
-              </> : null}
-              {active.id === "inosuke" ? <>
-                <motion.path d="M-25 350C52 183 203 147 355 218C455 264 494 359 430 423C376 478 276 456 248 391" stroke={active.accent} strokeWidth="6" strokeLinecap="round" animate={reduceMotion ? undefined : { pathLength: [0.24, 1, 0.24], opacity: [0.18, .88, .18] }} transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut" }} />
-                <motion.path d="M-20 452C70 543 230 558 359 492C428 456 455 408 475 349" stroke="#E5F5FF" strokeWidth="2.2" strokeLinecap="round" strokeDasharray="3 12" animate={reduceMotion ? undefined : { strokeDashoffset: [0, -96] }} transition={{ duration: 4.8, repeat: Infinity, ease: "linear" }} />
-              </> : null}
-            </svg>
-            <div className="pointer-events-none absolute left-5 top-5 z-10 flex items-center gap-2 border border-white/20 bg-[#080B12]/60 px-3 py-2 backdrop-blur-md">
-              <span className="size-1.5 rounded-full" style={{ backgroundColor: active.accent, boxShadow: "0 0 14px " + active.accent }} />
-              <span className="font-mono text-[9px] uppercase tracking-[0.18em] text-[#F5F0E9]">CHARACTER / {active.index}</span>
-            </div>
-            <div className="pointer-events-none absolute bottom-0 left-0 right-0 z-10 p-5 sm:p-7">
-              <p className="font-mono text-[9px] uppercase tracking-[0.2em]" style={{ color: active.accent }}>{active.shortStyle}</p>
-              <h2 className="mt-2 font-display text-4xl leading-none tracking-wide text-white sm:text-5xl">{active.name}</h2>
-              <p className="mt-2 text-sm text-[#C4CCD7]">{active.style}</p>
-              <div className="mt-5 h-px w-full bg-white/15"><motion.div key={active.id} initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ duration: .7 }} className="h-full origin-left" style={{ backgroundColor: active.accent, width: "100%" }} /></div>
-            </div>
-          </motion.div>
-        </AnimatePresence>
-      </div>
-      <div className="grid grid-cols-4 border-x border-b border-white/10 bg-[#0B0E16]">
-        {characters.map((character, index) => (
-          <button key={character.id} type="button" onClick={() => setActiveIndex(index)} aria-pressed={activeIndex === index} aria-label={"Show " + character.name}
-            className={"group relative min-w-0 border-r border-white/[0.07] p-2 text-left transition-colors last:border-r-0 sm:p-3 " + (activeIndex === index ? "bg-white/[0.075]" : "bg-transparent hover:bg-white/[0.035]")}>
-            <span className="relative block aspect-[5/4] overflow-hidden bg-[#151B26]">
-              <span className="absolute inset-0 bg-cover bg-center transition duration-500 group-hover:scale-105" style={{ backgroundImage: "url('" + character.image + "')" }} />
-              <span className="absolute inset-0 bg-gradient-to-t from-[#07090F]/70 to-transparent" />
-              {activeIndex === index ? <span className="absolute inset-x-0 bottom-0 h-[2px]" style={{ backgroundColor: character.accent }} /> : null}
-            </span>
-            <span className={"mt-2 block truncate text-[10px] font-semibold sm:text-xs " + (activeIndex === index ? "text-white" : "text-[#8895A6]")}>{character.name.split(" ")[0]}</span>
-            <span className="mt-1 hidden truncate font-mono text-[8px] tracking-[0.08em] text-[#778497] sm:block">{character.index} / 04</span>
-          </button>
+    <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-label="Animated Demon Slayer character scene">
+      <AnimatePresence mode="sync">
+        <motion.div
+          key={active.id}
+          className="character-scene-image absolute -inset-[2%]"
+          role="img"
+          aria-label={active.name + " — " + active.style}
+          style={{
+            backgroundImage: "url('" + active.image + "')",
+            backgroundRepeat: "no-repeat",
+            backgroundSize: "cover",
+            backgroundPosition: active.position,
+            backgroundColor: "#080C17",
+            ["--scene-mobile-position" as string]: active.mobilePosition
+          }}
+          initial={reduceMotion ? { opacity: 1 } : { opacity: 0, scale: 1.08, x: 24 }}
+          animate={reduceMotion ? { opacity: 1, scale: 1, x: 0 } : { opacity: 1, scale: [1.015, 1.07, 1.015], x: [0, -7, 0] }}
+          exit={reduceMotion ? { opacity: 1 } : { opacity: 0, scale: 1.03, x: -18 }}
+          transition={reduceMotion ? { duration: 0.01 } : { opacity: { duration: 0.55 }, x: { duration: 12, repeat: Infinity, ease: "easeInOut" }, scale: { duration: active.id === "zenitsu" ? 5 : 18, repeat: Infinity, ease: "easeInOut" } }}
+        />
+      </AnimatePresence>
+
+      <div className="hero-scene-wash absolute inset-0" />
+      <div className="hero-moon-glow pointer-events-none absolute inset-0" />
+
+      <svg className="pointer-events-none absolute inset-0 h-full w-full" viewBox="0 0 1600 900" preserveAspectRatio="none" fill="none" aria-hidden="true">
+        {active.id === "tanjiro" ? <>
+          <motion.path d="M640 760C760 682 766 556 890 503C1028 443 1225 529 1460 287" stroke={active.accent} strokeWidth="19" strokeLinecap="round" opacity=".7" filter="url(#glow-water)" animate={reduceMotion ? undefined : { pathLength: [0.65, 1, 0.65], opacity: [.22, .75, .22] }} transition={{ duration: 6.8, repeat: Infinity, ease: "easeInOut" }} />
+          <motion.path d="M600 770C720 690 806 620 928 593C1100 553 1258 642 1530 431" stroke="#E9FFFF" strokeWidth="3.5" strokeLinecap="round" strokeDasharray="4 15" animate={reduceMotion ? undefined : { strokeDashoffset: [0, -160] }} transition={{ duration: 7, repeat: Infinity, ease: "linear" }} opacity=".85" />
+          <motion.path d="M905 420C1017 252 1178 248 1288 345C1384 430 1454 421 1608 335" stroke="#6DE8FF" strokeWidth="6" strokeLinecap="round" opacity=".7" animate={reduceMotion ? undefined : { pathLength: [0.15, 1, 0.15] }} transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }} />
+          <motion.path d="M890 830C1060 743 1177 792 1300 725C1430 655 1504 725 1620 646" stroke={active.secondary} strokeWidth="7" strokeLinecap="round" opacity=".65" animate={reduceMotion ? undefined : { pathLength: [0, 1, 0] }} transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: .8 }} />
+        </> : null}
+        {active.id === "nezuko" ? <>
+          <motion.path d="M610 800C760 625 882 750 1017 605C1143 470 1280 645 1518 430" stroke={active.accent} strokeWidth="16" strokeLinecap="round" opacity=".62" filter="url(#glow-water)" animate={reduceMotion ? undefined : { pathLength: [0.1, 1, 0.1], opacity: [.12, .8, .12] }} transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }} />
+          <motion.path d="M800 850C920 724 1040 844 1190 710C1340 575 1420 725 1600 570" stroke="#FFB5E0" strokeWidth="4" strokeLinecap="round" strokeDasharray="5 13" animate={reduceMotion ? undefined : { strokeDashoffset: [0, -120] }} transition={{ duration: 5.4, repeat: Infinity, ease: "linear" }} />
+          <motion.path d="M1060 300C1160 188 1260 210 1340 295" stroke={active.secondary} strokeWidth="5" strokeLinecap="round" animate={reduceMotion ? undefined : { pathLength: [0, 1, 0], opacity: [0, .95, 0] }} transition={{ duration: 4.2, repeat: Infinity, ease: "easeInOut" }} />
+        </> : null}
+        {active.id === "zenitsu" ? <>
+          <motion.path d="M950 90L1070 275L1026 319L1154 470L1100 525L1270 760" stroke={active.accent} strokeWidth="9" strokeLinejoin="round" strokeLinecap="round" filter="url(#glow-water)" animate={reduceMotion ? undefined : { opacity: [.08, 1, .1, .8, .08], pathLength: [.2, 1, .2] }} transition={{ duration: 2.7, repeat: Infinity, ease: "easeInOut" }} />
+          <motion.path d="M1450 160L1350 318L1390 360L1300 478" stroke="#FFF4BF" strokeWidth="4" strokeLinejoin="round" strokeLinecap="round" animate={reduceMotion ? undefined : { opacity: [0, 1, 0] }} transition={{ duration: 1.9, repeat: Infinity, ease: "easeInOut", delay: .6 }} />
+          <motion.path d="M830 425L895 510L867 540L960 650" stroke={active.secondary} strokeWidth="4" strokeLinejoin="round" strokeLinecap="round" animate={reduceMotion ? undefined : { opacity: [0, .9, 0] }} transition={{ duration: 2.4, repeat: Infinity, ease: "easeInOut", delay: .4 }} />
+        </> : null}
+        {active.id === "inosuke" ? <>
+          <motion.path d="M680 690C800 450 1000 390 1202 500C1384 601 1393 741 1260 788C1150 825 1012 752 1000 660" stroke={active.accent} strokeWidth="12" strokeLinecap="round" opacity=".72" filter="url(#glow-water)" animate={reduceMotion ? undefined : { pathLength: [.12, 1, .12], opacity: [.12, .85, .12] }} transition={{ duration: 4.3, repeat: Infinity, ease: "easeInOut" }} />
+          <motion.path d="M760 790C894 890 1112 874 1305 758C1430 680 1490 590 1530 510" stroke="#DDF9FF" strokeWidth="4" strokeLinecap="round" strokeDasharray="3 16" animate={reduceMotion ? undefined : { strokeDashoffset: [0, -180] }} transition={{ duration: 4, repeat: Infinity, ease: "linear" }} />
+          <motion.path d="M1020 250L1458 714M1160 205L1510 580" stroke={active.secondary} strokeWidth="3" strokeLinecap="round" opacity=".8" animate={reduceMotion ? undefined : { opacity: [.12, .75, .12] }} transition={{ duration: 3.2, repeat: Infinity, ease: "easeInOut" }} />
+        </> : null}
+        <defs><filter id="glow-water" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="11" /></filter></defs>
+      </svg>
+
+      <div className="pointer-events-none absolute inset-0 z-10">
+        {petals.map((petal, index) => (
+          <motion.span key={index} className="sakura-petal absolute block" style={{ left: petal.left, top: petal.top, width: petal.size, height: petal.size * .62 }}
+            animate={reduceMotion ? undefined : { y: ["-3vh", "84vh"], x: [0, index % 2 === 0 ? 70 : -60, index % 2 === 0 ? -30 : 48], rotate: [0, 130, 320], opacity: [0, .9, .75, 0] }}
+            transition={{ duration: petal.duration, delay: petal.delay, repeat: Infinity, ease: "linear" }} />
         ))}
       </div>
-      <p className="mt-2 text-right font-mono text-[8px] uppercase tracking-[0.15em] text-[#596678]">Choose a fighter · change the breathing style</p>
+
+      <div className="pointer-events-none absolute right-[7%] top-[18%] z-10 hidden text-right lg:block">
+        <motion.p key={active.id} initial={reduceMotion ? undefined : { opacity: 0, x: 12 }} animate={{ opacity: .9, x: 0 }} className="font-mono text-[9px] uppercase tracking-[0.28em]" style={{ color: active.accent }}>{active.style}</motion.p>
+        <motion.p key={active.id + "-jp"} initial={reduceMotion ? undefined : { opacity: 0, y: 8 }} animate={{ opacity: .8, y: 0 }} className="mt-3 font-serif text-4xl" style={{ color: active.accent }}>{active.technique}</motion.p>
+      </div>
+
+      <div className="pointer-events-auto absolute bottom-6 left-4 right-4 z-30 sm:bottom-7 sm:left-auto sm:right-[5.5%] sm:w-[min(660px,52vw)]">
+        <div className="mb-2 flex items-center justify-between">
+          <span className="font-mono text-[8px] uppercase tracking-[0.28em] text-[#E8DCD5]/75">Choose your breathing style</span>
+          <span className="font-mono text-[8px] tracking-[0.2em] text-[#E8DCD5]/45">CORPS ARCHIVE / {active.number}</span>
+        </div>
+        <div className="grid grid-cols-4 gap-2">
+          {characters.map((character, index) => (
+            <button key={character.id} type="button" onClick={() => setActiveIndex(index)} aria-pressed={activeIndex === index} aria-label={"Show " + character.name + " scene"}
+              className={"slayer-character-tab group relative min-w-0 overflow-hidden border text-left transition duration-300 " + (activeIndex === index ? "is-active" : "")}
+              style={{ borderColor: activeIndex === index ? character.accent : "rgba(243,226,211,.26)", ["--character-accent" as string]: character.accent }}>
+              <span className="absolute inset-0 bg-cover bg-center transition duration-700 group-hover:scale-110" style={{ backgroundImage: "url('" + character.thumb + "')" }} />
+              <span className="absolute inset-0 bg-gradient-to-t from-[#050609] via-[#06070B]/40 to-transparent" />
+              {activeIndex === index ? <span className="absolute inset-x-0 top-0 h-[3px]" style={{ backgroundColor: character.accent }} /> : null}
+              <span className="relative flex min-h-[64px] flex-col justify-end p-2 sm:min-h-[76px] sm:p-3">
+                <span className="font-mono text-[8px] tracking-[0.16em]" style={{ color: activeIndex === index ? character.accent : "#D5CDD0" }}>{character.number}</span>
+                <span className="mt-1 truncate text-[10px] font-semibold text-[#FFF4E9] sm:text-xs">{character.name.split(" ")[0]}</span>
+              </span>
+            </button>
+          ))}
+        </div>
+      </div>
     </div>
   );
 }

@@ -1,45 +1,61 @@
 "use client";
 import { motion, useReducedMotion } from "framer-motion";
-import { ArrowDown, ArrowRight, Github } from "lucide-react";
+import { ArrowDownRight, ArrowRight, Github } from "lucide-react";
 import { BreathingScene } from "@/components/ui/breathing-scene";
 import { GlowButton } from "@/components/ui/glow-button";
 
-const rise = { hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } };
+const rise = { hidden: { opacity: 0, y: 24 }, visible: { opacity: 1, y: 0 } };
 
 export function HeroSection() {
   const reduceMotion = useReducedMotion();
   return (
-    <section id="home" className="relative isolate min-h-[min(900px,100svh)] overflow-hidden bg-[#07090F] pt-[72px]">
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_79%_30%,rgba(169,49,53,.2),transparent_38%),radial-gradient(ellipse_at_68%_76%,rgba(35,140,167,.13),transparent_34%)]" />
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#D65350]/65 to-transparent" />
-      <div className="pointer-events-none absolute bottom-0 left-0 h-1/2 w-2 haori-checker opacity-50" />
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[#07090F] to-transparent" />
-      <div className="container relative z-10 grid items-center gap-8 py-10 md:py-14 lg:min-h-[calc(100svh-4.5rem)] lg:grid-cols-[.82fr_1.18fr] lg:gap-5">
-        <motion.div initial={reduceMotion ? undefined : "hidden"} animate={reduceMotion ? undefined : "visible"} variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.12, delayChildren: 0.1 } } }} className="relative z-20 py-7 md:py-10 lg:py-16">
+    <section id="home" className="slayer-hero relative isolate min-h-[1000px] overflow-hidden bg-[#07070B] pt-[72px] lg:h-[100svh] lg:min-h-[860px]">
+      <BreathingScene />
+      <div className="hero-vignette pointer-events-none absolute inset-0 z-[5]" />
+      <div className="pointer-events-none absolute inset-x-0 top-0 z-20 h-px bg-gradient-to-r from-transparent via-[#E33243]/80 to-transparent" />
+      <div className="pointer-events-none absolute bottom-0 left-0 right-0 z-20 h-28 bg-gradient-to-t from-[#07070B] to-transparent" />
+
+      <div className="container relative z-10 flex min-h-[calc(1000px-72px)] items-start pt-24 md:pt-28 lg:h-full lg:min-h-0 lg:items-center lg:pt-0">
+        <motion.div initial={reduceMotion ? undefined : "hidden"} animate={reduceMotion ? undefined : "visible"} variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.12, delayChildren: 0.15 } } }} className="relative z-20 w-full max-w-[660px] pb-44 lg:pb-20">
           <motion.div variants={reduceMotion ? undefined : rise} className="mb-7 flex items-center gap-3">
-            <span className="grid size-10 shrink-0 place-items-center border border-[#D65350]/60 bg-[#D65350]/10 font-display text-xl text-[#F4D9C9]">鬼</span>
-            <div><p className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#F08E79]">Demon Slayer inspired</p><p className="mt-1 font-mono text-[9px] uppercase tracking-[0.18em] text-[#8290A2]">AI / ML / Full-stack portfolio</p></div>
+            <span className="corps-seal grid size-11 shrink-0 place-items-center border border-[#E43D48]/80 bg-[#7C111F]/60 font-display text-2xl text-[#FFF0D8]">滅</span>
+            <div>
+              <p className="font-mono text-[10px] uppercase tracking-[0.28em] text-[#F27678]">Demon Slayer Corps · Field Journal</p>
+              <p className="mt-1 font-mono text-[9px] uppercase tracking-[0.2em] text-[#B3B2B7]">Aspiring AI engineer · IIIT Sri City</p>
+            </div>
           </motion.div>
-          <motion.h1 variants={reduceMotion ? undefined : rise} className="max-w-3xl font-display text-[clamp(3.5rem,7vw,6.5rem)] leading-[.86] tracking-[.01em] text-[#F6F0E8]">
-            <span className="block">TOTAL</span><span className="hero-gradient-text mt-2 block">CONCENTRATION.</span><span className="mt-3 block text-[.48em] leading-[1.1] tracking-[.02em] text-[#E2E7ED]">AI ENGINEERING.</span>
+
+          <motion.h1 variants={reduceMotion ? undefined : rise} className="hero-title max-w-[780px] text-balance font-display text-[clamp(4.3rem,8.5vw,8.3rem)] uppercase leading-[.78] tracking-[.01em] text-[#F8EFE1]">
+            <span className="block">Code with</span>
+            <span className="hero-brush mt-3 block pr-2 italic">purpose.</span>
           </motion.h1>
-          <motion.p variants={reduceMotion ? undefined : rise} className="mt-7 max-w-xl text-base leading-7 text-[#A9B4C3] sm:text-lg sm:leading-8">
-            I’m Giresh, a fourth-year CSE student at IIIT Sri City. I build AI agents, retrieval systems and full-stack products—from model experiments to useful applications.
-          </motion.p>
-          <motion.div variants={reduceMotion ? undefined : rise} className="mt-6 flex flex-wrap gap-2">{["LLMs & RAG", "Applied ML", "React & APIs"].map((item) => <span key={item} className="rounded-sm border border-white/10 bg-white/[0.035] px-3 py-1.5 text-xs text-[#CBD4DF]">{item}</span>)}</motion.div>
+
+          <motion.div variants={reduceMotion ? undefined : rise} className="mt-7 flex items-start gap-4">
+            <span className="mt-1 h-[54px] w-[3px] shrink-0 bg-gradient-to-b from-[#E73A47] via-[#E73A47] to-transparent" />
+            <p className="max-w-lg text-base leading-7 text-[#DED8D4] sm:text-lg sm:leading-8">
+              Building intelligent systems. Solving real problems.
+              <span className="block text-[#F2C9BC]">One project at a time.</span>
+            </p>
+          </motion.div>
+
           <motion.div variants={reduceMotion ? undefined : rise} className="mt-8 flex flex-wrap gap-3">
-            <GlowButton href="#projects" variant="default">Enter the project archive <ArrowRight className="size-4" /></GlowButton>
-            <GlowButton href="https://github.com/Giresh-458" variant="outline"><Github className="size-4" /> GitHub</GlowButton>
+            <GlowButton href="#projects" variant="default">View missions <ArrowRight className="size-4" /></GlowButton>
+            <GlowButton href="#about" variant="outline">My training <ArrowDownRight className="size-4" /></GlowButton>
+            <a href="https://github.com/Giresh-458" target="_blank" rel="noreferrer" aria-label="GitHub profile" className="grid size-12 place-items-center border border-white/20 bg-black/30 text-[#F4E8DC] transition hover:border-[#E43D48] hover:text-white"><Github className="size-4" /></a>
           </motion.div>
-          <motion.div variants={reduceMotion ? undefined : rise} className="mt-10 flex flex-wrap items-center gap-x-4 gap-y-2 border-t border-white/10 pt-5 text-sm text-[#8390A0]">
-            <span>IIIT Sri City</span><span className="size-1 rounded-full bg-[#D65350]" /><span>Computer Science & Engineering</span>
-            <a href="#about" className="group ml-auto inline-flex items-center gap-2 text-[#C7D2DE] transition hover:text-[#65D7E0]">The story <ArrowDown className="size-4 transition group-hover:translate-y-1" /></a>
+
+          <motion.div variants={reduceMotion ? undefined : rise} className="mt-9 flex flex-wrap items-center gap-x-4 gap-y-2 font-mono text-[9px] uppercase tracking-[0.16em] text-[#B1AEB0]">
+            <span className="text-[#E85A60]">01</span><span>AI / ML</span><span className="text-[#E85A60]">×</span><span>Full-stack</span><span className="text-[#E85A60]">×</span><span>Build & learn</span>
           </motion.div>
-        </motion.div>
-        <motion.div initial={reduceMotion ? undefined : { opacity: 0, y: 14, scale: 0.98 }} animate={reduceMotion ? undefined : { opacity: 1, y: 0, scale: 1 }} transition={{ duration: 0.85, delay: 0.12, ease: [0.22, 1, 0.36, 1] }} className="relative z-10 mx-auto w-full max-w-[620px] lg:max-w-none">
-          <BreathingScene />
         </motion.div>
       </div>
+
+      <div className="pointer-events-none absolute bottom-[136px] left-5 z-20 hidden items-center gap-3 lg:flex">
+        <span className="h-10 w-px bg-gradient-to-b from-[#EA4550] to-transparent" />
+        <span className="font-mono text-[9px] uppercase tracking-[0.25em] text-white/65">Scroll to enter the archive</span>
+      </div>
+      <div className="pointer-events-none absolute left-[3.6%] top-[36%] z-20 hidden select-none font-serif text-[14px] leading-[1.85] tracking-[.35em] text-[#F3D6C9]/75 [writing-mode:vertical-rl] lg:block">夢を現実に</div>
+      <div className="pointer-events-none absolute right-[3.6%] top-[23%] z-20 hidden border-y border-[#F0D5C1]/35 py-3 font-serif text-sm tracking-[.3em] text-[#F0D5C1]/80 [writing-mode:vertical-rl] lg:block">水の呼吸</div>
     </section>
   );
 }
