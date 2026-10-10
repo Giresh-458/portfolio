@@ -1,13 +1,39 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="900" height="1100" viewBox="0 0 900 1100" fill="none">
-<defs><linearGradient id="bg" x1="0" y1="0" x2="900" y2="1100" gradientUnits="userSpaceOnUse"><stop stop-color="#12272D"/><stop offset=".48" stop-color="#0C131A"/><stop offset="1" stop-color="#080B11"/></linearGradient><radialGradient id="glow"><stop stop-color="#6DE1D9" stop-opacity=".28"/><stop offset="1" stop-color="#6DE1D9" stop-opacity="0"/></radialGradient><linearGradient id="water" x1="145" y1="250" x2="730" y2="740" gradientUnits="userSpaceOnUse"><stop stop-color="#D6FFFB"/><stop offset=".38" stop-color="#64DCD5"/><stop offset="1" stop-color="#2B7FC1"/></linearGradient><linearGradient id="flame" x1="240" y1="800" x2="730" y2="310" gradientUnits="userSpaceOnUse"><stop stop-color="#FF674E"/><stop offset=".55" stop-color="#FF9E72"/><stop offset="1" stop-color="#FFE2A0"/></linearGradient></defs>
-<rect width="900" height="1100" fill="url(#bg)"/><circle cx="450" cy="478" r="400" fill="url(#glow)"/>
-<g stroke="#DDFEFB" stroke-opacity=".06"><path d="M0 150H900M0 300H900M0 450H900M0 600H900M0 750H900M0 900H900"/><path d="M150 0V1100M300 0V1100M450 0V1100M600 0V1100M750 0V1100"/></g>
-<circle cx="450" cy="488" r="294" stroke="#DDFEFB" stroke-opacity=".1" stroke-width="2"/><circle cx="450" cy="488" r="240" stroke="#75E0D9" stroke-opacity=".22" stroke-width="2" stroke-dasharray="3 12"/>
-<path d="M143 520C190 365 340 280 472 325C595 366 676 490 614 575C556 654 406 671 319 596C231 519 284 416 384 406C474 397 539 455 510 510C490 548 447 556 409 528" stroke="url(#water)" stroke-width="13" stroke-linecap="round" opacity=".92"/>
-<path d="M250 737C321 684 360 610 378 535C397 460 452 427 492 376C497 452 557 474 570 541C589 623 526 687 454 721C499 667 499 615 470 585C439 553 399 567 383 606C365 651 331 697 250 737Z" stroke="url(#flame)" stroke-width="9" stroke-linejoin="round" stroke-linecap="round" opacity=".88"/>
-<path d="M235 751L668 306" stroke="#E6FFFC" stroke-width="3" stroke-linecap="round" opacity=".55"/>
-<circle cx="450" cy="488" r="105" fill="#081116" fill-opacity=".86" stroke="#DDFEFB" stroke-opacity=".25" stroke-width="2"/>
-<text x="450" y="510" fill="#F5FAF8" text-anchor="middle" font-family="Arial,sans-serif" font-size="74" font-weight="700" letter-spacing="-8">GV</text>
-<g fill="#B9FFF8"><circle cx="186" cy="310" r="4"/><circle cx="682" cy="370" r="3"/><circle cx="616" cy="713" r="4"/><circle cx="270" cy="681" r="3"/><circle cx="719" cy="561" r="2.5"/></g><g fill="#FFAF8B"><circle cx="223" cy="614" r="3.5"/><circle cx="595" cy="264" r="3"/><circle cx="324" cy="345" r="2.5"/><circle cx="636" cy="640" r="2.5"/></g>
-<text x="450" y="930" fill="#A5F5EE" text-anchor="middle" font-family="monospace" font-size="15" letter-spacing="7">AI / FULL-STACK</text><text x="450" y="965" fill="#6B858B" text-anchor="middle" font-family="monospace" font-size="11" letter-spacing="4">FOCUS · BUILD · EVOLVE</text>
+<defs>
+  <linearGradient id="night" x1="0" y1="0" x2="900" y2="1100" gradientUnits="userSpaceOnUse"><stop stop-color="#18291B"/><stop offset=".55" stop-color="#0A110B"/><stop offset="1" stop-color="#080A09"/></linearGradient>
+  <radialGradient id="moon"><stop stop-color="#F4A06B"/><stop offset=".7" stop-color="#AF3733"/><stop offset="1" stop-color="#8D292A" stop-opacity="0"/></radialGradient>
+  <linearGradient id="water" x1="130" y1="250" x2="700" y2="800" gradientUnits="userSpaceOnUse"><stop stop-color="#DDF2CE"/><stop offset=".4" stop-color="#82B985"/><stop offset="1" stop-color="#357A72"/></linearGradient>
+  <linearGradient id="fire" x1="170" y1="900" x2="720" y2="340" gradientUnits="userSpaceOnUse"><stop stop-color="#AF3032"/><stop offset=".5" stop-color="#ED613D"/><stop offset="1" stop-color="#F7C274"/></linearGradient>
+  <pattern id="checks" width="52" height="52" patternUnits="userSpaceOnUse"><rect width="52" height="52" fill="#17271A"/><rect width="26" height="26" fill="#426D43"/><rect x="26" y="26" width="26" height="26" fill="#426D43"/></pattern>
+  <filter id="blur"><feGaussianBlur stdDeviation="26"/></filter>
+</defs>
+<rect width="900" height="1100" fill="url(#night)"/>
+<circle cx="580" cy="330" r="275" fill="#C74937" fill-opacity=".17" filter="url(#blur)"/>
+<circle cx="580" cy="330" r="198" fill="url(#moon)" fill-opacity=".75"/>
+<circle cx="580" cy="330" r="186" stroke="#F8D5A6" stroke-opacity=".28"/>
+<g stroke="#F2E6D1" stroke-opacity=".06"><path d="M0 125H900M0 250H900M0 375H900M0 500H900M0 625H900M0 750H900M0 875H900M0 1000H900"/><path d="M125 0V1100M250 0V1100M375 0V1100M500 0V1100M625 0V1100M750 0V1100"/></g>
+<path d="M0 602L103 473L211 552L324 420L447 570L571 448L698 580L793 493L900 575V1100H0Z" fill="#101A11"/>
+<path d="M0 715L137 608L253 676L382 561L510 714L626 604L746 691L847 619L900 657V1100H0Z" fill="#132117"/>
+<path d="M135 466C205 267 384 219 513 287C640 354 708 483 636 570C564 658 407 652 333 573C266 501 300 403 390 382C479 360 548 414 519 472" stroke="url(#water)" stroke-width="21" stroke-linecap="round" opacity=".85"/>
+<path d="M201 845C290 748 331 631 354 552C381 459 450 408 492 353C500 432 565 459 581 531C599 622 533 713 456 768C507 698 499 653 466 620C431 585 387 603 368 649C346 706 284 790 201 845Z" stroke="url(#fire)" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" opacity=".9"/>
+<!-- Original swordsman silhouette; patterned cloak is a motif, not a copied frame. -->
+<path d="M391 390L366 356L381 326L400 341L415 313L431 339L455 327L448 357L466 377L439 403Z" fill="#101410"/>
+<ellipse cx="420" cy="372" rx="39" ry="46" fill="#D3AA8B"/>
+<path d="M382 367L377 341L394 348L402 327L425 346L445 326L451 350L469 347L458 375L440 363L427 371L411 358L396 379Z" fill="#131813"/>
+<path d="M405 372L415 375M432 372L440 369" stroke="#4C3328" stroke-width="3" stroke-linecap="round"/>
+<path d="M395 418L364 439L313 529L365 554L401 488L396 618L472 618L461 469L489 511L534 480L480 428L446 414Z" fill="url(#checks)" stroke="#8AB17C" stroke-opacity=".65" stroke-width="2"/>
+<path d="M407 421L421 437L440 420L460 460L441 490L447 598L407 598L403 490L383 459Z" fill="#111711"/>
+<path d="M405 611L425 612L405 710L373 773L348 764L380 690Z" fill="#0B0F0B"/>
+<path d="M448 611L470 612L486 696L521 741L499 761L458 711Z" fill="#0B0F0B"/>
+<path d="M365 755L390 768L375 789L337 784Q328 775 350 762Z" fill="#090B08"/>
+<path d="M497 760L520 741L540 759L529 777L493 780Z" fill="#090B08"/>
+<path d="M347 479L282 533L313 551L374 496M475 463L514 480L499 502L471 486" stroke="#CFA98A" stroke-width="11" stroke-linecap="round"/>
+<path d="M303 542L651 190" stroke="#080D09" stroke-width="22" stroke-linecap="round"/>
+<path d="M303 542L651 190" stroke="#E7E8D8" stroke-width="8" stroke-linecap="round"/>
+<path d="M286 558L320 523" stroke="#B33B35" stroke-width="17" stroke-linecap="round"/>
+<path d="M279 521L327 569" stroke="#D4BA90" stroke-width="7" stroke-linecap="round"/>
+<g fill="#E9B06B"><circle cx="192" cy="311" r="4"/><circle cx="710" cy="427" r="3"/><circle cx="648" cy="720" r="3.5"/><circle cx="248" cy="685" r="2.8"/><circle cx="746" cy="615" r="2.4"/></g>
+<text x="450" y="948" fill="#EEE9DB" text-anchor="middle" font-family="Arial,sans-serif" font-size="62" font-weight="700" letter-spacing="-3">GIRESH</text>
+<text x="450" y="985" fill="#A7C59D" text-anchor="middle" font-family="monospace" font-size="14" letter-spacing="6">AI / FULL-STACK</text>
+<text x="450" y="1015" fill="#DB8A6A" text-anchor="middle" font-family="monospace" font-size="10" letter-spacing="4">FOCUS · BUILD · EVOLVE</text>
 </svg>
