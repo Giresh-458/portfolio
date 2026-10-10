@@ -47,7 +47,7 @@ export const projects: Project[] = [
     ],
     tech: ["Python", "LangGraph", "FastAPI", "PostgreSQL", "pgvector"],
     githubUrl: "https://github.com/Giresh-458/ai-operations-agent",
-    image: "/projects/emotion.svg",
+    image: "/projects/ai-operations.svg",
     accent: "from-cyan-950 via-slate-900 to-[#0B1015]"
   },
   {
@@ -69,7 +69,7 @@ export const projects: Project[] = [
     ],
     tech: ["Python", "RAG", "ChromaDB", "BM25", "FastAPI"],
     githubUrl: "https://github.com/Giresh-458/Healthcare-Document-RAG-Assitant",
-    image: "/projects/spacenet.svg",
+    image: "/projects/healthcare-rag.svg",
     accent: "from-emerald-950 via-teal-950 to-[#0B1015]"
   },
   {
@@ -91,7 +91,7 @@ export const projects: Project[] = [
     ],
     tech: ["PyTorch", "Transformers", "Whisper", "LSTM", "QLoRA"],
     githubUrl: "https://github.com/Giresh-458/Multimodal-Mood-drift-analysis",
-    image: "/projects/emotion.svg",
+    image: "/projects/mood-drift.svg",
     accent: "from-violet-950 via-indigo-950 to-[#0B1015]"
   },
   {
@@ -134,7 +134,7 @@ export const projects: Project[] = [
     tech: ["Node.js", "Express", "EJS", "MongoDB", "Chart.js"],
     githubUrl: "https://github.com/Giresh-458/Mood_Tracker",
     liveUrl: "https://mood-tracker-1-h1l8.onrender.com/",
-    image: "/projects/restoconnect.svg",
+    image: "/projects/mood-tracker.svg",
     accent: "from-rose-950 via-pink-950 to-[#0B1015]"
   },
   {
@@ -156,7 +156,7 @@ export const projects: Project[] = [
     tech: ["Node.js", "Express", "EJS", "MongoDB Atlas"],
     githubUrl: "https://github.com/Giresh-458/IIITS_CGPA_Calc",
     liveUrl: "https://iiits-cgpa-calculator.onrender.com/",
-    image: "/projects/restoconnect.svg",
+    image: "/projects/cgpa-calculator.svg",
     accent: "from-blue-950 via-slate-900 to-[#0B1015]"
   },
   {
@@ -177,7 +177,7 @@ export const projects: Project[] = [
     ],
     tech: ["Python", "Streamlit", "Blockchain", "Simulation"],
     githubUrl: "https://github.com/Giresh-458/BPoW_Simulator",
-    image: "/projects/spacenet.svg",
+    image: "/projects/bpow-simulator.svg",
     accent: "from-purple-950 via-slate-900 to-[#0B1015]"
   }
 ];
