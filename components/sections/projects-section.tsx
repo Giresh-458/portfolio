@@ -20,18 +20,19 @@ export function ProjectsSection() {
     <section id="projects" className="section-shell scroll-mt-20">
       <SectionHeader eyebrow="Selected work" title="Serious systems, cinematic presentation." description="Research and product engineering projects built around measurable outcomes—not decorative AI wrappers." />
       <NetflixRow ariaLabel="Featured projects">
-        {projects.map((project) => (
+        {projects.map((project, index) => (
           <motion.article
             key={project.id}
             layout
-            whileHover={reduceMotion ? undefined : { y: -10, scale: 1.015 }}
-            transition={{ duration: 0.25 }}
-            className="group relative w-[86vw] max-w-[520px] shrink-0 snap-center overflow-hidden rounded-2xl border border-white/10 bg-surface shadow-card md:w-[520px]"
+            whileHover={reduceMotion ? undefined : { y: -9, scale: 1.012, rotateX: 1.2 }}
+            transition={{ type: "spring", stiffness: 260, damping: 22 }}
+            style={{ transformPerspective: 1200 }}
+            className="group relative w-[86vw] max-w-[520px] shrink-0 snap-center overflow-hidden rounded-2xl border border-white/[0.09] bg-surface shadow-card transition-colors duration-500 hover:border-[#75E0D9]/35 md:w-[520px]"
           >
             <button type="button" onClick={() => setSelected(project)} className="block w-full text-left" aria-label={`Open details for ${project.title}`}>
               <div className="relative aspect-[16/9] overflow-hidden">
                 <Image src={project.image} alt="" fill className="object-cover transition duration-700 group-hover:scale-105" sizes="(max-width: 768px) 86vw, 520px" />
-                <div className="absolute inset-0 bg-gradient-to-t from-surface via-surface/20 to-transparent" />
+                <motion.div className="absolute inset-0 bg-gradient-to-t from-surface via-surface/20 to-transparent" animate={reduceMotion ? undefined : { opacity: [0.9, 1, 0.9] }} transition={{ duration: 5 + index * 0.25, repeat: Infinity, ease: "easeInOut" }} />\n                <motion.div aria-hidden className="pointer-events-none absolute -left-1/2 top-[-80%] h-[250%] w-1/3 rotate-[24deg] bg-gradient-to-r from-transparent via-white/[0.08] to-transparent opacity-0 group-hover:opacity-100" animate={reduceMotion ? undefined : { x: ["0%", "550%"] }} transition={{ duration: 1.1, ease: "easeInOut" }} />
                 <span className="absolute left-5 top-5 rounded-full border border-white/15 bg-black/50 px-3 py-1 font-mono text-[10px] uppercase tracking-[0.2em] text-white backdrop-blur-md">
                   {project.eyebrow}
                 </span>
