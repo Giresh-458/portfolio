@@ -18,7 +18,7 @@ export function ProjectsSection() {
 
   return (
     <section id="projects" className="section-shell scroll-mt-20">
-      <SectionHeader eyebrow="Selected work" title="Serious systems, cinematic presentation." description="Research and product engineering projects built around measurable outcomes—not decorative AI wrappers." />
+      <SectionHeader eyebrow="Selected missions" title="Every build has a story." description="Open a project to explore the problem, architecture, and engineering choices behind it." />
       <NetflixRow ariaLabel="Featured projects">
         {projects.map((project, index) => (
           <motion.article
