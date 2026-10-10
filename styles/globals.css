@@ -1,41 +1,21 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-:root { color-scheme: dark; --background: #080B12; --foreground: #F4F5F7; }
-* { box-sizing: border-box; border-color: rgba(244, 245, 247, 0.1); }
+:root { color-scheme: dark; --background: #07090F; --foreground: #F6F0E8; }
+* { box-sizing: border-box; border-color: rgba(246, 240, 232, 0.1); }
 html { scroll-behavior: smooth; background: var(--background); }
-body {
-  min-height: 100vh;
-  overflow-x: hidden;
-  background: radial-gradient(ellipse at 82% 4%, rgba(24, 102, 126, 0.11), transparent 32rem), var(--background);
-  color: var(--foreground);
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-}
-::selection { background: rgba(82, 205, 216, 0.8); color: #061014; }
+body { min-height: 100vh; overflow-x: hidden; background: radial-gradient(ellipse at 85% 5%, rgba(151,37,46,.1), transparent 31rem), radial-gradient(ellipse at 15% 60%, rgba(37,116,145,.075), transparent 35rem), var(--background); color: var(--foreground); text-rendering: optimizeLegibility; -webkit-font-smoothing: antialiased; }
+::selection { background: rgba(214,83,80,.8); color: #fff8ec; }
 ::-webkit-scrollbar { width: 9px; height: 9px; }
-::-webkit-scrollbar-track { background: #080B12; }
-::-webkit-scrollbar-thumb { border: 2px solid #080B12; border-radius: 9999px; background: #31515D; }
-::-webkit-scrollbar-thumb:hover { background: #54CBD4; }
+::-webkit-scrollbar-track { background: #07090F; }
+::-webkit-scrollbar-thumb { border: 2px solid #07090F; border-radius: 9999px; background: #4D3540; }
+::-webkit-scrollbar-thumb:hover { background: #D65350; }
 :focus-visible { outline: 2px solid #68D8E0; outline-offset: 4px; }
 a, button { -webkit-tap-highlight-color: transparent; }
-.hero-gradient-text {
-  background-image: linear-gradient(105deg, #BDF7F0 0%, #66D8E0 39%, #70AEE8 72%, #C1E8F3 100%);
-  background-size: 180% 100%;
-  background-position: 0% 50%;
-  background-clip: text;
-  -webkit-background-clip: text;
-  color: transparent;
-  -webkit-text-fill-color: transparent;
-  animation: hero-color-drift 8s ease-in-out infinite;
-}
-@keyframes hero-color-drift { 0%, 100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
-.haori-checker { background-image: repeating-conic-gradient(#214B45 0% 25%, #0C161A 0% 50%); background-size: 28px 28px; }
+.hero-gradient-text { background-image: linear-gradient(105deg,#F6F0E8 0%,#E86A5A 32%,#D65350 56%,#62D6E0 94%); background-size:180% 100%; background-position:0% 50%; background-clip:text; -webkit-background-clip:text; color:transparent; -webkit-text-fill-color:transparent; animation:hero-color-drift 9s ease-in-out infinite; }
+@keyframes hero-color-drift { 0%,100% { background-position:0% 50%; } 50% { background-position:100% 50%; } }
+.haori-checker { background-image: repeating-conic-gradient(#214B45 0% 25%, #0C161A 0% 50%); background-size:28px 28px; }
 .haori-stamp { background: repeating-conic-gradient(#214B45 0% 25%, #0C161A 0% 50%) 0 / 12px 12px; }
-.mission-card { background: linear-gradient(145deg, rgba(41, 73, 83, 0.13), rgba(13, 19, 30, 0.96) 52%); }
+.mission-card { background:linear-gradient(145deg,rgba(41,73,83,.13),rgba(13,19,30,.96) 52%); }
 .section-shell { @apply container relative py-20 md:py-28; }
-@media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
-  *, *::before, *::after { scroll-behavior: auto !important; animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
-}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior:auto; } *,*::before,*::after { scroll-behavior:auto !important; animation-duration:.01ms !important; animation-iteration-count:1 !important; transition-duration:.01ms !important; } }

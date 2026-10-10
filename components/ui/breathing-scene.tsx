@@ -1,66 +1,79 @@
 "use client";
-import { motion, useReducedMotion } from "framer-motion";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { useState } from "react";
+
+const characters = [
+  { id: "tanjiro", name: "Tanjiro Kamado", style: "Water Breathing · Hinokami Kagura", shortStyle: "WATER / HINOKAMI", image: "https://demonslayer-anime.com/hta/assets/img/chara/img_chara_tanjiro.jpg", imagePosition: "center 25%", accent: "#62D6E0", secondary: "#F16A50", index: "01" },
+  { id: "nezuko", name: "Nezuko Kamado", style: "Blood Demon Art", shortStyle: "BLOOD DEMON ART", image: "https://demonslayer-anime.com/hta/assets/img/chara/img_chara_nezuko.jpg", imagePosition: "center 24%", accent: "#F18CB5", secondary: "#D64F68", index: "02" },
+  { id: "zenitsu", name: "Zenitsu Agatsuma", style: "Thunder Breathing", shortStyle: "THUNDER BREATHING", image: "https://demonslayer-anime.com/hta/assets/img/chara/img_chara_zennitsu.jpg", imagePosition: "center 24%", accent: "#F5D36A", secondary: "#EBA449", index: "03" },
+  { id: "inosuke", name: "Inosuke Hashibira", style: "Beast Breathing", shortStyle: "BEAST BREATHING", image: "https://demonslayer-anime.com/hta/assets/img/chara/img_chara_inosuke.jpg", imagePosition: "center 25%", accent: "#B7D8ED", secondary: "#5F96B7", index: "04" }
+];
 
 export function BreathingScene() {
+  const [activeIndex, setActiveIndex] = useState(0);
   const reduceMotion = useReducedMotion();
+  const active = characters[activeIndex];
+
   return (
-    <div className="relative mx-auto aspect-[640/690] w-full max-w-[620px] select-none" aria-hidden="true">
-      <div className="absolute inset-[11%] rounded-full bg-[#B63D3D]/10 blur-[75px]" />
-      <div className="absolute inset-[13%] rounded-full bg-[#38BDCD]/10 blur-[85px]" />
-      <svg className="relative z-10 h-full w-full overflow-visible" viewBox="0 0 640 690" fill="none">
-        <defs>
-          <radialGradient id="breathing-moon" cx="0" cy="0" r="1" gradientTransform="translate(390 235) rotate(90) scale(180)">
-            <stop stopColor="#E06A58" stopOpacity=".92" /><stop offset=".7" stopColor="#9F343D" stopOpacity=".86" /><stop offset="1" stopColor="#682633" stopOpacity=".05" />
-          </radialGradient>
-          <linearGradient id="breathing-water" x1="90" y1="180" x2="560" y2="520" gradientUnits="userSpaceOnUse">
-            <stop stopColor="#C7F4EF" /><stop offset=".32" stopColor="#67DCE2" /><stop offset=".72" stopColor="#2393B0" /><stop offset="1" stopColor="#B6E9EF" />
-          </linearGradient>
-          <linearGradient id="breathing-flame" x1="150" y1="590" x2="475" y2="220" gradientUnits="userSpaceOnUse">
-            <stop stopColor="#8D2B39" /><stop offset=".48" stopColor="#E65445" /><stop offset=".82" stopColor="#F5A15F" /><stop offset="1" stopColor="#FFE1A6" />
-          </linearGradient>
-          <linearGradient id="breathing-blade" x1="190" y1="500" x2="495" y2="190" gradientUnits="userSpaceOnUse">
-            <stop stopColor="#528997" /><stop offset=".5" stopColor="#DDF7F4" /><stop offset="1" stopColor="#FFFFFF" />
-          </linearGradient>
-          <pattern id="breathing-checks" width="24" height="24" patternUnits="userSpaceOnUse">
-            <rect width="24" height="24" fill="#0B1718" /><rect width="12" height="12" fill="#214F49" /><rect x="12" y="12" width="12" height="12" fill="#214F49" />
-          </pattern>
-          <filter id="breathing-soft-glow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="10" /></filter>
-        </defs>
-        <circle cx="390" cy="235" r="178" fill="#C94543" fillOpacity=".14" filter="url(#breathing-soft-glow)" />
-        <circle cx="390" cy="235" r="157" fill="url(#breathing-moon)" />
-        <circle cx="390" cy="235" r="157" stroke="#F5B6A7" strokeOpacity=".26" />
-        <path d="M0 427L91 346L151 389L241 284L310 366L382 317L460 383L526 325L640 410V690H0Z" fill="#0B1520" />
-        <path d="M0 490L98 422L169 465L258 386L332 455L418 387L511 468L574 421L640 459V690H0Z" fill="#0D1B27" />
-        <path d="M0 562L108 506L205 540L302 493L391 548L489 501L573 543L640 517V690H0Z" fill="#10232D" />
-        <motion.path
-          d="M66 382C100 272 199 165 324 175C441 184 540 288 512 393C491 472 406 526 315 510C222 494 174 427 202 354C224 298 287 278 341 300C386 318 411 361 390 397"
-          stroke="url(#breathing-water)" strokeWidth="24" strokeLinecap="round" opacity=".15" filter="url(#breathing-soft-glow)"
-        />
-        <motion.path
-          d="M66 382C100 272 199 165 324 175C441 184 540 288 512 393C491 472 406 526 315 510C222 494 174 427 202 354C224 298 287 278 341 300C386 318 411 361 390 397"
-          stroke="url(#breathing-water)" strokeWidth="9" strokeLinecap="round" strokeDasharray="2 1"
-          animate={reduceMotion ? undefined : { pathLength: [0.88, 1, 0.88], opacity: [0.54, 1, 0.54] }}
-          transition={{ duration: 6.8, repeat: Infinity, ease: "easeInOut" }}
-        />
-        <motion.path d="M83 435C158 555 332 589 440 508C500 463 512 411 486 379" stroke="#DAFBF6" strokeWidth="2.5" strokeLinecap="round" strokeDasharray="3 11" opacity=".65"
-          animate={reduceMotion ? undefined : { strokeDashoffset: [0, -112] }} transition={{ duration: 7.2, repeat: Infinity, ease: "linear" }} />
-        <motion.path
-          d="M182 594C262 532 280 454 300 389C320 320 373 275 414 224C420 290 473 327 485 388C499 455 457 519 385 556C417 510 404 470 376 450C342 425 310 450 293 489C273 535 241 573 182 594Z"
-          stroke="url(#breathing-flame)" strokeWidth="7" strokeLinecap="round" strokeLinejoin="round" opacity=".88"
-          animate={reduceMotion ? undefined : { pathLength: [0.9, 1, 0.9], opacity: [0.48, 0.95, 0.48] }}
-          transition={{ duration: 5.8, repeat: Infinity, ease: "easeInOut", delay: 0.4 }}
-        />
-        <path d="M197 504L495 197" stroke="#071018" strokeWidth="16" strokeLinecap="round" />
-        <motion.path d="M197 504L495 197" stroke="url(#breathing-blade)" strokeWidth="6" strokeLinecap="round"
-          animate={reduceMotion ? undefined : { opacity: [0.78, 1, 0.78] }} transition={{ duration: 3.4, repeat: Infinity, ease: "easeInOut" }} />
-        <path d="M181 518L212 487" stroke="#D3B58A" strokeWidth="12" strokeLinecap="round" />
-        <path d="M180 486L218 524" stroke="#E1D1B2" strokeWidth="5" strokeLinecap="round" />
-        <motion.path d="M158 548L523 172" stroke="#ECFFFC" strokeWidth="1.5" strokeLinecap="round" opacity=".7"
-          animate={reduceMotion ? undefined : { pathLength: [0, 1, 0], opacity: [0, 0.7, 0] }} transition={{ duration: 3.8, repeat: Infinity, ease: "easeInOut", delay: 0.7 }} />
-        <path d="M448 476L584 444L615 576L479 608Z" fill="url(#breathing-checks)" opacity=".3" />
-        <path d="M448 476L584 444L615 576L479 608Z" stroke="#77BBB0" strokeOpacity=".35" />
-      </svg>
-      <div className="pointer-events-none absolute bottom-[5%] left-[9%] h-px w-24 bg-gradient-to-r from-[#63D6DE]/80 to-transparent" />
+    <div className="relative mx-auto w-full max-w-[590px]">
+      <div className="pointer-events-none absolute -inset-5 rounded-[2rem] opacity-70 blur-2xl transition-colors duration-700" style={{ background: "radial-gradient(ellipse at 58% 35%, " + active.accent + "24, transparent 62%), radial-gradient(ellipse at 50% 80%, " + active.secondary + "20, transparent 60%)" }} />
+      <div className="relative overflow-hidden rounded-t-[1.35rem] border border-white/10 bg-[#10131B] shadow-[0_26px_90px_rgba(0,0,0,.5)]">
+        <AnimatePresence mode="wait">
+          <motion.div key={active.id} initial={reduceMotion ? { opacity: 1 } : { opacity: 0, scale: 1.08, x: 16 }}
+            animate={reduceMotion ? { opacity: 1, scale: 1, x: 0 } : { opacity: 1, x: 0, scale: [1.01, 1.06, 1.01] }}
+            exit={reduceMotion ? { opacity: 1 } : { opacity: 0, scale: 1.02, x: -12 }}
+            transition={reduceMotion ? { duration: 0.01 } : { opacity: { duration: 0.35 }, x: { duration: 0.55 }, scale: { duration: 16, repeat: Infinity, ease: "easeInOut" } }}
+            className="relative aspect-[4/5] w-full overflow-hidden sm:aspect-[5/6]" aria-label={active.name + ", " + active.style} role="img"
+            style={{ backgroundImage: "url('" + active.image + "')", backgroundSize: "cover", backgroundPosition: active.imagePosition }}>
+            <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(5,8,14,.05)_0%,rgba(5,8,14,.06)_34%,rgba(5,8,14,.35)_57%,rgba(5,8,14,.96)_100%)]" />
+            <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(90deg,rgba(5,8,14,.42),transparent_40%,rgba(5,8,14,.12))]" />
+            <svg className="pointer-events-none absolute inset-0 h-full w-full" viewBox="0 0 500 600" fill="none" aria-hidden="true">
+              {active.id === "tanjiro" ? <>
+                <motion.path d="M-20 430C80 355 42 287 153 244C254 205 328 284 520 176" stroke={active.accent} strokeWidth="7" strokeLinecap="round" opacity=".85" animate={reduceMotion ? undefined : { pathLength: [0.28, 1, 0.28], opacity: [0.24, 0.84, 0.24] }} transition={{ duration: 5.8, repeat: Infinity, ease: "easeInOut" }} />
+                <motion.path d="M-15 492C105 407 112 349 211 338C317 326 364 404 515 303" stroke="#D9FAF6" strokeWidth="2.5" strokeLinecap="round" strokeDasharray="4 12" opacity=".7" animate={reduceMotion ? undefined : { strokeDashoffset: [0, -92] }} transition={{ duration: 6.2, repeat: Infinity, ease: "linear" }} />
+                <motion.path d="M365 600C389 534 462 519 514 468" stroke={active.secondary} strokeWidth="10" strokeLinecap="round" animate={reduceMotion ? undefined : { pathLength: [0.1, 1, 0.1], opacity: [0.1, 0.8, 0.1] }} transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut", delay: .5 }} />
+              </> : null}
+              {active.id === "nezuko" ? <>
+                <motion.path d="M-20 423C73 306 143 493 234 405C323 320 405 437 520 306" stroke={active.accent} strokeWidth="7" strokeLinecap="round" opacity=".8" animate={reduceMotion ? undefined : { pathLength: [0.18, 1, 0.18], opacity: [0.2, 0.9, 0.2] }} transition={{ duration: 4.9, repeat: Infinity, ease: "easeInOut" }} />
+                <motion.path d="M-15 510C103 447 124 561 236 498C341 439 428 542 518 432" stroke={active.secondary} strokeWidth="3" strokeLinecap="round" strokeDasharray="5 10" animate={reduceMotion ? undefined : { strokeDashoffset: [0, -75] }} transition={{ duration: 5.4, repeat: Infinity, ease: "linear" }} />
+              </> : null}
+              {active.id === "zenitsu" ? <>
+                <motion.path d="M65 65L148 187L112 224L220 336L173 384L294 534" stroke={active.accent} strokeWidth="6" strokeLinejoin="round" strokeLinecap="round" animate={reduceMotion ? undefined : { opacity: [0.08, 1, 0.18, 0.85, 0.08], pathLength: [0.15, 1, 0.15] }} transition={{ duration: 2.8, repeat: Infinity, ease: "easeInOut" }} />
+                <motion.path d="M467 105L397 221L427 252L354 365" stroke="#FFF5C7" strokeWidth="2.5" strokeLinejoin="round" strokeLinecap="round" animate={reduceMotion ? undefined : { opacity: [0, .9, 0] }} transition={{ duration: 2.1, repeat: Infinity, ease: "easeInOut", delay: .6 }} />
+              </> : null}
+              {active.id === "inosuke" ? <>
+                <motion.path d="M-25 350C52 183 203 147 355 218C455 264 494 359 430 423C376 478 276 456 248 391" stroke={active.accent} strokeWidth="6" strokeLinecap="round" animate={reduceMotion ? undefined : { pathLength: [0.24, 1, 0.24], opacity: [0.18, .88, .18] }} transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut" }} />
+                <motion.path d="M-20 452C70 543 230 558 359 492C428 456 455 408 475 349" stroke="#E5F5FF" strokeWidth="2.2" strokeLinecap="round" strokeDasharray="3 12" animate={reduceMotion ? undefined : { strokeDashoffset: [0, -96] }} transition={{ duration: 4.8, repeat: Infinity, ease: "linear" }} />
+              </> : null}
+            </svg>
+            <div className="pointer-events-none absolute left-5 top-5 z-10 flex items-center gap-2 border border-white/20 bg-[#080B12]/60 px-3 py-2 backdrop-blur-md">
+              <span className="size-1.5 rounded-full" style={{ backgroundColor: active.accent, boxShadow: "0 0 14px " + active.accent }} />
+              <span className="font-mono text-[9px] uppercase tracking-[0.18em] text-[#F5F0E9]">Corps archive / {active.index}</span>
+            </div>
+            <div className="pointer-events-none absolute bottom-0 left-0 right-0 z-10 p-5 sm:p-7">
+              <p className="font-mono text-[9px] uppercase tracking-[0.2em]" style={{ color: active.accent }}>{active.shortStyle}</p>
+              <h2 className="mt-2 font-display text-4xl leading-none tracking-wide text-white sm:text-5xl">{active.name}</h2>
+              <p className="mt-2 text-sm text-[#C4CCD7]">{active.style}</p>
+              <div className="mt-5 h-px w-full bg-white/15"><motion.div key={active.id} initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ duration: .7 }} className="h-full origin-left" style={{ backgroundColor: active.accent, width: "100%" }} /></div>
+            </div>
+          </motion.div>
+        </AnimatePresence>
+      </div>
+      <div className="grid grid-cols-4 border-x border-b border-white/10 bg-[#0B0E16]">
+        {characters.map((character, index) => (
+          <button key={character.id} type="button" onClick={() => setActiveIndex(index)} aria-pressed={activeIndex === index} aria-label={"Show " + character.name}
+            className={"group relative min-w-0 border-r border-white/[0.07] p-2 text-left transition-colors last:border-r-0 sm:p-3 " + (activeIndex === index ? "bg-white/[0.075]" : "bg-transparent hover:bg-white/[0.035]")}>
+            <span className="relative block aspect-[5/4] overflow-hidden bg-[#151B26]">
+              <span className="absolute inset-0 bg-cover bg-center transition duration-500 group-hover:scale-105" style={{ backgroundImage: "url('" + character.image + "')" }} />
+              <span className="absolute inset-0 bg-gradient-to-t from-[#07090F]/70 to-transparent" />
+              {activeIndex === index ? <span className="absolute inset-x-0 bottom-0 h-[2px]" style={{ backgroundColor: character.accent }} /> : null}
+            </span>
+            <span className={"mt-2 block truncate text-[10px] font-semibold sm:text-xs " + (activeIndex === index ? "text-white" : "text-[#8895A6]")}>{character.name.split(" ")[0]}</span>
+            <span className="mt-1 hidden truncate font-mono text-[8px] tracking-[0.08em] text-[#778497] sm:block">{character.index} / 04</span>
+          </button>
+        ))}
+      </div>
+      <p className="mt-2 text-right font-mono text-[8px] uppercase tracking-[0.15em] text-[#596678]">Select a fighter to change the breathing effect</p>
     </div>
   );
 }
