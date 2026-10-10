@@ -7,7 +7,7 @@ import {
   Network,
   SlidersHorizontal
 } from "lucide-react";
-import type { Project, Publication, ResearchTopic, SkillCategory, Stat, TimelineItem } from "@/types";
+import type { Project, ResearchTopic, SkillCategory, Stat } from "@/types";
 
 export const siteConfig = {
   name: "Giresh Komal Velaga",
@@ -228,5 +228,5 @@ export const skillCategories: SkillCategory[] = [
   }
 ];
 
-export const publications = [];
-export const timeline = [];
+
+
