@@ -1,19 +1,17 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" fill="none">
-<defs>
-  <linearGradient id="bg" x1="0" y1="0" x2="1200" y2="630" gradientUnits="userSpaceOnUse"><stop stop-color="#0B2026"/><stop offset=".52" stop-color="#0B1017"/><stop offset="1" stop-color="#090B10"/></linearGradient>
-  <radialGradient id="glow"><stop stop-color="#75E0D9" stop-opacity=".2"/><stop offset="1" stop-color="#75E0D9" stop-opacity="0"/></radialGradient>
-  <linearGradient id="water" x1="775" y1="95" x2="1148" y2="495" gradientUnits="userSpaceOnUse"><stop stop-color="#E0FFFA"/><stop offset=".45" stop-color="#75E0D9"/><stop offset="1" stop-color="#2B7FC1"/></linearGradient>
-  <linearGradient id="fire" x1="735" y1="525" x2="1100" y2="120" gradientUnits="userSpaceOnUse"><stop stop-color="#FF674E"/><stop offset=".55" stop-color="#FF9E72"/><stop offset="1" stop-color="#FFE2A0"/></linearGradient>
-</defs>
-<rect width="1200" height="630" fill="url(#bg)"/><circle cx="950" cy="312" r="335" fill="url(#glow)"/>
-<g stroke="#DDFEFB" stroke-opacity=".055"><path d="M0 105H1200M0 210H1200M0 315H1200M0 420H1200M0 525H1200"/><path d="M100 0V630M200 0V630M300 0V630M400 0V630M500 0V630M600 0V630M700 0V630M800 0V630M900 0V630M1000 0V630M1100 0V630"/></g>
-<rect x="68" y="72" width="68" height="68" rx="16" fill="#75E0D9" fill-opacity=".1" stroke="#75E0D9" stroke-opacity=".4"/><text x="102" y="115" fill="#A6FFF7" text-anchor="middle" font-family="Arial,sans-serif" font-size="27" font-weight="700">GV</text>
-<text x="68" y="207" fill="#9DEFE8" font-family="monospace" font-size="15" letter-spacing="5">GIRESH KOMAL VELAGA / PORTFOLIO</text>
-<text x="62" y="312" fill="#F3F5F4" font-family="Arial,sans-serif" font-size="77" font-weight="700" letter-spacing="-4">AI with intent.</text>
-<text x="62" y="405" fill="#F3F5F4" font-family="Arial,sans-serif" font-size="77" font-weight="700" letter-spacing="-4">Built to <tspan fill="#75E0D9">ship.</tspan></text>
-<text x="68" y="468" fill="#ABB9BD" font-family="Arial,sans-serif" font-size="23">AI engineering × full-stack products</text>
-<path d="M748 355C799 196 934 127 1059 170C1154 202 1175 306 1119 372C1062 439 953 452 892 401C826 346 864 262 940 258C1010 253 1051 301 1026 341" stroke="url(#water)" stroke-width="9" stroke-linecap="round" opacity=".9"/>
-<path d="M790 506C855 460 886 403 899 348C915 286 954 260 987 225C990 286 1044 305 1058 359C1074 426 1022 476 964 499C1002 455 1001 414 978 391C954 366 923 379 910 409C895 445 866 483 790 506Z" stroke="url(#fire)" stroke-width="6" stroke-linejoin="round" opacity=".9"/>
-<path d="M794 513L1119 183" stroke="#E8FFFC" stroke-opacity=".55" stroke-width="2.5" stroke-linecap="round"/>
-<text x="68" y="570" fill="#65858A" font-family="monospace" font-size="12" letter-spacing="4">FOCUS · BUILD · EVOLVE</text>
+<defs><linearGradient id="night" x1="0" y1="0" x2="1200" y2="630" gradientUnits="userSpaceOnUse"><stop stop-color="#17291A"/><stop offset=".5" stop-color="#0C120C"/><stop offset="1" stop-color="#080A09"/></linearGradient><linearGradient id="water" x1="720" y1="110" x2="1150" y2="500" gradientUnits="userSpaceOnUse"><stop stop-color="#DDF2CE"/><stop offset=".5" stop-color="#80B783"/><stop offset="1" stop-color="#397D73"/></linearGradient><linearGradient id="fire" x1="740" y1="550" x2="1090" y2="120" gradientUnits="userSpaceOnUse"><stop stop-color="#B63232"/><stop offset=".5" stop-color="#ED613D"/><stop offset="1" stop-color="#F7C274"/></linearGradient><pattern id="checks" width="30" height="30" patternUnits="userSpaceOnUse"><rect width="30" height="30" fill="#142018"/><rect width="15" height="15" fill="#426D43"/><rect x="15" y="15" width="15" height="15" fill="#426D43"/></pattern></defs>
+<rect width="1200" height="630" fill="url(#night)"/>
+<g stroke="#F2E6D1" stroke-opacity=".05"><path d="M0 105H1200M0 210H1200M0 315H1200M0 420H1200M0 525H1200"/><path d="M100 0V630M200 0V630M300 0V630M400 0V630M500 0V630M600 0V630M700 0V630M800 0V630M900 0V630M1000 0V630M1100 0V630"/></g>
+<rect x="60" y="58" width="58" height="58" fill="url(#checks)" stroke="#9DB58F" stroke-opacity=".55"/><text x="89" y="94" fill="#F3EEE3" text-anchor="middle" font-family="Arial,sans-serif" font-size="23" font-weight="700">GV</text>
+<text x="60" y="160" fill="#A8C69D" font-family="monospace" font-size="13" letter-spacing="4">GIRESH KOMAL VELAGA / FIELD JOURNAL</text>
+<text x="54" y="265" fill="#F3EEE3" font-family="Arial,sans-serif" font-size="74" font-weight="700" letter-spacing="-3">BREATHE IN.</text>
+<text x="54" y="350" fill="#E85D47" font-family="Arial,sans-serif" font-size="74" font-weight="700" letter-spacing="-3">BUILD BOLD.</text>
+<text x="60" y="408" fill="#C1C6B9" font-family="Arial,sans-serif" font-size="20">AI engineering × full-stack products</text>
+<text x="60" y="452" fill="#A4BDA0" font-family="monospace" font-size="12" letter-spacing="3">WATER BREATHING / HINOKAMI KAGURA</text>
+<circle cx="957" cy="284" r="203" fill="#B83C31" fill-opacity=".16"/><circle cx="957" cy="284" r="145" fill="#C74B39" fill-opacity=".45" stroke="#F3C99A" stroke-opacity=".28"/>
+<path d="M735 352C777 208 894 151 1000 190C1109 230 1143 333 1085 399C1029 463 906 468 842 405C784 348 817 271 894 258C961 247 1008 291 986 334" stroke="url(#water)" stroke-width="12" stroke-linecap="round"/>
+<path d="M776 520C843 467 870 408 886 348C900 287 943 254 976 218C981 282 1035 301 1048 355C1066 422 1015 472 958 497C995 455 994 414 971 391C947 367 916 380 904 410C888 445 856 488 776 520Z" stroke="url(#fire)" stroke-width="7" stroke-linejoin="round"/>
+<path d="M784 530L1107 201" stroke="#EDEADD" stroke-width="3" stroke-linecap="round" opacity=".7"/>
+<path d="M1018 493L1080 442L1115 469L1158 430L1200 453V630H1000Z" fill="#122017"/>
+<text x="60" y="580" fill="#798B75" font-family="monospace" font-size="11" letter-spacing="4">FOCUS · BUILD · EVOLVE</text>
 </svg>
