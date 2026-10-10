@@ -32,7 +32,7 @@ export function HeroSection() {
         >
           <motion.div variants={reduceMotion ? undefined : rise} className="mb-8 flex flex-wrap items-center gap-3">
             <span className="grid size-9 place-items-center border border-[#E85D47]/45 bg-[#E85D47]/10 font-display text-lg font-bold text-[#FFAD85]">GV</span>
-            <span className="font-mono text-[10px] uppercase tracking-[0.23em] text-[#C8C7BA] sm:text-xs">Corps file 001 <span className="text-[#E85D47]">//</span> Giresh Velaga</span>
+            <span className="font-mono text-[10px] uppercase tracking-[0.23em] text-[#C8C7BA] sm:text-xs">Corps file 001 <span className="text-[#E85D47]">{"//"}</span> Giresh Velaga</span>
           </motion.div>
 
           <motion.p variants={reduceMotion ? undefined : rise} className="mb-4 font-mono text-[10px] uppercase tracking-[0.28em] text-[#9BC59A] sm:text-xs">
