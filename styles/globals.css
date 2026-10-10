@@ -136,3 +136,97 @@ a, button { -webkit-tap-highlight-color: transparent; }
   html { scroll-behavior: auto; }
   *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
 }
+
+
+/* Full-bleed world-building for the portfolio sections below the hero. */
+.section-shell {
+  width: 100%;
+  max-width: none;
+  margin-inline: 0;
+  padding-top: clamp(5.5rem, 8vw, 8rem);
+  padding-bottom: clamp(5.5rem, 8vw, 8rem);
+}
+.section-shell > * {
+  position: relative;
+  width: min(100%, 1440px);
+  max-width: min(100%, 1440px);
+  margin-inline: auto;
+  padding-inline: clamp(1.25rem, 4vw, 4rem);
+}
+.section-about {
+  background:
+    radial-gradient(ellipse at 88% 24%, rgba(155, 111, 200, .18), transparent 25rem),
+    radial-gradient(ellipse at 15% 76%, rgba(38, 121, 134, .1), transparent 28rem),
+    linear-gradient(180deg, #0B0A13 0%, #100D18 48%, #08090F 100%);
+}
+.section-projects {
+  background:
+    radial-gradient(ellipse at 100% 22%, rgba(174, 26, 48, .2), transparent 27rem),
+    radial-gradient(ellipse at 0% 70%, rgba(91, 22, 39, .19), transparent 34rem),
+    linear-gradient(180deg, #08090F 0%, #130A12 48%, #09090F 100%);
+}
+.section-forge {
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(247, 91, 38, .17), transparent 23rem),
+    radial-gradient(ellipse at 100% 72%, rgba(209, 46, 52, .12), transparent 26rem),
+    linear-gradient(180deg, #100A0C 0%, #17100F 43%, #09090F 100%);
+}
+.section-skills {
+  background:
+    radial-gradient(ellipse at 0% 20%, rgba(37, 149, 175, .17), transparent 28rem),
+    radial-gradient(ellipse at 80% 85%, rgba(57, 216, 243, .08), transparent 28rem),
+    linear-gradient(180deg, #080C13 0%, #09121A 47%, #08090F 100%);
+}
+.section-training {
+  background:
+    radial-gradient(ellipse at 15% 35%, rgba(24, 84, 69, .2), transparent 30rem),
+    radial-gradient(ellipse at 100% 90%, rgba(144, 45, 61, .17), transparent 30rem),
+    linear-gradient(180deg, #090A11 0%, #0B1112 50%, #09090F 100%);
+}
+.section-github {
+  background:
+    radial-gradient(ellipse at 90% 15%, rgba(129, 69, 133, .16), transparent 28rem),
+    radial-gradient(ellipse at 0% 80%, rgba(24, 106, 133, .12), transparent 30rem),
+    linear-gradient(180deg, #09090F 0%, #0E0C16 52%, #09090F 100%);
+}
+.section-contact {
+  background:
+    radial-gradient(ellipse at 10% 18%, rgba(186, 60, 105, .16), transparent 26rem),
+    radial-gradient(ellipse at 90% 80%, rgba(103, 52, 132, .15), transparent 29rem),
+    linear-gradient(180deg, #0D0913 0%, #140B16 47%, #08090F 100%);
+}
+.section-shell::after {
+  bottom: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(217,54,69,.28), rgba(57,216,243,.2), rgba(169,138,221,.16), transparent);
+}
+.crow-dispatch {
+  background:
+    radial-gradient(ellipse at 70% 12%, rgba(217,54,69,.2), transparent 33%),
+    radial-gradient(ellipse at 12% 88%, rgba(80, 51, 116, .17), transparent 38%),
+    linear-gradient(145deg, rgba(33,17,28,.98), rgba(8,10,17,.98) 68%);
+}
+.crow-flight-scene {
+  isolation: isolate;
+  background:
+    linear-gradient(180deg, rgba(18,11,24,.35), rgba(5,7,13,.2)),
+    radial-gradient(ellipse at 73% 28%, rgba(206,34,57,.19), transparent 35%),
+    linear-gradient(115deg, #0B101A 0%, #140D19 56%, #09090F 100%);
+}
+.crow-haze {
+  background:
+    radial-gradient(ellipse at 60% 70%, rgba(50,184,210,.12), transparent 40%),
+    linear-gradient(180deg, transparent 52%, rgba(3,5,10,.56));
+}
+@media (max-width: 767px) {
+  .section-shell {
+    padding-top: 4.75rem;
+    padding-bottom: 5rem;
+  }
+  .section-shell > * {
+    padding-inline: 1.25rem;
+  }
+  .crow-flight-scene {
+    height: 180px;
+  }
+}
