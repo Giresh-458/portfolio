@@ -22,15 +22,15 @@ const config: Config = {
     },
     extend: {
       colors: {
-        background: "#0B0B0B",
-        foreground: "#F5F5F5",
-        muted: "#9A9A9A",
-        surface: "#141414",
+        background: "#070A0E",
+        foreground: "#F3F5F4",
+        muted: "#A1ADB1",
+        surface: "#10161A",
         border: "rgba(255,255,255,0.10)",
         netflix: {
-          DEFAULT: "#E50914",
-          dark: "#B20710",
-          glow: "rgba(229, 9, 20, 0.15)"
+          DEFAULT: "#70E3DC",
+          dark: "#369DAB",
+          glow: "rgba(112, 227, 220, 0.16)"
         }
       },
       fontFamily: {
@@ -40,13 +40,13 @@ const config: Config = {
       },
       backgroundImage: {
         "cinematic-radial":
-          "radial-gradient(circle at 50% 20%, rgba(229,9,20,0.18), transparent 35%), linear-gradient(to bottom, transparent 50%, #0B0B0B 100%)",
+          "radial-gradient(circle at 78% 34%, rgba(70,207,203,0.16), transparent 38%), radial-gradient(circle at 86% 74%, rgba(244,113,80,0.10), transparent 28%), linear-gradient(to bottom, transparent 48%, #070A0E 100%)",
         "glass-gradient":
           "linear-gradient(135deg, rgba(255,255,255,0.09), rgba(255,255,255,0.02))"
       },
       boxShadow: {
-        glow: "0 0 60px rgba(229, 9, 20, 0.20)",
-        "glow-sm": "0 0 28px rgba(229, 9, 20, 0.18)",
+        glow: "0 0 60px rgba(112, 227, 220, 0.20)",
+        "glow-sm": "0 0 28px rgba(112, 227, 220, 0.18)",
         card: "0 24px 80px rgba(0, 0, 0, 0.45)"
       },
       animation: {
@@ -94,7 +94,7 @@ const config: Config = {
           border: "1px solid rgba(255,255,255,.1)"
         },
         ".glass-strong": {
-          background: "rgba(20,20,20,.78)",
+          background: "rgba(8,12,17,.78)",
           "backdrop-filter": "blur(24px)",
           "-webkit-backdrop-filter": "blur(24px)",
           border: "1px solid rgba(255,255,255,.12)"
