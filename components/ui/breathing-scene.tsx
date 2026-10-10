@@ -8,8 +8,8 @@ const characters = [
     name: "Tanjiro Kamado",
     style: "Water Breathing · Hinokami Kagura",
     technique: "水の呼吸",
-    image: "https://images.wallpapersden.com/image/download/4k-demon-slayer-kimetsu-no-yaiba-art-2022_bWtoZm6UmZqaraWkpJRnamtlrWZpaWU.jpg",
-    thumb: "https://images.wallpapersden.com/image/download/4k-demon-slayer-kimetsu-no-yaiba-art-2022_bWtoZm6UmZqaraWkpJRnamtlrWZpaWU.jpg",
+    image: "https://images6.alphacoders.com/139/thumb-1920-1398038.png",
+    thumb: "https://images6.alphacoders.com/139/thumb-1920-1398038.png",
     position: "64% center",
     mobilePosition: "67% center",
     accent: "#39D8F3",
@@ -81,6 +81,7 @@ export function BreathingScene() {
         <motion.div
           key={active.id}
           className="character-scene-image absolute -inset-[2%]"
+          data-character={active.id}
           role="img"
           aria-label={active.name + " — " + active.style}
           style={{
