@@ -33,7 +33,7 @@ export function ProjectsSection() {
               <div className="relative aspect-[16/9] overflow-hidden">
                 <Image src={project.image} alt="" fill className="object-cover transition duration-700 group-hover:scale-105" sizes="(max-width: 768px) 86vw, 520px" />
                 <motion.div className="absolute inset-0 bg-gradient-to-t from-surface via-surface/20 to-transparent" animate={reduceMotion ? undefined : { opacity: [0.9, 1, 0.9] }} transition={{ duration: 5 + index * 0.25, repeat: Infinity, ease: "easeInOut" }} />
-                <motion.div aria-hidden className="pointer-events-none absolute -left-1/2 top-[-80%] h-[250%] w-1/3 rotate-[24deg] bg-gradient-to-r from-transparent via-white/[0.08] to-transparent opacity-0 group-hover:opacity-100" animate={reduceMotion ? undefined : { x: ["0%", "550%"] }} transition={{ duration: 1.1, ease: "easeInOut" }} />
+                <div aria-hidden className="pointer-events-none absolute -left-1/2 top-[-80%] h-[250%] w-1/3 -translate-x-0 rotate-[24deg] bg-gradient-to-r from-transparent via-white/[0.09] to-transparent opacity-0 transition duration-1000 group-hover:translate-x-[550%] group-hover:opacity-100" />
                 <span className="absolute left-5 top-5 rounded-full border border-white/15 bg-black/50 px-3 py-1 font-mono text-[10px] uppercase tracking-[0.16em] text-white backdrop-blur-md">
                   <span className="mr-2 text-[#75E0D9]">{String(index + 1).padStart(2, "0")}</span>{project.eyebrow}
                 </span>
