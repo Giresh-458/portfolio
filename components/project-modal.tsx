@@ -16,6 +16,15 @@ interface ProjectModalProps {
 
 export function ProjectModal({ project, open, onOpenChange }: ProjectModalProps) {
   const reduceMotion = useReducedMotion();
+  const details: Array<[string, string | undefined]> = project
+    ? [
+        ["Problem", project.problem],
+        ["Architecture", project.architecture],
+        ["Dataset", project.dataset],
+        ["Models & tools", project.models],
+        ["Results", project.results]
+      ]
+    : [];
 
   return (
     <Dialog.Root open={open} onOpenChange={onOpenChange}>
@@ -55,13 +64,7 @@ export function ProjectModal({ project, open, onOpenChange }: ProjectModalProps)
                 </div>
                 <div className="grid gap-8 p-6 md:grid-cols-[1.5fr_1fr] md:p-8">
                   <div className="space-y-6">
-                    {[
-                      ["Problem", project.problem],
-                      ["Architecture", project.architecture],
-                      ["Dataset", project.dataset],
-                      ["Models", project.models],
-                      ["Results", project.results]
-                    ].map(([label, value]) => (
+                    {details.filter((entry) => Boolean(entry[1]?.trim())).map(([label, value]) => (
                       <div key={label}>
                         <h3 className="mb-2 text-sm font-bold uppercase tracking-wider text-white">{label}</h3>
                         <p className="leading-7 text-zinc-400">{value}</p>
@@ -87,11 +90,13 @@ export function ProjectModal({ project, open, onOpenChange }: ProjectModalProps)
                           <Github className="size-4" /> View source
                         </a>
                       </Button>
-                      <Button asChild variant="outline">
-                        <a href={project.liveUrl}>
-                          <ExternalLink className="size-4" /> Live experience
-                        </a>
-                      </Button>
+                      {project.liveUrl ? (
+                        <Button asChild variant="outline">
+                          <a href={project.liveUrl} target="_blank" rel="noreferrer">
+                            <ExternalLink className="size-4" /> Live experience
+                          </a>
+                        </Button>
+                      ) : null}
                     </div>
                   </aside>
                 </div>
