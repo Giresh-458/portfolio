@@ -7,7 +7,7 @@ import {
   Network,
   SlidersHorizontal
 } from "lucide-react";
-import type { Project, ResearchTopic, SkillCategory, Stat } from "@/types";
+import type { Project, Publication, ResearchTopic, SkillCategory, Stat, TimelineItem } from "@/types";
 
 export const siteConfig = {
   name: "Giresh Komal Velaga",
