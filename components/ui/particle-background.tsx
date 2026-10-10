@@ -27,6 +27,7 @@ export function ParticleBackground() {
     let height = 0;
 
     const resize = () => {
+      window.cancelAnimationFrame(frame);
       const rect = canvas.getBoundingClientRect();
       const dpr = Math.min(window.devicePixelRatio || 1, 1.75);
       width = rect.width;
