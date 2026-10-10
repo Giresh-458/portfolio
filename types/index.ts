@@ -13,13 +13,13 @@ export interface Project {
   description: string;
   problem: string;
   architecture: string;
-  dataset: string;
-  models: string;
-  results: string;
+  dataset?: string;
+  models?: string;
+  results?: string;
   contributions: string[];
   tech: string[];
   githubUrl: string;
-  liveUrl: string;
+  liveUrl?: string;
   image: string;
   accent: string;
 }
@@ -32,7 +32,7 @@ export interface ResearchTopic {
 
 export interface Skill {
   name: string;
-  level: number;
+  level?: number;
 }
 
 export interface SkillCategory {
