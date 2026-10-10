@@ -36,7 +36,7 @@ export function LoadingScreen() {
               transition={{ duration: 0.7 }}
               className="font-display text-5xl font-black text-netflix"
             >
-              AM
+              GV
             </motion.div>
             <div className="mt-8 h-1 overflow-hidden rounded-full bg-white/10">
               <div className="h-full origin-left animate-loading-bar bg-netflix shadow-glow" />
