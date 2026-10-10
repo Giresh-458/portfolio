@@ -68,7 +68,7 @@ export function GitHubAnalyticsSection() {
                 <h3 className="text-lg font-bold text-white">Language mix across public repositories</h3>
                 <p className="mt-1 text-sm text-zinc-500">Calculated from each repository’s reported primary language, not lines of code.</p>
               </div>
-              <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#75E0D9]/65">Live GitHub data</span>
+              <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#A6C69E]/75">Live GitHub data</span>
             </div>
             <div className="flex h-2 overflow-hidden rounded-full bg-white/[0.05]">
               {data.languages.map((language) => (
