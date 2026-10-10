@@ -2,13 +2,15 @@
 
 import { useEffect, useRef } from "react";
 
-interface Point {
+interface Particle {
   x: number;
   y: number;
   vx: number;
   vy: number;
-  radius: number;
-  tone: "water" | "ember";
+  size: number;
+  tone: "petal" | "ember";
+  rotation: number;
+  spin: number;
 }
 
 export function ParticleBackground() {
@@ -20,81 +22,76 @@ export function ParticleBackground() {
     const context = canvas.getContext("2d");
     if (!context) return;
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const finePointer = window.matchMedia("(pointer: fine)").matches;
     let frame = 0;
-    let points: Point[] = [];
+    let particles: Particle[] = [];
     let width = 0;
     let height = 0;
 
     const resize = () => {
       window.cancelAnimationFrame(frame);
       const rect = canvas.getBoundingClientRect();
-      const dpr = Math.min(window.devicePixelRatio || 1, 1.75);
+      const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
       width = rect.width;
       height = rect.height;
       canvas.width = Math.round(width * dpr);
       canvas.height = Math.round(height * dpr);
       context.setTransform(dpr, 0, 0, dpr, 0, 0);
-      const count = Math.min(finePointer ? 64 : 28, Math.max(18, Math.floor(width / 23)));
-      points = Array.from({ length: count }, () => ({
+      const count = Math.min(42, Math.max(17, Math.floor(width / 30)));
+      particles = Array.from({ length: count }, () => ({
         x: Math.random() * width,
         y: Math.random() * height,
-        vx: (Math.random() - 0.5) * 0.16,
-        vy: (Math.random() - 0.5) * 0.16,
-        radius: Math.random() * 1.5 + 0.5,
-        tone: Math.random() > 0.72 ? "ember" : "water"
+        vx: (Math.random() - 0.5) * 0.22,
+        vy: -(Math.random() * 0.25 + 0.08),
+        size: Math.random() * 2.8 + 1,
+        tone: Math.random() > 0.68 ? "ember" : "petal",
+        rotation: Math.random() * Math.PI,
+        spin: (Math.random() - 0.5) * 0.012
       }));
       draw();
     };
 
     const draw = () => {
       context.clearRect(0, 0, width, height);
-
-      for (const point of points) {
+      for (const particle of particles) {
         if (!reduceMotion) {
-          point.x += point.vx;
-          point.y += point.vy;
-          if (point.x < -4 || point.x > width + 4) point.vx *= -1;
-          if (point.y < -4 || point.y > height + 4) point.vy *= -1;
-        }
-        context.beginPath();
-        context.fillStyle = point.tone === "water" ? "rgba(126,236,229,.78)" : "rgba(255,145,105,.78)";
-        context.shadowBlur = point.radius > 1.5 ? 10 : 4;
-        context.shadowColor = point.tone === "water" ? "rgba(87,221,213,.6)" : "rgba(255,121,83,.5)";
-        context.arc(point.x, point.y, point.radius, 0, Math.PI * 2);
-        context.fill();
-      }
-      context.shadowBlur = 0;
-
-      if (finePointer) {
-        for (let index = 0; index < points.length; index += 1) {
-          for (let target = index + 1; target < points.length; target += 1) {
-            const first = points[index];
-            const second = points[target];
-            const distance = Math.hypot(first.x - second.x, first.y - second.y);
-            if (distance < 112) {
-              context.beginPath();
-              context.strokeStyle = `rgba(112,227,220,${(1 - distance / 112) * 0.085})`;
-              context.lineWidth = 0.7;
-              context.moveTo(first.x, first.y);
-              context.lineTo(second.x, second.y);
-              context.stroke();
-            }
+          particle.x += particle.vx + Math.sin(particle.y * 0.012) * 0.12;
+          particle.y += particle.vy;
+          particle.rotation += particle.spin;
+          if (particle.y < -12) {
+            particle.y = height + 8;
+            particle.x = Math.random() * width;
           }
+          if (particle.x < -10) particle.x = width + 8;
+          if (particle.x > width + 10) particle.x = -8;
         }
+        context.save();
+        context.translate(particle.x, particle.y);
+        context.rotate(particle.rotation);
+        if (particle.tone === "petal") {
+          context.fillStyle = "rgba(162,196,144,0.48)";
+          context.beginPath();
+          context.ellipse(0, 0, particle.size * 1.9, particle.size * 0.8, 0, 0, Math.PI * 2);
+          context.fill();
+        } else {
+          context.fillStyle = "rgba(239,112,69,0.82)";
+          context.shadowBlur = 8;
+          context.shadowColor = "rgba(232,93,71,0.55)";
+          context.beginPath();
+          context.ellipse(0, 0, particle.size * 0.55, particle.size * 1.7, 0, 0, Math.PI * 2);
+          context.fill();
+        }
+        context.restore();
       }
-
       if (!reduceMotion) frame = window.requestAnimationFrame(draw);
     };
 
     resize();
     window.addEventListener("resize", resize, { passive: true });
-
     return () => {
       window.removeEventListener("resize", resize);
       window.cancelAnimationFrame(frame);
     };
   }, []);
 
-  return <canvas ref={canvasRef} aria-hidden="true" className="pointer-events-none absolute inset-0 size-full opacity-75" />;
+  return <canvas ref={canvasRef} aria-hidden="true" className="pointer-events-none absolute inset-0 size-full opacity-80" />;
 }
