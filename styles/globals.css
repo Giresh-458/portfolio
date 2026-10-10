@@ -4,8 +4,8 @@
 
 :root {
   color-scheme: dark;
-  --background: #0b0b0b;
-  --foreground: #f5f5f5;
+  --background: #070a0e;
+  --foreground: #f3f5f4;
 }
 
 * {
@@ -22,7 +22,7 @@ body {
   min-height: 100vh;
   overflow-x: hidden;
   background:
-    radial-gradient(circle at 15% 10%, rgba(229, 9, 20, 0.08), transparent 25rem),
+    radial-gradient(circle at 78% 16%, rgba(78, 217, 209, 0.09), transparent 32rem),\n    radial-gradient(circle at 8% 85%, rgba(255, 123, 84, 0.055), transparent 25rem),
     var(--background);
   color: var(--foreground);
   text-rendering: optimizeLegibility;
@@ -40,7 +40,7 @@ body::before {
 }
 
 ::selection {
-  background: rgba(229, 9, 20, 0.85);
+  background: rgba(112, 227, 220, 0.9);
   color: white;
 }
 
@@ -50,21 +50,21 @@ body::before {
 }
 
 ::-webkit-scrollbar-track {
-  background: #0b0b0b;
+  background: #070a0e;
 }
 
 ::-webkit-scrollbar-thumb {
-  border: 2px solid #0b0b0b;
+  border: 2px solid #070a0e;
   border-radius: 999px;
   background: #3a3a3a;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #e50914;
+  background: #70e3dc;
 }
 
 :focus-visible {
-  outline: 2px solid #e50914;
+  outline: 2px solid #70e3dc;
   outline-offset: 4px;
 }
 
@@ -84,7 +84,7 @@ button {
   border-radius: 9999px;
   opacity: 0;
   transform: translate3d(-50%, -50%, 0);
-  background: radial-gradient(circle, rgba(229, 9, 20, 0.12) 0%, rgba(229, 9, 20, 0.035) 38%, transparent 72%);
+  background: radial-gradient(circle, rgba(112, 227, 220, 0.14) 0%, rgba(112, 227, 220, 0.035) 38%, transparent 72%);
   transition: opacity 250ms ease;
   mix-blend-mode: screen;
 }
