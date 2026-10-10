@@ -8,14 +8,14 @@ import { TechBadge } from "@/components/ui/tech-badge";
 import { fadeUp, stagger, viewport } from "@/lib/motion";
 import { stats } from "@/lib/data";
 
-const skillPreview = ["Generative AI", "Multimodal Learning", "RAG", "MLOps", "Next.js", "System Design"];
+const skillPreview = ["AI agents", "RAG systems", "Multimodal ML", "React", "APIs", "Data systems"];
 
 export function AboutSection() {
   const reduceMotion = useReducedMotion();
 
   return (
     <section id="about" className="section-shell scroll-mt-20">
-      <SectionHeader eyebrow="Featured profile" title="Research mindset. Product discipline." description="I work where machine learning research meets the constraints of real software: noisy data, latency budgets, evaluation gaps, and users who expect the system to simply work." />
+      <SectionHeader eyebrow="The builder behind the builds" title="Curiosity in the model. Craft in the product." description="I enjoy working across the boundary between intelligent systems and the software that makes them useful." />
       <motion.div
         variants={reduceMotion ? undefined : stagger}
         initial={reduceMotion ? undefined : "hidden"}
@@ -24,20 +24,20 @@ export function AboutSection() {
         className="grid overflow-hidden rounded-3xl border border-white/10 bg-surface shadow-card lg:grid-cols-[0.85fr_1.15fr]"
       >
         <motion.div variants={reduceMotion ? undefined : fadeUp} className="relative min-h-[420px] overflow-hidden">
-          <Image src="/profile.svg" alt="Profile portrait placeholder for Aryan Mehta" fill className="object-cover" sizes="(max-width: 1024px) 100vw, 42vw" />
+          <Image src="/profile.svg" alt="" fill className="object-cover" sizes="(max-width: 1024px) 100vw, 42vw" />
           <div className="absolute inset-0 bg-gradient-to-t from-surface via-transparent to-transparent" />
           <div className="absolute bottom-6 left-6">
             <p className="font-mono text-xs uppercase tracking-[0.24em] text-netflix">Now building</p>
-            <p className="mt-2 text-xl font-bold text-white">Reliable multimodal intelligence</p>
+            <p className="mt-2 text-xl font-bold text-white">From experiments to useful software</p>
           </div>
         </motion.div>
         <motion.div variants={reduceMotion ? undefined : fadeUp} className="flex flex-col justify-center p-7 md:p-12">
-          <h3 className="text-3xl font-black tracking-tight text-white md:text-4xl">Engineering AI beyond the demo.</h3>
+          <h3 className="text-3xl font-black tracking-tight text-white md:text-4xl">Research the idea. Engineer the experience.</h3>
           <p className="mt-5 leading-8 text-zinc-400">
-            I am a third-year Computer Science student specializing in generative AI, LLM systems, computer vision, and full-stack engineering. My work spans multimodal emotion recognition, geospatial learning, agentic workflows, and production web platforms.
+            I’m a fourth-year Computer Science and Engineering student at IIIT Sri City. My projects span LLM-powered workflows, retrieval systems, multimodal machine learning, and full-stack web applications.
           </p>
           <p className="mt-4 leading-8 text-zinc-400">
-            My goal is to join a team solving ambitious intelligence problems at scale—contributing equal parts experimental rigor, systems thinking, and a sharp instinct for the product experience.
+            I like taking a problem from its first sketch to a working system: understand the use case, choose a practical architecture, build the interface and backend, then test the edges that a demo can miss.
           </p>
           <div className="mt-7 flex flex-wrap gap-2">
             {skillPreview.map((skill) => <TechBadge key={skill}>{skill}</TechBadge>)}
