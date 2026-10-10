@@ -34,14 +34,14 @@ export function ContactSection() {
 
   return (
     <section id="contact" className="section-shell scroll-mt-20">
-      <SectionHeader eyebrow="Open channel" title="Let’s build the difficult thing." description="I’m interested in AI engineering internships, research collaborations, and product teams working on technically ambitious systems." />
+      <SectionHeader eyebrow="Send a crow · open channel" title="Let’s build the difficult thing." description="For AI engineering opportunities, research collaborations, and ambitious product teams—send a message and let’s talk about the work." />
       <motion.div
         initial={reduceMotion ? undefined : { opacity: 0, y: 24 }}
         whileInView={reduceMotion ? undefined : { opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.2 }}
         className="grid gap-5 lg:grid-cols-[0.7fr_1.3fr]"
       >
-        <GlassCard className="flex flex-col justify-between p-7 md:p-9">
+        <GlassCard className="mission-card flex flex-col justify-between border border-[#879C7C]/20 p-7 md:p-9">
           <div>
             <p className="font-mono text-xs uppercase tracking-[0.24em] text-netflix">Direct links</p>
             <h3 className="mt-4 text-3xl font-black tracking-tight text-white">Available for conversations that go somewhere.</h3>
@@ -52,13 +52,13 @@ export function ContactSection() {
               { label: "Email", href: `mailto:${siteConfig.email}`, icon: Mail },
               { label: "GitHub", href: siteConfig.github, icon: Github },
             ].map((link) => (
-              <a key={link.label} href={link.href} className="flex items-center gap-3 rounded-xl border border-white/10 bg-white/[0.03] px-4 py-3 text-sm text-zinc-300 transition hover:border-netflix/40 hover:bg-netflix/[0.05] hover:text-white">
+              <a key={link.label} href={link.href} className="flex items-center gap-3 rounded-sm border border-[#879C7C]/20 bg-white/[0.025] px-4 py-3 text-sm text-[#C5C8B9] transition hover:border-netflix/45 hover:bg-netflix/[0.07] hover:text-white">
                 <link.icon className="size-4 text-netflix" /> {link.label}
               </a>
             ))}
           </div>
         </GlassCard>
-        <GlassCard className="p-7 md:p-9">
+        <GlassCard className="mission-card border border-[#879C7C]/20 p-7 md:p-9">
           <form onSubmit={handleSubmit(onSubmit)} noValidate className="grid gap-5">
             <div className="grid gap-5 sm:grid-cols-2">
               <label className="grid gap-2 text-sm font-medium text-zinc-300">
