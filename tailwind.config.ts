@@ -54,7 +54,7 @@ const config: Config = {
         orbit: "orbit 16s linear infinite",
         "orbit-reverse": "orbit-reverse 22s linear infinite",
         shimmer: "shimmer 2s linear infinite",
-        "loading-bar": "loading-bar 1.7s cubic-bezier(.65,0,.35,1) forwards",
+        "loading-bar": "loading-bar 1.05s cubic-bezier(.65,0,.35,1) forwards",
         float: "float 6s ease-in-out infinite"
       },
       keyframes: {
