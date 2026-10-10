@@ -81,11 +81,9 @@ export interface GitHubAnalytics {
   followers: number;
   publicRepos: number;
   totalStars: number;
-  contributions: number[];
   languages: Array<{ name: string; percentage: number; color: string }>;
   topRepos: GitHubRepo[];
   recentActivity: GitHubEvent[];
-  isFallback?: boolean;
 }
 
 export interface ContactFormValues {
