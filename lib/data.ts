@@ -7,203 +7,226 @@ import {
   Network,
   SlidersHorizontal
 } from "lucide-react";
-import type {
-  Project,
-  Publication,
-  ResearchTopic,
-  SkillCategory,
-  Stat,
-  TimelineItem
-} from "@/types";
+import type { Project, ResearchTopic, SkillCategory, Stat } from "@/types";
 
 export const siteConfig = {
-  name: "Aryan Mehta",
-  role: "GenAI Engineer & Full-Stack Developer",
-  email: "hello@aryanmehta.dev",
-  github: "https://github.com/",
+  name: "Giresh Komal Velaga",
+  role: "AI + Full-Stack Developer",
+  email: "gireshvelaga@gmail.com",
+  github: "https://github.com/Giresh-458",
   linkedin: "https://www.linkedin.com/",
-  siteUrl: process.env.NEXT_PUBLIC_SITE_URL ?? "https://ai-cinema-portfolio.vercel.app",
+  siteUrl: process.env.NEXT_PUBLIC_SITE_URL ?? "https://github.com/Giresh-458/portfolio",
   description:
-    "Generative AI engineer building multimodal intelligence, retrieval systems, and production-grade web products."
+    "Computer Science student at IIIT Sri City building AI systems and full-stack products, from retrieval and agent workflows to user-facing applications."
 };
 
 export const stats: Stat[] = [
-  { label: "Projects completed", value: 12, suffix: "+" },
-  { label: "Research studies", value: 3 },
-  { label: "Months in industry", value: 8, suffix: "+" },
-  { label: "GitHub contributions", value: 480, suffix: "+" }
+  { label: "Public repositories", value: 12 },
+  { label: "Engineering tracks", value: 2 },
+  { label: "Featured projects", value: 7 },
+  { label: "Build mindset", value: 100, suffix: "%" }
 ];
 
 export const projects: Project[] = [
   {
-    id: "multimodal-emotion",
-    title: "Multimodal Emotion Recognition",
-    eyebrow: "Featured Research",
+    id: "ai-operations-agent",
+    title: "AI Operations Agent",
+    eyebrow: "AI Systems · Agentic Workflows",
     description:
-      "A research-grade affective computing pipeline that fuses facial, vocal, and textual cues for robust emotion classification.",
+      "A stateful AI operations platform for workflow automation and knowledge retrieval, with guardrails and human approval before sensitive actions.",
     problem:
-      "Single-modality emotion systems break under noisy audio, occluded faces, and ambiguous language. The system learns complementary signals across vision, speech, and text.",
+      "Operational requests can require intent extraction, policy lookup, validation, and action execution. The system separates those steps so that tool use is bounded and reviewable.",
     architecture:
-      "Three-stream late-fusion architecture with temporal attention. Video embeddings, wav2vec representations, and contextual text vectors are projected into a shared latent space before gated fusion.",
-    dataset:
-      "Benchmarked on MELD and IEMOCAP with speaker-aware splits, class-balanced sampling, and augmentation for low-resource emotion classes.",
+      "Streamlit interface → FastAPI backend → LangGraph workflow. Routes requests through safety checks, operational validation, or corrective retrieval using PostgreSQL with pgvector.",
     models:
-      "Vision Transformer, wav2vec 2.0, RoBERTa, bi-directional cross-attention, and calibrated ensemble heads.",
-    results:
-      "Improved weighted F1 by 8.4% over the strongest unimodal baseline while preserving stable performance under simulated modality dropout.",
+      "LangGraph, FastAPI, Streamlit, PostgreSQL/pgvector, corrective RAG, and multi-provider LLM routing.",
     contributions: [
-      "Designed modality-dropout training for resilience",
-      "Built reproducible preprocessing and evaluation pipelines",
-      "Implemented interpretable attention visualizations"
+      "Structured a stateful workflow with explicit routing and guardrail checks",
+      "Included human-in-the-loop approvals for sensitive operations",
+      "Connected knowledge retrieval with operational workflows and observability"
     ],
-    tech: ["PyTorch", "Transformers", "OpenCV", "Librosa", "MELD"],
-    githubUrl: "https://github.com/",
-    liveUrl: "#research",
+    tech: ["Python", "LangGraph", "FastAPI", "PostgreSQL", "pgvector"],
+    githubUrl: "https://github.com/Giresh-458/ai-operations-agent",
     image: "/projects/emotion.svg",
-    accent: "from-rose-950 via-red-900 to-zinc-950"
+    accent: "from-cyan-950 via-slate-900 to-[#0B1015]"
   },
   {
-    id: "spacenet-height",
-    title: "SpaceNet Building Height Estimation",
-    eyebrow: "Geospatial AI",
+    id: "healthcare-rag",
+    title: "Healthcare Document Intelligence",
+    eyebrow: "Generative AI · RAG",
     description:
-      "SAR and optical satellite fusion for dense urban building-height estimation with uncertainty-aware prediction.",
+      "A document question-answering system for clinical reports, combining semantic retrieval, keyword search, query routing, and privacy-aware processing.",
     problem:
-      "Accurate 3D urban maps are expensive to maintain. This project estimates building height from globally available satellite observations.",
+      "Clinical documents contain dense terminology and exact numeric values. A useful retrieval pipeline needs semantic matching without losing precise keyword and lab-value matches.",
     architecture:
-      "Dual-encoder CNN with SAR-specific normalization, optical feature pyramids, cross-modal fusion blocks, and a multi-scale regression decoder.",
-    dataset:
-      "SpaceNet 6/7 aligned imagery with LiDAR-derived height targets, geospatial tiling, cloud masking, and spatially disjoint validation.",
+      "PDF extraction and redaction → clinical entity extraction and chunking → dense and BM25 indexes → Reciprocal Rank Fusion → LLM response generation.",
     models:
-      "EfficientNet encoders, feature pyramid fusion, Huber regression, boundary-aware auxiliary loss, and Monte Carlo dropout.",
-    results:
-      "Reached 2.7 m median absolute error on held-out urban tiles and reduced high-rise underestimation by 19% against the RGB-only baseline.",
+      "FastAPI, Streamlit, ChromaDB, BM25, LangChain, all-MiniLM-L6-v2 embeddings, and adaptive query routing.",
     contributions: [
-      "Built co-registration and geospatial tiling pipeline",
-      "Designed SAR-optical fusion ablations",
-      "Created uncertainty and residual map visualizations"
+      "Combined dense semantic retrieval with sparse keyword search",
+      "Added query routing for fact lookup, aggregation, and irrelevant requests",
+      "Designed redaction and healthcare-aware document chunking stages"
     ],
-    tech: ["PyTorch", "Rasterio", "SAR", "CNN", "GeoPandas"],
-    githubUrl: "https://github.com/",
-    liveUrl: "#projects",
+    tech: ["Python", "RAG", "ChromaDB", "BM25", "FastAPI"],
+    githubUrl: "https://github.com/Giresh-458/Healthcare-Document-RAG-Assitant",
     image: "/projects/spacenet.svg",
-    accent: "from-violet-950 via-indigo-900 to-zinc-950"
+    accent: "from-emerald-950 via-teal-950 to-[#0B1015]"
+  },
+  {
+    id: "multimodal-mood",
+    title: "Multimodal Mood Drift Analysis",
+    eyebrow: "Machine Learning · Multimodal",
+    description:
+      "An end-to-end pipeline that combines speech, text, temporal mood trends, and language-model reasoning to describe how a speaker’s mood changes over time.",
+    problem:
+      "Single emotion predictions miss the broader story. This pipeline aims to move from isolated audio and text predictions toward a sequence-level explanation of mood changes.",
+    architecture:
+      "Audio emotion recognition + text emotion classification + Whisper transcription → multimodal fusion → per-speaker timelines → temporal trend modelling → LLM-generated explanations.",
+    models:
+      "CRNN, fine-tuned DistilRoBERTa, Whisper Base, attention-based fusion, LSTM, and Mistral-7B with QLoRA.",
+    contributions: [
+      "Organized the workflow into reproducible pipeline stages",
+      "Combined separate audio and text signals into mood timelines",
+      "Added a reasoning stage to explain temporal patterns in natural language"
+    ],
+    tech: ["PyTorch", "Transformers", "Whisper", "LSTM", "QLoRA"],
+    githubUrl: "https://github.com/Giresh-458/Multimodal-Mood-drift-analysis",
+    image: "/projects/emotion.svg",
+    accent: "from-violet-950 via-indigo-950 to-[#0B1015]"
   },
   {
     id: "restoconnect",
     title: "RestoConnect",
-    eyebrow: "Full-Stack Platform",
+    eyebrow: "Full-Stack · Product Engineering",
     description:
-      "A multi-tenant restaurant operations platform spanning ordering, analytics, payments, and real-time kitchen workflows.",
+      "A restaurant management platform with a React + Vite frontend and an Express/MongoDB backend, organized as a deployable multi-service application.",
     problem:
-      "Independent restaurants juggle fragmented tools for menus, orders, inventory, and customer engagement. RestoConnect unifies the operating surface.",
+      "Restaurant workflows need a consistent interface across frontend and backend services, while deployment configuration must work outside a developer’s machine.",
     architecture:
-      "MERN platform with role-based dashboards, REST APIs, event-driven order updates, Redis-backed sessions, and isolated tenant data.",
-    dataset:
-      "Synthetic operational dataset modelling 50K orders, peak-hour concurrency, inventory changes, and payment lifecycle events.",
-    models:
-      "Demand forecasting prototype using gradient-boosted trees alongside deterministic analytics and anomaly alerts.",
-    results:
-      "Sustained sub-180 ms p95 API response times in load tests with optimistic UI updates and idempotent payment webhooks.",
+      "React/Vite client → Express REST API → MongoDB, with Redis and Docker Compose available in the local production-style stack.",
+    models: "",
     contributions: [
-      "Implemented JWT rotation and role-based access",
-      "Integrated payment and transactional email workflows",
-      "Built responsive analytics and kitchen dashboards"
+      "Separated frontend and backend applications",
+      "Moved runtime configuration into environment variables",
+      "Added Dockerfiles and deployment configuration for the application services"
     ],
-    tech: ["React", "Node.js", "MongoDB", "Express", "Stripe"],
-    githubUrl: "https://github.com/",
-    liveUrl: "#contact",
+    tech: ["React", "Vite", "Node.js", "Express", "MongoDB", "Docker"],
+    githubUrl: "https://github.com/Giresh-458/RestoConnect-React",
     image: "/projects/restoconnect.svg",
-    accent: "from-amber-950 via-orange-900 to-zinc-950"
+    accent: "from-amber-950 via-orange-950 to-[#0B1015]"
+  },
+  {
+    id: "mood-tracker",
+    title: "Mood Tracker",
+    eyebrow: "Full-Stack · Deployed Application",
+    description:
+      "A personal mood journal with account management, weekly visualizations, and data export, built with Node.js and MongoDB.",
+    problem:
+      "A journal becomes more useful when entries can be revisited, emotional patterns can be seen over time, and personal data can be exported.",
+    architecture:
+      "Express + EJS application with MongoDB/Mongoose persistence, session-based authentication, Chart.js trend views, and PDF export.",
+    models: "",
+    contributions: [
+      "Implemented daily mood and note logging",
+      "Built weekly mood visualizations and history export",
+      "Added account management and input protections documented in the project README"
+    ],
+    tech: ["Node.js", "Express", "EJS", "MongoDB", "Chart.js"],
+    githubUrl: "https://github.com/Giresh-458/Mood_Tracker",
+    liveUrl: "https://mood-tracker-1-h1l8.onrender.com/",
+    image: "/projects/restoconnect.svg",
+    accent: "from-rose-950 via-pink-950 to-[#0B1015]"
+  },
+  {
+    id: "cgpa-calculator",
+    title: "IIITS CGPA Calculator",
+    eyebrow: "Full-Stack · Student Tool",
+    description:
+      "An academic calculator for IIIT Sri City students to calculate and save SGPA and CGPA across CSE, ECE, and AIDS grading paths.",
+    problem:
+      "Manual academic calculations are repetitive and easy to get wrong when subject choices, honors, or BTP paths differ by semester.",
+    architecture:
+      "Node.js + Express + EJS application with MongoDB Atlas persistence, password hashing, sessions, and branch-specific subject configuration.",
+    models: "",
+    contributions: [
+      "Implemented SGPA/CGPA calculation flows for supported branches",
+      "Account-based access with hashed passwords and persisted sessions",
+      "Stored results in the cloud so students can revisit them"
+    ],
+    tech: ["Node.js", "Express", "EJS", "MongoDB Atlas"],
+    githubUrl: "https://github.com/Giresh-458/IIITS_CGPA_Calc",
+    liveUrl: "https://iiits-cgpa-calculator.onrender.com/",
+    image: "/projects/restoconnect.svg",
+    accent: "from-blue-950 via-slate-900 to-[#0B1015]"
+  },
+  {
+    id: "bpow-simulator",
+    title: "Proof-of-Work Blockchain Simulator",
+    eyebrow: "Systems · Interactive Simulation",
+    description:
+      "A Streamlit simulator for exploring mining races, difficulty adjustments, network delay, and stale branches in a proof-of-work blockchain.",
+    problem:
+      "Blockchain mining is easier to understand when competing miners and temporary chain splits can be observed rather than described only with diagrams.",
+    architecture:
+      "Interactive controls drive a mining simulation with configurable miner hash rates and difficulty, randomized message latency, chain visualization, and stale-branch pruning.",
+    models: "",
+    contributions: [
+      "Visualized main-chain and stale-block relationships",
+      "Modelled mining competition under network latency",
+      "Added dynamic difficulty adjustment and background pruning"
+    ],
+    tech: ["Python", "Streamlit", "Blockchain", "Simulation"],
+    githubUrl: "https://github.com/Giresh-458/BPoW_Simulator",
+    image: "/projects/spacenet.svg",
+    accent: "from-purple-950 via-slate-900 to-[#0B1015]"
   }
 ];
 
 export const researchTopics: ResearchTopic[] = [
-  { name: "Large Language Models", description: "Evaluation, inference, and product integration for open and proprietary foundation models.", icon: BrainCircuit },
-  { name: "RAG Systems", description: "Hybrid retrieval, reranking, grounding, citations, and measurable answer quality.", icon: Database },
-  { name: "AI Agents", description: "Tool-using systems with bounded autonomy, durable state, and human checkpoints.", icon: Bot },
-  { name: "Transformers", description: "Attention architectures for language, vision, audio, and multimodal representation learning.", icon: Network },
-  { name: "Prompt Engineering", description: "Structured prompting, context design, guardrails, and regression-tested workflows.", icon: MessagesSquare },
-  { name: "Fine-Tuning", description: "PEFT, LoRA, preference optimization, data curation, and efficient model adaptation.", icon: SlidersHorizontal },
-  { name: "Vector Databases", description: "Embedding pipelines, semantic indexing, metadata filters, and retrieval observability.", icon: GitBranch }
+  { name: "AI Agents", description: "Stateful tool use, bounded autonomy, workflow routing, and human checkpoints.", icon: Bot },
+  { name: "RAG Systems", description: "Hybrid retrieval, grounding, chunking, routing, and answer quality.", icon: Database },
+  { name: "Multimodal ML", description: "Combining speech, text, and temporal representations into richer signals.", icon: Network },
+  { name: "LLM Applications", description: "Turning language models into reliable product features and workflows.", icon: BrainCircuit },
+  { name: "Product Engineering", description: "Designing APIs, data flows, and responsive application experiences.", icon: MessagesSquare },
+  { name: "Evaluation & Safety", description: "Guardrails, validation, observability, and human review around AI systems.", icon: SlidersHorizontal },
+  { name: "Developer Workflow", description: "Version control, reproducible setup, containers, and deployment practices.", icon: GitBranch }
 ];
 
 export const skillCategories: SkillCategory[] = [
   {
-    title: "Programming",
+    title: "AI & intelligent systems",
     skills: [
-      { name: "Python", level: 92 },
-      { name: "TypeScript", level: 88 },
-      { name: "JavaScript", level: 90 },
-      { name: "C++", level: 78 }
+      { name: "Python" },
+      { name: "PyTorch" },
+      { name: "LangGraph" },
+      { name: "RAG / Retrieval" },
+      { name: "Hugging Face" },
+      { name: "Multimodal ML" }
     ]
   },
   {
-    title: "AI / ML",
+    title: "Full-stack engineering",
     skills: [
-      { name: "PyTorch", level: 88 },
-      { name: "TensorFlow", level: 78 },
-      { name: "Hugging Face", level: 90 },
-      { name: "Transformers", level: 86 }
+      { name: "JavaScript / TypeScript" },
+      { name: "React" },
+      { name: "Next.js" },
+      { name: "Node.js / Express" },
+      { name: "MongoDB" },
+      { name: "REST APIs" }
     ]
   },
   {
-    title: "Web Systems",
+    title: "Data & infrastructure",
     skills: [
-      { name: "React", level: 92 },
-      { name: "Next.js", level: 90 },
-      { name: "Node.js", level: 86 },
-      { name: "MongoDB", level: 82 }
-    ]
-  },
-  {
-    title: "Cloud & Delivery",
-    skills: [
-      { name: "Docker", level: 82 },
-      { name: "AWS", level: 74 },
-      { name: "GitHub Actions", level: 84 },
-      { name: "Observability", level: 76 }
+      { name: "PostgreSQL / pgvector" },
+      { name: "ChromaDB" },
+      { name: "Docker" },
+      { name: "Git / GitHub" },
+      { name: "Streamlit" },
+      { name: "Deployment workflows" }
     ]
   }
 ];
 
-export const publications: Publication[] = [
-  {
-    id: "robust-multimodal-affect",
-    title: "Robust Multimodal Affect Recognition Under Partial Modality Failure",
-    venue: "Undergraduate Research Review",
-    year: "2026",
-    abstract:
-      "Studies emotion recognition when one or more input modalities become noisy or unavailable at inference time.",
-    methodology:
-      "Modality dropout, gated cross-attention, speaker-aware evaluation, and confidence calibration across MELD and IEMOCAP.",
-    results:
-      "The multimodal model retains 91% of full-input F1 under single-modality dropout and exceeds late fusion baselines.",
-    futureWork:
-      "Extend evaluation to multilingual dialogue, physiological signals, and online adaptation for new speakers.",
-    tech: ["Multimodal AI", "Affective Computing", "PyTorch"]
-  },
-  {
-    id: "sar-optical-fusion",
-    title: "Cross-Modal SAR–Optical Fusion for Urban Height Regression",
-    venue: "Geospatial AI Working Paper",
-    year: "2025",
-    abstract:
-      "Explores learned fusion of radar and optical satellite representations for scalable building-height estimation.",
-    methodology:
-      "Dual encoders, feature-pyramid fusion, boundary losses, spatial holdouts, and uncertainty estimation.",
-    results:
-      "Fusion improves median absolute error by 14% over optical-only models, especially under cloud cover.",
-    futureWork:
-      "Evaluate foundation geospatial encoders and temporal satellite stacks for change-aware 3D mapping.",
-    tech: ["Remote Sensing", "Computer Vision", "Geospatial ML"]
-  }
-];
-
-export const timeline: TimelineItem[] = [
-  { period: "2024", title: "ML Internship", description: "Built data pipelines and production model evaluation workflows." },
-  { period: "2025", title: "Research Projects", description: "Moved from model demos to rigorous multimodal and geospatial experiments." },
-  { period: "2025", title: "Hackathons", description: "Shipped time-boxed AI products with cross-functional teams." },
-  { period: "2026", title: "Certifications", description: "Deepened cloud, MLOps, and responsible AI engineering practice." },
-  { period: "Next", title: "Future Goals", description: "Contribute to frontier multimodal systems and trustworthy AI infrastructure." }
-];
+export const publications = [];
+export const timeline = [];
