@@ -14,7 +14,7 @@ export function LoadingScreen() {
     const timeout = window.setTimeout(() => {
       sessionStorage.setItem("portfolio-intro-seen", "true");
       setVisible(false);
-    }, 1900);
+    }, 1250);
     return () => window.clearTimeout(timeout);
   }, [reduceMotion]);
 
@@ -41,7 +41,7 @@ export function LoadingScreen() {
             <div className="mt-8 h-1 overflow-hidden rounded-full bg-white/10">
               <div className="h-full origin-left animate-loading-bar bg-netflix shadow-glow" />
             </div>
-            <p className="mt-3 font-mono text-[10px] uppercase tracking-[0.28em] text-zinc-600">Initializing intelligence</p>
+            <p className="mt-3 font-mono text-[10px] uppercase tracking-[0.28em] text-zinc-600">FOCUS · BUILD · EVOLVE</p>
           </div>
         </motion.div>
       ) : null}
