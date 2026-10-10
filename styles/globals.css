@@ -2,167 +2,40 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  color-scheme: dark;
-  --background: #080a09;
-  --foreground: #f3eee3;
-}
-
-* {
-  box-sizing: border-box;
-  border-color: rgba(243, 238, 227, 0.1);
-}
-
-html {
-  scroll-behavior: smooth;
-  background: var(--background);
-}
-
+:root { color-scheme: dark; --background: #080B12; --foreground: #F4F5F7; }
+* { box-sizing: border-box; border-color: rgba(244, 245, 247, 0.1); }
+html { scroll-behavior: smooth; background: var(--background); }
 body {
   min-height: 100vh;
   overflow-x: hidden;
-  background:
-    radial-gradient(ellipse at 81% 10%, rgba(185, 55, 43, 0.12), transparent 34rem),
-    radial-gradient(ellipse at 8% 68%, rgba(57, 107, 64, 0.13), transparent 34rem),
-    var(--background);
+  background: radial-gradient(ellipse at 82% 4%, rgba(24, 102, 126, 0.11), transparent 32rem), var(--background);
   color: var(--foreground);
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
 }
-
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: -1;
-  pointer-events: none;
-  opacity: 0.03;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.75'/%3E%3C/svg%3E");
-}
-
-::selection {
-  background: rgba(232, 93, 71, 0.8);
-  color: #fff9ed;
-}
-
-::-webkit-scrollbar {
-  width: 9px;
-  height: 9px;
-}
-
-::-webkit-scrollbar-track {
-  background: #080a09;
-}
-
-::-webkit-scrollbar-thumb {
-  border: 2px solid #080a09;
-  border-radius: 9999px;
-  background: #7d3d32;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #e85d47;
-}
-
-:focus-visible {
-  outline: 2px solid #f08a62;
-  outline-offset: 4px;
-}
-
-a,
-button {
-  -webkit-tap-highlight-color: transparent;
-}
-
-.cursor-glow {
-  position: fixed;
-  left: 0;
-  top: 0;
-  z-index: 90;
-  width: 420px;
-  height: 420px;
-  pointer-events: none;
-  border-radius: 9999px;
-  opacity: 0;
-  transform: translate3d(-50%, -50%, 0);
-  background: radial-gradient(circle, rgba(232, 93, 71, 0.12) 0%, rgba(70, 112, 74, 0.035) 38%, transparent 72%);
-  transition: opacity 250ms ease;
-  mix-blend-mode: screen;
-}
-
+::selection { background: rgba(82, 205, 216, 0.8); color: #061014; }
+::-webkit-scrollbar { width: 9px; height: 9px; }
+::-webkit-scrollbar-track { background: #080B12; }
+::-webkit-scrollbar-thumb { border: 2px solid #080B12; border-radius: 9999px; background: #31515D; }
+::-webkit-scrollbar-thumb:hover { background: #54CBD4; }
+:focus-visible { outline: 2px solid #68D8E0; outline-offset: 4px; }
+a, button { -webkit-tap-highlight-color: transparent; }
 .hero-gradient-text {
-  background-image: linear-gradient(108deg, #e7f1d8 2%, #9bc59a 25%, #f5b366 53%, #ed6043 76%, #af3434 100%);
-  background-size: 220% 220%;
+  background-image: linear-gradient(105deg, #BDF7F0 0%, #66D8E0 39%, #70AEE8 72%, #C1E8F3 100%);
+  background-size: 180% 100%;
   background-position: 0% 50%;
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
   -webkit-text-fill-color: transparent;
-  animation: hero-chroma-sweep 6s ease-in-out infinite;
+  animation: hero-color-drift 8s ease-in-out infinite;
 }
-
-@keyframes hero-chroma-sweep {
-  0%, 100% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-}
-
-.haori-checker {
-  background-image: repeating-conic-gradient(#294c33 0% 25%, #101812 0% 50%);
-  background-size: 28px 28px;
-}
-
-.mission-card {
-  isolation: isolate;
-  background:
-    linear-gradient(145deg, rgba(37, 58, 39, 0.2), transparent 45%),
-    linear-gradient(180deg, rgba(255,255,255,0.025), rgba(255,255,255,0.005)),
-    #0d120f;
-}
-
-.mission-card::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 3;
-  pointer-events: none;
-  opacity: 0;
-  transform: translateX(-80%);
-  background: linear-gradient(118deg, transparent 40%, rgba(238, 88, 63, 0.18) 49%, transparent 58%);
-  transition: transform 850ms ease, opacity 180ms ease;
-}
-
-.mission-card:hover::after {
-  opacity: 1;
-  transform: translateX(80%);
-}
-
-.haori-stamp {
-  background: repeating-conic-gradient(#294c33 0% 25%, #101812 0% 50%) 0 / 12px 12px;
-}
-
-.section-shell {
-  @apply container relative py-20 md:py-28;
-}
-
-@media (pointer: fine) {
-  body:hover .cursor-glow {
-    opacity: 1;
-  }
-}
-
+@keyframes hero-color-drift { 0%, 100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
+.haori-checker { background-image: repeating-conic-gradient(#214B45 0% 25%, #0C161A 0% 50%); background-size: 28px 28px; }
+.haori-stamp { background: repeating-conic-gradient(#214B45 0% 25%, #0C161A 0% 50%) 0 / 12px 12px; }
+.mission-card { background: linear-gradient(145deg, rgba(41, 73, 83, 0.13), rgba(13, 19, 30, 0.96) 52%); }
+.section-shell { @apply container relative py-20 md:py-28; }
 @media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-
-  *, *::before, *::after {
-    scroll-behavior: auto !important;
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-  }
-
-  .cursor-glow {
-    display: none;
-  }
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { scroll-behavior: auto !important; animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
 }
