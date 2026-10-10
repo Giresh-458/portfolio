@@ -1,9 +1,19 @@
-<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <defs><radialGradient id="g" cx="0" cy="0" r="1" gradientTransform="translate(842 183) rotate(135) scale(542)"><stop stop-color="#E50914" stop-opacity=".35"/><stop offset="1" stop-color="#0B0B0B" stop-opacity="0"/></radialGradient></defs>
-  <rect width="1200" height="630" fill="#0B0B0B"/><rect width="1200" height="630" fill="url(#g)"/>
-  <text x="84" y="122" fill="#E50914" font-family="Arial Black, sans-serif" font-size="48" font-weight="900">AM.</text>
-  <text x="84" y="297" fill="#fff" font-family="Arial Black, sans-serif" font-size="76" font-weight="900">BUILDING INTELLIGENT</text>
-  <text x="84" y="383" fill="#E50914" font-family="Arial Black, sans-serif" font-size="76" font-weight="900">SYSTEMS WITH AI</text>
-  <text x="88" y="476" fill="#A1A1AA" font-family="Arial, sans-serif" font-size="28" letter-spacing="4">GENAI ENGINEER · RESEARCHER · FULL-STACK DEVELOPER</text>
-  <g stroke="#E50914" stroke-opacity=".28"><circle cx="1040" cy="125" r="55"/><circle cx="1040" cy="125" r="88"/><path d="M912 98L1040 125L1117 231"/></g>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" fill="none">
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="1200" y2="630" gradientUnits="userSpaceOnUse"><stop stop-color="#0B2026"/><stop offset=".52" stop-color="#0B1017"/><stop offset="1" stop-color="#090B10"/></linearGradient>
+  <radialGradient id="glow"><stop stop-color="#75E0D9" stop-opacity=".2"/><stop offset="1" stop-color="#75E0D9" stop-opacity="0"/></radialGradient>
+  <linearGradient id="water" x1="775" y1="95" x2="1148" y2="495" gradientUnits="userSpaceOnUse"><stop stop-color="#E0FFFA"/><stop offset=".45" stop-color="#75E0D9"/><stop offset="1" stop-color="#2B7FC1"/></linearGradient>
+  <linearGradient id="fire" x1="735" y1="525" x2="1100" y2="120" gradientUnits="userSpaceOnUse"><stop stop-color="#FF674E"/><stop offset=".55" stop-color="#FF9E72"/><stop offset="1" stop-color="#FFE2A0"/></linearGradient>
+</defs>
+<rect width="1200" height="630" fill="url(#bg)"/><circle cx="950" cy="312" r="335" fill="url(#glow)"/>
+<g stroke="#DDFEFB" stroke-opacity=".055"><path d="M0 105H1200M0 210H1200M0 315H1200M0 420H1200M0 525H1200"/><path d="M100 0V630M200 0V630M300 0V630M400 0V630M500 0V630M600 0V630M700 0V630M800 0V630M900 0V630M1000 0V630M1100 0V630"/></g>
+<rect x="68" y="72" width="68" height="68" rx="16" fill="#75E0D9" fill-opacity=".1" stroke="#75E0D9" stroke-opacity=".4"/><text x="102" y="115" fill="#A6FFF7" text-anchor="middle" font-family="Arial,sans-serif" font-size="27" font-weight="700">GV</text>
+<text x="68" y="207" fill="#9DEFE8" font-family="monospace" font-size="15" letter-spacing="5">GIRESH KOMAL VELAGA / PORTFOLIO</text>
+<text x="62" y="312" fill="#F3F5F4" font-family="Arial,sans-serif" font-size="77" font-weight="700" letter-spacing="-4">AI with intent.</text>
+<text x="62" y="405" fill="#F3F5F4" font-family="Arial,sans-serif" font-size="77" font-weight="700" letter-spacing="-4">Built to <tspan fill="#75E0D9">ship.</tspan></text>
+<text x="68" y="468" fill="#ABB9BD" font-family="Arial,sans-serif" font-size="23">AI engineering × full-stack products</text>
+<path d="M748 355C799 196 934 127 1059 170C1154 202 1175 306 1119 372C1062 439 953 452 892 401C826 346 864 262 940 258C1010 253 1051 301 1026 341" stroke="url(#water)" stroke-width="9" stroke-linecap="round" opacity=".9"/>
+<path d="M790 506C855 460 886 403 899 348C915 286 954 260 987 225C990 286 1044 305 1058 359C1074 426 1022 476 964 499C1002 455 1001 414 978 391C954 366 923 379 910 409C895 445 866 483 790 506Z" stroke="url(#fire)" stroke-width="6" stroke-linejoin="round" opacity=".9"/>
+<path d="M794 513L1119 183" stroke="#E8FFFC" stroke-opacity=".55" stroke-width="2.5" stroke-linecap="round"/>
+<text x="68" y="570" fill="#65858A" font-family="monospace" font-size="12" letter-spacing="4">FOCUS · BUILD · EVOLVE</text>
 </svg>
