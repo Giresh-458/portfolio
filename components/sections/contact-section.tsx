@@ -45,14 +45,12 @@ export function ContactSection() {
           <div>
             <p className="font-mono text-xs uppercase tracking-[0.24em] text-netflix">Direct links</p>
             <h3 className="mt-4 text-3xl font-black tracking-tight text-white">Available for conversations that go somewhere.</h3>
-            <p className="mt-4 leading-7 text-zinc-500">Response time is typically within 24 hours.</p>
+            <p className="mt-4 leading-7 text-zinc-500">For internships, engineering roles, and technical collaborations, the simplest route is a direct message.</p>
           </div>
           <div className="mt-10 grid gap-3">
             {[
               { label: "Email", href: `mailto:${siteConfig.email}`, icon: Mail },
-              { label: "LinkedIn", href: siteConfig.linkedin, icon: Linkedin },
               { label: "GitHub", href: siteConfig.github, icon: Github },
-              { label: "Download resume", href: "/api/download/resume", icon: Download }
             ].map((link) => (
               <a key={link.label} href={link.href} className="flex items-center gap-3 rounded-xl border border-white/10 bg-white/[0.03] px-4 py-3 text-sm text-zinc-300 transition hover:border-netflix/40 hover:bg-netflix/[0.05] hover:text-white">
                 <link.icon className="size-4 text-netflix" /> {link.label}
