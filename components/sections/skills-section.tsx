@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
-import { GlassCard } from "@/components/ui/glass-card";
+import { motion } from "framer-motion";\nimport { GlassCard } from "@/components/ui/glass-card";
 import { NetflixRow } from "@/components/ui/netflix-row";
 import { SectionHeader } from "@/components/ui/section-header";
 import { skillCategories } from "@/lib/data";
@@ -11,7 +11,7 @@ export function SkillsSection() {
 
   return (
     <section id="skills" className="section-shell scroll-mt-20">
-      <SectionHeader eyebrow="Technical depth" title="An engineering stack built for AI products." />
+      <SectionHeader eyebrow="The toolkit" title="Two disciplines. One builder’s mindset." description="A practical stack spanning intelligent systems, application engineering, and the infrastructure connecting them." />
       <NetflixRow ariaLabel="Technical skill categories">
         {skillCategories.map((category) => (
           <GlassCard key={category.title} className="w-[82vw] max-w-md shrink-0 snap-center p-7 md:w-[430px]">
