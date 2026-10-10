@@ -38,7 +38,7 @@ export function Navbar() {
             </a>
           ))}
           <Button asChild size="sm">
-            <a href="/api/download/resume" download>Resume</a>
+            <a href="#contact">Let’s talk</a>
           </Button>
         </div>
         <Button variant="ghost" size="icon" className="lg:hidden" onClick={() => setOpen((value) => !value)} aria-label={open ? "Close navigation" : "Open navigation"} aria-expanded={open}>
