@@ -9,10 +9,6 @@ A personal portfolio connecting AI engineering and full-stack product work with 
 - Animated SVG overlays and reduced-motion support
 - GitHub REST API for live public repository, language, and recent activity data
 
-## Character artwork and usage note
-
-The preview currently loads character stills directly from the official Demon Slayer: Hashira Training website. I have not verified that the site grants reuse permission. Treat those stills as a visual prototype only; before using this portfolio as a public job-search or commercial site, obtain the relevant permission or replace the URLs with original or appropriately licensed artwork. An unofficial-fan disclaimer does not itself grant rights.
-
 ## Local development
 
 ~~~bash
