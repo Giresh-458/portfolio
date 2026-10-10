@@ -25,7 +25,7 @@ export function HeroSection() {
         <motion.div
           initial={reduceMotion ? undefined : "hidden"}
           animate={reduceMotion ? undefined : "visible"}
-          variants={{ visible: { transition: { staggerChildren: 0.11, delayChildren: 0.12 } } }}
+          variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.11, delayChildren: 0.12 } } }}
           className="relative z-10 py-10 lg:py-16"
         >
           <motion.div variants={reduceMotion ? undefined : rise} className="mb-7 flex items-center gap-3">
