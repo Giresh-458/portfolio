@@ -11,7 +11,7 @@ export function AILabSection() {
 
   return (
     <section id="ai-lab" className="section-shell scroll-mt-20">
-      <SectionHeader eyebrow="Research stack" title="AI Research Lab" description="A focused working set for building, adapting, and evaluating modern intelligent systems." />
+      <SectionHeader eyebrow="The workshop" title="The pieces behind the intelligence." description="A closer look at the building blocks behind agent workflows, retrieval systems, and multimodal applications." />
       <div className="grid gap-8 lg:grid-cols-[0.8fr_1.2fr]">
         <motion.div
           initial={reduceMotion ? undefined : { opacity: 0, scale: 0.9 }}
