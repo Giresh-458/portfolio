@@ -1,12 +1,12 @@
-# Giresh Velaga — AI × Full-Stack Portfolio
+# Giresh Velaga — AI Engineering & Full-Stack Portfolio
 
-A personal portfolio for AI engineering and full-stack product work. The visual direction is Demon Slayer-inspired: ink-black Taisho-night scenery, a rising red moon, a checkered haori motif, original swordsman-inspired SVG artwork, animated Water Breathing ribbons and Hinokami flame trails, drifting petals and embers, and project mission dossiers. The anime aesthetic frames the work; the project content remains about real engineering.
+A personal portfolio highlighting AI systems, applied machine learning, and full-stack products. The visual direction takes a restrained, cinematic cue from Demon Slayer: deep midnight tones, a blood-moon accent, water-like motion, a blade-inspired slash, and a quiet checkered motif. The anime influence supports the experience instead of competing with the engineering work.
 
 ## Built with
 
 - Next.js 14, React 18, TypeScript
 - Tailwind CSS, Framer Motion, Lucide
-- Original SVG project artwork and canvas particle animation
+- Responsive project cards and accessible motion preferences
 - GitHub REST API for live public repository, language, and recent activity data
 
 ## Local development
@@ -25,10 +25,10 @@ Open `http://localhost:3000`. The public GitHub analytics endpoint defaults to `
 GITHUB_USERNAME=Giresh-458
 GITHUB_TOKEN=
 NEXT_PUBLIC_SITE_URL=https://your-deployed-domain.example
-``
+```
 
 - `GITHUB_TOKEN` is optional and stays server-side. A token can help with API rate limits.
-- `NEXT_PUBLIC_SITE_URL` should be set to the real deployed origin before publishing, so metadata and canonical URLs point to the correct site.
+- `NEXT_PUBLIC_SITE_URL` should point to the real deployed origin so metadata and canonical URLs are correct.
 - Analytics use live public GitHub data. If GitHub is unavailable or rate-limited, the page displays an unavailable message rather than fabricated activity statistics.
 
 ## Deployment

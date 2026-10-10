@@ -1,17 +1,27 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" fill="none">
-<defs><linearGradient id="night" x1="0" y1="0" x2="1200" y2="630" gradientUnits="userSpaceOnUse"><stop stop-color="#17291A"/><stop offset=".5" stop-color="#0C120C"/><stop offset="1" stop-color="#080A09"/></linearGradient><linearGradient id="water" x1="720" y1="110" x2="1150" y2="500" gradientUnits="userSpaceOnUse"><stop stop-color="#DDF2CE"/><stop offset=".5" stop-color="#80B783"/><stop offset="1" stop-color="#397D73"/></linearGradient><linearGradient id="fire" x1="740" y1="550" x2="1090" y2="120" gradientUnits="userSpaceOnUse"><stop stop-color="#B63232"/><stop offset=".5" stop-color="#ED613D"/><stop offset="1" stop-color="#F7C274"/></linearGradient><pattern id="checks" width="30" height="30" patternUnits="userSpaceOnUse"><rect width="30" height="30" fill="#142018"/><rect width="15" height="15" fill="#426D43"/><rect x="15" y="15" width="15" height="15" fill="#426D43"/></pattern></defs>
+<defs>
+  <linearGradient id="night" x1="0" y1="0" x2="1200" y2="630" gradientUnits="userSpaceOnUse"><stop stop-color="#111E2C"/><stop offset=".52" stop-color="#080B12"/><stop offset="1" stop-color="#090D14"/></linearGradient>
+  <linearGradient id="water" x1="620" y1="135" x2="1110" y2="530" gradientUnits="userSpaceOnUse"><stop stop-color="#C7F4EF"/><stop offset=".38" stop-color="#67DCE2"/><stop offset=".78" stop-color="#2393B0"/><stop offset="1" stop-color="#B6E9EF"/></linearGradient>
+  <linearGradient id="flame" x1="760" y1="530" x2="1090" y2="170" gradientUnits="userSpaceOnUse"><stop stop-color="#8D2B39"/><stop offset=".48" stop-color="#E65445"/><stop offset=".82" stop-color="#F5A15F"/><stop offset="1" stop-color="#FFE1A6"/></linearGradient>
+  <linearGradient id="accent" x1="60" y1="330" x2="630" y2="330" gradientUnits="userSpaceOnUse"><stop stop-color="#BDF7F0"/><stop offset=".44" stop-color="#66D8E0"/><stop offset="1" stop-color="#70AEE8"/></linearGradient>
+  <pattern id="checks" width="24" height="24" patternUnits="userSpaceOnUse"><rect width="24" height="24" fill="#0B1718"/><rect width="12" height="12" fill="#214F49"/><rect x="12" y="12" width="12" height="12" fill="#214F49"/></pattern>
+</defs>
 <rect width="1200" height="630" fill="url(#night)"/>
-<g stroke="#F2E6D1" stroke-opacity=".05"><path d="M0 105H1200M0 210H1200M0 315H1200M0 420H1200M0 525H1200"/><path d="M100 0V630M200 0V630M300 0V630M400 0V630M500 0V630M600 0V630M700 0V630M800 0V630M900 0V630M1000 0V630M1100 0V630"/></g>
-<rect x="60" y="58" width="58" height="58" fill="url(#checks)" stroke="#9DB58F" stroke-opacity=".55"/><text x="89" y="94" fill="#F3EEE3" text-anchor="middle" font-family="Arial,sans-serif" font-size="23" font-weight="700">GV</text>
-<text x="60" y="160" fill="#A8C69D" font-family="monospace" font-size="13" letter-spacing="4">GIRESH KOMAL VELAGA / FIELD JOURNAL</text>
-<text x="54" y="265" fill="#F3EEE3" font-family="Arial,sans-serif" font-size="74" font-weight="700" letter-spacing="-3">BREATHE IN.</text>
-<text x="54" y="350" fill="#E85D47" font-family="Arial,sans-serif" font-size="74" font-weight="700" letter-spacing="-3">BUILD BOLD.</text>
-<text x="60" y="408" fill="#C1C6B9" font-family="Arial,sans-serif" font-size="20">AI engineering × full-stack products</text>
-<text x="60" y="452" fill="#A4BDA0" font-family="monospace" font-size="12" letter-spacing="3">WATER BREATHING / HINOKAMI KAGURA</text>
-<circle cx="957" cy="284" r="203" fill="#B83C31" fill-opacity=".16"/><circle cx="957" cy="284" r="145" fill="#C74B39" fill-opacity=".45" stroke="#F3C99A" stroke-opacity=".28"/>
-<path d="M735 352C777 208 894 151 1000 190C1109 230 1143 333 1085 399C1029 463 906 468 842 405C784 348 817 271 894 258C961 247 1008 291 986 334" stroke="url(#water)" stroke-width="12" stroke-linecap="round"/>
-<path d="M776 520C843 467 870 408 886 348C900 287 943 254 976 218C981 282 1035 301 1048 355C1066 422 1015 472 958 497C995 455 994 414 971 391C947 367 916 380 904 410C888 445 856 488 776 520Z" stroke="url(#fire)" stroke-width="7" stroke-linejoin="round"/>
-<path d="M784 530L1107 201" stroke="#EDEADD" stroke-width="3" stroke-linecap="round" opacity=".7"/>
-<path d="M1018 493L1080 442L1115 469L1158 430L1200 453V630H1000Z" fill="#122017"/>
-<text x="60" y="580" fill="#798B75" font-family="monospace" font-size="11" letter-spacing="4">FOCUS · BUILD · EVOLVE</text>
+<circle cx="980" cy="238" r="210" fill="#B63D3D" fill-opacity=".09"/>
+<circle cx="980" cy="238" r="146" fill="#9F343D" fill-opacity=".42" stroke="#F5B6A7" stroke-opacity=".28"/>
+<path d="M0 434L95 365L173 410L274 308L354 385L438 334L540 407L610 352L700 410V630H0Z" fill="#0B1520"/>
+<path d="M0 486L110 427L197 470L292 395L373 458L467 391L567 473L645 429L700 459V630H0Z" fill="#0D1B27"/>
+<path d="M622 352C666 222 778 160 881 185C998 213 1067 301 1026 385C990 458 886 487 798 448C709 409 690 331 747 286C795 248 861 255 891 296" stroke="url(#water)" stroke-width="12" stroke-linecap="round"/>
+<path d="M736 544C810 486 832 427 849 367C865 307 917 267 956 219C965 291 1018 318 1032 375C1048 446 996 497 935 521C970 474 966 432 943 408C915 380 880 396 866 426C847 464 811 505 736 544Z" stroke="url(#flame)" stroke-width="7" stroke-linejoin="round"/>
+<path d="M724 540L1048 208" stroke="#EAFBFA" stroke-width="3" stroke-linecap="round" opacity=".7"/>
+<path d="M1048 488L1116 457L1158 481L1200 448V630H1023Z" fill="url(#checks)" opacity=".68"/>
+<rect x="58" y="58" width="52" height="52" rx="8" fill="url(#checks)" stroke="#54CBD4" stroke-opacity=".45"/>
+<text x="84" y="91" fill="#F4F5F7" text-anchor="middle" font-family="Arial,sans-serif" font-size="21" font-weight="700">GV</text>
+<text x="130" y="89" fill="#AAB8C8" font-family="Arial,sans-serif" font-size="16" font-weight="600" letter-spacing="1">GIRESH VELAGA</text>
+<text x="58" y="204" fill="#91A0B2" font-family="Arial,sans-serif" font-size="15" letter-spacing="4">AI ENGINEERING / FULL-STACK</text>
+<text x="52" y="294" fill="#F4F5F7" font-family="Arial,sans-serif" font-size="67" font-weight="700" letter-spacing="-3">AI, ENGINEERED.</text>
+<text x="52" y="373" fill="url(#accent)" font-family="Arial,sans-serif" font-size="67" font-weight="700" letter-spacing="-3">PRODUCTS, SHIPPED.</text>
+<text x="58" y="434" fill="#ACB7C5" font-family="Arial,sans-serif" font-size="21">LLMs · Applied ML · Full-stack products</text>
+<path d="M58 474H350" stroke="url(#accent)" stroke-width="2"/>
+<text x="58" y="516" fill="#7E8FA2" font-family="Arial,sans-serif" font-size="14" letter-spacing="2">IIIT SRI CITY · COMPUTER SCIENCE</text>
 </svg>
