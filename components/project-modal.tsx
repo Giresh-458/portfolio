@@ -36,7 +36,7 @@ export function ProjectModal({ project, open, onOpenChange }: ProjectModalProps)
                 initial={reduceMotion ? undefined : { opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={reduceMotion ? undefined : { opacity: 0 }}
-                className="fixed inset-0 z-[100] bg-black/80 backdrop-blur-md"
+                className="fixed inset-0 z-100 bg-black/80 backdrop-blur-md"
               />
             </Dialog.Overlay>
             <Dialog.Content asChild>
@@ -45,11 +45,11 @@ export function ProjectModal({ project, open, onOpenChange }: ProjectModalProps)
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 exit={reduceMotion ? undefined : { opacity: 0, y: 16, scale: 0.98 }}
                 transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-                className="glass-strong fixed left-1/2 top-1/2 z-[101] max-h-[90vh] w-[calc(100%-2rem)] max-w-5xl -translate-x-1/2 -translate-y-1/2 overflow-y-auto rounded-2xl shadow-2xl"
+                className="glass-strong fixed left-1/2 top-1/2 z-101 max-h-[90vh] w-[calc(100%-2rem)] max-w-5xl -translate-x-1/2 -translate-y-1/2 overflow-y-auto rounded-2xl shadow-2xl"
               >
-                <div className="relative aspect-[16/6] min-h-64 overflow-hidden">
+                <div className="relative aspect-16/6 min-h-64 overflow-hidden">
                   <Image src={project.image} alt="" fill className="object-cover" sizes="(max-width: 1024px) 100vw, 1024px" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-surface via-surface/20 to-transparent" />
+                  <div className="absolute inset-0 bg-linear-to-t from-surface via-surface/20 to-transparent" />
                   <Dialog.Close asChild>
                     <Button variant="outline" size="icon" className="absolute right-4 top-4 rounded-full bg-black/50" aria-label="Close project details">
                       <X className="size-5" />

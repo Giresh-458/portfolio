@@ -4,7 +4,7 @@ A personal portfolio connecting AI engineering and full-stack product work with 
 
 ## Built with
 
-- Next.js 15.5.27, React 18, TypeScript
+- Next.js 16.4, React 19, TypeScript
 - Tailwind CSS, Framer Motion, Lucide
 - Animated SVG overlays and reduced-motion support
 - GitHub REST API for live public repository, language, and recent activity data
@@ -30,8 +30,8 @@ NEXT_PUBLIC_SITE_URL=
 ```
 
 - `GITHUB_TOKEN` is optional and stays server-side. A token can help with API rate limits.
-- `NEXT_PUBLIC_SITE_URL` must be set to the real production website origin before a production build. Use the full `https://...` origin; paths are ignored. Production builds intentionally fail when this is missing, to prevent publishing incorrect canonical, Open Graph, sitemap, and robots URLs.
-- Vercel Preview builds can use their unique `VERCEL_URL` when `NEXT_PUBLIC_SITE_URL` is not set. Local development falls back to `http://localhost:3000`.
+- `NEXT_PUBLIC_SITE_URL` is recommended for a stable canonical production origin. Use the full `https://...` origin; paths are ignored.
+- When it is unset on Vercel, production builds fall back to `VERCEL_PROJECT_PRODUCTION_URL`, then `VERCEL_URL`. Preview builds prefer their unique `VERCEL_URL`. Production builds outside Vercel still require an explicit `NEXT_PUBLIC_SITE_URL`; local development falls back to `http://localhost:3000`.
 - Analytics use live public GitHub data. If the profile or repository endpoints are unavailable, the analytics panel shows an unavailable message. If only recent activity fails, profile and repository metrics remain visible.
 - The selectable hero wallpapers currently load from third-party image hosts. Confirm the relevant usage rights before public release, or replace them with artwork you own or have licensed.
 
@@ -39,7 +39,7 @@ NEXT_PUBLIC_SITE_URL=
 
 1. Import the repository into Vercel.
 2. Keep the framework preset as Next.js and the root directory as the repository root.
-3. Set `NEXT_PUBLIC_SITE_URL` to the production domain for the Production environment.
+3. Recommended: set `NEXT_PUBLIC_SITE_URL` to the canonical production origin for the Production environment. If unset, the build uses Vercel's available system domain variables.
 4. Optionally set a server-only `GITHUB_TOKEN` in Vercel environment variables.
 5. Verify the homepage, project links, contact form, and `/api/github`.
 

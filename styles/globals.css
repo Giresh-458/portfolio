@@ -1,6 +1,131 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+
+@custom-variant dark (&:is(.dark *));
+
+@utility container {
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+  @media (width >= --theme(--breakpoint-sm)) {
+    max-width: none;
+  }
+  @media (width >= 1440px) {
+    max-width: 1440px;
+  }
+}
+
+@theme {
+  --color-background: #07070b;
+  --color-foreground: #f5eadb;
+  --color-muted: #b9b1b3;
+  --color-surface: #111018;
+  --color-border: rgba(238, 220, 200, 0.13);
+
+  --color-netflix: #d93645;
+  --color-netflix-dark: #961e31;
+  --color-netflix-glow: rgba(217, 54, 69, 0.18);
+
+  --font-sans: Inter, sans-serif;
+  --font-display: Bebas Neue, Inter, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, monospace;
+
+  --background-image-cinematic-radial:
+    radial-gradient(
+      circle at 76% 28%,
+      rgba(151, 37, 46, 0.18),
+      transparent 36%
+    ),
+    radial-gradient(
+      circle at 72% 73%,
+      rgba(35, 140, 167, 0.13),
+      transparent 31%
+    ),
+    linear-gradient(to bottom, transparent 42%, #07070b 100%);
+  --background-image-glass-gradient: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.065),
+    rgba(255, 255, 255, 0.015)
+  );
+
+  --shadow-glow: 0 0 60px rgba(217, 54, 69, 0.14);
+  --shadow-glow-sm: 0 0 28px rgba(57, 216, 243, 0.13);
+  --shadow-card: 0 24px 80px rgba(0, 0, 0, 0.34);
+
+  --animate-pulse-red: pulse-red 2.8s ease-in-out infinite;
+  --animate-orbit: orbit 16s linear infinite;
+  --animate-orbit-reverse: orbit-reverse 22s linear infinite;
+  --animate-shimmer: shimmer 2s linear infinite;
+  --animate-loading-bar: loading-bar 1.05s cubic-bezier(0.65, 0, 0.35, 1)
+    forwards;
+  --animate-float: float 6s ease-in-out infinite;
+
+  @keyframes pulse-red {
+    0%,
+    100% {
+      opacity: 0.35;
+      transform: scale(0.96);
+    }
+    50% {
+      opacity: 1;
+      transform: scale(1.04);
+    }
+  }
+  @keyframes orbit {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  @keyframes orbit-reverse {
+    to {
+      transform: rotate(-360deg);
+    }
+  }
+  @keyframes shimmer {
+    from {
+      background-position: 200% 0;
+    }
+    to {
+      background-position: -200% 0;
+    }
+  }
+  @keyframes loading-bar {
+    0% {
+      transform: scaleX(0);
+    }
+    70% {
+      transform: scaleX(0.82);
+    }
+    100% {
+      transform: scaleX(1);
+    }
+  }
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+}
+
+/*
+  The default border color has changed to `currentcolor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
+  }
+}
 
 :root { color-scheme: dark; --background: #07070B; --foreground: #F5EADB; --slayer-red: #D93645; --slayer-water: #39D8F3; --slayer-paper: #EEDCC8; }
 * { box-sizing: border-box; border-color: rgba(238, 220, 200, 0.13); }
@@ -71,7 +196,7 @@ a, button { -webkit-tap-highlight-color: transparent; }
 .slayer-character-tab { background: rgba(4,5,9,.54); backdrop-filter: blur(6px); box-shadow: 0 12px 40px rgba(0,0,0,.18); }
 .slayer-character-tab.is-active { box-shadow: 0 0 0 1px var(--character-accent), 0 0 24px color-mix(in srgb, var(--character-accent) 25%, transparent); transform: translateY(-3px); }
 
-.section-shell { @apply container relative py-24 md:py-32; isolation: isolate; }
+.section-shell { position: relative; isolation: isolate; }
 .section-shell::before {
   content: ""; position: absolute; z-index: -1; top: 4rem; right: -1.5rem; width: 8rem; height: 13rem; pointer-events: none;
   opacity: .13; background: repeating-conic-gradient(#21564e 0% 25%, transparent 0% 50%) 0 / 24px 24px;

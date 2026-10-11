@@ -24,7 +24,7 @@ export const metadata: Metadata = {
 export const viewport: Viewport = { width: "device-width", initialScale: 1, themeColor: "#07090F", colorScheme: "dark" };
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return <html lang="en" className="dark"><body>
-    <a href="#main-content" className="fixed left-4 top-4 z-[300] -translate-y-24 rounded-md bg-netflix px-4 py-2 text-sm font-semibold text-[#061014] transition focus:translate-y-0">Skip to content</a>
+    <a href="#main-content" className="fixed left-4 top-4 z-300 -translate-y-24 rounded-md bg-netflix px-4 py-2 text-sm font-semibold text-[#061014] transition focus:translate-y-0">Skip to content</a>
     <Navbar /><PageTransition><main id="main-content">{children}</main></PageTransition><Footer />
   </body></html>;
 }

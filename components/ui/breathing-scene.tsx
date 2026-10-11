@@ -80,7 +80,7 @@ export function BreathingScene() {
       <AnimatePresence mode="sync">
         <motion.div
           key={active.id}
-          className="character-scene-image absolute -inset-[2%]"
+          className="character-scene-image absolute inset-[-2%]"
           data-character={active.id}
           role="img"
           aria-label={active.name + " — " + active.style}
@@ -114,7 +114,7 @@ export function BreathingScene() {
         <path d="M0 850C153 815 222 864 365 837S592 822 739 858" stroke="#40C9E4" strokeOpacity=".16" strokeWidth="2" />
       </svg>
 
-      <svg className="pointer-events-none absolute inset-0 z-[5] h-full w-full" viewBox="0 0 1600 900" preserveAspectRatio="none" fill="none" aria-hidden="true">
+      <svg className="pointer-events-none absolute inset-0 z-5 h-full w-full" viewBox="0 0 1600 900" preserveAspectRatio="none" fill="none" aria-hidden="true">
         {active.id === "tanjiro" ? <>
           <motion.path d="M640 760C760 682 766 556 890 503C1028 443 1225 529 1460 287" stroke={active.accent} strokeWidth="19" strokeLinecap="round" opacity=".7" filter="url(#glow-water)" animate={reduceMotion ? undefined : { pathLength: [0.65, 1, 0.65], opacity: [.22, .75, .22] }} transition={{ duration: 6.8, repeat: Infinity, ease: "easeInOut" }} />
           <motion.path d="M600 770C720 690 806 620 928 593C1100 553 1258 642 1530 431" stroke="#E9FFFF" strokeWidth="3.5" strokeLinecap="round" strokeDasharray="4 15" animate={reduceMotion ? undefined : { strokeDashoffset: [0, -160] }} transition={{ duration: 7, repeat: Infinity, ease: "linear" }} opacity=".85" />
@@ -163,7 +163,7 @@ export function BreathingScene() {
               className={"slayer-character-tab group relative min-w-0 overflow-hidden border text-left transition duration-300 " + (activeIndex === index ? "is-active" : "")}
               style={{ borderColor: activeIndex === index ? character.accent : "rgba(243,226,211,.26)", ["--character-accent" as string]: character.accent }}>
               <span className="absolute inset-0 bg-cover bg-center transition duration-700 group-hover:scale-110" style={{ backgroundImage: "url('" + character.thumb + "')" }} />
-              <span className="absolute inset-0 bg-gradient-to-t from-[#050609] via-[#06070B]/40 to-transparent" />
+              <span className="absolute inset-0 bg-linear-to-t from-[#050609] via-[#06070B]/40 to-transparent" />
               {activeIndex === index ? <span className="absolute inset-x-0 top-0 h-[3px]" style={{ backgroundColor: character.accent }} /> : null}
               <span className="relative flex min-h-[64px] flex-col justify-end p-2 sm:min-h-[76px] sm:p-3">
                 <span className="font-mono text-[8px] tracking-[0.16em]" style={{ color: activeIndex === index ? character.accent : "#D5CDD0" }}>{character.number}</span>

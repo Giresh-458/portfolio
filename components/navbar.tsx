@@ -23,7 +23,7 @@ export function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
   return (
-    <header className={cn("fixed inset-x-0 top-0 z-50 border-b transition-all duration-300", scrolled ? "border-[#E0B7A4]/15 bg-[#07070B]/92 shadow-[0_12px_44px_rgba(0,0,0,.45)] backdrop-blur-xl" : "border-white/10 bg-gradient-to-b from-[#050609]/80 to-transparent")}>
+    <header className={cn("fixed inset-x-0 top-0 z-50 border-b transition-all duration-300", scrolled ? "border-[#E0B7A4]/15 bg-background/92 shadow-[0_12px_44px_rgba(0,0,0,.45)] backdrop-blur-xl" : "border-white/10 bg-linear-to-b from-[#050609]/80 to-transparent")}>
       <nav className="container flex h-[72px] items-center justify-between" aria-label="Primary navigation">
         <a href="#home" className="group flex items-center gap-3" aria-label="Giresh Velaga — home">
           <span className="corps-seal grid size-10 place-items-center border border-[#D83B47]/70 bg-[#791420]/60 font-display text-xl text-[#F9E9D9] transition group-hover:border-[#53D8EB]">滅</span>
