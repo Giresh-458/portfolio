@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/button";
 import { GlassCard } from "@/components/ui/glass-card";
 import { SectionHeader } from "@/components/ui/section-header";
 import { animeScenes } from "@/lib/anime-art";
+import { AnimeSceneBackdrop } from "@/components/ui/anime-scene-backdrop";
 import { siteConfig } from "@/lib/data";
 import type { ContactFormValues } from "@/types";
 
@@ -39,11 +40,11 @@ export function ContactSection() {
             <div className="crow-flight-scene relative mb-7 overflow-hidden border-y border-[#E7C6AF]/15">
               <motion.div
                 aria-hidden="true"
-                className="absolute inset-[-2%] bg-cover bg-center"
-                style={{ backgroundImage: "url('" + animeScenes[1].image + "')", backgroundSize: "cover", backgroundPosition: animeScenes[1].position }}
+                className="absolute inset-[-2%]"
                 animate={reduceMotion ? undefined : { scale: [1.02, 1.055, 1.02], x: [0, -3, 0], y: [0, -2, 0] }}
                 transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
               >
+                <AnimeSceneBackdrop scene={animeScenes[1]} className="absolute inset-0" />
               </motion.div>
               <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(7,7,12,.25),transparent_30%,rgba(7,7,12,.10)_60%,rgba(7,7,12,.83))]" />
               <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(90deg,rgba(7,7,12,.34),transparent_34%,transparent_76%,rgba(7,7,12,.18))]" />

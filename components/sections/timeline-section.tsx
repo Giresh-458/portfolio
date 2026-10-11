@@ -4,6 +4,7 @@ import { motion, useReducedMotion } from "framer-motion";
 import { ArrowDownRight, BrainCircuit, CheckCheck, Code2, Route } from "lucide-react";
 import { SectionHeader } from "@/components/ui/section-header";
 import { animeScenes } from "@/lib/anime-art";
+import { AnimeSceneBackdrop } from "@/components/ui/anime-scene-backdrop";
 
 const stages = [
   { number: "01", title: "Understand", subtitle: "Name the real problem.", detail: "Clarify the user, constraints and what a useful result should look like before reaching for a model or framework.", icon: BrainCircuit, tone: "water", kanji: "壱" },
@@ -46,7 +47,8 @@ export function TimelineSection() {
                 whileHover={reduceMotion ? undefined : { y: -5 }}
                 className="training-scroll group relative overflow-hidden border border-[#E7C6AF]/17 bg-[#0B0B12]/60 p-6 transition-colors hover:border-[#EF5456]/55 md:p-7"
               >
-                <div aria-hidden="true" className="absolute inset-0 z-0 opacity-90 transition-opacity duration-500 group-hover:opacity-100" style={{ backgroundImage: "linear-gradient(180deg, rgba(7,7,12,.28) 0%, rgba(7,7,12,.72) 46%, rgba(7,7,12,.97) 100%), url('" + animeScenes[(index * 2 + 2) % animeScenes.length].image + "')", backgroundSize: "cover, cover", backgroundPosition: "center, " + animeScenes[(index * 2 + 2) % animeScenes.length].position }} />
+                <AnimeSceneBackdrop scene={animeScenes[(index * 2 + 2) % animeScenes.length]} className="absolute inset-0 z-0 opacity-90 transition-opacity duration-500 group-hover:opacity-100" />
+                <div aria-hidden="true" className="pointer-events-none absolute inset-0 z-[1] bg-[linear-gradient(180deg,rgba(7,7,12,.28)_0%,rgba(7,7,12,.72)_46%,rgba(7,7,12,.97)_100%)]" />
                 <div className="pointer-events-none absolute -right-4 -top-5 font-serif text-[116px] leading-none text-white/2.5">
                   {stage.kanji}
                 </div>

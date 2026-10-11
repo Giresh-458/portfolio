@@ -4,6 +4,7 @@ import { ArrowRight, BrainCircuit, Database, ShieldCheck } from "lucide-react";
 import { GlassCard } from "@/components/ui/glass-card";
 import { SectionHeader } from "@/components/ui/section-header";
 import { animeScenes } from "@/lib/anime-art";
+import { AnimeSceneBackdrop } from "@/components/ui/anime-scene-backdrop";
 import { researchTopics } from "@/lib/data";
 import { fadeUp, stagger, viewport } from "@/lib/motion";
 
@@ -21,7 +22,9 @@ export function AILabSection() {
       <div className="grid gap-5 lg:grid-cols-[.88fr_1.12fr]">
         <motion.div initial={reduceMotion ? undefined : { opacity: 0, y: 18 }} whileInView={reduceMotion ? undefined : { opacity: 1, y: 0 }} viewport={viewport} className="slayer-panel forge-bench p-6 md:p-8">
           <div className="flex items-center justify-between"><span className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#F28B6F]">Nichirin forge / inspection bay</span><span className="size-2 rounded-full bg-[#E64A43] shadow-[0_0_16px_rgba(230,74,67,.65)]" /></div>
-          <div className="forge-art relative my-5 flex h-[176px] items-center justify-center overflow-hidden border-y border-[#F17B53]/15" style={{ backgroundImage: "linear-gradient(90deg, rgba(7,7,12,.38), rgba(7,7,12,.12)), url('" + animeScenes[4].image + "')", backgroundSize: "cover, cover", backgroundPosition: "center, " + animeScenes[4].position }}>
+          <div className="forge-art relative my-5 flex h-[176px] items-center justify-center overflow-hidden border-y border-[#F17B53]/15">
+            <AnimeSceneBackdrop scene={animeScenes[4]} className="absolute inset-0" />
+            <div aria-hidden="true" className="pointer-events-none absolute inset-0 z-[1] bg-[linear-gradient(90deg,rgba(7,7,12,.52),rgba(7,7,12,.16))]" />
             <div className="forge-ember-glow absolute inset-0" />
             <svg className="relative h-full w-full" viewBox="0 0 620 130" fill="none" aria-hidden="true">
               <path d="M82 110L270 36L536 16L314 65L118 119Z" fill="#17222C" stroke="#3BD5F0" strokeOpacity=".45" strokeWidth="1.5"/>
