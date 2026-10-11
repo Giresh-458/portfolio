@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { SectionHeader } from "@/components/ui/section-header";
 import { TechBadge } from "@/components/ui/tech-badge";
 import { missionScenes } from "@/lib/anime-art";
+import { AnimeSceneBackdrop } from "@/components/ui/anime-scene-backdrop";
 import { projects } from "@/lib/data";
 import type { Project } from "@/types";
 
