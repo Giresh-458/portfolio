@@ -3,6 +3,7 @@
 import { motion, useReducedMotion } from "framer-motion";
 import { ArrowDownRight, Flame, Waves, Wind } from "lucide-react";
 import { animeScenes } from "@/lib/anime-art";
+import { AnimeSceneBackdrop } from "@/components/ui/anime-scene-backdrop";
 
 const panels = [
   {
@@ -69,11 +70,7 @@ export function CorpsShowcaseSection() {
                 style={{ ["--scene-accent" as string]: scene.accent }}
               >
                 <div className="absolute inset-0 overflow-hidden">
-                  <div
-                    aria-hidden="true"
-                    className="corps-showcase-image absolute inset-0"
-                    style={{ backgroundImage: "url('" + scene.image + "')", backgroundPosition: scene.position }}
-                  />
+                  <AnimeSceneBackdrop scene={scene} className="absolute inset-0" priority={index === 0} imageClassName="corps-showcase-image" />
                 </div>
                 <div aria-hidden="true" className="absolute inset-0 corps-showcase-vignette" />
                 <div aria-hidden="true" className="absolute inset-0 corps-showcase-grain" />
