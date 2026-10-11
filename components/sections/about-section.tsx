@@ -2,7 +2,8 @@
 import { motion, useReducedMotion } from "framer-motion";
 import { AnimatedCounter } from "@/components/ui/animated-counter";
 import { SectionHeader } from "@/components/ui/section-header";
-import { SlayerIllustration } from "@/components/ui/slayer-illustration";
+import { animeScenes } from "@/lib/anime-art";
+import { AnimeSceneBackdrop } from "@/components/ui/anime-scene-backdrop";
 import { TechBadge } from "@/components/ui/tech-badge";
 import { fadeUp, stagger, viewport } from "@/lib/motion";
 import { stats } from "@/lib/data";
@@ -37,19 +38,9 @@ export function AboutSection() {
         </motion.div>
 
         <motion.div variants={reduceMotion ? undefined : fadeUp} className="relative flex flex-col gap-4">
-          <div className="training-ground relative min-h-[245px] overflow-hidden border border-[#E7C6AF]/15 bg-[#0A0B12]">
-            <svg className="absolute inset-0 h-full w-full" viewBox="0 0 640 300" preserveAspectRatio="xMidYMid slice" fill="none" aria-hidden="true">
-              <defs><linearGradient id="training-night" x1="0" y1="0" x2="640" y2="300" gradientUnits="userSpaceOnUse"><stop stopColor="#111827"/><stop offset="1" stopColor="#180C16"/></linearGradient><linearGradient id="training-wisteria" x1="0" y1="0" x2="0" y2="220" gradientUnits="userSpaceOnUse"><stop stopColor="#B89AEF" stopOpacity=".7"/><stop offset="1" stopColor="#7F4C9E" stopOpacity="0"/></linearGradient></defs>
-              <rect width="640" height="300" fill="url(#training-night)"/>
-              <circle cx="484" cy="70" r="44" fill="#D93645" fillOpacity=".2"/><circle cx="484" cy="70" r="30" fill="#D93645" fillOpacity=".22" stroke="#F4B3A3" strokeOpacity=".35"/>
-              <path d="M0 170L85 126L153 158L219 114L303 167L391 126L467 165L557 112L640 147V300H0Z" fill="#111524"/>
-              <path d="M0 208L100 171L170 194L256 157L326 198L418 162L508 204L584 178L640 198V300H0Z" fill="#0B1019"/>
-              <path d="M355 183L355 235M344 184L366 184L355 171L344 184M330 235L380 235L355 202Z" stroke="#CF6468" strokeOpacity=".6" strokeWidth="3"/>
-              <path d="M0 258C108 235 167 271 270 251S451 229 640 262" stroke="#39D8F3" strokeOpacity=".18" strokeWidth="2"/>
-              {[0,1,2,3,4,5,6,7,8,9,10,11,12,13].map((i)=> <g key={i} opacity=".72"><path d={"M"+(i*49-10)+" 0 Q"+(i*49+16)+" 62 "+(i*49+5)+" 117 T"+(i*49+16)+" 174"} stroke="#B59CDD" strokeOpacity=".42" strokeWidth="1.5"/>{[0,1,2,3].map((j)=><ellipse key={j} cx={i*49+2+(j%2)*8} cy={40+j*30+(i%3)*7} rx="4.5" ry="9" transform={"rotate("+(i%2?28:-25)+" "+(i*49+2+(j%2)*8)+" "+(40+j*30+(i%3)*7)+")"} fill="url(#training-wisteria)"/>)}</g>)}
-              <path d="M0 274H640" stroke="#D3A88D" strokeOpacity=".22"/>
-            </svg>
-            <SlayerIllustration variant="tanjiro" label="Water-style Corps swordsman at the training grounds" className="absolute bottom-0 right-0 z-[1] h-[98%] w-[56%] max-w-[250px] opacity-95 drop-shadow-[0_0_25px_rgba(57,216,243,0.18)]" />
+          <div className="training-ground group relative min-h-[300px] overflow-hidden border border-[#E7C6AF]/15 bg-[#0A0B12]">
+            <AnimeSceneBackdrop scene={animeScenes[0]} priority className="absolute inset-0 z-0 scale-[1.01] transition-transform duration-[1200ms] group-hover:scale-[1.05]" />
+            <div aria-hidden="true" className="pointer-events-none absolute inset-0 z-[1] bg-[linear-gradient(90deg,rgba(5,7,12,.88)_0%,rgba(5,7,12,.45)_48%,rgba(5,7,12,.06)_100%),linear-gradient(0deg,rgba(4,5,9,.82),rgba(4,5,9,.02)_60%)]" />
             <motion.div aria-hidden="true" className="absolute inset-0 bg-linear-to-t from-[#090910]/90 via-transparent to-[#090910]/20" animate={reduceMotion ? undefined : { opacity: [.6, .8, .6] }} transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }} />
             <div className="absolute bottom-5 left-5 right-5 flex items-end justify-between gap-4">
               <div><p className="font-mono text-[8px] uppercase tracking-[0.24em] text-[#C2A8E8]">Wisteria training grounds</p><p className="mt-2 font-display text-2xl uppercase text-[#F4E6D4]">Quiet work. Sharp results.</p></div>

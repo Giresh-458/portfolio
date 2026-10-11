@@ -5,7 +5,8 @@ import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { GlassCard } from "@/components/ui/glass-card";
 import { SectionHeader } from "@/components/ui/section-header";
-import { SlayerIllustration } from "@/components/ui/slayer-illustration";
+import { animeScenes } from "@/lib/anime-art";
+import { AnimeSceneBackdrop } from "@/components/ui/anime-scene-backdrop";
 import { formatDate } from "@/lib/utils";
 import type { GitHubAnalytics } from "@/types";
 
@@ -32,10 +33,9 @@ export function GitHubAnalyticsSection() {
   return (
     <section id="github" className="section-shell section-github scroll-mt-20">
       <SectionHeader eyebrow="Corps records · 公開記録" title="Work, out in the open." description="A live view of repositories, language distribution and recent activity—pulled from GitHub, not made-up portfolio counters." />
-      <div className="corps-records-banner relative mb-8 min-h-[178px] overflow-hidden border border-[#D3A88C]/25 md:min-h-[218px]">
-        <div className="pointer-events-none absolute inset-0 bg-linear-to-r from-[#07070B]/95 via-[#07070B]/55 to-transparent" />
-        <SlayerIllustration variant="giyu" className="absolute -bottom-6 right-[15%] z-[2] h-[220px] w-[150px] opacity-95 md:h-[270px] md:w-[184px]" />
-        <SlayerIllustration variant="rengoku" className="absolute -bottom-8 -right-2 z-[1] h-[190px] w-[136px] opacity-80 md:h-[244px] md:w-[168px]" />
+      <div className="corps-records-banner relative mb-8 min-h-[220px] overflow-hidden border border-[#D3A88C]/25 md:min-h-[290px]">
+        <AnimeSceneBackdrop scene={animeScenes[8]} className="absolute inset-0" />
+        <div aria-hidden="true" className="pointer-events-none absolute inset-0 z-[1] bg-linear-to-r from-[#07070B]/95 via-[#07070B]/55 to-transparent" />
         <div className="relative z-10 max-w-[64%] px-5 py-7 md:max-w-[56%] md:px-8 md:py-9">
           <p className="font-mono text-[9px] uppercase tracking-[0.22em] text-[#E8797B]">Corps field ledger / live signal</p>
           <h3 className="mt-3 font-display text-3xl uppercase leading-[0.95] text-[#F4E6D6] md:text-4xl">Every commit leaves a trace.</h3>

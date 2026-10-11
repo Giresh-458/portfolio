@@ -365,3 +365,139 @@ a, button { -webkit-tap-highlight-color: transparent; }
   .crow-flight-scene { height: 180px; }
   .dispatch-petal { transform-origin: center; }
 }
+
+
+/* Cinematic anime artwork pass: real character compositions replace toy-like vector figures. */
+.mission-art {
+  background-size: cover;
+  background-repeat: no-repeat;
+  transition: background-position 700ms ease, filter 400ms ease;
+}
+.mission-card:hover .mission-art { filter: saturate(1.12) contrast(1.04); }
+.mission-art::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(90deg, rgba(5,6,11,.7) 0%, rgba(5,6,11,.15) 52%, rgba(5,6,11,.03) 100%);
+}
+.corps-showcase-section {
+  isolation: isolate;
+  background:
+    radial-gradient(ellipse at 12% 38%, rgba(35, 124, 166, .12), transparent 32rem),
+    radial-gradient(ellipse at 90% 70%, rgba(198, 50, 61, .13), transparent 34rem),
+    #07070B;
+}
+.corps-showcase-atmosphere {
+  opacity: .25;
+  background-image:
+    repeating-linear-gradient(135deg, rgba(230,202,184,.04) 0 1px, transparent 1px 20px),
+    radial-gradient(ellipse at 50% 100%, rgba(232, 64, 78, .11), transparent 40rem);
+  mask-image: linear-gradient(180deg, transparent, black 12%, black 82%, transparent);
+}
+.corps-showcase-card {
+  min-height: 260px;
+  background: #0B0C12;
+  box-shadow: 0 28px 90px rgba(0,0,0,.32);
+  transform: translateZ(0);
+}
+.corps-showcase-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  border: 1px solid rgba(255,255,255,.06);
+  pointer-events: none;
+}
+.corps-showcase-card.corps-showcase-feature { min-height: 530px; }
+.corps-showcase-card.corps-showcase-side { min-height: 255px; }
+@media (min-width: 1024px) { .corps-showcase-card.corps-showcase-feature { grid-row: span 2; } }
+.corps-showcase-image {
+  background-repeat: no-repeat;
+  background-size: cover;
+  filter: saturate(1.06) contrast(1.03);
+  transform: scale(1.005);
+  transition: transform 1100ms cubic-bezier(.2,.75,.25,1), filter 600ms ease;
+}
+.corps-showcase-card:hover .corps-showcase-image {
+  transform: scale(1.075);
+  filter: saturate(1.2) contrast(1.06);
+}
+.corps-showcase-vignette {
+  background:
+    linear-gradient(90deg, rgba(4,5,10,.78) 0%, rgba(4,5,10,.25) 58%, rgba(4,5,10,.04) 100%),
+    linear-gradient(180deg, rgba(5,5,9,.2) 0%, transparent 28%, rgba(5,5,9,.86) 100%);
+}
+.corps-showcase-side .corps-showcase-vignette {
+  background: linear-gradient(180deg, rgba(5,5,9,.08), rgba(5,5,9,.88));
+}
+.corps-showcase-grain {
+  opacity: .15;
+  background-image: repeating-linear-gradient(0deg, transparent 0 3px, rgba(255,255,255,.06) 4px, transparent 5px 7px);
+  mix-blend-mode: overlay;
+}
+.corps-records-banner {
+  background-repeat: no-repeat;
+  background-color: #09090f;
+  background-position: center, center;
+}
+@media (max-width: 767px) {
+  .corps-showcase-card.corps-showcase-feature { min-height: 420px; }
+  .corps-showcase-card.corps-showcase-side { min-height: 260px; }
+  .mission-art::after { background: linear-gradient(90deg, rgba(5,6,11,.55), rgba(5,6,11,.04)); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .corps-showcase-image { transition: none; }
+  .mission-art { transition: none; }
+}
+
+
+/* Responsive, failure-tolerant anime artwork. If every remote URL fails, the
+   scene remains atmospheric instead of showing a broken-image icon or empty box. */
+.anime-scene-backdrop {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  isolation: isolate;
+  background-color: #0b0b13;
+  background-image:
+    radial-gradient(ellipse at 78% 22%, color-mix(in srgb, var(--scene-accent, #39D8F3) 30%, transparent), transparent 56%),
+    linear-gradient(135deg, #10121f, #08080e 62%, #1d0b14);
+}
+.anime-scene-fallback {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 72% 24%, color-mix(in srgb, var(--scene-accent, #39D8F3) 35%, transparent), transparent 50%),
+    linear-gradient(135deg, #131522, #090a10 62%, #210d19);
+}
+.anime-scene-image {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: var(--scene-position, center);
+  max-width: none;
+  user-select: none;
+}
+.corps-showcase-card .anime-scene-image { object-position: var(--scene-position, center); }
+.mission-art .anime-scene-image { object-position: var(--scene-position, center); }
+
+@media (max-width: 767px) {
+  .anime-scene-image { object-position: var(--scene-mobile-position, var(--scene-position, center)); }
+  .corps-showcase-card .anime-scene-image,
+  .mission-art .anime-scene-image { object-position: var(--scene-mobile-position, var(--scene-position, center)); }
+  .corps-showcase-card.corps-showcase-feature { min-height: clamp(350px, 105vw, 440px); }
+  .corps-showcase-card.corps-showcase-side { min-height: clamp(230px, 66vw, 290px); }
+  .mission-art { aspect-ratio: 4 / 3; }
+  .training-ground { min-height: 270px; }
+  .corps-records-banner { min-height: 235px; }
+}
+@media (max-width: 420px) {
+  .corps-showcase-card .font-display { overflow-wrap: anywhere; }
+  .corps-showcase-card.corps-showcase-feature { min-height: 340px; }
+  .corps-showcase-card.corps-showcase-side { min-height: 225px; }
+  .mission-art { aspect-ratio: 1 / 1; }
+}

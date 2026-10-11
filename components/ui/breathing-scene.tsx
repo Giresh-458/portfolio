@@ -1,57 +1,47 @@
 "use client";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { useState } from "react";
+import { animeScenes } from "@/lib/anime-art";
+import { AnimeSceneBackdrop } from "@/components/ui/anime-scene-backdrop";
 
 const characters = [
   {
     id: "tanjiro",
+    scene: animeScenes[0],
     name: "Tanjiro Kamado",
     style: "Water Breathing · Hinokami Kagura",
     technique: "水の呼吸",
-    image: "https://www.pixiewall.com/content/wallpapers/medium/66/pixiewall-tanjiro-demon-slayer-rooftop-battle-4k-bnl0gf.jpg",
-    thumb: "https://www.pixiewall.com/content/wallpapers/medium/66/pixiewall-tanjiro-demon-slayer-rooftop-battle-4k-bnl0gf.jpg",
-    position: "40% 35%",
-    mobilePosition: "66% 30%",
-    accent: "#39D8F3",
+    accent: animeScenes[0].accent,
     secondary: "#ED493D",
     number: "01"
   },
   {
     id: "nezuko",
+    scene: animeScenes[1],
     name: "Nezuko Kamado",
     style: "Blood Demon Art",
     technique: "血鬼術",
-    image: "https://www.chromethemer.com/download/hd-wallpapers/nezuko-3840x2160.jpg",
-    thumb: "https://www.chromethemer.com/download/hd-wallpapers/nezuko-3840x2160.jpg",
-    position: "68% center",
-    mobilePosition: "67% center",
-    accent: "#FF5DB9",
+    accent: animeScenes[1].accent,
     secondary: "#F42E62",
     number: "02"
   },
   {
     id: "zenitsu",
+    scene: animeScenes[2],
     name: "Zenitsu Agatsuma",
     style: "Thunder Breathing",
     technique: "雷の呼吸",
-    image: "https://images.wallpapersden.com/image/download/zenitsu-agatsuma-cool-demon-slayer_bWZsbWeUmZqaraWkpJRnamtlrWZpaWU.jpg",
-    thumb: "https://images.wallpapersden.com/image/download/zenitsu-agatsuma-cool-demon-slayer_bWZsbWeUmZqaraWkpJRnamtlrWZpaWU.jpg",
-    position: "66% center",
-    mobilePosition: "70% center",
-    accent: "#FFD951",
+    accent: animeScenes[2].accent,
     secondary: "#FFAE36",
     number: "03"
   },
   {
     id: "inosuke",
+    scene: animeScenes[3],
     name: "Inosuke Hashibira",
     style: "Beast Breathing",
     technique: "獣の呼吸",
-    image: "https://cdn.wallpapersafari.com/4/24/iOu4Im.jpg",
-    thumb: "https://cdn.wallpapersafari.com/4/24/iOu4Im.jpg",
-    position: "62% center",
-    mobilePosition: "70% center",
-    accent: "#9FE2EF",
+    accent: animeScenes[3].accent,
     secondary: "#76A8FF",
     number: "04"
   }
@@ -80,23 +70,17 @@ export function BreathingScene() {
       <AnimatePresence mode="sync">
         <motion.div
           key={active.id}
-          className="character-scene-image absolute inset-[-2%]"
+          className="absolute inset-[-2%]"
           data-character={active.id}
           role="img"
           aria-label={active.name + " — " + active.style}
-          style={{
-            backgroundImage: "url('" + active.image + "')",
-            backgroundRepeat: "no-repeat",
-            backgroundSize: "cover",
-            ["--scene-position" as string]: active.position,
-            ["--scene-mobile-position" as string]: active.mobilePosition,
-            backgroundColor: "#080C17"
-          }}
           initial={reduceMotion ? { opacity: 1 } : { opacity: 0, scale: 1.08, x: 24 }}
           animate={reduceMotion ? { opacity: 1, scale: 1, x: 0 } : { opacity: 1, scale: [1.015, 1.07, 1.015], x: [0, -7, 0] }}
           exit={reduceMotion ? { opacity: 1 } : { opacity: 0, scale: 1.03, x: -18 }}
           transition={reduceMotion ? { duration: 0.01 } : { opacity: { duration: 0.55 }, x: { duration: 12, repeat: Infinity, ease: "easeInOut" }, scale: { duration: active.id === "zenitsu" ? 5 : 18, repeat: Infinity, ease: "easeInOut" } }}
-        />
+        >
+          <AnimeSceneBackdrop scene={active.scene} className="absolute inset-0" priority />
+        </motion.div>
       </AnimatePresence>
 
       <div className="hero-scene-wash absolute inset-0" />
@@ -162,7 +146,7 @@ export function BreathingScene() {
             <button key={character.id} type="button" onClick={() => setActiveIndex(index)} aria-pressed={activeIndex === index} aria-label={"Show " + character.name + " scene"}
               className={"slayer-character-tab group relative min-w-0 overflow-hidden border text-left transition duration-300 " + (activeIndex === index ? "is-active" : "")}
               style={{ borderColor: activeIndex === index ? character.accent : "rgba(243,226,211,.26)", ["--character-accent" as string]: character.accent }}>
-              <span className="absolute inset-0 bg-cover bg-center transition duration-700 group-hover:scale-110" style={{ backgroundImage: "url('" + character.thumb + "')" }} />
+              <AnimeSceneBackdrop scene={character.scene} className="absolute inset-0 transition-transform duration-700 group-hover:scale-110" />
               <span className="absolute inset-0 bg-linear-to-t from-[#050609] via-[#06070B]/40 to-transparent" />
               {activeIndex === index ? <span className="absolute inset-x-0 top-0 h-[3px]" style={{ backgroundColor: character.accent }} /> : null}
               <span className="relative flex min-h-[64px] flex-col justify-end p-2 sm:min-h-[76px] sm:p-3">
