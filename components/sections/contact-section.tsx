@@ -9,6 +9,7 @@ import { z } from "zod";
 import { Button } from "@/components/ui/button";
 import { GlassCard } from "@/components/ui/glass-card";
 import { SectionHeader } from "@/components/ui/section-header";
+import { SlayerIllustration } from "@/components/ui/slayer-illustration";
 import { siteConfig } from "@/lib/data";
 import type { ContactFormValues } from "@/types";
 
@@ -53,6 +54,7 @@ export function ContactSection() {
               </motion.div>
               <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(7,7,12,.25),transparent_30%,rgba(7,7,12,.10)_60%,rgba(7,7,12,.83))]" />
               <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(90deg,rgba(7,7,12,.34),transparent_34%,transparent_76%,rgba(7,7,12,.18))]" />
+              <SlayerIllustration variant="nezuko" className="pointer-events-none absolute -bottom-3 right-0 z-[2] h-[132%] w-[48%] max-w-[190px] opacity-95 drop-shadow-[0_0_22px_rgba(255,130,198,0.22)]" />
               <motion.span
                 className="dispatch-petal absolute left-[18%] top-[28%] h-2.5 w-4"
                 animate={reduceMotion ? undefined : { x: [0, 36, 72], y: [0, 24, 43], rotate: [0, 100, 220], opacity: [0, .9, 0] }}

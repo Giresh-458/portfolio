@@ -7,6 +7,7 @@ import { ProjectModal } from "@/components/project-modal";
 import { Button } from "@/components/ui/button";
 import { SectionHeader } from "@/components/ui/section-header";
 import { TechBadge } from "@/components/ui/tech-badge";
+import { SlayerIllustration } from "@/components/ui/slayer-illustration";
 import { projects } from "@/lib/data";
 import type { Project } from "@/types";
 
@@ -31,6 +32,7 @@ export function ProjectsSection() {
               <div className="mission-art relative aspect-16/10 overflow-hidden border-b border-[#D3A88C]/12 bg-[#0A0D16]">
                 <Image src={project.image} alt="" fill className="object-cover transition duration-700 group-hover:scale-[1.07]" sizes="(max-width: 639px) 100vw, (max-width: 1279px) 50vw, 33vw" />
                 <div className="absolute inset-0 bg-linear-to-t from-[#09070E]/95 via-[#09070E]/10 to-[#090A10]/15" />
+                <SlayerIllustration variant={(["tanjiro", "nezuko", "zenitsu", "inosuke", "giyu", "shinobu", "rengoku"] as const)[index % 7]} className="pointer-events-none absolute -bottom-[9%] right-0 z-[2] h-[116%] w-[56%] opacity-95 transition-transform duration-700 group-hover:scale-[1.04]" />
                 <div className="absolute left-4 top-4 flex items-center gap-2 border border-[#E7C6AF]/25 bg-[#08080D]/78 px-3 py-1.5 backdrop-blur-xs">
                   <motion.span className="size-1.5 bg-[#E3444D]" animate={reduceMotion ? undefined : { opacity: [.5, 1, .5] }} transition={{ duration: 2.2, repeat: Infinity }} />
                   <span className="font-mono text-[9px] uppercase tracking-[0.16em] text-[#EBD9C9]">Mission {String(index + 1).padStart(2, "0")}</span>

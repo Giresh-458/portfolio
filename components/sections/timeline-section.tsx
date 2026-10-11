@@ -3,6 +3,7 @@
 import { motion, useReducedMotion } from "framer-motion";
 import { ArrowDownRight, BrainCircuit, CheckCheck, Code2, Route } from "lucide-react";
 import { SectionHeader } from "@/components/ui/section-header";
+import { SlayerIllustration } from "@/components/ui/slayer-illustration";
 
 const stages = [
   { number: "01", title: "Understand", subtitle: "Name the real problem.", detail: "Clarify the user, constraints and what a useful result should look like before reaching for a model or framework.", icon: BrainCircuit, tone: "water", kanji: "壱" },
@@ -48,16 +49,17 @@ export function TimelineSection() {
                 <div className="pointer-events-none absolute -right-4 -top-5 font-serif text-[116px] leading-none text-white/2.5">
                   {stage.kanji}
                 </div>
-                <div className="relative mb-7 flex items-center justify-between">
+                <SlayerIllustration variant={(["tanjiro", "giyu", "rengoku", "zenitsu"] as const)[index]} className="pointer-events-none absolute -right-3 -top-3 z-0 h-40 w-32 opacity-35 transition-opacity duration-500 group-hover:opacity-65" />
+                <div className="relative z-10 mb-7 flex items-center justify-between">
                   <span className="grid size-12 place-items-center border bg-black/35" style={{ color: accent, borderColor: accent + "55" }}>
                     <Icon className="size-5" />
                   </span>
                   <span className="font-mono text-[9px] tracking-[0.19em] text-[#8D7B83]">TRAINING / {stage.number}</span>
                 </div>
-                <h3 className="relative font-display text-2xl uppercase tracking-[.03em] text-[#F3E6D6]">{stage.title}</h3>
-                <p className="relative mt-2 text-sm font-medium text-[#D1C0BA]">{stage.subtitle}</p>
-                <p className="relative mt-4 min-h-[105px] text-sm leading-6 text-[#AFA3A7]">{stage.detail}</p>
-                <div className="relative mt-6 flex items-center justify-between border-t border-[#E7C6AF]/15 pt-4">
+                <h3 className="relative z-10 font-display text-2xl uppercase tracking-[.03em] text-[#F3E6D6]">{stage.title}</h3>
+                <p className="relative z-10 mt-2 text-sm font-medium text-[#D1C0BA]">{stage.subtitle}</p>
+                <p className="relative z-10 mt-4 min-h-[105px] text-sm leading-6 text-[#AFA3A7]">{stage.detail}</p>
+                <div className="relative z-10 mt-6 flex items-center justify-between border-t border-[#E7C6AF]/15 pt-4">
                   <span className="font-serif text-2xl" style={{ color: accent }}>{stage.kanji}</span>
                   <ArrowDownRight className="size-4 text-[#9C777B] transition duration-300 group-hover:translate-x-0.5 group-hover:translate-y-0.5" />
                 </div>

@@ -2,6 +2,7 @@
 import { motion, useReducedMotion } from "framer-motion";
 import { Boxes, BrainCircuit, Layers3 } from "lucide-react";
 import { SectionHeader } from "@/components/ui/section-header";
+import { SlayerIllustration } from "@/components/ui/slayer-illustration";
 import { skillCategories } from "@/lib/data";
 
 const categoryIcons = [BrainCircuit, Layers3, Boxes];
@@ -32,6 +33,7 @@ export function SkillsSection() {
                 <motion.svg className="absolute inset-0 h-full w-full" viewBox="0 0 360 150" preserveAspectRatio="none" fill="none" aria-hidden="true">
                   {style.paths.map((d, pathIndex) => <motion.path key={d} d={d} stroke={style.color} strokeWidth={pathIndex===0?3.5:1.8} strokeLinecap="round" opacity={pathIndex===0?.68:.35} strokeDasharray={pathIndex===0?"280 420":"180 560"} animate={reduceMotion ? undefined : { strokeDashoffset: [420, -140], opacity: [.18, pathIndex===0?.75:.4, .18] }} transition={{ duration: (index===1?3.4:6.5)+pathIndex, repeat: Infinity, ease: "easeInOut", delay: pathIndex*.5 }} />)}
                 </motion.svg>
+                <SlayerIllustration variant={(["tanjiro", "rengoku", "shinobu"] as const)[index] ?? "tanjiro"} className="absolute -right-2 -top-5 h-48 w-36 opacity-85 drop-shadow-[0_0_22px_rgba(57,216,243,0.14)]" />
               </div>
               <div className="relative flex items-start justify-between gap-4">
                 <div><p className="font-serif text-xl" style={{ color: style.color }}>{style.japanese}</p><p className="mt-2 font-mono text-[8px] uppercase tracking-[0.2em] text-[#80757B]">STYLE / 0{index + 1}</p></div>

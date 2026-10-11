@@ -3,6 +3,7 @@ import { motion, useReducedMotion } from "framer-motion";
 import { ArrowRight, BrainCircuit, Database, ShieldCheck } from "lucide-react";
 import { GlassCard } from "@/components/ui/glass-card";
 import { SectionHeader } from "@/components/ui/section-header";
+import { SlayerIllustration } from "@/components/ui/slayer-illustration";
 import { researchTopics } from "@/lib/data";
 import { fadeUp, stagger, viewport } from "@/lib/motion";
 
@@ -30,7 +31,8 @@ export function AILabSection() {
               <path d="M81 102L100 122M89 98L108 117" stroke="#D6B7A0" strokeWidth="4" strokeLinecap="round"/>
               {[0,1,2,3,4,5,6,7,8].map((i)=><motion.circle key={i} cx={150+i*39} cy={96-(i%4)*19} r={1.7+(i%3)*.5} fill={i%2===0?"#FF945C":"#42D9EE"} animate={reduceMotion ? undefined : { y:[0,-25-(i%3)*7,0], opacity:[0,.9,0] }} transition={{ duration:2.3+(i%4)*.4, delay:i*.17, repeat:Infinity, ease:"easeInOut" }}/>)}
             </svg>
-            <span className="absolute bottom-2 right-3 font-mono text-[8px] uppercase tracking-[0.18em] text-[#C18E7C]">Temper · refine · validate</span>
+            <SlayerIllustration variant="rengoku" label="Flame-style Corps swordsman beside the forge" className="absolute -top-2 right-[8%] z-[2] h-[132px] w-[98px] opacity-95 drop-shadow-[0_0_18px_rgba(255,130,76,0.24)]" />
+            <span className="absolute bottom-2 right-3 z-[3] font-mono text-[8px] uppercase tracking-[0.18em] text-[#C18E7C]">Temper · refine · validate</span>
           </div>
           <h3 className="mt-4 font-display text-3xl uppercase text-[#F4E6D6]">A reliable AI workflow</h3>
           <p className="mt-2 text-sm leading-6 text-[#AFA3A7]">A useful result depends on more than generation.</p>
