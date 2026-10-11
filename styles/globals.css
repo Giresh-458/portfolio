@@ -487,6 +487,8 @@ a, button { -webkit-tap-highlight-color: transparent; }
 
 @media (max-width: 767px) {
   .anime-scene-image { object-position: var(--scene-mobile-position, var(--scene-position, center)); }
+  .corps-showcase-card .anime-scene-image,
+  .mission-art .anime-scene-image { object-position: var(--scene-mobile-position, var(--scene-position, center)); }
   .corps-showcase-card.corps-showcase-feature { min-height: clamp(350px, 105vw, 440px); }
   .corps-showcase-card.corps-showcase-side { min-height: clamp(230px, 66vw, 290px); }
   .mission-art { aspect-ratio: 4 / 3; }
