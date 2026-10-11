@@ -23,9 +23,9 @@ jobs:
       - name: Upgrade Next.js and React
         run: npm install next@16.4.0 react@19.3.0 react-dom@19.3.0 eslint-config-next@16.4.0 eslint@^9
       - name: Upgrade Tailwind and PostCSS
-        run: npm install --save-dev tailwindcss@4.3.3 @tailwindcss/postcss@4.3.3 postcss@8.5.29 @types/react@latest @types/react-dom@latest
+        run: npm install --save-dev tailwindcss@4.3.3 @tailwindcss/postcss@4.3.3 postcss@8.5.29 @types/react@19.3.0 @types/react-dom@19.3.0
       - name: Migrate Tailwind CSS configuration
-        run: npx --yes @tailwindcss/upgrade@4.3.3
+        run: npx --yes @tailwindcss/upgrade@4.3.3 --force
       - name: Update Next.js 16 lint command and PostCSS plugin
         run: |
           node --input-type=module <<'NODE'
