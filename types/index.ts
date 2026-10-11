@@ -66,6 +66,7 @@ export interface GitHubAnalytics {
   languages: Array<{ name: string; percentage: number; color: string }>;
   topRepos: GitHubRepo[];
   recentActivity: GitHubEvent[];
+  recentActivityAvailable: boolean;
 }
 
 export interface ContactFormValues {

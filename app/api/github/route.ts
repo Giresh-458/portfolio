@@ -47,16 +47,32 @@ export async function GET() {
   if (process.env.GITHUB_TOKEN) headers.Authorization = `Bearer ${process.env.GITHUB_TOKEN}`;
 
   try {
-    const [userResponse, reposResponse, eventsResponse] = await Promise.all([
+    const [userResult, reposResult, eventsResult] = await Promise.allSettled([
       fetch(`https://api.github.com/users/${username}`, { headers, next: { revalidate: 3600 } }),
       fetch(`https://api.github.com/users/${username}/repos?per_page=100&sort=updated`, { headers, next: { revalidate: 3600 } }),
       fetch(`https://api.github.com/users/${username}/events/public?per_page=20`, { headers, next: { revalidate: 900 } })
     ]);
-    if (!userResponse.ok || !reposResponse.ok || !eventsResponse.ok) throw new Error("GitHub API request failed");
 
-    const user = (await userResponse.json()) as GitHubUserResponse;
-    const rawRepos = (await reposResponse.json()) as GitHubRepoResponse[];
-    const rawEvents = (await eventsResponse.json()) as GitHubEventResponse[];
+    // User and repository data power the core dashboard. Recent activity is
+    // optional so a rate-limited events endpoint does not hide usable metrics.
+    if (userResult.status !== "fulfilled" || !userResult.value.ok ||
+        reposResult.status !== "fulfilled" || !reposResult.value.ok) {
+      throw new Error("GitHub profile or repository API request failed");
+    }
+
+    const user = (await userResult.value.json()) as GitHubUserResponse;
+    const rawRepos = (await reposResult.value.json()) as GitHubRepoResponse[];
+    let rawEvents: GitHubEventResponse[] = [];
+    let recentActivityAvailable = false;
+    if (eventsResult.status === "fulfilled" && eventsResult.value.ok) {
+      try {
+        rawEvents = (await eventsResult.value.json()) as GitHubEventResponse[];
+        recentActivityAvailable = Array.isArray(rawEvents);
+        if (!recentActivityAvailable) rawEvents = [];
+      } catch {
+        // Keep repository and profile metrics visible when activity cannot parse.
+      }
+    }
     const repos = rawRepos.filter((repo) => !repo.fork);
     const totalStars = repos.reduce((sum, repo) => sum + repo.stargazers_count, 0);
     const languageCounts = repos.reduce<Record<string, number>>((accumulator, repo) => {
@@ -99,7 +115,8 @@ export async function GET() {
           color: languageColors[name] ?? "#A1A1AA"
         })),
       topRepos,
-      recentActivity
+      recentActivity,
+      recentActivityAvailable
     });
   } catch {
     return NextResponse.json({ error: "GitHub analytics are temporarily unavailable." }, { status: 503 });

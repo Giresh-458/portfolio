@@ -40,7 +40,7 @@ export function GitHubAnalyticsSection() {
               { icon: BookOpen, label: "Public repositories", value: data.publicRepos },
               { icon: Star, label: "Stars earned", value: data.totalStars },
               { icon: Users, label: "Followers", value: data.followers },
-              { icon: GitFork, label: "Recent events", value: data.recentActivity.length }
+              { icon: GitFork, label: "Recent events", value: data.recentActivityAvailable ? data.recentActivity.length : "—" }
             ].map((metric, index) => <GlassCard key={metric.label} className="slayer-panel p-6">
               <div className="flex items-center justify-between"><metric.icon className="size-5 text-[#43D5ED]" /><span className="font-serif text-2xl text-[#D93645]/75">{["壱", "弐", "参", "肆"][index]}</span></div>
               <p className="mt-5 font-display text-4xl text-[#F5EADB]">{metric.value}</p><p className="mt-1 text-sm text-[#AFA3A7]">{metric.label}</p>
@@ -53,7 +53,16 @@ export function GitHubAnalyticsSection() {
           </GlassCard>
           <div className="grid gap-5 lg:grid-cols-2">
             <GlassCard className="slayer-panel p-6 md:p-8"><h3 className="font-display text-2xl uppercase text-[#F5EADB]">Top repositories</h3><div className="mt-5 divide-y divide-[#E7C6AF]/10">{data.topRepos.map((repo) => <a key={repo.name} href={repo.url} target="_blank" rel="noreferrer" className="group flex items-center justify-between gap-4 py-4"><div><p className="font-medium text-[#E5D8D6] group-hover:text-[#50D7ED]">{repo.name}</p><p className="mt-1 line-clamp-1 text-sm text-[#8D8185]">{repo.description ?? "Open-source repository"}</p></div><span className="flex shrink-0 items-center gap-1 text-xs text-[#B4A3A5]"><Star className="size-3.5" /> {repo.stars}</span></a>)}</div></GlassCard>
-            <GlassCard className="slayer-panel p-6 md:p-8"><h3 className="font-display text-2xl uppercase text-[#F5EADB]">Recent activity</h3><div className="mt-5 divide-y divide-[#E7C6AF]/10">{data.recentActivity.slice(0, 5).map((event) => <div key={event.id} className="flex items-center justify-between gap-4 py-4"><div><p className="text-sm font-medium text-[#D3C8C8]">{event.type.replace("Event", "")}</p><p className="mt-1 text-xs text-[#8D8185]">{event.repo}</p></div><time className="shrink-0 font-mono text-[10px] text-[#8D8185]">{formatDate(event.createdAt)}</time></div>)}</div></GlassCard>
+            <GlassCard className="slayer-panel p-6 md:p-8">
+              <h3 className="font-display text-2xl uppercase text-[#F5EADB]">Recent activity</h3>
+              {!data.recentActivityAvailable ? (
+                <p className="mt-5 text-sm leading-6 text-[#AFA3A7]">Recent activity is temporarily unavailable. Profile and repository metrics are still available.</p>
+              ) : data.recentActivity.length === 0 ? (
+                <p className="mt-5 text-sm leading-6 text-[#AFA3A7]">GitHub returned no recent public activity.</p>
+              ) : (
+                <div className="mt-5 divide-y divide-[#E7C6AF]/10">{data.recentActivity.slice(0, 5).map((event) => <div key={event.id} className="flex items-center justify-between gap-4 py-4"><div><p className="text-sm font-medium text-[#D3C8C8]">{event.type.replace("Event", "")}</p><p className="mt-1 text-xs text-[#8D8185]">{event.repo}</p></div><time className="shrink-0 font-mono text-[10px] text-[#8D8185]">{formatDate(event.createdAt)}</time></div>)}</div>
+              )}
+            </GlassCard>
           </div>
           <Button asChild variant="outline"><a href={data.profileUrl} target="_blank" rel="noreferrer">View GitHub profile <ExternalLink className="size-4" /></a></Button>
         </motion.div>
