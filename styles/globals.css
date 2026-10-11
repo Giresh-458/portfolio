@@ -411,6 +411,7 @@ a, button { -webkit-tap-highlight-color: transparent; }
 }
 .corps-showcase-card.corps-showcase-feature { min-height: 530px; }
 .corps-showcase-card.corps-showcase-side { min-height: 255px; }
+@media (min-width: 1024px) { .corps-showcase-card.corps-showcase-feature { grid-row: span 2; } }
 .corps-showcase-image {
   background-repeat: no-repeat;
   background-size: cover;
