@@ -9,7 +9,7 @@ import { TimelineSection } from "@/components/sections/timeline-section";
 
 const GitHubAnalyticsSection = dynamic(
   () => import("@/components/sections/github-analytics-section").then((module) => module.GitHubAnalyticsSection),
-  { loading: () => <div className="section-shell h-96 animate-pulse rounded-3xl bg-white/[0.02]" /> }
+  { loading: () => <div className="section-shell h-96 animate-pulse rounded-3xl bg-white/2" /> }
 );
 
 export default function HomePage() {

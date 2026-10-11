@@ -18,7 +18,7 @@ const schema = z.object({
   subject: z.string().min(3, "Add a subject"),
   message: z.string().min(20, "Message should be at least 20 characters").max(1200, "Message is too long")
 });
-const inputClass = "w-full border border-[#E7C6AF]/20 bg-[#07070B]/80 px-4 py-3.5 text-sm text-white placeholder:text-[#84787D] transition focus:border-[#39D8F3] focus:outline-none focus:ring-2 focus:ring-[#39D8F3]/15";
+const inputClass = "w-full border border-[#E7C6AF]/20 bg-background/80 px-4 py-3.5 text-sm text-white placeholder:text-[#84787D] transition focus:border-[#39D8F3] focus:outline-hidden focus:ring-2 focus:ring-[#39D8F3]/15";
 
 export function ContactSection() {
   const [sent, setSent] = useState(false);
@@ -39,7 +39,7 @@ export function ContactSection() {
             <div className="crow-flight-scene relative mb-7 overflow-hidden border-y border-[#E7C6AF]/15">
               <motion.div
                 aria-hidden="true"
-                className="absolute -inset-[2%]"
+                className="absolute inset-[-2%]"
                 animate={reduceMotion ? undefined : { scale: [1.02, 1.055, 1.02], x: [0, -3, 0], y: [0, -2, 0] }}
                 transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
               >
@@ -68,7 +68,7 @@ export function ContactSection() {
                 animate={reduceMotion ? undefined : { x: [0, 24, 7], y: [0, 42, 78], rotate: [0, 170, 340], opacity: [0, .9, 0] }}
                 transition={{ duration: 9, delay: .8, repeat: Infinity, ease: "linear" }}
               />
-              <div className="absolute left-3 top-3 flex items-center gap-2 border border-[#E8D3C6]/25 bg-[#08080D]/65 px-2.5 py-1.5 backdrop-blur-sm sm:left-4 sm:top-4">
+              <div className="absolute left-3 top-3 flex items-center gap-2 border border-[#E8D3C6]/25 bg-[#08080D]/65 px-2.5 py-1.5 backdrop-blur-xs sm:left-4 sm:top-4">
                 <span className="size-1.5 rounded-full bg-[#E8595C] shadow-[0_0_12px_rgba(232,89,92,.8)]" />
                 <span className="font-mono text-[8px] uppercase tracking-[.2em] text-[#F0DED0]">Kasugai crow / in flight</span>
               </div>
@@ -77,17 +77,17 @@ export function ContactSection() {
                   <p className="font-mono text-[8px] uppercase tracking-[.23em] text-[#F0AFB8]">Demon Slayer Corps · 鎹鴉</p>
                   <p className="mt-1.5 font-display text-2xl uppercase leading-none text-[#FFF0E1] drop-shadow-lg sm:text-3xl">A message awaits.</p>
                 </div>
-                <span className="shrink-0 border border-[#E9D5C4]/30 bg-[#08080D]/65 px-2 py-1.5 font-mono text-[8px] uppercase tracking-[.17em] text-[#E8D5C7] backdrop-blur-sm">Dispatch / 01</span>
+                <span className="shrink-0 border border-[#E9D5C4]/30 bg-[#08080D]/65 px-2 py-1.5 font-mono text-[8px] uppercase tracking-[.17em] text-[#E8D5C7] backdrop-blur-xs">Dispatch / 01</span>
               </div>
             </div>
             <p className="font-mono text-[9px] uppercase tracking-[.22em] text-[#F17477]">Direct channels / 01</p>
             <h3 className="mt-4 font-display text-3xl uppercase leading-tight text-[#F2E3D2] md:text-4xl">Let’s talk about the work.</h3>
             <p className="mt-4 leading-7 text-[#B3A8AB]">For a role, a technical question or an ambitious idea, email is the simplest way to reach me.</p>
           </div>
-          <div className="mt-10 grid gap-3">{[{ label: "Email", href: "mailto:" + siteConfig.email, icon: Mail }, { label: "GitHub", href: siteConfig.github, icon: Github }].map((link) => <a key={link.label} href={link.href} className="flex items-center gap-3 border border-[#E7C6AF]/15 bg-black/25 px-4 py-3.5 text-sm text-[#D6C9C7] transition hover:border-[#D93645]/60 hover:text-white"><link.icon className="size-4 text-[#44D5ED]" /> {link.label}<span className="ml-auto font-mono text-[8px] uppercase tracking-[.18em] text-[#83747A]">Open ↗</span></a>)}</div>
+          <div className="mt-10 grid gap-3">{[{ label: "Email", href: "mailto:" + siteConfig.email, icon: Mail }, { label: "GitHub", href: siteConfig.github, icon: Github }].map((link) => <a key={link.label} href={link.href} className="flex items-center gap-3 border border-[#E7C6AF]/15 bg-black/25 px-4 py-3.5 text-sm text-[#D6C9C7] transition hover:border-netflix/60 hover:text-white"><link.icon className="size-4 text-[#44D5ED]" /> {link.label}<span className="ml-auto font-mono text-[8px] uppercase tracking-[.18em] text-[#83747A]">Open ↗</span></a>)}</div>
         </GlassCard>
         <GlassCard className="slayer-panel p-7 md:p-9">
-          <div className="mb-6 flex items-center justify-between"><p className="font-mono text-[9px] uppercase tracking-[.2em] text-[#F17477]">Message scroll / 02</p><span className="font-serif text-2xl text-[#D93645]">文</span></div>
+          <div className="mb-6 flex items-center justify-between"><p className="font-mono text-[9px] uppercase tracking-[.2em] text-[#F17477]">Message scroll / 02</p><span className="font-serif text-2xl text-netflix">文</span></div>
           <form onSubmit={handleSubmit(onSubmit)} noValidate className="grid gap-5">
             <div className="grid gap-5 sm:grid-cols-2">
               <label className="grid gap-2 text-sm font-medium text-[#D6C9C7]">Name<input {...register("name")} className={inputClass} placeholder="Your name" aria-invalid={Boolean(errors.name)} />{errors.name ? <span className="text-xs text-rose-300">{errors.name.message}</span> : null}</label>

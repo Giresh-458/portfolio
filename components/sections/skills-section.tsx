@@ -41,7 +41,7 @@ export function SkillsSection() {
                 <span className="grid size-10 shrink-0 place-items-center border bg-black/35" style={{ borderColor: style.color + "55", color: style.color }}><Icon className="size-5" /></span>
                 <div><h3 className="text-lg font-semibold leading-tight text-[#F4E6D6]">{category.title}</h3><p className="mt-1 text-xs leading-5 text-[#AFA3A7]">{summaries[index]}</p></div>
               </div>
-              <div className="relative mt-5 flex flex-wrap gap-2">{category.skills.map((skill) => <span key={skill.name} className="border border-white/[0.1] bg-black/35 px-2.5 py-1.5 text-xs text-[#C9BFC0] transition-colors group-hover:border-white/20">{skill.name}</span>)}</div>
+              <div className="relative mt-5 flex flex-wrap gap-2">{category.skills.map((skill) => <span key={skill.name} className="border border-white/10 bg-black/35 px-2.5 py-1.5 text-xs text-[#C9BFC0] transition-colors group-hover:border-white/20">{skill.name}</span>)}</div>
               <div className="relative mt-7 flex items-center gap-2 font-mono text-[8px] uppercase tracking-[0.2em] text-[#8D8185]"><span className="h-px w-6" style={{ backgroundColor: style.color }} /> Technique record / {style.name}</div>
             </motion.article>
           );

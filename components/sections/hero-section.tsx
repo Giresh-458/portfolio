@@ -9,13 +9,13 @@ const rise = { hidden: { opacity: 0, y: 24 }, visible: { opacity: 1, y: 0 } };
 export function HeroSection() {
   const reduceMotion = useReducedMotion();
   return (
-    <section id="home" className="slayer-hero relative isolate min-h-[1000px] overflow-hidden bg-[#07070B] pt-[72px] lg:h-[100svh] lg:min-h-[860px]">
+    <section id="home" className="slayer-hero relative isolate min-h-[1000px] overflow-hidden bg-background pt-[72px] lg:h-svh lg:min-h-[860px]">
       <BreathingScene />
-      <div className="hero-vignette pointer-events-none absolute inset-0 z-[5]" />
-      <div className="pointer-events-none absolute inset-x-0 top-0 z-20 h-px bg-gradient-to-r from-transparent via-[#E33243]/80 to-transparent" />
-      <div className="pointer-events-none absolute bottom-0 left-0 right-0 z-20 h-28 bg-gradient-to-t from-[#07070B] to-transparent" />
+      <div className="hero-vignette pointer-events-none absolute inset-0 z-5" />
+      <div className="pointer-events-none absolute inset-x-0 top-0 z-20 h-px bg-linear-to-r from-transparent via-[#E33243]/80 to-transparent" />
+      <div className="pointer-events-none absolute bottom-0 left-0 right-0 z-20 h-28 bg-linear-to-t from-[#07070B] to-transparent" />
 
-      <div className="container relative z-10 flex min-h-[calc(1000px-72px)] items-start pt-24 md:pt-28 lg:h-full lg:min-h-0 lg:items-center lg:pt-0">
+      <div className="container relative z-10 flex min-h-[928px] items-start pt-24 md:pt-28 lg:h-full lg:min-h-0 lg:items-center lg:pt-0">
         <motion.div initial={reduceMotion ? undefined : "hidden"} animate={reduceMotion ? undefined : "visible"} variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.12, delayChildren: 0.15 } } }} className="relative z-20 w-full max-w-[660px] pb-44 lg:pb-20">
           <motion.div variants={reduceMotion ? undefined : rise} className="mb-7 flex items-center gap-3">
             <span className="corps-seal grid size-11 shrink-0 place-items-center border border-[#E43D48]/80 bg-[#7C111F]/60 font-display text-2xl text-[#FFF0D8]">滅</span>
@@ -31,7 +31,7 @@ export function HeroSection() {
           </motion.h1>
 
           <motion.div variants={reduceMotion ? undefined : rise} className="mt-7 flex items-start gap-4">
-            <span className="mt-1 h-[54px] w-[3px] shrink-0 bg-gradient-to-b from-[#E73A47] via-[#E73A47] to-transparent" />
+            <span className="mt-1 h-[54px] w-[3px] shrink-0 bg-linear-to-b from-[#E73A47] via-[#E73A47] to-transparent" />
             <p className="max-w-lg text-base leading-7 text-[#DED8D4] sm:text-lg sm:leading-8">
               Building intelligent systems. Solving real problems.
               <span className="block text-[#F2C9BC]">One project at a time.</span>
@@ -51,7 +51,7 @@ export function HeroSection() {
       </div>
 
       <div className="pointer-events-none absolute bottom-[136px] left-5 z-20 hidden items-center gap-3 lg:flex">
-        <span className="h-10 w-px bg-gradient-to-b from-[#EA4550] to-transparent" />
+        <span className="h-10 w-px bg-linear-to-b from-[#EA4550] to-transparent" />
         <span className="font-mono text-[9px] uppercase tracking-[0.25em] text-white/65">Scroll to enter the archive</span>
       </div>
       <div className="pointer-events-none absolute left-[3.6%] top-[36%] z-20 hidden select-none font-serif text-[14px] leading-[1.85] tracking-[.35em] text-[#F3D6C9]/75 [writing-mode:vertical-rl] lg:block">夢を現実に</div>

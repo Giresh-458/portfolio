@@ -22,9 +22,9 @@ export function TimelineSection() {
         description="A repeatable loop from the first question to an implementation I can explain, test and improve."
       />
       <div className="training-path relative">
-        <div className="pointer-events-none absolute left-[8%] right-[8%] top-5 hidden h-px overflow-hidden bg-[#D93645]/20 xl:block">
+        <div className="pointer-events-none absolute left-[8%] right-[8%] top-5 hidden h-px overflow-hidden bg-netflix/20 xl:block">
           <motion.div
-            className="h-full origin-left bg-gradient-to-r from-[#D93645] via-[#C3A2E2] to-[#39D8F3]"
+            className="h-full origin-left bg-linear-to-r from-[#D93645] via-[#C3A2E2] to-[#39D8F3]"
             initial={reduceMotion ? { scaleX: 1 } : { scaleX: 0 }}
             whileInView={{ scaleX: 1 }}
             viewport={{ once: true }}
@@ -45,7 +45,7 @@ export function TimelineSection() {
                 whileHover={reduceMotion ? undefined : { y: -5 }}
                 className="training-scroll group relative overflow-hidden border border-[#E7C6AF]/17 bg-[#0B0B12]/94 p-6 transition-colors hover:border-[#EF5456]/55 md:p-7"
               >
-                <div className="pointer-events-none absolute -right-4 -top-5 font-serif text-[116px] leading-none text-white/[0.025]">
+                <div className="pointer-events-none absolute -right-4 -top-5 font-serif text-[116px] leading-none text-white/2.5">
                   {stage.kanji}
                 </div>
                 <div className="relative mb-7 flex items-center justify-between">

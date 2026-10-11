@@ -38,7 +38,7 @@ export function AILabSection() {
             {workflow.map((step, index) => {
               const Icon = step.icon;
               return <div key={step.title} className="forge-step flex items-start gap-4 border border-[#E6A181]/15 bg-black/25 p-4 transition-colors hover:border-[#E95648]/55">
-                <span className="grid size-10 shrink-0 place-items-center border border-[#EA785D]/35 bg-[#E95648]/[0.08] text-[#FF9B7D]"><Icon className="size-5" /></span>
+                <span className="grid size-10 shrink-0 place-items-center border border-[#EA785D]/35 bg-[#E95648]/8 text-[#FF9B7D]"><Icon className="size-5" /></span>
                 <div className="min-w-0 flex-1"><div className="flex items-center gap-2"><span className="font-mono text-[9px] text-[#E98570]">0{index + 1}</span><h3 className="font-semibold text-[#EADBD0]">{step.title}</h3></div><p className="mt-1 text-sm leading-6 text-[#AFA3A7]">{step.description}</p></div>
                 {index < workflow.length - 1 ? <ArrowRight className="mt-2 size-4 shrink-0 text-[#E98570]/60" /> : null}
               </div>;
@@ -52,7 +52,7 @@ export function AILabSection() {
               <div className="flex items-center justify-between"><topic.icon className="size-5 text-[#F28B6F]" /><span className="font-mono text-[8px] tracking-[0.17em] text-[#886D71]">FORGE / {String(index + 1).padStart(2, "0")}</span></div>
               <h3 className="mt-4 font-semibold text-[#F1E2D5]">{topic.name}</h3>
               <p className="mt-2 text-sm leading-6 text-[#AFA3A7]">{topic.description}</p>
-              <div className="mt-5 h-px w-full bg-gradient-to-r from-[#E65A48]/55 via-[#C38A6B]/20 to-transparent" />
+              <div className="mt-5 h-px w-full bg-linear-to-r from-[#E65A48]/55 via-[#C38A6B]/20 to-transparent" />
             </GlassCard>
           </motion.div>)}
         </motion.div>
