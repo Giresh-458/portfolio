@@ -450,3 +450,52 @@ a, button { -webkit-tap-highlight-color: transparent; }
   .corps-showcase-image { transition: none; }
   .mission-art { transition: none; }
 }
+
+
+/* Responsive, failure-tolerant anime artwork. If every remote URL fails, the
+   scene remains atmospheric instead of showing a broken-image icon or empty box. */
+.anime-scene-backdrop {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  isolation: isolate;
+  background-color: #0b0b13;
+  background-image:
+    radial-gradient(ellipse at 78% 22%, color-mix(in srgb, var(--scene-accent, #39D8F3) 30%, transparent), transparent 56%),
+    linear-gradient(135deg, #10121f, #08080e 62%, #1d0b14);
+}
+.anime-scene-fallback {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 72% 24%, color-mix(in srgb, var(--scene-accent, #39D8F3) 35%, transparent), transparent 50%),
+    linear-gradient(135deg, #131522, #090a10 62%, #210d19);
+}
+.anime-scene-image {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: var(--scene-position, center);
+  max-width: none;
+  user-select: none;
+}
+.corps-showcase-card .anime-scene-image { object-position: var(--scene-position, center); }
+.mission-art .anime-scene-image { object-position: var(--scene-position, center); }
+
+@media (max-width: 767px) {
+  .anime-scene-image { object-position: var(--scene-mobile-position, var(--scene-position, center)); }
+  .corps-showcase-card.corps-showcase-feature { min-height: clamp(350px, 105vw, 440px); }
+  .corps-showcase-card.corps-showcase-side { min-height: clamp(230px, 66vw, 290px); }
+  .mission-art { aspect-ratio: 4 / 3; }
+  .training-ground { min-height: 270px; }
+  .corps-records-banner { min-height: 235px; }
+}
+@media (max-width: 420px) {
+  .corps-showcase-card .font-display { overflow-wrap: anywhere; }
+  .corps-showcase-card.corps-showcase-feature { min-height: 340px; }
+  .corps-showcase-card.corps-showcase-side { min-height: 225px; }
+  .mission-art { aspect-ratio: 1 / 1; }
+}
