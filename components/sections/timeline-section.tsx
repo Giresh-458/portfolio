@@ -3,7 +3,7 @@
 import { motion, useReducedMotion } from "framer-motion";
 import { ArrowDownRight, BrainCircuit, CheckCheck, Code2, Route } from "lucide-react";
 import { SectionHeader } from "@/components/ui/section-header";
-import { SlayerIllustration } from "@/components/ui/slayer-illustration";
+import { animeScenes } from "@/lib/anime-art";
 
 const stages = [
   { number: "01", title: "Understand", subtitle: "Name the real problem.", detail: "Clarify the user, constraints and what a useful result should look like before reaching for a model or framework.", icon: BrainCircuit, tone: "water", kanji: "壱" },
@@ -44,12 +44,12 @@ export function TimelineSection() {
                 viewport={{ once: true, amount: 0.22 }}
                 transition={{ duration: 0.45, delay: reduceMotion ? 0 : index * 0.08 }}
                 whileHover={reduceMotion ? undefined : { y: -5 }}
-                className="training-scroll group relative overflow-hidden border border-[#E7C6AF]/17 bg-[#0B0B12]/94 p-6 transition-colors hover:border-[#EF5456]/55 md:p-7"
+                className="training-scroll group relative overflow-hidden border border-[#E7C6AF]/17 bg-[#0B0B12]/60 p-6 transition-colors hover:border-[#EF5456]/55 md:p-7"
               >
+                <div aria-hidden="true" className="absolute inset-0 z-0 opacity-90 transition-opacity duration-500 group-hover:opacity-100" style={{ backgroundImage: "linear-gradient(180deg, rgba(7,7,12,.28) 0%, rgba(7,7,12,.72) 46%, rgba(7,7,12,.97) 100%), url('" + animeScenes[(index * 2 + 2) % animeScenes.length].image + "')", backgroundSize: "cover, cover", backgroundPosition: "center, " + animeScenes[(index * 2 + 2) % animeScenes.length].position }} />
                 <div className="pointer-events-none absolute -right-4 -top-5 font-serif text-[116px] leading-none text-white/2.5">
                   {stage.kanji}
                 </div>
-                <SlayerIllustration variant={(["tanjiro", "giyu", "rengoku", "zenitsu"] as const)[index]} className="pointer-events-none absolute -right-3 -top-3 z-0 h-40 w-32 opacity-35 transition-opacity duration-500 group-hover:opacity-65" />
                 <div className="relative z-10 mb-7 flex items-center justify-between">
                   <span className="grid size-12 place-items-center border bg-black/35" style={{ color: accent, borderColor: accent + "55" }}>
                     <Icon className="size-5" />
