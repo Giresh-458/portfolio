@@ -2,6 +2,7 @@
 import { motion, useReducedMotion } from "framer-motion";
 import { AnimatedCounter } from "@/components/ui/animated-counter";
 import { SectionHeader } from "@/components/ui/section-header";
+import { SlayerIllustration } from "@/components/ui/slayer-illustration";
 import { TechBadge } from "@/components/ui/tech-badge";
 import { fadeUp, stagger, viewport } from "@/lib/motion";
 import { stats } from "@/lib/data";
@@ -48,6 +49,7 @@ export function AboutSection() {
               {[0,1,2,3,4,5,6,7,8,9,10,11,12,13].map((i)=> <g key={i} opacity=".72"><path d={"M"+(i*49-10)+" 0 Q"+(i*49+16)+" 62 "+(i*49+5)+" 117 T"+(i*49+16)+" 174"} stroke="#B59CDD" strokeOpacity=".42" strokeWidth="1.5"/>{[0,1,2,3].map((j)=><ellipse key={j} cx={i*49+2+(j%2)*8} cy={40+j*30+(i%3)*7} rx="4.5" ry="9" transform={"rotate("+(i%2?28:-25)+" "+(i*49+2+(j%2)*8)+" "+(40+j*30+(i%3)*7)+")"} fill="url(#training-wisteria)"/>)}</g>)}
               <path d="M0 274H640" stroke="#D3A88D" strokeOpacity=".22"/>
             </svg>
+            <SlayerIllustration variant="tanjiro" label="Water-style Corps swordsman at the training grounds" className="absolute bottom-0 right-0 z-[1] h-[98%] w-[56%] max-w-[250px] opacity-95 drop-shadow-[0_0_25px_rgba(57,216,243,0.18)]" />
             <motion.div aria-hidden="true" className="absolute inset-0 bg-linear-to-t from-[#090910]/90 via-transparent to-[#090910]/20" animate={reduceMotion ? undefined : { opacity: [.6, .8, .6] }} transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }} />
             <div className="absolute bottom-5 left-5 right-5 flex items-end justify-between gap-4">
               <div><p className="font-mono text-[8px] uppercase tracking-[0.24em] text-[#C2A8E8]">Wisteria training grounds</p><p className="mt-2 font-display text-2xl uppercase text-[#F4E6D4]">Quiet work. Sharp results.</p></div>

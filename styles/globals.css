@@ -190,6 +190,8 @@ a, button { -webkit-tap-highlight-color: transparent; }
 @keyframes blood-moon-breathe { 0%,100% { transform: translateY(0) scale(1); filter: saturate(.95); } 50% { transform: translateY(8px) scale(1.025); filter: saturate(1.13); } }
 .hero-moon-glow { z-index: 3; background: radial-gradient(circle at 76% 18%, rgba(211,28,43,.2), transparent 15rem), radial-gradient(ellipse at 75% 62%, rgba(24,188,227,.12), transparent 29rem); mix-blend-mode: screen; }
 .hero-title { text-shadow: 0 8px 30px rgba(0,0,0,.52); }
+.slayer-figure-art { display: block; overflow: visible; pointer-events: none; filter: drop-shadow(0 12px 20px rgba(0,0,0,.36)); }
+.corps-records-banner { background: radial-gradient(ellipse at 84% 58%, rgba(217,54,69,.22), transparent 20rem), radial-gradient(ellipse at 66% 12%, rgba(57,216,243,.15), transparent 18rem), repeating-linear-gradient(135deg, rgba(230,202,184,.04) 0 1px, transparent 1px 15px), #09090f; }
 .hero-brush { color: #E63846; font-family: Georgia, "Times New Roman", serif; font-weight: 700; letter-spacing: -.055em; text-shadow: 0 8px 28px rgba(120,7,22,.25); -webkit-text-stroke: .4px rgba(255,112,112,.3); }
 .corps-seal { background-image: linear-gradient(135deg, rgba(255,255,255,.08), transparent 48%), repeating-conic-gradient(#16423e 0% 25%, #081414 0% 50%); background-size: auto, 12px 12px; }
 .sakura-petal { background: linear-gradient(140deg, #ffd8de, #e95c86 70%); border-radius: 100% 0 100% 0; box-shadow: 0 0 9px rgba(247,123,164,.35); }
