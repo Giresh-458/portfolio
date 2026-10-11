@@ -1,0 +1,67 @@
+name: Temporary dependency migration
+
+on:
+  push:
+    branches: [fix/deployment-dependency-advisories]
+
+permissions:
+  contents: write
+
+jobs:
+  migrate-and-verify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out fix branch
+        uses: actions/checkout@v4
+        with:
+          ref: fix/deployment-dependency-advisories
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - name: Upgrade Next.js and React
+        run: npm install next@16.4.0 react@19.3.0 react-dom@19.3.0 eslint-config-next@16.4.0
+      - name: Upgrade Tailwind and PostCSS
+        run: npm install --save-dev tailwindcss@4.3.3 @tailwindcss/postcss@4.3.3 postcss@8.5.29 @types/react@latest @types/react-dom@latest
+      - name: Migrate Tailwind CSS configuration
+        run: npx --yes @tailwindcss/upgrade@4.3.3
+      - name: Update Next.js 16 lint command and PostCSS plugin
+        run: |
+          node --input-type=module <<'NODE'
+          import fs from "node:fs";
+          const path = "package.json";
+          const pkg = JSON.parse(fs.readFileSync(path, "utf8"));
+          pkg.scripts.lint = "eslint .";
+          fs.writeFileSync(path, JSON.stringify(pkg, null, 2) + "\n");
+          NODE
+          cat > postcss.config.mjs <<'EOF'
+          export default {
+            plugins: {
+              "@tailwindcss/postcss": {}
+            }
+          };
+          EOF
+          npm install
+      - name: Unit tests
+        run: npm test
+      - name: Type-check
+        run: npm run typecheck
+      - name: Lint
+        run: npm run lint
+      - name: Production build
+        run: npm run build
+        env:
+          NEXT_PUBLIC_SITE_URL: https://portfolio-ci.example.invalid
+      - name: Report remaining dependency advisories
+        run: |
+          npm audit --json > /tmp/npm-audit.json || true
+          node -e 'const a=require("/tmp/npm-audit.json"); console.log("NPM_AUDIT_SUMMARY",JSON.stringify(a.metadata?.vulnerabilities)); for (const [name,v] of Object.entries(a.vulnerabilities||{})) console.log("NPM_AUDIT_ITEM",JSON.stringify({name,severity:v.severity,range:v.range,fixAvailable:v.fixAvailable,via:v.via.map(x=>typeof x==="string"?x:x.title)}))'
+      - name: Commit validated migration and remove this temporary workflow
+        run: |
+          rm -f .github/workflows/dependency-migration-temp.yml
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "fix: upgrade framework and CSS tooling securely"
+          git push origin HEAD:fix/deployment-dependency-advisories
