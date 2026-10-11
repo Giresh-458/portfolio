@@ -70,8 +70,6 @@ export function BreathingScene() {
       <AnimatePresence mode="sync">
         <motion.div
           key={active.id}
-        <motion.div
-          key={active.id}
           className="absolute inset-[-2%]"
           data-character={active.id}
           role="img"
