@@ -70,6 +70,8 @@ export function BreathingScene() {
       <AnimatePresence mode="sync">
         <motion.div
           key={active.id}
+        <motion.div
+          key={active.id}
           className="absolute inset-[-2%]"
           data-character={active.id}
           role="img"
@@ -80,95 +82,7 @@ export function BreathingScene() {
           transition={reduceMotion ? { duration: 0.01 } : { opacity: { duration: 0.55 }, x: { duration: 12, repeat: Infinity, ease: "easeInOut" }, scale: { duration: active.id === "zenitsu" ? 5 : 18, repeat: Infinity, ease: "easeInOut" } }}
         >
           <AnimeSceneBackdrop scene={active.scene} className="absolute inset-0" priority />
-        </motion.div>;
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
-import { useState } from "react";
-import { animeScenes } from "@/lib/anime-art";
-import { AnimeSceneBackdrop } from "@/components/ui/anime-scene-backdrop";
-
-const characters = [
-  {
-    id: "tanjiro",
-    scene: animeScenes[0],
-    name: "Tanjiro Kamado",
-    style: "Water Breathing · Hinokami Kagura",
-    technique: "水の呼吸",
-    accent: animeScenes[0].accent,
-    secondary: "#ED493D",
-    number: "01"
-  },
-  {
-    id: "nezuko",
-    scene: animeScenes[1],
-    name: "Nezuko Kamado",
-    style: "Blood Demon Art",
-    technique: "血鬼術",
-    accent: animeScenes[1].accent,
-    secondary: "#F42E62",
-    number: "02"
-  },
-  {
-    id: "zenitsu",
-    scene: animeScenes[2],
-    name: "Zenitsu Agatsuma",
-    style: "Thunder Breathing",
-    technique: "雷の呼吸",
-    accent: animeScenes[2].accent,
-    secondary: "#FFAE36",
-    number: "03"
-  },
-  {
-    id: "inosuke",
-    scene: animeScenes[3],
-    name: "Inosuke Hashibira",
-    style: "Beast Breathing",
-    technique: "獣の呼吸",
-    accent: animeScenes[3].accent,
-    secondary: "#76A8FF",
-    number: "04"
-  }
-];
-
-const petals = [
-  { left: "8%", top: "18%", size: 11, delay: 0, duration: 12 },
-  { left: "34%", top: "8%", size: 8, delay: 3, duration: 15 },
-  { left: "58%", top: "15%", size: 10, delay: 1.5, duration: 13 },
-  { left: "76%", top: "12%", size: 7, delay: 5, duration: 16 },
-  { left: "91%", top: "38%", size: 12, delay: 2, duration: 14 },
-  { left: "42%", top: "58%", size: 7, delay: 4, duration: 11 },
-  { left: "14%", top: "64%", size: 10, delay: 1, duration: 17 },
-  { left: "69%", top: "74%", size: 8, delay: 6, duration: 13 },
-  { left: "84%", top: "60%", size: 7, delay: 2.5, duration: 15 },
-  { left: "27%", top: "40%", size: 6, delay: 7, duration: 12 }
-];
-
-export function BreathingScene() {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const reduceMotion = useReducedMotion();
-  const active = characters[activeIndex];
-
-  return (
-    <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-label="Animated Demon Slayer character scene">
-      <AnimatePresence mode="sync">
-        <motion.div
-          key={active.id}
-          className="character-scene-image absolute inset-[-2%]"
-          data-character={active.id}
-          role="img"
-          aria-label={active.name + " — " + active.style}
-          style={{
-            backgroundImage: "url('" + active.image + "')",
-            backgroundRepeat: "no-repeat",
-            backgroundSize: "cover",
-            ["--scene-position" as string]: active.position,
-            ["--scene-mobile-position" as string]: active.mobilePosition,
-            backgroundColor: "#080C17"
-          }}
-          initial={reduceMotion ? { opacity: 1 } : { opacity: 0, scale: 1.08, x: 24 }}
-          animate={reduceMotion ? { opacity: 1, scale: 1, x: 0 } : { opacity: 1, scale: [1.015, 1.07, 1.015], x: [0, -7, 0] }}
-          exit={reduceMotion ? { opacity: 1 } : { opacity: 0, scale: 1.03, x: -18 }}
-          transition={reduceMotion ? { duration: 0.01 } : { opacity: { duration: 0.55 }, x: { duration: 12, repeat: Infinity, ease: "easeInOut" }, scale: { duration: active.id === "zenitsu" ? 5 : 18, repeat: Infinity, ease: "easeInOut" } }}
-        />
+        </motion.div>
       </AnimatePresence>
 
       <div className="hero-scene-wash absolute inset-0" />
