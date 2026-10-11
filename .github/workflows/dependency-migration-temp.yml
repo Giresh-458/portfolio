@@ -21,7 +21,7 @@ jobs:
           node-version: 22
           cache: npm
       - name: Upgrade Next.js and React
-        run: npm install next@16.4.0 react@19.3.0 react-dom@19.3.0 eslint-config-next@16.4.0
+        run: npm install next@16.4.0 react@19.3.0 react-dom@19.3.0 eslint-config-next@16.4.0 eslint@^9
       - name: Upgrade Tailwind and PostCSS
         run: npm install --save-dev tailwindcss@4.3.3 @tailwindcss/postcss@4.3.3 postcss@8.5.29 @types/react@latest @types/react-dom@latest
       - name: Migrate Tailwind CSS configuration
@@ -42,6 +42,18 @@ jobs:
             }
           };
           EOF
+          cat > eslint.config.mjs <<'EOF'
+          import { defineConfig, globalIgnores } from "eslint/config";
+          import nextVitals from "eslint-config-next/core-web-vitals";
+          import nextTs from "eslint-config-next/typescript";
+
+          export default defineConfig([
+            ...nextVitals,
+            ...nextTs,
+            globalIgnores([".next/**", "out/**", "build/**", "next-env.d.ts"])
+          ]);
+          EOF
+          rm -f .eslintrc.json
           npm install
       - name: Unit tests
         run: npm test
