@@ -39,7 +39,7 @@ export function ProjectModal({ project, open, onOpenChange }: ProjectModalProps)
                 className="fixed inset-0 z-[100] bg-black/80 backdrop-blur-md"
               />
             </Dialog.Overlay>
-            <Dialog.Content asChild onOpenAutoFocus={(event) => event.preventDefault()}>
+            <Dialog.Content asChild>
               <motion.div
                 initial={reduceMotion ? undefined : { opacity: 0, y: 24, scale: 0.97 }}
                 animate={{ opacity: 1, y: 0, scale: 1 }}

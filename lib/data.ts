@@ -9,13 +9,27 @@ import {
 } from "lucide-react";
 import type { Project, ResearchTopic, SkillCategory, Stat } from "@/types";
 
+function resolveSiteUrl(): string {
+  const configuredSiteUrl = process.env.NEXT_PUBLIC_SITE_URL?.trim();
+  if (configuredSiteUrl) return new URL(configuredSiteUrl).origin;
+
+  // Vercel preview URLs are safe fallbacks for previews; production must set
+  // the canonical public origin explicitly.
+  if (process.env.NODE_ENV === "production" && process.env.VERCEL_ENV !== "preview") {
+    throw new Error("Set NEXT_PUBLIC_SITE_URL to the production website origin before building.");
+  }
+
+  const vercelHost = process.env.VERCEL_URL?.trim();
+  return vercelHost ? `https://${vercelHost}` : "http://localhost:3000";
+}
+
 export const siteConfig = {
   name: "Giresh Komal Velaga",
   role: "Aspiring AI Engineer · Full-Stack Developer",
   email: "gireshvelaga@gmail.com",
   github: "https://github.com/Giresh-458",
   linkedin: "",
-  siteUrl: process.env.NEXT_PUBLIC_SITE_URL ?? "https://github.com/Giresh-458/portfolio",
+  siteUrl: resolveSiteUrl(),
   description:
     "Computer Science student at IIIT Sri City building AI systems and full-stack products, from retrieval and agent workflows to user-facing applications."
 };
