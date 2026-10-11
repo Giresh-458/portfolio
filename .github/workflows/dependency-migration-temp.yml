@@ -36,6 +36,8 @@ jobs:
           pkg.scripts.lint = "eslint .";
           fs.writeFileSync(path, JSON.stringify(pkg, null, 2) + "\n");
           NODE
+          # Tailwind utility migration can accidentally rename this API type literal.
+          sed -i 's/"outline-solid"/"outline"/g' components/ui/glow-button.tsx
           cat > postcss.config.mjs <<'EOF'
           export default {
             plugins: {
