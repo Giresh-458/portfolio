@@ -3,6 +3,7 @@ import { motion, useReducedMotion } from "framer-motion";
 import { AnimatedCounter } from "@/components/ui/animated-counter";
 import { SectionHeader } from "@/components/ui/section-header";
 import { animeScenes } from "@/lib/anime-art";
+import { AnimeSceneBackdrop } from "@/components/ui/anime-scene-backdrop";
 import { TechBadge } from "@/components/ui/tech-badge";
 import { fadeUp, stagger, viewport } from "@/lib/motion";
 import { stats } from "@/lib/data";
@@ -38,7 +39,8 @@ export function AboutSection() {
 
         <motion.div variants={reduceMotion ? undefined : fadeUp} className="relative flex flex-col gap-4">
           <div className="training-ground group relative min-h-[300px] overflow-hidden border border-[#E7C6AF]/15 bg-[#0A0B12]">
-            <div aria-hidden="true" className="absolute inset-0 z-0 scale-[1.01] transition-transform duration-[1200ms] group-hover:scale-[1.05]" style={{ backgroundImage: "linear-gradient(90deg, rgba(5,7,12,.88) 0%, rgba(5,7,12,.45) 48%, rgba(5,7,12,.06) 100%), linear-gradient(0deg, rgba(4,5,9,.82), rgba(4,5,9,.02) 60%), url('" + animeScenes[0].image + "')", backgroundSize: "cover, cover, cover", backgroundPosition: "center, center, " + animeScenes[0].position }} />
+            <AnimeSceneBackdrop scene={animeScenes[0]} priority className="absolute inset-0 z-0 scale-[1.01] transition-transform duration-[1200ms] group-hover:scale-[1.05]" />
+            <div aria-hidden="true" className="pointer-events-none absolute inset-0 z-[1] bg-[linear-gradient(90deg,rgba(5,7,12,.88)_0%,rgba(5,7,12,.45)_48%,rgba(5,7,12,.06)_100%),linear-gradient(0deg,rgba(4,5,9,.82),rgba(4,5,9,.02)_60%)]" />
             <motion.div aria-hidden="true" className="absolute inset-0 bg-linear-to-t from-[#090910]/90 via-transparent to-[#090910]/20" animate={reduceMotion ? undefined : { opacity: [.6, .8, .6] }} transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }} />
             <div className="absolute bottom-5 left-5 right-5 flex items-end justify-between gap-4">
               <div><p className="font-mono text-[8px] uppercase tracking-[0.24em] text-[#C2A8E8]">Wisteria training grounds</p><p className="mt-2 font-display text-2xl uppercase text-[#F4E6D4]">Quiet work. Sharp results.</p></div>
