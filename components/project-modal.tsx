@@ -45,7 +45,7 @@ export function ProjectModal({ project, open, onOpenChange }: ProjectModalProps)
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 exit={reduceMotion ? undefined : { opacity: 0, y: 16, scale: 0.98 }}
                 transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-                className="glass-strong fixed left-1/2 top-1/2 z-101 max-h-[90vh] w-[calc(100%-2rem)] max-w-5xl -translate-x-1/2 -translate-y-1/2 overflow-y-auto rounded-2xl shadow-2xl"
+                className="portfolio-modal fixed left-1/2 top-1/2 z-101 max-h-[90vh] w-[calc(100%-2rem)] max-w-5xl -translate-x-1/2 -translate-y-1/2 overflow-y-auto rounded-2xl shadow-2xl"
               >
                 <div className="relative aspect-16/6 min-h-64 overflow-hidden">
                   <Image src={project.image} alt="" fill className="object-cover" sizes="(max-width: 1024px) 100vw, 1024px" />
@@ -56,8 +56,8 @@ export function ProjectModal({ project, open, onOpenChange }: ProjectModalProps)
                     </Button>
                   </Dialog.Close>
                   <div className="absolute inset-x-0 bottom-0 p-6 md:p-8">
-                    <p className="mb-2 font-mono text-xs uppercase tracking-[0.24em] text-netflix">{project.eyebrow}</p>
-                    <Dialog.Title className="font-display text-3xl font-black tracking-tight text-white md:text-5xl">
+                    <p className="mb-2 font-mono text-xs uppercase tracking-[0.24em] text-[#F1C75B]">{project.eyebrow}</p>
+                    <Dialog.Title className="text-3xl font-semibold tracking-tight text-white md:text-5xl">
                       {project.title}
                     </Dialog.Title>
                   </div>
@@ -66,17 +66,17 @@ export function ProjectModal({ project, open, onOpenChange }: ProjectModalProps)
                   <div className="space-y-6">
                     {details.filter((entry) => Boolean(entry[1]?.trim())).map(([label, value]) => (
                       <div key={label}>
-                        <h3 className="mb-2 text-sm font-bold uppercase tracking-wider text-white">{label}</h3>
+                        <h3 className="mb-2 text-sm font-semibold text-white">{label}</h3>
                         <p className="leading-7 text-zinc-400">{value}</p>
                       </div>
                     ))}
                   </div>
                   <aside>
-                    <h3 className="mb-3 text-sm font-bold uppercase tracking-wider text-white">Contributions</h3>
+                    <h3 className="mb-3 text-sm font-semibold text-white">Contributions</h3>
                     <ul className="space-y-3 text-sm leading-6 text-zinc-400">
                       {project.contributions.map((item) => (
                         <li key={item} className="flex gap-3">
-                          <span className="mt-2 size-1.5 shrink-0 rounded-full bg-netflix" />
+                          <span className="mt-2 size-1.5 shrink-0 rounded-full bg-[#F1C75B]" />
                           {item}
                         </li>
                       ))}
