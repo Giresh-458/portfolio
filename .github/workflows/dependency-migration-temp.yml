@@ -25,7 +25,8 @@ jobs:
       - name: Upgrade Tailwind and PostCSS
         run: npm install --save-dev tailwindcss@4.3.3 @tailwindcss/postcss@4.3.3 postcss@8.5.29 @types/react@19.3.0 @types/react-dom@19.3.0
       - name: Remove legacy section-shell @apply before migration
-        run: sed -i 's/@apply container relative py-24 md:py-32;/position: relative;/' styles/globals.css
+        run: |
+          sed -i 's/@apply container relative py-24 md:py-32;/position: relative;/' styles/globals.css
       - name: Migrate Tailwind CSS configuration
         run: npx --yes @tailwindcss/upgrade@4.3.3 --force
       - name: Update Next.js 16 lint command and PostCSS plugin
