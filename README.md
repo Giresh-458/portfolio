@@ -1,53 +1,54 @@
-# AI Cinema Portfolio
+# Giresh Velaga — AI Engineering & Full-Stack Portfolio
 
-Production Next.js 14 portfolio with a cinematic Netflix-inspired interface, typed content architecture, accessible motion, GitHub analytics, and downloadable PDF routes. Framework settings live in `next.config.mjs`, the configuration format supported by Next.js 14.
+A personal portfolio connecting AI engineering and full-stack product work with a character-led Demon Slayer-inspired visual direction. The homepage uses a motion-poster layout: selectable character portraits, character-specific Water / Blood Demon / Thunder / Beast effects, and a dramatic night palette. The project archive and contact path remain recruiter-friendly.
+
+## Built with
+
+- Next.js 15.5.27, React 18, TypeScript
+- Tailwind CSS, Framer Motion, Lucide
+- Animated SVG overlays and reduced-motion support
+- GitHub REST API for live public repository, language, and recent activity data
 
 ## Local development
 
 ```bash
 npm install
-copy .env.example .env.local
+cp .env.example .env.local
 npm run dev
 ```
 
-Update identity, links, content, and metrics in `lib/data.ts`. Replace `public/profile.svg` with an optimized portrait while retaining the same path, or update the image source in `components/sections/about-section.tsx`.
+On Windows PowerShell, use `Copy-Item .env.example .env.local` instead of `cp`. Open http://localhost:3000. The public GitHub analytics endpoint defaults to Giresh-458; set `GITHUB_USERNAME` only if you want to use a different account.
+
+Use Node.js 22 for local development and CI.
 
 ## Environment variables
 
 ```env
-GITHUB_USERNAME=your-github-username
-GITHUB_TOKEN=github_pat_with_read_only_public_repo_access
-NEXT_PUBLIC_SITE_URL=https://your-domain.vercel.app
+GITHUB_USERNAME=Giresh-458
+GITHUB_TOKEN=
+NEXT_PUBLIC_SITE_URL=
 ```
 
-`GITHUB_TOKEN` is server-only and must never use the `NEXT_PUBLIC_` prefix. The site renders deterministic fallback analytics when GitHub variables are absent or rate-limited.
+- `GITHUB_TOKEN` is optional and stays server-side. A token can help with API rate limits.
+- `NEXT_PUBLIC_SITE_URL` must be set to the real production website origin before a production build. Use the full `https://...` origin; paths are ignored. Production builds intentionally fail when this is missing, to prevent publishing incorrect canonical, Open Graph, sitemap, and robots URLs.
+- Vercel Preview builds can use their unique `VERCEL_URL` when `NEXT_PUBLIC_SITE_URL` is not set. Local development falls back to `http://localhost:3000`.
+- Analytics use live public GitHub data. If the profile or repository endpoints are unavailable, the analytics panel shows an unavailable message. If only recent activity fails, profile and repository metrics remain visible.
+- The selectable hero wallpapers currently load from third-party image hosts. Confirm the relevant usage rights before public release, or replace them with artwork you own or have licensed.
 
-## Vercel deployment
+## Deployment
 
-1. Push the repository to GitHub, GitLab, or Bitbucket.
-2. In Vercel, select **Add New → Project** and import the repository.
-3. Keep **Framework Preset** set to `Next.js`.
-4. Keep **Root Directory** as the repository root.
-5. Use `npm install` as the install command and `npm run build` as the build command.
-6. Add `GITHUB_USERNAME`, `GITHUB_TOKEN`, and `NEXT_PUBLIC_SITE_URL` under **Project Settings → Environment Variables** for Production, Preview, and Development as appropriate.
-7. Deploy once, then update `NEXT_PUBLIC_SITE_URL` to the final Vercel or custom domain and redeploy.
-8. Under **Settings → Functions**, use the default Node.js region nearest the primary recruiter audience. GitHub responses are cached at the route level.
-9. Under **Settings → Deployment Protection**, keep production public and protect preview deployments if they contain unreleased resume data.
-10. Add a custom domain, enable automatic HTTPS, and verify `/robots.txt`, `/sitemap.xml`, `/api/github`, and `/api/download/resume`.
+1. Import the repository into Vercel.
+2. Keep the framework preset as Next.js and the root directory as the repository root.
+3. Set `NEXT_PUBLIC_SITE_URL` to the production domain for the Production environment.
+4. Optionally set a server-only `GITHUB_TOKEN` in Vercel environment variables.
+5. Verify the homepage, project links, contact form, and `/api/github`.
 
-## Recommended Vercel settings
+A resume PDF has not been added yet. Add a verified resume before exposing a download link.
 
-- Node.js: current Vercel-supported LTS
-- Build machine: Standard
-- Function region: nearest primary audience
-- Speed Insights: enabled
-- Web Analytics: enabled
-- Deployment skew protection: enabled
-- Git LFS: unnecessary for the included SVG assets
-
-## Quality gates
+## Quality checks
 
 ```bash
+npm test
 npm run typecheck
 npm run lint
 npm run build

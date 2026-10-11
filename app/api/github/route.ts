@@ -37,45 +37,8 @@ const languageColors: Record<string, string> = {
   CSS: "#663399"
 };
 
-function seededContributions(seed: number): number[] {
-  return Array.from({ length: 364 }, (_, index) => {
-    const wave = Math.sin((index + seed) * 0.41) + Math.cos((index + seed) * 0.13);
-    return Math.max(0, Math.min(4, Math.floor(wave + 2 + (index % 17 === 0 ? 1 : 0))));
-  });
-}
-
-function fallbackData(): GitHubAnalytics {
-  return {
-    username: "your-github-username",
-    avatarUrl: "/profile.svg",
-    profileUrl: "https://github.com/",
-    followers: 42,
-    publicRepos: 18,
-    totalStars: 73,
-    contributions: seededContributions(11),
-    languages: [
-      { name: "TypeScript", percentage: 38, color: languageColors.TypeScript },
-      { name: "Python", percentage: 34, color: languageColors.Python },
-      { name: "JavaScript", percentage: 16, color: languageColors.JavaScript },
-      { name: "C++", percentage: 12, color: languageColors["C++"] }
-    ],
-    topRepos: [
-      { name: "multimodal-emotion", url: "https://github.com/", stars: 28, language: "Python", description: "Resilient multimodal affect recognition.", updatedAt: new Date().toISOString() },
-      { name: "spacenet-height", url: "https://github.com/", stars: 19, language: "Python", description: "SAR-optical urban height estimation.", updatedAt: new Date().toISOString() },
-      { name: "restoconnect", url: "https://github.com/", stars: 14, language: "TypeScript", description: "Restaurant operations platform.", updatedAt: new Date().toISOString() }
-    ],
-    recentActivity: [
-      { id: "1", type: "PushEvent", repo: "multimodal-emotion", createdAt: new Date().toISOString() },
-      { id: "2", type: "PullRequestEvent", repo: "spacenet-height", createdAt: new Date(Date.now() - 86400000).toISOString() },
-      { id: "3", type: "CreateEvent", repo: "rag-evaluation-suite", createdAt: new Date(Date.now() - 172800000).toISOString() }
-    ],
-    isFallback: true
-  };
-}
-
 export async function GET() {
-  const username = process.env.GITHUB_USERNAME;
-  if (!username) return NextResponse.json(fallbackData());
+  const username = process.env.GITHUB_USERNAME ?? "Giresh-458";
 
   const headers: HeadersInit = {
     Accept: "application/vnd.github+json",
@@ -84,16 +47,32 @@ export async function GET() {
   if (process.env.GITHUB_TOKEN) headers.Authorization = `Bearer ${process.env.GITHUB_TOKEN}`;
 
   try {
-    const [userResponse, reposResponse, eventsResponse] = await Promise.all([
+    const [userResult, reposResult, eventsResult] = await Promise.allSettled([
       fetch(`https://api.github.com/users/${username}`, { headers, next: { revalidate: 3600 } }),
       fetch(`https://api.github.com/users/${username}/repos?per_page=100&sort=updated`, { headers, next: { revalidate: 3600 } }),
       fetch(`https://api.github.com/users/${username}/events/public?per_page=20`, { headers, next: { revalidate: 900 } })
     ]);
-    if (!userResponse.ok || !reposResponse.ok || !eventsResponse.ok) throw new Error("GitHub API request failed");
 
-    const user = (await userResponse.json()) as GitHubUserResponse;
-    const rawRepos = (await reposResponse.json()) as GitHubRepoResponse[];
-    const rawEvents = (await eventsResponse.json()) as GitHubEventResponse[];
+    // User and repository data power the core dashboard. Recent activity is
+    // optional so a rate-limited events endpoint does not hide usable metrics.
+    if (userResult.status !== "fulfilled" || !userResult.value.ok ||
+        reposResult.status !== "fulfilled" || !reposResult.value.ok) {
+      throw new Error("GitHub profile or repository API request failed");
+    }
+
+    const user = (await userResult.value.json()) as GitHubUserResponse;
+    const rawRepos = (await reposResult.value.json()) as GitHubRepoResponse[];
+    let rawEvents: GitHubEventResponse[] = [];
+    let recentActivityAvailable = false;
+    if (eventsResult.status === "fulfilled" && eventsResult.value.ok) {
+      try {
+        rawEvents = (await eventsResult.value.json()) as GitHubEventResponse[];
+        recentActivityAvailable = Array.isArray(rawEvents);
+        if (!recentActivityAvailable) rawEvents = [];
+      } catch {
+        // Keep repository and profile metrics visible when activity cannot parse.
+      }
+    }
     const repos = rawRepos.filter((repo) => !repo.fork);
     const totalStars = repos.reduce((sum, repo) => sum + repo.stargazers_count, 0);
     const languageCounts = repos.reduce<Record<string, number>>((accumulator, repo) => {
@@ -127,7 +106,6 @@ export async function GET() {
       followers: user.followers,
       publicRepos: user.public_repos,
       totalStars,
-      contributions: seededContributions(user.public_repos + totalStars),
       languages: Object.entries(languageCounts)
         .sort(([, a], [, b]) => b - a)
         .slice(0, 5)
@@ -137,9 +115,10 @@ export async function GET() {
           color: languageColors[name] ?? "#A1A1AA"
         })),
       topRepos,
-      recentActivity
+      recentActivity,
+      recentActivityAvailable
     });
   } catch {
-    return NextResponse.json(fallbackData());
+    return NextResponse.json({ error: "GitHub analytics are temporarily unavailable." }, { status: 503 });
   }
 }
