@@ -15,11 +15,23 @@ jobs:
         with:
           node-version: 22
       - name: Apply non-breaking lockfile-only audit fixes
-        run: npm audit fix --package-lock-only --ignore-scripts --no-fund
-      - name: Summarize resulting audit
+        run: npm audit fix --package-lock-only --ignore-scripts --no-fund || true
+      - name: Install the proposed locked dependencies
+        run: npm ci
+      - name: Report resulting advisory summary
         run: |
           npm audit --json > /tmp/npm-audit-after.json || true
           node -e 'const a=require("/tmp/npm-audit-after.json"); console.log("NPM_AUDIT_AFTER",JSON.stringify(a.metadata?.vulnerabilities)); for (const [name,v] of Object.entries(a.vulnerabilities||{})) console.log("NPM_AUDIT_ITEM",JSON.stringify({name,severity:v.severity,isDirect:v.isDirect,range:v.range,fixAvailable:v.fixAvailable,via:v.via.map(x=>typeof x==="string"?x:x.title)}))'
+      - name: Unit tests
+        run: npm test
+      - name: Type-check
+        run: npm run typecheck
+      - name: Lint
+        run: npm run lint
+      - name: Build
+        run: npm run build
+        env:
+          NEXT_PUBLIC_SITE_URL: https://portfolio-ci.example.invalid
       - name: Upload candidate lockfile
         uses: actions/upload-artifact@v4
         with:
