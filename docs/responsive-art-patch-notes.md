@@ -1,0 +1,1 @@
+This file intentionally exists to trigger a small commit only after the responsive art patch is prepared; it will be removed within the same commit.
