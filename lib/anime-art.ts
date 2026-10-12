@@ -27,4 +27,3 @@ export const corpsScene = makeScene("corps-night", "Demon Slayer Corps", "Total 
 export const wisteriaScene = makeScene("wisteria-grounds", "Wisteria training grounds", "Corps training", "/images/wisteria-training-ground.svg", "#9F88C8");
 export const forgeScene = makeScene("nichirin-forge", "Nichirin swordsmith forge", "Swordsmith village", "/images/swordsmith-forge.svg", "#C9776C");
 export const corpsScenes = [corpsScene, wisteriaScene, forgeScene] as const;
-export const thunderScene = corpsScene;

@@ -503,7 +503,7 @@ a, button { -webkit-tap-highlight-color: transparent; }
 }
 
 
-/* Zenitsu-only visual language: electric gold, smoky black and thunder-storm atmosphere. */
+/* Shared Demon Slayer Corps palette: ink, indigo, crimson and wisteria. */
 :root { --background: #080805; --foreground: #F7EED1; --slayer-red: #C83F55; --slayer-water: #D33E52; --slayer-paper: #F4DEAC; }
 body { background: radial-gradient(ellipse at 82% 5%, rgba(255,183,35,.13), transparent 34rem), radial-gradient(ellipse at 12% 54%, rgba(177,107,20,.10), transparent 36rem), radial-gradient(ellipse at 78% 86%, rgba(245,188,47,.08), transparent 30rem), #080805; }
 ::-webkit-scrollbar-thumb { background: #6F4E12; } ::-webkit-scrollbar-thumb:hover { background: #C33B50; }

@@ -7,25 +7,25 @@ import { AnimeSceneBackdrop } from "@/components/ui/anime-scene-backdrop";
 
 const panels = [
   {
-    scene: CorpsScene,
-    label: "01 / THUNDER",
-    title: "Move with focus.",
+    scene: corpsScene,
+    label: "01 / WATER BREATHING",
+    title: "Move with intent.",
     description: "Quiet focus. Relentless iteration.",
     icon: Waves,
     className: "corps-showcase-feature"
   },
   {
-    scene: CorpsScene,
-    label: "02 / FLASH",
-    title: "Build with speed.",
+    scene: forgeScene,
+    label: "02 / FLAME BREATHING",
+    title: "Build with resolve.",
     description: "Turn ideas into systems that hold up.",
     icon: Flame,
     className: "corps-showcase-side"
   },
   {
-    scene: CorpsScene,
-    label: "03 / CONCENTRATION",
-    title: "Precision wins.",
+    scene: wisteriaScene,
+    label: "03 / INSECT BREATHING",
+    title: "Precision matters.",
     description: "Make every detail earn its place.",
     icon: Wind,
     className: "corps-showcase-side"
