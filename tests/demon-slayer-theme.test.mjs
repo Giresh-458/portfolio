@@ -33,9 +33,21 @@ test("all seven projects use distinct raster image URLs, not SVG assets", async 
   assert.doesNotMatch(modal, /next\/image|<Image\b/i);
 });
 
-test("the projects image directory contains no SVG image files", async () => {
-  const files = await readdir(new URL("../public/projects/", import.meta.url));
-  assert.deepEqual(files.filter((file) => file.toLowerCase().endsWith(".svg")), []);
+async function findSvgFiles(directory, relative = "") {
+  const entries = await readdir(directory, { withFileTypes: true });
+  const found = [];
+  for (const entry of entries) {
+    const path = relative ? relative + "/" + entry.name : entry.name;
+    const absolute = new URL("../public/" + path, import.meta.url);
+    if (entry.isDirectory()) found.push(...await findSvgFiles(absolute, path));
+    else if (entry.isFile() && entry.name.toLowerCase().endsWith(".svg")) found.push(path);
+  }
+  return found;
+}
+
+test("public assets contain no SVG image files", async () => {
+  const publicDirectory = new URL("../public/", import.meta.url);
+  assert.deepEqual(await findSvgFiles(publicDirectory), []);
 });
 
 test("Open Graph metadata uses a raster image URL", async () => {
