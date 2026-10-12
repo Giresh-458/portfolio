@@ -1,24 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" fill="none">
-<defs>
-  <linearGradient id="night" x1="0" y1="0" x2="1200" y2="630" gradientUnits="userSpaceOnUse"><stop stop-color="#182333"/><stop offset=".5" stop-color="#07090F"/><stop offset="1" stop-color="#07090F"/></linearGradient>
-  <linearGradient id="water" x1="670" y1="130" x2="1100" y2="500" gradientUnits="userSpaceOnUse"><stop stop-color="#DDF9F6"/><stop offset=".5" stop-color="#62D6E0"/><stop offset="1" stop-color="#268BA8"/></linearGradient>
-  <linearGradient id="fire" x1="720" y1="530" x2="1090" y2="150" gradientUnits="userSpaceOnUse"><stop stop-color="#A82D3D"/><stop offset=".55" stop-color="#E85D50"/><stop offset="1" stop-color="#F5C66B"/></linearGradient>
-  <pattern id="checks" width="28" height="28" patternUnits="userSpaceOnUse"><rect width="28" height="28" fill="#0C161A"/><rect width="14" height="14" fill="#214B45"/><rect x="14" y="14" width="14" height="14" fill="#214B45"/></pattern>
-</defs>
-<rect width="1200" height="630" fill="url(#night)"/>
-<circle cx="960" cy="260" r="204" fill="#D65350" fill-opacity=".11"/><circle cx="960" cy="260" r="143" fill="#A93240" fill-opacity=".35" stroke="#F2B5A4" stroke-opacity=".3"/>
-<path d="M0 447L95 362L171 413L267 305L349 390L441 327L530 403L624 341L730 421V630H0Z" fill="#0B1420"/>
-<path d="M0 497L99 435L199 469L286 398L378 459L468 392L568 477L656 430L730 464V630H0Z" fill="#0D1A25"/>
-<path d="M649 357C689 240 785 184 884 203C997 226 1059 314 1015 387C971 460 870 475 790 434C707 392 706 323 758 285C807 250 869 263 890 300" stroke="url(#water)" stroke-width="12" stroke-linecap="round"/>
-<path d="M737 545C811 487 832 428 849 369C865 309 917 268 956 220C965 292 1018 320 1032 376C1048 447 996 498 935 522C970 475 966 433 943 409C915 381 880 397 866 427C847 465 811 506 737 545Z" stroke="url(#fire)" stroke-width="7" stroke-linejoin="round"/>
-<path d="M728 540L1049 208" stroke="#ECFFFC" stroke-width="3" stroke-linecap="round" opacity=".65"/>
-<path d="M1031 491L1102 456L1150 480L1200 444V630H1015Z" fill="url(#checks)" opacity=".66"/>
-<rect x="60" y="58" width="56" height="56" fill="url(#checks)" stroke="#D65350" stroke-opacity=".75"/><text x="88" y="95" fill="#F6F0E8" text-anchor="middle" font-family="Arial,sans-serif" font-size="26">鬼</text>
-<text x="138" y="83" fill="#AEBBCA" font-family="Arial,sans-serif" font-size="16" font-weight="600" letter-spacing="1">GIRESH VELAGA</text>
-<text x="60" y="179" fill="#E98B78" font-family="monospace" font-size="14" letter-spacing="4">DEMON SLAYER INSPIRED / AI PORTFOLIO</text>
-<text x="54" y="282" fill="#F6F0E8" font-family="Arial,sans-serif" font-size="77" font-weight="700" letter-spacing="-2">TOTAL</text>
-<text x="54" y="359" fill="#E86A5A" font-family="Arial,sans-serif" font-size="77" font-weight="700" letter-spacing="-2">CONCENTRATION.</text>
-<text x="60" y="418" fill="#C5D1DE" font-family="Arial,sans-serif" font-size="25">AI ENGINEERING · FULL-STACK</text>
-<path d="M60 463H350" stroke="#62D6E0" stroke-width="2"/>
-<text x="60" y="509" fill="#8292A6" font-family="Arial,sans-serif" font-size="15" letter-spacing="2">IIIT SRI CITY · COMPUTER SCIENCE</text>
-</svg>
+<defs><linearGradient id="night" x1="0" y1="0" x2="1200" y2="630" gradientUnits="userSpaceOnUse"><stop stop-color="#1B160A"/><stop offset=".48" stop-color="#090906"/><stop offset="1" stop-color="#050504"/></linearGradient><linearGradient id="gold" x1="660" y1="90" x2="1090" y2="515" gradientUnits="userSpaceOnUse"><stop stop-color="#FFF4B4"/><stop offset=".5" stop-color="#FFC12D"/><stop offset="1" stop-color="#D98013"/></linearGradient><pattern id="haori" width="28" height="28" patternUnits="userSpaceOnUse"><rect width="28" height="28" fill="#090906"/><path d="M14 1L27 14L14 27L1 14Z" stroke="#E6AD29" stroke-opacity=".24"/></pattern></defs>
+<rect width="1200" height="630" fill="url(#night)"/><circle cx="952" cy="260" r="194" fill="#FFBD2F" fill-opacity=".1"/><circle cx="952" cy="260" r="143" fill="#D79B21" fill-opacity=".23" stroke="#FFE39A" stroke-opacity=".45"/>
+<path d="M0 448L94 377L176 416L275 317L359 392L451 330L552 407L640 350L735 416V630H0Z" fill="#151209"/><path d="M0 512L112 434L202 478L300 404L389 463L489 395L585 468L680 423L745 471V630H0Z" fill="#0D0C07"/>
+<path d="M685 535L754 400L731 376L809 250L780 231L852 110" stroke="#FFB923" stroke-opacity=".3" stroke-width="32" stroke-linecap="round" stroke-linejoin="round"/><path d="M685 535L754 400L731 376L809 250L780 231L852 110" stroke="url(#gold)" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/><path d="M685 535L754 400L731 376L809 250L780 231L852 110" stroke="#FFF4B9" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M908 560L1014 360L989 336L1090 164" stroke="url(#gold)" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M1017 485L1057 437L1094 466L1140 411L1199 443V630H1000Z" fill="url(#haori)" opacity=".8"/><rect x="60" y="58" width="56" height="56" fill="url(#haori)" stroke="#FFC63F" stroke-opacity=".8"/><text x="88" y="96" fill="#FFE9A2" text-anchor="middle" font-family="serif" font-size="28">雷</text>
+<text x="138" y="83" fill="#C2B17C" font-family="Arial,sans-serif" font-size="16" font-weight="600" letter-spacing="1">GIRESH VELAGA</text><text x="60" y="179" fill="#E6B334" font-family="monospace" font-size="14" letter-spacing="4">ZENITSU · THUNDER BREATHING</text><text x="54" y="282" fill="#F6F0E1" font-family="Arial,sans-serif" font-size="77" font-weight="700" letter-spacing="-2">FOCUS.</text><text x="54" y="359" fill="#FFD34F" font-family="Arial,sans-serif" font-size="77" font-weight="700" letter-spacing="-2">SPEED. PRECISION.</text><text x="60" y="418" fill="#DDD2B8" font-family="Arial,sans-serif" font-size="25">AI ENGINEERING · FULL-STACK</text><path d="M60 463H350" stroke="#F0B92B" stroke-width="2"/><text x="60" y="509" fill="#9D9272" font-family="Arial,sans-serif" font-size="15" letter-spacing="2">IIIT SRI CITY · COMPUTER SCIENCE</text></svg>
