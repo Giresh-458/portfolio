@@ -90,6 +90,8 @@ test("homepage focuses on portfolio essentials and avoids redundant sections", a
   assert.match(page, /ProjectsSection/);
   assert.match(page, /SkillsSection/);
   assert.doesNotMatch(page, /CorpsShowcaseSection|TimelineSection|GitHubAnalyticsSection/);
+  const projectCards = await read("components/sections/projects-section.tsx");
+  assert.doesNotMatch(projectCards, /mission-archive-banner|mission-slash|Record \/ open/);
 
   const navbar = await read("components/navbar.tsx");
   assert.match(navbar, /\["Projects", "#projects"\]/);
