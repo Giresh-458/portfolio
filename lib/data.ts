@@ -135,7 +135,7 @@ export const projects: Project[] = [
     tech: ["Node.js", "Express", "EJS", "MongoDB", "Chart.js"],
     githubUrl: "https://github.com/Giresh-458/Mood_Tracker",
     liveUrl: "https://mood-tracker-1-h1l8.onrender.com/",
-    image: "https://images.unsplash.com/photo-1490730141103-6cac27aaab94?auto=format&fit=crop&fm=jpg&q=85&w=1800",
+    image: "https://image.thum.io/get/noanimate/maxAge/24/width/1200/crop/800/https://mood-tracker-1-h1l8.onrender.com/",
     accent: "from-rose-950 via-pink-950 to-[#0B1015]"
   },
   {
@@ -157,7 +157,7 @@ export const projects: Project[] = [
     tech: ["Node.js", "Express", "EJS", "MongoDB Atlas"],
     githubUrl: "https://github.com/Giresh-458/IIITS_CGPA_Calc",
     liveUrl: "https://iiits-cgpa-calculator.onrender.com/",
-    image: "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&fm=jpg&q=85&w=1800",
+    image: "https://image.thum.io/get/noanimate/maxAge/24/width/1200/crop/800/https://iiits-cgpa-calculator.onrender.com/",
     accent: "from-blue-950 via-slate-900 to-[#0B1015]"
   },
   {
