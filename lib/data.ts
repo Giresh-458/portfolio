@@ -1,14 +1,11 @@
 import { resolveSiteUrl } from "@/lib/site-url.mjs";
 import {
   Bot,
-  BrainCircuit,
   Database,
-  GitBranch,
-  MessagesSquare,
   Network,
   SlidersHorizontal
 } from "lucide-react";
-import type { Project, ResearchTopic, SkillCategory, Stat } from "@/types";
+import type { Project, ResearchTopic, SkillCategory } from "@/types";
 
 export const siteConfig = {
   name: "Giresh Komal Velaga",
@@ -20,13 +17,6 @@ export const siteConfig = {
   description:
     "Computer Science student at IIIT Sri City building AI systems and full-stack products, from retrieval and agent workflows to user-facing applications."
 };
-
-export const stats: Stat[] = [
-  { label: "Public repositories", value: 12 },
-  { label: "Engineering tracks", value: 2 },
-  { label: "Featured projects", value: 7 },
-  { label: "Live demos", value: 2 }
-];
 
 export const projects: Project[] = [
   {
@@ -187,10 +177,7 @@ export const researchTopics: ResearchTopic[] = [
   { name: "AI Agents", description: "Stateful tool use, bounded autonomy, workflow routing, and human checkpoints.", icon: Bot },
   { name: "RAG Systems", description: "Hybrid retrieval, grounding, chunking, routing, and answer quality.", icon: Database },
   { name: "Multimodal ML", description: "Combining speech, text, and temporal representations into richer signals.", icon: Network },
-  { name: "LLM Applications", description: "Turning language models into reliable product features and workflows.", icon: BrainCircuit },
-  { name: "Product Engineering", description: "Designing APIs, data flows, and responsive application experiences.", icon: MessagesSquare },
-  { name: "Evaluation & Safety", description: "Guardrails, validation, observability, and human review around AI systems.", icon: SlidersHorizontal },
-  { name: "Developer Workflow", description: "Version control, reproducible setup, containers, and deployment practices.", icon: GitBranch }
+  { name: "Evaluation & Safety", description: "Guardrails, validation, observability, and human review around AI systems.", icon: SlidersHorizontal }
 ];
 
 export const skillCategories: SkillCategory[] = [
