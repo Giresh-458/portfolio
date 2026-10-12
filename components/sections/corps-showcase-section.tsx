@@ -1,33 +1,33 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
-import { ArrowDownRight, Flame, Waves, Wind } from "lucide-react";
-import { animeScenes } from "@/lib/anime-art";
+import { ArrowDownRight, Zap, Target, Focus } from "lucide-react";
+import { thunderScene } from "@/lib/anime-art";
 import { AnimeSceneBackdrop } from "@/components/ui/anime-scene-backdrop";
 
 const panels = [
   {
-    scene: animeScenes[0],
-    label: "01 / WATER",
-    title: "Move with intent.",
+    scene: thunderScene,
+    label: "01 / THUNDER",
+    title: "Move with focus.",
     description: "Quiet focus. Relentless iteration.",
-    icon: Waves,
+    icon: Zap,
     className: "corps-showcase-feature"
   },
   {
-    scene: animeScenes[4],
-    label: "02 / FLAME",
-    title: "Build with fire.",
+    scene: thunderScene,
+    label: "02 / FLASH",
+    title: "Build with speed.",
     description: "Turn ideas into systems that hold up.",
-    icon: Flame,
+    icon: Target,
     className: "corps-showcase-side"
   },
   {
-    scene: animeScenes[7],
-    label: "03 / WISTERIA",
-    title: "Precision matters.",
+    scene: thunderScene,
+    label: "03 / CONCENTRATION",
+    title: "Precision wins.",
     description: "Make every detail earn its place.",
-    icon: Wind,
+    icon: Focus,
     className: "corps-showcase-side"
   }
 ];
@@ -41,12 +41,12 @@ export function CorpsShowcaseSection() {
       <div className="container relative z-10 py-16 md:py-24">
         <div className="mb-8 flex flex-col gap-5 md:mb-10 md:flex-row md:items-end md:justify-between">
           <div>
-            <p className="mb-4 flex items-center gap-3 font-mono text-[10px] font-semibold uppercase tracking-[0.28em] text-[#F17A7C]">
-              <span className="h-px w-8 bg-[#E7424D]" />
+            <p className="mb-4 flex items-center gap-3 font-mono text-[10px] font-semibold uppercase tracking-[0.28em] text-[#FFD34F]">
+              <span className="h-px w-8 bg-[#F5B82E]" />
               The Corps · 呼吸
             </p>
             <h2 className="max-w-3xl text-balance font-display text-5xl uppercase leading-[0.88] tracking-[0.01em] text-[#F7EBDD] md:text-7xl">
-              A world of <span className="text-[#E94953]">breathing</span> styles.
+              One <span className="text-[#FFD34F]">thunder</span> style. Total focus.
             </h2>
           </div>
           <p className="max-w-sm border-l border-[#D9BBA9]/30 pl-4 text-sm leading-6 text-[#BEB2B4] md:text-base">
@@ -60,7 +60,7 @@ export function CorpsShowcaseSection() {
             const scene = panel.scene;
             return (
               <motion.article
-                key={scene.id}
+                key={panel.label}
                 initial={reduceMotion ? undefined : { opacity: 0, y: 24 }}
                 whileInView={reduceMotion ? undefined : { opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.18 }}

@@ -8,7 +8,7 @@ import { z } from "zod";
 import { Button } from "@/components/ui/button";
 import { GlassCard } from "@/components/ui/glass-card";
 import { SectionHeader } from "@/components/ui/section-header";
-import { animeScenes } from "@/lib/anime-art";
+import { thunderScene } from "@/lib/anime-art";
 import { AnimeSceneBackdrop } from "@/components/ui/anime-scene-backdrop";
 import { siteConfig } from "@/lib/data";
 import type { ContactFormValues } from "@/types";
@@ -19,7 +19,7 @@ const schema = z.object({
   subject: z.string().min(3, "Add a subject"),
   message: z.string().min(20, "Message should be at least 20 characters").max(1200, "Message is too long")
 });
-const inputClass = "w-full border border-[#E7C6AF]/20 bg-background/80 px-4 py-3.5 text-sm text-white placeholder:text-[#84787D] transition focus:border-[#39D8F3] focus:outline-hidden focus:ring-2 focus:ring-[#39D8F3]/15";
+const inputClass = "w-full border border-[#E7C6AF]/20 bg-background/80 px-4 py-3.5 text-sm text-white placeholder:text-[#84787D] transition focus:border-[#FFC83D] focus:outline-hidden focus:ring-2 focus:ring-[#FFC83D]/15";
 
 export function ContactSection() {
   const [sent, setSent] = useState(false);
@@ -44,7 +44,7 @@ export function ContactSection() {
                 animate={reduceMotion ? undefined : { scale: [1.02, 1.055, 1.02], x: [0, -3, 0], y: [0, -2, 0] }}
                 transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
               >
-                <AnimeSceneBackdrop scene={animeScenes[1]} className="absolute inset-0" />
+                <AnimeSceneBackdrop scene={thunderScene} className="absolute inset-0" />
               </motion.div>
               <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(7,7,12,.25),transparent_30%,rgba(7,7,12,.10)_60%,rgba(7,7,12,.83))]" />
               <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(90deg,rgba(7,7,12,.34),transparent_34%,transparent_76%,rgba(7,7,12,.18))]" />
@@ -64,25 +64,25 @@ export function ContactSection() {
                 transition={{ duration: 9, delay: .8, repeat: Infinity, ease: "linear" }}
               />
               <div className="absolute left-3 top-3 flex items-center gap-2 border border-[#E8D3C6]/25 bg-[#08080D]/65 px-2.5 py-1.5 backdrop-blur-xs sm:left-4 sm:top-4">
-                <span className="size-1.5 rounded-full bg-[#E8595C] shadow-[0_0_12px_rgba(232,89,92,.8)]" />
+                <span className="size-1.5 rounded-full bg-[#FAD044] shadow-[0_0_12px_rgba(232,89,92,.8)]" />
                 <span className="font-mono text-[8px] uppercase tracking-[.2em] text-[#F0DED0]">Kasugai crow / in flight</span>
               </div>
               <div className="absolute bottom-0 left-0 right-0 flex items-end justify-between gap-3 px-3 pb-3 pt-12 sm:px-4 sm:pb-4">
                 <div>
-                  <p className="font-mono text-[8px] uppercase tracking-[.23em] text-[#F0AFB8]">Demon Slayer Corps · 鎹鴉</p>
+                  <p className="font-mono text-[8px] uppercase tracking-[.23em] text-[#FFE084]">Demon Slayer Corps · 鎹鴉</p>
                   <p className="mt-1.5 font-display text-2xl uppercase leading-none text-[#FFF0E1] drop-shadow-lg sm:text-3xl">A message awaits.</p>
                 </div>
                 <span className="shrink-0 border border-[#E9D5C4]/30 bg-[#08080D]/65 px-2 py-1.5 font-mono text-[8px] uppercase tracking-[.17em] text-[#E8D5C7] backdrop-blur-xs">Dispatch / 01</span>
               </div>
             </div>
-            <p className="font-mono text-[9px] uppercase tracking-[.22em] text-[#F17477]">Direct channels / 01</p>
+            <p className="font-mono text-[9px] uppercase tracking-[.22em] text-[#FFD34F]">Direct channels / 01</p>
             <h3 className="mt-4 font-display text-3xl uppercase leading-tight text-[#F2E3D2] md:text-4xl">Let’s talk about the work.</h3>
             <p className="mt-4 leading-7 text-[#B3A8AB]">For a role, a technical question or an ambitious idea, email is the simplest way to reach me.</p>
           </div>
-          <div className="mt-10 grid gap-3">{[{ label: "Email", href: "mailto:" + siteConfig.email, icon: Mail }, { label: "GitHub", href: siteConfig.github, icon: Github }].map((link) => <a key={link.label} href={link.href} className="flex items-center gap-3 border border-[#E7C6AF]/15 bg-black/25 px-4 py-3.5 text-sm text-[#D6C9C7] transition hover:border-netflix/60 hover:text-white"><link.icon className="size-4 text-[#44D5ED]" /> {link.label}<span className="ml-auto font-mono text-[8px] uppercase tracking-[.18em] text-[#83747A]">Open ↗</span></a>)}</div>
+          <div className="mt-10 grid gap-3">{[{ label: "Email", href: "mailto:" + siteConfig.email, icon: Mail }, { label: "GitHub", href: siteConfig.github, icon: Github }].map((link) => <a key={link.label} href={link.href} className="flex items-center gap-3 border border-[#E7C6AF]/15 bg-black/25 px-4 py-3.5 text-sm text-[#D6C9C7] transition hover:border-netflix/60 hover:text-white"><link.icon className="size-4 text-[#FFD34F]" /> {link.label}<span className="ml-auto font-mono text-[8px] uppercase tracking-[.18em] text-[#83747A]">Open ↗</span></a>)}</div>
         </GlassCard>
         <GlassCard className="slayer-panel p-7 md:p-9">
-          <div className="mb-6 flex items-center justify-between"><p className="font-mono text-[9px] uppercase tracking-[.2em] text-[#F17477]">Message scroll / 02</p><span className="font-serif text-2xl text-netflix">文</span></div>
+          <div className="mb-6 flex items-center justify-between"><p className="font-mono text-[9px] uppercase tracking-[.2em] text-[#FFD34F]">Message scroll / 02</p><span className="font-serif text-2xl text-netflix">文</span></div>
           <form onSubmit={handleSubmit(onSubmit)} noValidate className="grid gap-5">
             <div className="grid gap-5 sm:grid-cols-2">
               <label className="grid gap-2 text-sm font-medium text-[#D6C9C7]">Name<input {...register("name")} className={inputClass} placeholder="Your name" aria-invalid={Boolean(errors.name)} />{errors.name ? <span className="text-xs text-rose-300">{errors.name.message}</span> : null}</label>
