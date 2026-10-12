@@ -12,11 +12,27 @@ test("scene registry uses raster photographs and contains no SVG artwork", async
   assert.doesNotMatch(registry, /\.svg|<svg\b|Agatsuma|Kamado|Hashibira|Rengoku|Tomioka|Uzui|Kocho/i);
 });
 
-test("AI Lab and skills sections contain no inline SVG artwork", async () => {
-  const aiLab = await read("components/sections/ai-lab-section.tsx");
-  const skills = await read("components/sections/skills-section.tsx");
-  assert.doesNotMatch(aiLab, /<svg\b|<motion\.svg\b/i);
-  assert.doesNotMatch(skills, /<svg\b|<motion\.svg\b/i);
+async function findInlineSvgFiles(directory, relative = "") {
+  const entries = await readdir(directory, { withFileTypes: true });
+  const found = [];
+  for (const entry of entries) {
+    const path = relative ? relative + "/" + entry.name : entry.name;
+    const absolute = new URL("../" + path, import.meta.url);
+    if (entry.isDirectory()) found.push(...await findInlineSvgFiles(absolute, path));
+    else if (entry.isFile() && /\.(tsx|jsx)$/i.test(entry.name)) {
+      const source = await readFile(absolute, "utf8");
+      if (/<(?:motion\.)?svg\b/i.test(source)) found.push(path);
+    }
+  }
+  return found;
+}
+
+test("application components contain no inline SVG artwork", async () => {
+  const files = [];
+  for (const directory of ["app", "components"]) {
+    files.push(...await findInlineSvgFiles(new URL("../" + directory + "/", import.meta.url), directory));
+  }
+  assert.deepEqual(files, []);
 });
 
 test("all seven projects use distinct raster image URLs, not SVG assets", async () => {
