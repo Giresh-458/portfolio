@@ -35,12 +35,17 @@ test("application components contain no inline SVG artwork", async () => {
   assert.deepEqual(files, []);
 });
 
-test("all seven projects use distinct raster image URLs, not SVG assets", async () => {
+test("project thumbnails use live screenshots for deployed apps and raster photos otherwise", async () => {
   const data = await read("lib/data.ts");
-  const images = [...data.matchAll(/image:\s*"(https:\/\/images\.unsplash\.com\/[^"]+)"/g)].map((match) => match[1]);
+  const images = [...data.matchAll(/image:\s*"(https?:\/\/[^"]+)"/g)].map((match) => match[1]);
   assert.equal(images.length, 7);
   assert.equal(new Set(images).size, 7);
   assert.doesNotMatch(data, /\/projects\/[^"]+\.svg/i);
+
+  assert.match(data, /id: "mood-tracker",[\s\S]*?liveUrl: "https:\/\/mood-tracker-1-h1l8\.onrender\.com\/",[\s\S]*?image: "https:\/\/image\.thum\.io\/get\/noanimate\/maxAge\/24\/width\/1200\/crop\/800\/https:\/\/mood-tracker-1-h1l8\.onrender\.com\/"?/);
+  assert.match(data, /id: "cgpa-calculator",[\s\S]*?liveUrl: "https:\/\/iiits-cgpa-calculator\.onrender\.com\/",[\s\S]*?image: "https:\/\/image\.thum\.io\/get\/noanimate\/maxAge\/24\/width\/1200\/crop\/800\/https:\/\/iiits-cgpa-calculator\.onrender\.com\/"?/);
+  assert.equal(images.filter((url) => url.startsWith("https://image.thum.io/get/")).length, 2);
+  assert.equal(images.filter((url) => url.startsWith("https://images.unsplash.com/")).length, 5);
 
   const cards = await read("components/sections/projects-section.tsx");
   const modal = await read("components/project-modal.tsx");
