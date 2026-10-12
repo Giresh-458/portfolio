@@ -47,7 +47,13 @@ async function findSvgFiles(directory, relative = "") {
 
 test("public assets contain no SVG image files", async () => {
   const publicDirectory = new URL("../public/", import.meta.url);
-  assert.deepEqual(await findSvgFiles(publicDirectory), []);
+  let svgFiles = [];
+  try {
+    svgFiles = await findSvgFiles(publicDirectory);
+  } catch (error) {
+    if (!error || typeof error !== "object" || !("code" in error) || error.code !== "ENOENT") throw error;
+  }
+  assert.deepEqual(svgFiles, []);
 });
 
 test("Open Graph metadata uses a raster image URL", async () => {
