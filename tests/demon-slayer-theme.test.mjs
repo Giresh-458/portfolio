@@ -114,3 +114,13 @@ test("homepage focuses on portfolio essentials and avoids redundant sections", a
   const topicBlock = data.slice(data.indexOf("export const researchTopics"), data.indexOf("export const skillCategories"));
   assert.equal((topicBlock.match(/\{ name:/g) ?? []).length, 4);
 });
+
+
+test("profile avatar and direct profile link are visible in the portfolio", async () => {
+  const navbar = await read("components/navbar.tsx");
+  const about = await read("components/sections/about-section.tsx");
+  assert.match(navbar, /https:\/\/avatars\.githubusercontent\.com\/u\/194811970\?v=4/);
+  assert.match(about, /alt="Giresh Komal Velaga"/);
+  assert.match(about, /https:\/\/github\.com\/Giresh-458/);
+  assert.match(about, /The person behind the projects/);
+});
