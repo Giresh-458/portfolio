@@ -4,12 +4,6 @@ import { motion, useReducedMotion } from "framer-motion";
 import { AnimeSceneBackdrop } from "@/components/ui/anime-scene-backdrop";
 import { corpsScene } from "@/lib/anime-art";
 
-const breathingForms = [
-  { d: "M610 710C710 637 731 537 838 500C956 458 1052 518 1175 401C1240 338 1290 302 1370 278", color: "#669FC5", width: 15, duration: 8, delay: 0 },
-  { d: "M760 804C856 728 902 647 974 581C1037 523 1108 538 1169 466C1223 402 1273 398 1340 365", color: "#D34A59", width: 11, duration: 6.4, delay: 0.65 },
-  { d: "M850 780C936 733 1014 719 1094 654C1158 603 1213 606 1285 547", color: "#9F88C8", width: 6, duration: 7, delay: 1.1 }
-];
-
 const petals = [
   { left: "8%", top: "18%", size: 10, delay: 0, duration: 13 },
   { left: "27%", top: "11%", size: 7, delay: 3, duration: 15 },
@@ -24,30 +18,31 @@ const petals = [
 
 export function BreathingScene() {
   const reduceMotion = useReducedMotion();
+
   return (
-    <div className="pointer-events-none absolute inset-0 overflow-hidden" role="img" aria-label="Demon Slayer Corps nightscape with temples, wisteria, a torii gate and breathing-style trails">
+    <div className="pointer-events-none absolute inset-0 overflow-hidden" role="img" aria-label="Demon Slayer Corps-inspired night shrine, with wisteria petals and layered breathing-style effects">
       <motion.div
         className="absolute inset-[-2%]"
-        initial={reduceMotion ? { opacity: 1 } : { opacity: 0, scale: 1.04 }}
-        animate={reduceMotion ? { opacity: 1, scale: 1 } : { opacity: 1, scale: [1.01, 1.045, 1.01], x: [0, -4, 0] }}
-        transition={reduceMotion ? { duration: 0.01 } : { opacity: { duration: 0.6 }, scale: { duration: 20, repeat: Infinity, ease: "easeInOut" }, x: { duration: 24, repeat: Infinity, ease: "easeInOut" } }}
+        initial={reduceMotion ? { opacity: 1 } : { opacity: 0, scale: 1.035 }}
+        animate={reduceMotion ? { opacity: 1, scale: 1 } : { opacity: 1, scale: [1.01, 1.055, 1.01], x: [0, -5, 0] }}
+        transition={reduceMotion ? { duration: 0.01 } : { opacity: { duration: 0.65 }, scale: { duration: 18, repeat: Infinity, ease: "easeInOut" }, x: { duration: 24, repeat: Infinity, ease: "easeInOut" } }}
       >
         <AnimeSceneBackdrop scene={corpsScene} className="absolute inset-0" priority />
       </motion.div>
       <div className="hero-scene-wash absolute inset-0" />
       <div className="corps-moon-glow pointer-events-none absolute inset-0" />
-      <svg className="pointer-events-none absolute inset-0 z-5 h-full w-full" viewBox="0 0 1600 900" preserveAspectRatio="none" fill="none" aria-hidden="true">
-        {breathingForms.map((form) => (
-          <g key={form.d}>
-            <motion.path d={form.d} stroke={form.color} strokeWidth={form.width} strokeLinecap="round" opacity=".18" filter="url(#breathing-glow)" animate={reduceMotion ? undefined : { pathLength: [.2, 1, .2], opacity: [.08, .45, .12] }} transition={{ duration: form.duration, delay: form.delay, repeat: Infinity, ease: "easeInOut" }} />
-            <motion.path d={form.d} stroke={form.color} strokeWidth={form.width > 10 ? 2.4 : 1.7} strokeLinecap="round" strokeDasharray="8 18" animate={reduceMotion ? undefined : { strokeDashoffset: [0, -180], opacity: [.12, .7, .12] }} transition={{ duration: form.duration, delay: form.delay, repeat: Infinity, ease: "linear" }} />
-          </g>
-        ))}
-        <defs><filter id="breathing-glow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="12" /></filter></defs>
-      </svg>
+      <div className="breathing-trail breathing-trail-water absolute" />
+      <div className="breathing-trail breathing-trail-flame absolute" />
+      <div className="breathing-trail breathing-trail-wisteria absolute" />
       <div className="pointer-events-none absolute inset-0 z-10">
         {petals.map((petal, index) => (
-          <motion.span key={index} className="corps-petal absolute block" style={{ left: petal.left, top: petal.top, width: petal.size, height: petal.size * .62 }} animate={reduceMotion ? undefined : { y: ["-3vh", "84vh"], x: [0, index % 2 === 0 ? 52 : -38, index % 2 === 0 ? -20 : 31], rotate: [0, 135, 320], opacity: [0, .8, .65, 0] }} transition={{ duration: petal.duration, delay: petal.delay, repeat: Infinity, ease: "linear" }} />
+          <motion.span
+            key={index}
+            className="corps-petal absolute block"
+            style={{ left: petal.left, top: petal.top, width: petal.size, height: petal.size * .62 }}
+            animate={reduceMotion ? undefined : { y: ["-3vh", "84vh"], x: [0, index % 2 === 0 ? 52 : -38, index % 2 === 0 ? -20 : 31], rotate: [0, 135, 320], opacity: [0, .8, .65, 0] }}
+            transition={{ duration: petal.duration, delay: petal.delay, repeat: Infinity, ease: "linear" }}
+          />
         ))}
       </div>
       <div className="pointer-events-none absolute right-[6%] top-[18%] z-10 hidden text-right lg:block">

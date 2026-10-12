@@ -1,12 +1,18 @@
 # Giresh Velaga — AI Engineering & Full-Stack Portfolio
 
-A developer portfolio with a broad Demon Slayer Corps visual direction: a moonlit Taisho-era village, torii gates, wisteria, Nichirin blade details, breathing-style trails, messenger-crow motifs, and an ink-black, indigo, crimson and wisteria palette. The design uses **background-only scenery throughout**; it does not feature anime characters.
+A developer portfolio with a broad Demon Slayer Corps visual direction: a night shrine, traditional Japanese architecture, wisteria, swordsmith-forge imagery, layered breathing-style effects, and an ink-black, indigo, crimson and wisteria palette. The portfolio uses **photographic raster images for the visual scenes**, with no anime character portraits and no custom SVG scenery.
+
+## Visual image sources
+The scene backgrounds are raster photographs linked from Unsplash (used under the Unsplash License):
+- [Torii gate at a Japanese shrine at night — C Cai](https://unsplash.com/photos/torii-gate-at-a-japanese-shrine-at-night-bCGZtteFiNs)
+- [Wisteria flowers hanging from a pergola — Leo Okuyama](https://unsplash.com/photos/purple-wisteria-flowers-hanging-from-a-pergola-pUqv_nljqMw)
+- [Blacksmith forge with glowing embers and tools — Fabian Kleiser](https://unsplash.com/photos/blacksmith-forge-with-glowing-embers-and-tools-2mbXuLbudI8)
 
 ## Built with
 - Next.js 16, React 19, TypeScript
 - Tailwind CSS, Framer Motion, Lucide
 - Responsive motion effects with reduced-motion support
-- Original local SVG backdrops for the Corps nightscape, wisteria grounds and swordsmith forge
+- Real raster photography with CSS-based breathing effects
 - GitHub REST API for live public repository, language, and recent activity data
 
 ## Local development

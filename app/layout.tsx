@@ -17,8 +17,8 @@ export const metadata: Metadata = {
   keywords: ["Generative AI engineer", "LLM engineer", "machine learning", "multimodal AI", "Next.js developer", "AI research portfolio"],
   authors: [{ name: siteConfig.name }],
   creator: siteConfig.name,
-  openGraph: { type: "website", locale: "en_US", url: siteConfig.siteUrl, title: siteConfig.name + " — " + siteConfig.role, description: siteConfig.description, siteName: siteConfig.name + " Portfolio", images: [{ url: "/og.svg", width: 1200, height: 630, alt: siteConfig.name + " AI engineering portfolio" }] },
-  twitter: { card: "summary_large_image", title: siteConfig.name + " — " + siteConfig.role, description: siteConfig.description, images: ["/og.svg"] },
+  openGraph: { type: "website", locale: "en_US", url: siteConfig.siteUrl, title: siteConfig.name + " — " + siteConfig.role, description: siteConfig.description, siteName: siteConfig.name + " Portfolio", images: [{ url: "https://images.unsplash.com/photo-1760954076011-d7ba1f26b71c?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=85&w=2400", width: 1200, height: 630, alt: siteConfig.name + " AI engineering portfolio" }] },
+  twitter: { card: "summary_large_image", title: siteConfig.name + " — " + siteConfig.role, description: siteConfig.description, images: ["https://images.unsplash.com/photo-1760954076011-d7ba1f26b71c?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=85&w=2400"] },
   alternates: { canonical: "/" }
 };
 export const viewport: Viewport = { width: "device-width", initialScale: 1, themeColor: "#0A0B14", colorScheme: "dark" };

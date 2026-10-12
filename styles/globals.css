@@ -533,7 +533,7 @@ body { background: radial-gradient(ellipse at 82% 5%, rgba(255,183,35,.13), tran
 @media (max-width: 767px) { .corps-moon-orb { top: 18%; right: 2%; width: 35vw; opacity: .48; } }
 
 
-/* Demon Slayer Corps palette: ink-black, midnight indigo, Corps crimson and wisteria. */
+/* Image-led Demon Slayer Corps palette: ink-black, midnight indigo, Corps crimson and wisteria. */
 :root { color-scheme: dark; --background: #090B14; --foreground: #F1EDF4; --slayer-red: #C83F55; --slayer-water: #669FC5; --slayer-paper: #E4D8EA; }
 body {
   background:
@@ -578,3 +578,56 @@ body {
 .corps-showcase-atmosphere { background-image: repeating-linear-gradient(135deg, rgba(230,202,234,.04) 0 1px, transparent 1px 20px), radial-gradient(ellipse at 50% 100%, rgba(200,63,85,.09), transparent 40rem); }
 .corps-records-banner { background-color: #090B14; }
 @media (max-width: 767px) { .corps-moon-orb { top: 18%; right: 2%; width: 35vw; opacity: .48; } }
+
+
+/* Let the real photographic scenes lead; use CSS-only breathing trails instead of vector artwork. */
+.anime-scene-backdrop { background: #0A0B14; }
+.anime-scene-image { object-fit: cover; filter: saturate(.78) contrast(1.08) brightness(.7); }
+.corps-showcase-image { filter: saturate(.78) contrast(1.07) brightness(.66); }
+.breathing-trail {
+  pointer-events: none;
+  z-index: 2;
+  right: -8%;
+  bottom: -6%;
+  width: min(75vw, 980px);
+  height: min(48vh, 520px);
+  border-radius: 50%;
+  opacity: .72;
+  mix-blend-mode: screen;
+  filter: blur(1.5px);
+  transform: rotate(-19deg);
+  mask-image: linear-gradient(105deg, transparent 0%, #000 20%, #000 76%, transparent 100%);
+}
+.breathing-trail-water {
+  border: 18px solid transparent;
+  border-left-color: rgba(93, 161, 211, .5);
+  border-top-color: rgba(122, 194, 228, .66);
+  box-shadow: inset 0 0 24px rgba(88, 159, 214, .3), 0 0 26px rgba(88, 159, 214, .28);
+  animation: breathing-water 12s ease-in-out infinite;
+}
+.breathing-trail-flame {
+  right: -1%;
+  bottom: -16%;
+  width: min(69vw, 840px);
+  height: min(37vh, 380px);
+  border: 10px solid transparent;
+  border-right-color: rgba(200, 63, 85, .72);
+  border-bottom-color: rgba(226, 90, 102, .48);
+  box-shadow: 0 0 30px rgba(200, 63, 85, .24);
+  animation: breathing-flame 9s ease-in-out infinite;
+}
+.breathing-trail-wisteria {
+  right: 8%;
+  bottom: 0;
+  width: min(52vw, 660px);
+  height: min(28vh, 260px);
+  border: 5px solid transparent;
+  border-top-color: rgba(159, 136, 200, .75);
+  border-left-color: rgba(159, 136, 200, .48);
+  box-shadow: 0 0 24px rgba(159, 136, 200, .25);
+  animation: breathing-wisteria 14s ease-in-out infinite;
+}
+@keyframes breathing-water { 0%,100% { transform: rotate(-19deg) translateX(0) scale(.98); opacity: .35; } 50% { transform: rotate(-14deg) translateX(-2%) scale(1.04); opacity: .8; } }
+@keyframes breathing-flame { 0%,100% { transform: rotate(-13deg) translateX(0) scale(.98); opacity: .25; } 50% { transform: rotate(-20deg) translateX(-3%) scale(1.07); opacity: .65; } }
+@keyframes breathing-wisteria { 0%,100% { transform: rotate(-24deg) translateY(0); opacity: .25; } 50% { transform: rotate(-15deg) translateY(-2%); opacity: .52; } }
+@media (prefers-reduced-motion: reduce) { .breathing-trail { animation: none; } }
