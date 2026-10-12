@@ -30,7 +30,7 @@ export function ProjectsSection() {
           <motion.article key={project.id} initial={reduceMotion ? undefined : { opacity: 0, y: 22 }} whileInView={reduceMotion ? undefined : { opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.14 }} transition={{ duration: 0.48, delay: reduceMotion ? 0 : (index % 3) * .07 }} whileHover={reduceMotion ? undefined : { y: -6 }} className="mission-card group flex h-full flex-col overflow-hidden border border-[#D05A55]/25 transition-colors duration-300 hover:border-[#EF4A51]/65">
             <button type="button" onClick={() => setSelected(project)} className="block flex-1 text-left" aria-label={"Open mission record for " + project.title}>
               <div className="mission-art relative aspect-16/10 overflow-hidden border-b border-[#D3A88C]/12 bg-[#0A0D16]">
-                <AnimeSceneBackdrop scene={corpsScene} className="absolute inset-0" />
+                <AnimeSceneBackdrop scene={{ ...corpsScene, id: project.id, label: project.title, image: project.image, fallbacks: [corpsScene.image, ...corpsScene.fallbacks] }} className="absolute inset-0" />
                 <div className="absolute inset-0 bg-linear-to-t from-[#09070E]/95 via-[#09070E]/10 to-[#090A10]/15" />
                 <div className="absolute left-4 top-4 flex items-center gap-2 border border-[#E7C6AF]/25 bg-[#08080D]/78 px-3 py-1.5 backdrop-blur-xs">
                   <motion.span className="size-1.5 bg-[#C84354]" animate={reduceMotion ? undefined : { opacity: [.5, 1, .5] }} transition={{ duration: 2.2, repeat: Infinity }} />
