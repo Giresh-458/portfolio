@@ -36,7 +36,7 @@ export function ProjectsSection() {
                   <motion.span className="size-1.5 bg-[#FFCA3A]" animate={reduceMotion ? undefined : { opacity: [.5, 1, .5] }} transition={{ duration: 2.2, repeat: Infinity }} />
                   <span className="font-mono text-[9px] uppercase tracking-[0.16em] text-[#EBD9C9]">Mission {String(index + 1).padStart(2, "0")}</span>
                 </div>
-                <span className="absolute right-4 top-[3.35rem] max-w-[48%] text-right font-mono text-[8px] uppercase tracking-[0.13em] text-white/75 sm:top-4">"THUNDER BREATHING"</span>
+                <span className="absolute right-4 top-[3.35rem] max-w-[48%] text-right font-mono text-[8px] uppercase tracking-[0.13em] text-white/75 sm:top-4">THUNDER BREATHING</span>
                 <span className="absolute bottom-4 left-4 right-4 text-[10px] font-semibold uppercase tracking-[0.13em] text-[#F4CEB5]">{project.eyebrow}</span>
                 <motion.div aria-hidden="true" className="mission-slash pointer-events-none absolute -left-1/3 top-0 h-full w-1/3" initial={{ x: "-20%", skewX: -18 }} whileHover={{ x: "450%" }} transition={{ duration: .65, ease: "easeOut" }} />
                 <span className="absolute right-4 top-4 grid size-8 place-items-center border border-white/20 bg-black/40 text-white opacity-0 transition group-hover:opacity-100"><ArrowUpRight className="size-4" /></span>
