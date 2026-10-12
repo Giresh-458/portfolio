@@ -5,11 +5,10 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
 const links: Array<[string, string]> = [
-  ["Training", "#about"],
-  ["Missions", "#projects"],
-  ["The forge", "#ai-lab"],
-  ["Breathing styles", "#skills"],
-  ["Records", "#github"],
+  ["About", "#about"],
+  ["Projects", "#projects"],
+  ["AI Focus", "#ai-lab"],
+  ["Skills", "#skills"],
   ["Contact", "#contact"]
 ];
 
@@ -38,7 +37,7 @@ export function Navbar() {
         </div>
         <Button variant="ghost" size="icon" className="xl:hidden" onClick={() => setOpen((value) => !value)} aria-label={open ? "Close navigation" : "Open navigation"} aria-expanded={open}>{open ? <X /> : <Menu />}</Button>
       </nav>
-      {open ? <div className="border-t border-white/10 bg-[#08080D]/95 p-4 backdrop-blur-xl xl:hidden"><div className="container grid gap-1 sm:grid-cols-2">{links.map(([label, href]) => <a key={href} href={href} onClick={() => setOpen(false)} className="border-b border-white/[0.07] px-4 py-3 text-sm uppercase tracking-widest text-[#CFC4C2] transition hover:text-[#FFEBDA]">{label} <span className="float-right text-[#E43D48]">↗</span></a>)}<a href="#projects" onClick={() => setOpen(false)} className="px-4 py-3 text-sm font-semibold text-[#F3767A]">Open mission archive ↗</a></div></div> : null}
+      {open ? <div className="border-t border-white/10 bg-[#08080D]/95 p-4 backdrop-blur-xl xl:hidden"><div className="container grid gap-1 sm:grid-cols-2">{links.map(([label, href]) => <a key={href} href={href} onClick={() => setOpen(false)} className="border-b border-white/[0.07] px-4 py-3 text-sm uppercase tracking-widest text-[#CFC4C2] transition hover:text-[#FFEBDA]">{label} <span className="float-right text-[#E43D48]">↗</span></a>)}<a href="#projects" onClick={() => setOpen(false)} className="px-4 py-3 text-sm font-semibold text-[#F3767A]">View projects ↗</a></div></div> : null}
     </header>
   );
 }
