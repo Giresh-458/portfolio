@@ -48,7 +48,7 @@ export const projects: Project[] = [
     ],
     tech: ["Python", "LangGraph", "FastAPI", "PostgreSQL", "pgvector"],
     githubUrl: "https://github.com/Giresh-458/ai-operations-agent",
-    image: "/projects/ai-operations.svg",
+    image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&fm=jpg&q=85&w=1800",
     accent: "from-cyan-950 via-slate-900 to-[#0B1015]"
   },
   {
@@ -70,7 +70,7 @@ export const projects: Project[] = [
     ],
     tech: ["Python", "RAG", "ChromaDB", "BM25", "FastAPI"],
     githubUrl: "https://github.com/Giresh-458/Healthcare-Document-RAG-Assitant",
-    image: "/projects/healthcare-rag.svg",
+    image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&fm=jpg&q=85&w=1800",
     accent: "from-emerald-950 via-teal-950 to-[#0B1015]"
   },
   {
@@ -92,7 +92,7 @@ export const projects: Project[] = [
     ],
     tech: ["PyTorch", "Transformers", "Whisper", "LSTM", "QLoRA"],
     githubUrl: "https://github.com/Giresh-458/Multimodal-Mood-drift-analysis",
-    image: "/projects/mood-drift.svg",
+    image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&fm=jpg&q=85&w=1800",
     accent: "from-violet-950 via-indigo-950 to-[#0B1015]"
   },
   {
@@ -113,7 +113,7 @@ export const projects: Project[] = [
     ],
     tech: ["React", "Vite", "Node.js", "Express", "MongoDB", "Docker"],
     githubUrl: "https://github.com/Giresh-458/RestoConnect-React",
-    image: "/projects/restoconnect.svg",
+    image: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&fm=jpg&q=85&w=1800",
     accent: "from-amber-950 via-orange-950 to-[#0B1015]"
   },
   {
@@ -135,7 +135,7 @@ export const projects: Project[] = [
     tech: ["Node.js", "Express", "EJS", "MongoDB", "Chart.js"],
     githubUrl: "https://github.com/Giresh-458/Mood_Tracker",
     liveUrl: "https://mood-tracker-1-h1l8.onrender.com/",
-    image: "/projects/mood-tracker.svg",
+    image: "https://images.unsplash.com/photo-1490730141103-6cac27aaab94?auto=format&fit=crop&fm=jpg&q=85&w=1800",
     accent: "from-rose-950 via-pink-950 to-[#0B1015]"
   },
   {
@@ -157,7 +157,7 @@ export const projects: Project[] = [
     tech: ["Node.js", "Express", "EJS", "MongoDB Atlas"],
     githubUrl: "https://github.com/Giresh-458/IIITS_CGPA_Calc",
     liveUrl: "https://iiits-cgpa-calculator.onrender.com/",
-    image: "/projects/cgpa-calculator.svg",
+    image: "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&fm=jpg&q=85&w=1800",
     accent: "from-blue-950 via-slate-900 to-[#0B1015]"
   },
   {
@@ -178,7 +178,7 @@ export const projects: Project[] = [
     ],
     tech: ["Python", "Streamlit", "Blockchain", "Simulation"],
     githubUrl: "https://github.com/Giresh-458/BPoW_Simulator",
-    image: "/projects/bpow-simulator.svg",
+    image: "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?auto=format&fit=crop&fm=jpg&q=85&w=1800",
     accent: "from-purple-950 via-slate-900 to-[#0B1015]"
   }
 ];
