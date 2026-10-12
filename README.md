@@ -2,11 +2,10 @@
 
 A streamlined developer portfolio with a restrained Demon Slayer Corps visual direction: night-shrine and wisteria photography, a dark indigo and crimson palette, and subtle motion. Content prioritizes project details, technical skills, verified live demos, and direct contact rather than repeated decorative sections.
 
-## Visual image sources
-The scene backgrounds are raster photographs linked from Unsplash (used under the Unsplash License):
-- [Torii gate at a Japanese shrine at night — C Cai](https://unsplash.com/photos/torii-gate-at-a-japanese-shrine-at-night-bCGZtteFiNs)
-- [Wisteria flowers hanging from a pergola — Leo Okuyama](https://unsplash.com/photos/purple-wisteria-flowers-hanging-from-a-pergola-pUqv_nljqMw)
-- [Blacksmith forge with glowing embers and tools — Fabian Kleiser](https://unsplash.com/photos/blacksmith-forge-with-glowing-embers-and-tools-2mbXuLbudI8)
+## Background art
+- The visual theme uses an AI-generated, character-free anime panorama: moonlit mountains, a red torii gate, wisteria, lantern-lit traditional rooftops, a waterfall, and reflective water.
+- Each major section positions the panorama differently to keep a coherent Demon Slayer atmosphere without character portraits, silhouettes, or SVG artwork.
+- The project thumbnails remain separate from the decorative backgrounds. The two verified live demos use live-site screenshots; projects without a verified deployment retain their project-context thumbnails.
 
 ## Project thumbnail sourcing
 - Mood Tracker and IIITS CGPA Calculator use screenshots generated from their verified live demo URLs via the Thum.io screenshot API. The API response is cached for up to 24 hours.
