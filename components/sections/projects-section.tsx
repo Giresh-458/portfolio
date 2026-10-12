@@ -25,8 +25,6 @@ export function ProjectsSection() {
                 <AnimeSceneBackdrop scene={{ ...corpsScene, id: project.id, label: project.title, image: project.image, fallbacks: [corpsScene.image, ...corpsScene.fallbacks] }} className="absolute inset-0" />
                 <div className="absolute inset-0 bg-linear-to-t from-[#09070E]/95 via-[#09070E]/10 to-[#090A10]/15" />
                 <span className="absolute bottom-4 left-4 right-4 text-[10px] font-semibold uppercase tracking-[0.13em] text-[#F4CEB5]">{project.eyebrow}</span>
-                <motion.div aria-hidden="true" className="mission-slash pointer-events-none absolute -left-1/3 top-0 h-full w-1/3" initial={{ x: "-20%", skewX: -18 }} whileHover={{ x: "450%" }} transition={{ duration: .65, ease: "easeOut" }} />
-                <span className="absolute right-4 top-4 grid size-8 place-items-center border border-white/20 bg-black/40 text-white opacity-0 transition group-hover:opacity-100"><ArrowUpRight className="size-4" /></span>
               </div>
               <div className="px-5 pb-5 pt-5">
                 <h3 className="flex items-start justify-between gap-3 text-lg font-semibold leading-snug tracking-tight text-[#F5EBDD]">{project.title}<ArrowUpRight className="mt-1 size-4 shrink-0 text-[#D33E52] opacity-65 transition group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:opacity-100" /></h3>
