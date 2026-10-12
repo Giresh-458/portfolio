@@ -1,6 +1,6 @@
 # Giresh Velaga — AI Engineering & Full-Stack Portfolio
 
-A developer portfolio with a broad Demon Slayer Corps visual direction: a night shrine, traditional Japanese architecture, wisteria, swordsmith-forge imagery, layered breathing-style effects, and an ink-black, indigo, crimson and wisteria palette. The portfolio uses **photographic raster images for the visual scenes**, with no anime character portraits and no custom SVG scenery.
+A developer portfolio with a broad Demon Slayer Corps visual direction: a night shrine, traditional Japanese architecture, wisteria, swordsmith-forge imagery, layered breathing-style effects, and an ink-black, indigo, crimson and wisteria palette. The portfolio uses **photographic raster images for scene and project artwork**, with no anime character portraits, custom SVG illustrations, or SVG project thumbnails. CSS provides atmosphere and motion while the photography carries the visual identity.
 
 ## Visual image sources
 The scene backgrounds are raster photographs linked from Unsplash (used under the Unsplash License):
