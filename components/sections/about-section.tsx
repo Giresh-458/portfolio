@@ -1,12 +1,10 @@
 "use client";
 import { motion, useReducedMotion } from "framer-motion";
-import { AnimatedCounter } from "@/components/ui/animated-counter";
 import { SectionHeader } from "@/components/ui/section-header";
 import { wisteriaScene } from "@/lib/anime-art";
 import { AnimeSceneBackdrop } from "@/components/ui/anime-scene-backdrop";
 import { TechBadge } from "@/components/ui/tech-badge";
 import { fadeUp, stagger, viewport } from "@/lib/motion";
-import { stats } from "@/lib/data";
 
 const focusAreas = [
   { title: "AI systems", description: "Agents, retrieval and LLM-powered workflows.", mark: "知" },
@@ -48,14 +46,6 @@ export function AboutSection() {
             </div>
           </div>
 
-          <div className="grid grid-cols-2 gap-3">
-            {stats.map((stat, index) => <div key={stat.label} className="corps-stat relative overflow-hidden border border-[#E7C6AF]/14 bg-[#0B0B12]/90 p-4 sm:p-5">
-              <span className="absolute right-3 top-2 font-serif text-2xl text-netflix/40">{["壱","弐","参","肆"][index]}</span>
-              <div className="mb-4 h-1 w-8 bg-linear-to-r from-[#C83F55] to-[#C33B50]" />
-              <AnimatedCounter value={stat.value} suffix={stat.suffix} />
-              <p className="mt-2 max-w-[130px] text-xs leading-5 text-[#AFA5A8]">{stat.label}</p>
-            </div>)}
-          </div>
           <div className="grid gap-3 sm:grid-cols-2">
             {focusAreas.map((area) => <div key={area.title} className="flex gap-3 border border-[#E7C6AF]/12 bg-linear-to-br from-[#20151D] to-[#0A0B10] p-4">
               <span className="font-serif text-2xl text-[#C84354]">{area.mark}</span>
