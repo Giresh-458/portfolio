@@ -26,14 +26,12 @@ export function AILabSection() {
             <AnimeSceneBackdrop scene={forgeScene} className="absolute inset-0" />
             <div aria-hidden="true" className="pointer-events-none absolute inset-0 z-[1] bg-[linear-gradient(90deg,rgba(7,7,12,.52),rgba(7,7,12,.16))]" />
             <div className="forge-ember-glow absolute inset-0" />
-            <svg className="relative h-full w-full" viewBox="0 0 620 130" fill="none" aria-hidden="true">
-              <path d="M82 110L270 36L536 16L314 65L118 119Z" fill="#17222C" stroke="#3BD5F0" strokeOpacity=".45" strokeWidth="1.5"/>
-              <path d="M118 119L314 65L536 16L321 75Z" fill="#D7DCE0" fillOpacity=".16"/>
-              <motion.path d="M88 111L270 36L536 16" stroke="#DCCCE8" strokeWidth="2.5" strokeLinecap="round" animate={reduceMotion ? undefined : { pathLength: [0, 1], opacity: [.15, .95, .15] }} transition={{ duration: 4.4, repeat: Infinity, ease: "easeInOut" }}/>
-              <path d="M89 111L69 119L56 108L76 100Z" fill="#DD5948" stroke="#F7A077" strokeWidth="1.5"/>
-              <path d="M81 102L100 122M89 98L108 117" stroke="#D6B7A0" strokeWidth="4" strokeLinecap="round"/>
-              {[0,1,2,3,4,5,6,7,8].map((i)=><motion.circle key={i} cx={150+i*39} cy={96-(i%4)*19} r={1.7+(i%3)*.5} fill={i%2===0?"#FF945C":"#42D9EE"} animate={reduceMotion ? undefined : { y:[0,-25-(i%3)*7,0], opacity:[0,.9,0] }} transition={{ duration:2.3+(i%4)*.4, delay:i*.17, repeat:Infinity, ease:"easeInOut" }}/>)}
-            </svg>
+            <div className="relative z-[2] grid h-full w-full place-items-center px-5">
+              <div className="border border-[#E7C6AF]/30 bg-[#08080D]/75 px-5 py-4 text-center backdrop-blur-sm">
+                <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#D8A0A5]">Swordsmith village · forge</p>
+                <p className="mt-2 font-display text-2xl uppercase tracking-wide text-[#F4E6D6]">Temper · refine · validate</p>
+              </div>
+            </div>
             <span className="absolute bottom-2 right-3 z-[3] font-mono text-[8px] uppercase tracking-[0.18em] text-[#C18E7C]">Temper · refine · validate</span>
           </div>
           <h3 className="mt-4 font-display text-3xl uppercase text-[#F4E6D6]">A reliable AI workflow</h3>
