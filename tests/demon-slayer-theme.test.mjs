@@ -82,3 +82,33 @@ test("Open Graph metadata uses a raster image URL", async () => {
   assert.match(layout, /images\.unsplash\.com/);
   assert.doesNotMatch(layout, /\/og\.svg/);
 });
+
+
+test("homepage focuses on portfolio essentials and avoids redundant sections", async () => {
+  const page = await read("app/page.tsx");
+  assert.match(page, /HeroSection/);
+  assert.match(page, /ProjectsSection/);
+  assert.match(page, /SkillsSection/);
+  assert.doesNotMatch(page, /CorpsShowcaseSection|TimelineSection|GitHubAnalyticsSection/);
+
+  const navbar = await read("components/navbar.tsx");
+  assert.match(navbar, /\["Projects", "#projects"\]/);
+  assert.match(navbar, /\["About", "#about"\]/);
+  assert.doesNotMatch(navbar, /"Records"|#github|Breathing styles|Training/);
+
+  const about = await read("components/sections/about-section.tsx");
+  assert.doesNotMatch(about, /AnimatedCounter|\bstats\b/);
+
+  const hero = await read("components/sections/hero-section.tsx");
+  assert.doesNotMatch(hero, /min-h-\[1000px\]/);
+  assert.match(hero, /min-h-\[760px\]/);
+
+  const contact = await read("components/sections/contact-section.tsx");
+  assert.doesNotMatch(contact, /<form|react-hook-form|zodResolver|useForm/);
+  assert.match(contact, /mailto:/);
+  assert.match(contact, /siteConfig\.github/);
+
+  const data = await read("lib/data.ts");
+  const topicBlock = data.slice(data.indexOf("export const researchTopics"), data.indexOf("export const skillCategories"));
+  assert.equal((topicBlock.match(/\{ name:/g) ?? []).length, 4);
+});
