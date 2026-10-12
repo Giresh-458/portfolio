@@ -8,6 +8,11 @@ The scene backgrounds are raster photographs linked from Unsplash (used under th
 - [Wisteria flowers hanging from a pergola — Leo Okuyama](https://unsplash.com/photos/purple-wisteria-flowers-hanging-from-a-pergola-pUqv_nljqMw)
 - [Blacksmith forge with glowing embers and tools — Fabian Kleiser](https://unsplash.com/photos/blacksmith-forge-with-glowing-embers-and-tools-2mbXuLbudI8)
 
+## Project thumbnail sourcing
+- Mood Tracker and IIITS CGPA Calculator use screenshots generated from their verified live demo URLs via the Thum.io screenshot API. The API response is cached for up to 24 hours.
+- The other five projects do not currently have verified public deployment URLs in their project data or READMEs. Their cards therefore keep distinct raster scene imagery rather than pretending a repository or unverified URL is a live app screenshot.
+- To use actual screenshots for the remaining projects, add and verify each public deployment URL first.
+
 ## Built with
 - Next.js 16, React 19, TypeScript
 - Tailwind CSS, Framer Motion, Lucide
