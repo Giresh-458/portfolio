@@ -9,14 +9,14 @@ const rise = { hidden: { opacity: 0, y: 24 }, visible: { opacity: 1, y: 0 } };
 export function HeroSection() {
   const reduceMotion = useReducedMotion();
   return (
-    <section id="home" className="slayer-hero relative isolate min-h-[1000px] overflow-hidden bg-background pt-[72px] lg:h-svh lg:min-h-[860px]">
+    <section id="home" className="slayer-hero relative isolate min-h-[760px] overflow-hidden bg-background pt-[72px] lg:h-svh lg:min-h-[860px]">
       <BreathingScene />
       <div className="hero-vignette pointer-events-none absolute inset-0 z-5" />
       <div className="pointer-events-none absolute inset-x-0 top-0 z-20 h-px bg-linear-to-r from-transparent via-[#D99B1D]/80 to-transparent" />
       <div className="pointer-events-none absolute bottom-0 left-0 right-0 z-20 h-28 bg-linear-to-t from-[#07070B] to-transparent" />
 
-      <div className="container relative z-10 flex min-h-[928px] items-start pt-24 md:pt-28 lg:h-full lg:min-h-0 lg:items-center lg:pt-0">
-        <motion.div initial={reduceMotion ? undefined : "hidden"} animate={reduceMotion ? undefined : "visible"} variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.12, delayChildren: 0.15 } } }} className="relative z-20 w-full max-w-[660px] pb-44 lg:pb-20">
+      <div className="container relative z-10 flex min-h-[688px] items-center pt-8 pb-12 md:pt-10 md:pb-14 lg:h-full lg:min-h-0 lg:items-center lg:py-0">
+        <motion.div initial={reduceMotion ? undefined : "hidden"} animate={reduceMotion ? undefined : "visible"} variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.12, delayChildren: 0.15 } } }} className="relative z-20 w-full max-w-[660px] pb-10 lg:pb-16">
           <motion.div variants={reduceMotion ? undefined : rise} className="mb-7 flex items-center gap-3">
             <span className="corps-seal grid size-11 shrink-0 place-items-center border border-[#E9A51A]/80 bg-[#4F330B]/60 font-display text-2xl text-[#FFF0D8]">雷</span>
             <div>
@@ -39,8 +39,8 @@ export function HeroSection() {
           </motion.div>
 
           <motion.div variants={reduceMotion ? undefined : rise} className="mt-8 flex flex-wrap gap-3">
-            <GlowButton href="#projects" variant="default">View missions <ArrowRight className="size-4" /></GlowButton>
-            <GlowButton href="#about" variant="outline">My training <ArrowDownRight className="size-4" /></GlowButton>
+            <GlowButton href="#projects" variant="default">View projects <ArrowRight className="size-4" /></GlowButton>
+            <GlowButton href="#about" variant="outline">About me <ArrowDownRight className="size-4" /></GlowButton>
             <a href="https://github.com/Giresh-458" target="_blank" rel="noreferrer" aria-label="GitHub profile" className="grid size-12 place-items-center border border-white/20 bg-black/30 text-[#F4E8DC] transition hover:border-[#E9A51A] hover:text-white"><Github className="size-4" /></a>
           </motion.div>
 
@@ -52,10 +52,8 @@ export function HeroSection() {
 
       <div className="pointer-events-none absolute bottom-[136px] left-5 z-20 hidden items-center gap-3 lg:flex">
         <span className="h-10 w-px bg-linear-to-b from-[#F3B426] to-transparent" />
-        <span className="font-mono text-[9px] uppercase tracking-[0.25em] text-white/65">Scroll to enter the Corps archive</span>
+        <span className="font-mono text-[9px] uppercase tracking-[0.25em] text-white/65">Scroll to explore</span>
       </div>
-      <div className="pointer-events-none absolute left-[3.6%] top-[36%] z-20 hidden select-none font-serif text-[14px] leading-[1.85] tracking-[.35em] text-[#F3D6C9]/75 [writing-mode:vertical-rl] lg:block">夢を現実に</div>
-      <div className="pointer-events-none absolute right-[3.6%] top-[23%] z-20 hidden border-y border-[#F0D5C1]/35 py-3 font-serif text-sm tracking-[.3em] text-[#F0D5C1]/80 [writing-mode:vertical-rl] lg:block">鬼殺隊</div>
     </section>
   );
 }
