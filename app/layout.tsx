@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   twitter: { card: "summary_large_image", title: siteConfig.name + " — " + siteConfig.role, description: siteConfig.description, images: ["/og.svg"] },
   alternates: { canonical: "/" }
 };
-export const viewport: Viewport = { width: "device-width", initialScale: 1, themeColor: "#080805", colorScheme: "dark" };
+export const viewport: Viewport = { width: "device-width", initialScale: 1, themeColor: "#0A0B14", colorScheme: "dark" };
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return <html lang="en" className="dark"><body>
     <a href="#main-content" className="fixed left-4 top-4 z-300 -translate-y-24 rounded-md bg-netflix px-4 py-2 text-sm font-semibold text-[#061014] transition focus:translate-y-0">Skip to content</a>

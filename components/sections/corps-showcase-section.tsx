@@ -1,33 +1,33 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
-import { ArrowDownRight, Zap, Target, Focus } from "lucide-react";
-import { thunderScene } from "@/lib/anime-art";
+import { ArrowDownRight, Flame, Waves, Wind } from "lucide-react";
+import { corpsScene, forgeScene, wisteriaScene } from "@/lib/anime-art";
 import { AnimeSceneBackdrop } from "@/components/ui/anime-scene-backdrop";
 
 const panels = [
   {
-    scene: thunderScene,
+    scene: CorpsScene,
     label: "01 / THUNDER",
     title: "Move with focus.",
     description: "Quiet focus. Relentless iteration.",
-    icon: Zap,
+    icon: Waves,
     className: "corps-showcase-feature"
   },
   {
-    scene: thunderScene,
+    scene: CorpsScene,
     label: "02 / FLASH",
     title: "Build with speed.",
     description: "Turn ideas into systems that hold up.",
-    icon: Target,
+    icon: Flame,
     className: "corps-showcase-side"
   },
   {
-    scene: thunderScene,
+    scene: CorpsScene,
     label: "03 / CONCENTRATION",
     title: "Precision wins.",
     description: "Make every detail earn its place.",
-    icon: Focus,
+    icon: Wind,
     className: "corps-showcase-side"
   }
 ];
@@ -41,12 +41,12 @@ export function CorpsShowcaseSection() {
       <div className="container relative z-10 py-16 md:py-24">
         <div className="mb-8 flex flex-col gap-5 md:mb-10 md:flex-row md:items-end md:justify-between">
           <div>
-            <p className="mb-4 flex items-center gap-3 font-mono text-[10px] font-semibold uppercase tracking-[0.28em] text-[#FFD34F]">
+            <p className="mb-4 flex items-center gap-3 font-mono text-[10px] font-semibold uppercase tracking-[0.28em] text-[#D33E52]">
               <span className="h-px w-8 bg-[#F5B82E]" />
               The Corps · 呼吸
             </p>
             <h2 className="max-w-3xl text-balance font-display text-5xl uppercase leading-[0.88] tracking-[0.01em] text-[#F7EBDD] md:text-7xl">
-              One <span className="text-[#FFD34F]">thunder</span> style. Total focus.
+              Many <span className="text-[#D33E52]">breathing</span> styles. One craft.
             </h2>
           </div>
           <p className="max-w-sm border-l border-[#D9BBA9]/30 pl-4 text-sm leading-6 text-[#BEB2B4] md:text-base">
@@ -81,13 +81,13 @@ export function CorpsShowcaseSection() {
                       {panel.label}
                     </span>
                     <span className="hidden border border-white/15 bg-black/30 px-3 py-2 font-mono text-[9px] uppercase tracking-[0.16em] text-white/65 backdrop-blur-md sm:inline-flex">
-                      {scene.character}
+                      {scene.label}
                     </span>
                   </div>
                   <div className="max-w-[34rem]">
                     <div className="mb-3 flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.19em]" style={{ color: scene.accent }}>
                       <Icon className="size-4" />
-                      {scene.breathing}
+                      {scene.style}
                     </div>
                     <h3 className="max-w-[14ch] font-display text-4xl uppercase leading-[0.88] tracking-[0.015em] text-white drop-shadow-[0_3px_22px_rgba(0,0,0,0.65)] sm:text-5xl md:text-6xl">
                       {panel.title}

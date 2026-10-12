@@ -1,12 +1,12 @@
 # Giresh Velaga — AI Engineering & Full-Stack Portfolio
 
-A developer portfolio with a single Zenitsu Agatsuma visual identity: Thunder Breathing lightning, amber moonlight, a black-and-gold palette, temple silhouettes, and Demon Slayer-inspired atmosphere. No other anime characters are used; non-hero sections use background-only thunder artwork so the technical content stays clear.
+A developer portfolio with a broad Demon Slayer Corps visual direction: a moonlit Taisho-era village, torii gates, wisteria, Nichirin blade details, breathing-style trails, messenger-crow motifs, and an ink-black, indigo, crimson and wisteria palette. The design uses **background-only scenery throughout**; it does not feature anime characters.
 
 ## Built with
 - Next.js 16, React 19, TypeScript
 - Tailwind CSS, Framer Motion, Lucide
 - Responsive motion effects with reduced-motion support
-- One Zenitsu hero scene, local thunder/temple SVG backgrounds, and a gold lightning design system
+- Original local SVG backdrops for the Corps nightscape, wisteria grounds and swordsmith forge
 - GitHub REST API for live public repository, language, and recent activity data
 
 ## Local development
@@ -29,7 +29,6 @@ NEXT_PUBLIC_SITE_URL=
 - `NEXT_PUBLIC_SITE_URL` is recommended for a stable canonical production origin.
 - Vercel can use its deployment URL variables as fallbacks; production builds outside Vercel require an explicit `NEXT_PUBLIC_SITE_URL`.
 - Analytics uses live public GitHub data and presents an unavailable message when the API cannot provide it.
-- The hero artwork references Zenitsu art from a third-party image host. Confirm usage rights before public release, or replace it with artwork you own or have licensed. The local thunder background is used as a fallback.
 
 ## Deployment
 1. Import the repository into Vercel.

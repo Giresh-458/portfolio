@@ -7,8 +7,8 @@ import { cn } from "@/lib/utils";
 const links: Array<[string, string]> = [
   ["Training", "#about"],
   ["Missions", "#projects"],
-  ["Thunder lab", "#ai-lab"],
-  ["Thunder craft", "#skills"],
+  ["The forge", "#ai-lab"],
+  ["Breathing styles", "#skills"],
   ["Records", "#github"],
   ["Contact", "#contact"]
 ];
@@ -26,10 +26,10 @@ export function Navbar() {
     <header className={cn("fixed inset-x-0 top-0 z-50 border-b transition-all duration-300", scrolled ? "border-[#E0B7A4]/15 bg-background/92 shadow-[0_12px_44px_rgba(0,0,0,.45)] backdrop-blur-xl" : "border-white/10 bg-linear-to-b from-[#050609]/80 to-transparent")}>
       <nav className="container flex h-[72px] items-center justify-between" aria-label="Primary navigation">
         <a href="#home" className="group flex items-center gap-3" aria-label="Giresh Velaga — home">
-          <span className="corps-seal grid size-10 place-items-center border border-[#D83B47]/70 bg-[#791420]/60 font-display text-xl text-[#F9E9D9] transition group-hover:border-[#53D8EB]">雷</span>
+          <span className="corps-seal grid size-10 place-items-center border border-[#D83B47]/70 bg-[#791420]/60 font-display text-xl text-[#F9E9D9] transition group-hover:border-[#53D8EB]">滅</span>
           <span>
             <span className="block text-sm font-semibold tracking-[0.04em] text-[#F6EBDD]">GIRESH VELAGA</span>
-            <span className="mt-0.5 block font-mono text-[8px] uppercase tracking-[0.2em] text-[#A8A1A3]">Zenitsu theme · thunder journal</span>
+            <span className="mt-0.5 block font-mono text-[8px] uppercase tracking-[0.2em] text-[#A8A1A3]">Demon Slayer Corps · field journal</span>
           </span>
         </a>
         <div className="hidden items-center gap-5 xl:flex">

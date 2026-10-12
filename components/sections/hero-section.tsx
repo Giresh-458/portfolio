@@ -20,7 +20,7 @@ export function HeroSection() {
           <motion.div variants={reduceMotion ? undefined : rise} className="mb-7 flex items-center gap-3">
             <span className="corps-seal grid size-11 shrink-0 place-items-center border border-[#E9A51A]/80 bg-[#4F330B]/60 font-display text-2xl text-[#FFF0D8]">雷</span>
             <div>
-              <p className="font-mono text-[10px] uppercase tracking-[0.28em] text-[#F27678]">Thunder Breathing · Field Journal</p>
+              <p className="font-mono text-[10px] uppercase tracking-[0.28em] text-[#F27678]">Demon Slayer Corps · Field Journal</p>
               <p className="mt-1 font-mono text-[9px] uppercase tracking-[0.2em] text-[#B3B2B7]">Aspiring AI engineer · IIIT Sri City</p>
             </div>
           </motion.div>
@@ -52,10 +52,10 @@ export function HeroSection() {
 
       <div className="pointer-events-none absolute bottom-[136px] left-5 z-20 hidden items-center gap-3 lg:flex">
         <span className="h-10 w-px bg-linear-to-b from-[#F3B426] to-transparent" />
-        <span className="font-mono text-[9px] uppercase tracking-[0.25em] text-white/65">Scroll to enter the thunder archive</span>
+        <span className="font-mono text-[9px] uppercase tracking-[0.25em] text-white/65">Scroll to enter the Corps archive</span>
       </div>
       <div className="pointer-events-none absolute left-[3.6%] top-[36%] z-20 hidden select-none font-serif text-[14px] leading-[1.85] tracking-[.35em] text-[#F3D6C9]/75 [writing-mode:vertical-rl] lg:block">夢を現実に</div>
-      <div className="pointer-events-none absolute right-[3.6%] top-[23%] z-20 hidden border-y border-[#F0D5C1]/35 py-3 font-serif text-sm tracking-[.3em] text-[#F0D5C1]/80 [writing-mode:vertical-rl] lg:block">雷の呼吸</div>
+      <div className="pointer-events-none absolute right-[3.6%] top-[23%] z-20 hidden border-y border-[#F0D5C1]/35 py-3 font-serif text-sm tracking-[.3em] text-[#F0D5C1]/80 [writing-mode:vertical-rl] lg:block">鬼殺隊</div>
     </section>
   );
 }
