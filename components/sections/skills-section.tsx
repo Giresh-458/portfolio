@@ -32,9 +32,7 @@ export function SkillsSection() {
               <div className="style-art pointer-events-none absolute inset-x-0 top-0 h-48 overflow-hidden">
                 <AnimeSceneBackdrop scene={corpsScenes[index] ?? corpsScenes[0]} className="absolute inset-0" />
                 <div aria-hidden="true" className="absolute inset-0 bg-linear-to-b from-black/10 via-black/35 to-[#080A10]/95" />
-                <motion.svg className="absolute inset-0 h-full w-full" viewBox="0 0 360 150" preserveAspectRatio="none" fill="none" aria-hidden="true">
-                  {style.paths.map((d, pathIndex) => <motion.path key={d} d={d} stroke={style.color} strokeWidth={pathIndex===0?3.5:1.8} strokeLinecap="round" opacity={pathIndex===0?.68:.35} strokeDasharray={pathIndex===0?"280 420":"180 560"} animate={reduceMotion ? undefined : { strokeDashoffset: [420, -140], opacity: [.18, pathIndex===0?.75:.4, .18] }} transition={{ duration: (index===1?3.4:6.5)+pathIndex, repeat: Infinity, ease: "easeInOut", delay: pathIndex*.5 }} />)}
-                </motion.svg>
+                <div aria-hidden="true" className="absolute inset-x-5 bottom-3 h-px bg-gradient-to-r from-transparent via-white/25 to-transparent" />
               </div>
               <div className="relative flex items-start justify-between gap-4">
                 <div><p className="font-serif text-xl" style={{ color: style.color }}>{style.japanese}</p><p className="mt-2 font-mono text-[8px] uppercase tracking-[0.2em] text-[#80757B]">STYLE / 0{index + 1}</p></div>
