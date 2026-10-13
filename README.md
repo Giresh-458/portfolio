@@ -1,22 +1,22 @@
 # Giresh Velaga — AI Engineering & Full-Stack Portfolio
 
-A streamlined developer portfolio with a restrained Demon Slayer Corps visual direction: night-shrine and wisteria photography, a dark indigo and crimson palette, and subtle motion. Content prioritizes project details, technical skills, verified live demos, and direct contact rather than repeated decorative sections.
+A streamlined developer portfolio with a restrained Demon Slayer Corps visual direction: AI-generated, character-free Demon Slayer-inspired scenery—moonlit torii gates, wisteria, lantern-lit temples, misty forests, and reflective paths—paired with a dark indigo and crimson palette. Content prioritizes project details, technical skills, verified live demos, and direct contact rather than repeated decorative sections.
 
 ## Background art
 - The visual theme uses an AI-generated, character-free anime panorama: moonlit mountains, a red torii gate, wisteria, lantern-lit traditional rooftops, a waterfall, and reflective water.
 - Each major section positions the panorama differently to keep a coherent Demon Slayer atmosphere without character portraits, silhouettes, or SVG artwork.
-- The project thumbnails remain separate from the decorative backgrounds. The two verified live demos use live-site screenshots; projects without a verified deployment retain their project-context thumbnails.
+- The two verified live demos use screenshots of the actual applications; the other five project cards use the same generated, character-free anime environments with different scene positioning, never character art or generic stock photos.
 
 ## Project thumbnail sourcing
 - Mood Tracker and IIITS CGPA Calculator use screenshots generated from their verified live demo URLs via the Thum.io screenshot API. The API response is cached for up to 24 hours.
-- The other five projects do not currently have verified public deployment URLs in their project data or READMEs. Their cards therefore keep distinct raster scene imagery rather than pretending a repository or unverified URL is a live app screenshot.
+- The other five projects do not currently have verified public deployment URLs in their project data or READMEs. Their cards therefore use the generated Demon Slayer-style environment backgrounds rather than pretending a repository or unverified URL is a live app screenshot.
 - To use actual screenshots for the remaining projects, add and verify each public deployment URL first.
 
 ## Built with
 - Next.js 16, React 19, TypeScript
 - Tailwind CSS, Framer Motion, Lucide
 - Responsive motion effects with reduced-motion support
-- Real raster photography with CSS-based breathing effects
+- AI-generated raster anime environments with CSS-based atmosphere and reduced-motion support
 
 ## Local development
 ```bash
