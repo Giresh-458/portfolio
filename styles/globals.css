@@ -127,7 +127,7 @@
   }
 }
 
-:root { color-scheme: dark; --background: #07070B; --foreground: #F5EADB; --slayer-red: #D93645; --slayer-water: #39D8F3; --slayer-paper: #EEDCC8; }
+:root { color-scheme: dark; --background: #07070B; --foreground: #F5EADB; --slayer-red: #C83F55; --slayer-water: #C33B50; --slayer-paper: #EEDCC8; }
 * { box-sizing: border-box; border-color: rgba(238, 220, 200, 0.13); }
 html { scroll-behavior: smooth; background: var(--background); }
 body {
@@ -159,8 +159,8 @@ body::before {
 ::-webkit-scrollbar { width: 9px; height: 9px; }
 ::-webkit-scrollbar-track { background: #07070B; }
 ::-webkit-scrollbar-thumb { border: 2px solid #07070B; border-radius: 9999px; background: #54232C; }
-::-webkit-scrollbar-thumb:hover { background: #D93645; }
-:focus-visible { outline: 2px solid #43D9F0; outline-offset: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #C83F55; }
+:focus-visible { outline: 2px solid #D34C5B; outline-offset: 4px; }
 a, button { -webkit-tap-highlight-color: transparent; }
 
 .hero-vignette {
@@ -175,7 +175,7 @@ a, button { -webkit-tap-highlight-color: transparent; }
     linear-gradient(90deg, rgba(5,6,11,.8), rgba(5,6,11,.48) 30%, rgba(5,6,11,.06) 66%, rgba(5,6,11,.18)),
     linear-gradient(180deg, rgba(5,6,11,.18), transparent 33%, rgba(5,6,11,.1) 60%, rgba(5,6,11,.72));
 }
-.blood-moon-orb {
+.corps-moon-orb {
   z-index: 2; top: 5%; right: 5.5%; width: clamp(150px, 22vw, 326px); aspect-ratio: 1;
   border-radius: 50%; opacity: .78; mix-blend-mode: screen;
   background:
@@ -191,10 +191,10 @@ a, button { -webkit-tap-highlight-color: transparent; }
 .hero-moon-glow { z-index: 3; background: radial-gradient(circle at 76% 18%, rgba(211,28,43,.2), transparent 15rem), radial-gradient(ellipse at 75% 62%, rgba(24,188,227,.12), transparent 29rem); mix-blend-mode: screen; }
 .hero-title { text-shadow: 0 8px 30px rgba(0,0,0,.52); }
 .slayer-figure-art { display: block; overflow: visible; pointer-events: none; filter: drop-shadow(0 12px 20px rgba(0,0,0,.36)); }
-.corps-records-banner { background: radial-gradient(ellipse at 84% 58%, rgba(217,54,69,.22), transparent 20rem), radial-gradient(ellipse at 66% 12%, rgba(57,216,243,.15), transparent 18rem), repeating-linear-gradient(135deg, rgba(230,202,184,.04) 0 1px, transparent 1px 15px), #09090f; }
+.corps-records-banner { background: radial-gradient(ellipse at 84% 58%, rgba(200,63,85,.22), transparent 20rem), radial-gradient(ellipse at 66% 12%, rgba(159,136,200,.15), transparent 18rem), repeating-linear-gradient(135deg, rgba(230,202,184,.04) 0 1px, transparent 1px 15px), #09090f; }
 .hero-brush { color: #E63846; font-family: Georgia, "Times New Roman", serif; font-weight: 700; letter-spacing: -.055em; text-shadow: 0 8px 28px rgba(120,7,22,.25); -webkit-text-stroke: .4px rgba(255,112,112,.3); }
 .corps-seal { background-image: linear-gradient(135deg, rgba(255,255,255,.08), transparent 48%), repeating-conic-gradient(#16423e 0% 25%, #081414 0% 50%); background-size: auto, 12px 12px; }
-.sakura-petal { background: linear-gradient(140deg, #ffd8de, #e95c86 70%); border-radius: 100% 0 100% 0; box-shadow: 0 0 9px rgba(247,123,164,.35); }
+.corps-petal { background: linear-gradient(140deg, #ffd8de, #e95c86 70%); border-radius: 100% 0 100% 0; box-shadow: 0 0 9px rgba(247,123,164,.35); }
 .slayer-character-tab { background: rgba(4,5,9,.54); backdrop-filter: blur(6px); box-shadow: 0 12px 40px rgba(0,0,0,.18); }
 .slayer-character-tab.is-active { box-shadow: 0 0 0 1px var(--character-accent), 0 0 24px color-mix(in srgb, var(--character-accent) 25%, transparent); transform: translateY(-3px); }
 
@@ -204,34 +204,34 @@ a, button { -webkit-tap-highlight-color: transparent; }
   opacity: .13; background: repeating-conic-gradient(#21564e 0% 25%, transparent 0% 50%) 0 / 24px 24px;
   mask-image: linear-gradient(180deg, transparent, black 20%, black 80%, transparent);
 }
-.section-shell::after { content: ""; position: absolute; pointer-events: none; z-index: -1; left: 0; right: 0; bottom: 2rem; height: 1px; background: linear-gradient(90deg, transparent, rgba(217,54,69,.18), rgba(57,216,243,.1), transparent); }
+.section-shell::after { content: ""; position: absolute; pointer-events: none; z-index: -1; left: 0; right: 0; bottom: 2rem; height: 1px; background: linear-gradient(90deg, transparent, rgba(200,63,85,.18), rgba(159,136,200,.1), transparent); }
 .section-about::before {
   top: 5rem; right: -1rem; width: 10rem; height: 18rem; opacity: .28;
   background:
     radial-gradient(ellipse at 20% 18%, #A98ADD 0 3px, transparent 4px),
     radial-gradient(ellipse at 80% 28%, #A98ADD 0 3px, transparent 4px),
     radial-gradient(ellipse at 38% 42%, #A98ADD 0 3px, transparent 4px),
-    repeating-linear-gradient(175deg, transparent 0 15px, rgba(169,138,221,.24) 16px 17px, transparent 18px 31px);
+    repeating-linear-gradient(175deg, transparent 0 15px, rgba(245,188,47,.24) 16px 17px, transparent 18px 31px);
   mask-image: linear-gradient(180deg, black, transparent);
 }
-.section-projects::before { top: 8rem; width: 7rem; height: 19rem; opacity: .14; background: repeating-linear-gradient(135deg, #D93645 0 1px, transparent 1px 13px); }
+.section-projects::before { top: 8rem; width: 7rem; height: 19rem; opacity: .14; background: repeating-linear-gradient(135deg, #C83F55 0 1px, transparent 1px 13px); }
 .section-forge::before { top: 6rem; width: 14rem; height: 14rem; opacity: .2; background: radial-gradient(circle, rgba(246,82,41,.55), rgba(247,138,53,.18) 26%, transparent 68%); filter: blur(7px); }
-.section-forge::after { height: 2px; background: linear-gradient(90deg, transparent, rgba(255,101,45,.45), rgba(217,54,69,.2), transparent); }
-.section-skills::before { top: 6rem; width: 11rem; height: 15rem; opacity: .18; background: repeating-radial-gradient(ellipse at 100% 0%, transparent 0 9px, rgba(57,216,243,.4) 10px 11px, transparent 12px 21px); }
-.section-training::before { top: 7rem; width: 7rem; height: 18rem; opacity: .15; background: repeating-linear-gradient(0deg, rgba(217,54,69,.8) 0 1px, transparent 1px 13px); }
-.section-github::before { top: 6rem; width: 12rem; height: 12rem; opacity: .14; background: repeating-linear-gradient(90deg, transparent 0 13px, #D93645 14px 15px, transparent 16px 28px); }
+.section-forge::after { height: 2px; background: linear-gradient(90deg, transparent, rgba(255,101,45,.45), rgba(200,63,85,.2), transparent); }
+.section-skills::before { top: 6rem; width: 11rem; height: 15rem; opacity: .18; background: repeating-radial-gradient(ellipse at 100% 0%, transparent 0 9px, rgba(159,136,200,.4) 10px 11px, transparent 12px 21px); }
+.section-training::before { top: 7rem; width: 7rem; height: 18rem; opacity: .15; background: repeating-linear-gradient(0deg, rgba(200,63,85,.8) 0 1px, transparent 1px 13px); }
+.section-github::before { top: 6rem; width: 12rem; height: 12rem; opacity: .14; background: repeating-linear-gradient(90deg, transparent 0 13px, #C83F55 14px 15px, transparent 16px 28px); }
 .section-contact::before { top: 5rem; width: 10rem; height: 16rem; opacity: .2; background: radial-gradient(ellipse at 40% 15%, rgba(233,107,139,.6) 0 3px, transparent 4px), radial-gradient(ellipse at 70% 45%, rgba(233,107,139,.5) 0 4px, transparent 5px), repeating-linear-gradient(165deg, transparent 0 14px, rgba(233,107,139,.16) 15px 16px, transparent 17px 29px); }
 .section-shell > * { position: relative; }
 
 .slayer-panel { position: relative; overflow: hidden; border: 1px solid rgba(228,89,86,.28); background: linear-gradient(130deg, rgba(36,20,27,.96), rgba(10,12,20,.98) 65%); box-shadow: 0 24px 70px rgba(0,0,0,.23), inset 0 1px rgba(255,255,255,.035); }
-.slayer-panel::before { content: ""; position: absolute; top: 0; left: 0; width: 92px; height: 3px; background: linear-gradient(90deg, #F24D53, #39D8F3, transparent); }
+.slayer-panel::before { content: ""; position: absolute; top: 0; left: 0; width: 92px; height: 3px; background: linear-gradient(90deg, #F24D53, #C33B50, transparent); }
 .training-scroll { box-shadow: 0 18px 54px rgba(0,0,0,.2), inset 0 0 0 1px rgba(231,198,175,.035); }
-.training-scroll::after { content: ""; position: absolute; top: 0; bottom: 0; left: 0; width: 2px; background: linear-gradient(180deg, #D93645, rgba(169,138,221,.45), transparent); pointer-events: none; }
+.training-scroll::after { content: ""; position: absolute; top: 0; bottom: 0; left: 0; width: 2px; background: linear-gradient(180deg, #C83F55, rgba(245,188,47,.45), transparent); pointer-events: none; }
 .training-ground { box-shadow: 0 24px 70px rgba(0,0,0,.22); }
 .corps-stat { transition: border-color .25s ease, transform .25s ease; }
-.corps-stat:hover { border-color: rgba(217,54,69,.55); transform: translateY(-2px); }
+.corps-stat:hover { border-color: rgba(200,63,85,.55); transform: translateY(-2px); }
 .mission-card { position: relative; background: linear-gradient(145deg, rgba(37,20,27,.96), rgba(11,13,21,.98) 58%); border-color: rgba(219,71,78,.26); }
-.mission-card::after { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 2px; background: linear-gradient(180deg, #E83D49, rgba(57,216,243,.7), transparent); opacity: .85; pointer-events: none; }
+.mission-card::after { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 2px; background: linear-gradient(180deg, #E83D49, rgba(159,136,200,.7), transparent); opacity: .85; pointer-events: none; }
 .mission-slash { background: linear-gradient(90deg, transparent, rgba(90,220,238,.08), rgba(245,227,203,.22), rgba(224,55,74,.14), transparent); mix-blend-mode: screen; }
 .breathing-style-card { background: linear-gradient(155deg, rgba(25,20,30,.96), rgba(8,10,16,.98) 72%); box-shadow: 0 22px 68px rgba(0,0,0,.22); transition: border-color .25s ease, box-shadow .25s ease, transform .25s ease; }
 .breathing-style-card:hover { box-shadow: 0 27px 75px rgba(0,0,0,.3), 0 0 28px color-mix(in srgb, var(--style-color) 12%, transparent); }
@@ -243,16 +243,16 @@ a, button { -webkit-tap-highlight-color: transparent; }
 @keyframes ember-breathe { 0%,100% { opacity:.4; } 50% { opacity:1; } }
 .forge-step { transition: border-color .25s ease, background .25s ease; }
 .forge-step:hover { background: rgba(233,86,72,.055); }
-.crow-dispatch { background: radial-gradient(ellipse at 76% 15%, rgba(217,54,69,.1), transparent 37%), linear-gradient(130deg, rgba(36,20,27,.96), rgba(10,12,20,.98) 65%); }
-.crow-moon { background: radial-gradient(circle at 35% 30%, #B52D43, #581322 72%, #220A12); box-shadow: 0 0 40px rgba(217,54,69,.19); opacity: .45; }
+.crow-dispatch { background: radial-gradient(ellipse at 76% 15%, rgba(200,63,85,.1), transparent 37%), linear-gradient(130deg, rgba(36,20,27,.96), rgba(10,12,20,.98) 65%); }
+.crow-moon { background: radial-gradient(circle at 35% 30%, #B52D43, #581322 72%, #220A12); box-shadow: 0 0 40px rgba(200,63,85,.19); opacity: .45; }
 .tech-scroll-chip { box-shadow: inset 0 1px rgba(255,255,255,.025); }
-.tech-scroll-chip::after { content: ""; position: absolute; left: 0; bottom: 0; height: 1px; width: 100%; background: linear-gradient(90deg, #D93645, #39D8F3, transparent); opacity: .35; }
+.tech-scroll-chip::after { content: ""; position: absolute; left: 0; bottom: 0; height: 1px; width: 100%; background: linear-gradient(90deg, #C83F55, #C33B50, transparent); opacity: .35; }
 .corps-footer { background-image: repeating-linear-gradient(135deg, rgba(230,202,184,.018) 0 1px, transparent 1px 16px); }
 
 @media (max-width: 767px) {
   .hero-vignette { background: linear-gradient(180deg, rgba(4,5,9,.75) 0%, rgba(4,5,9,.48) 34%, rgba(4,5,9,.15) 62%, rgba(4,5,9,.87) 100%); }
   .hero-scene-wash { background: linear-gradient(180deg, rgba(4,5,9,.25), rgba(4,5,9,.03) 42%, rgba(4,5,9,.58)); }
-  .blood-moon-orb { top: 18%; right: 2%; width: 35vw; opacity: .54; }
+  .corps-moon-orb { top: 18%; right: 2%; width: 35vw; opacity: .54; }
   .scene-architecture { opacity: .65; }
   .character-scene-image { background-position: var(--scene-mobile-position, 68% center); }
   .section-shell::before { right: -1rem; width: 4rem; opacity: .1; }
@@ -325,11 +325,11 @@ a, button { -webkit-tap-highlight-color: transparent; }
 .section-shell::after {
   bottom: 0;
   height: 2px;
-  background: linear-gradient(90deg, transparent, rgba(217,54,69,.28), rgba(57,216,243,.2), rgba(169,138,221,.16), transparent);
+  background: linear-gradient(90deg, transparent, rgba(200,63,85,.28), rgba(159,136,200,.2), rgba(245,188,47,.16), transparent);
 }
 .crow-dispatch {
   background:
-    radial-gradient(ellipse at 70% 12%, rgba(217,54,69,.2), transparent 33%),
+    radial-gradient(ellipse at 70% 12%, rgba(200,63,85,.2), transparent 33%),
     radial-gradient(ellipse at 12% 88%, rgba(80, 51, 116, .17), transparent 38%),
     linear-gradient(145deg, rgba(33,17,28,.98), rgba(8,10,17,.98) 68%);
 }
@@ -461,14 +461,14 @@ a, button { -webkit-tap-highlight-color: transparent; }
   isolation: isolate;
   background-color: #0b0b13;
   background-image:
-    radial-gradient(ellipse at 78% 22%, color-mix(in srgb, var(--scene-accent, #39D8F3) 30%, transparent), transparent 56%),
+    radial-gradient(ellipse at 78% 22%, color-mix(in srgb, var(--scene-accent, #C33B50) 30%, transparent), transparent 56%),
     linear-gradient(135deg, #10121f, #08080e 62%, #1d0b14);
 }
 .anime-scene-fallback {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(ellipse at 72% 24%, color-mix(in srgb, var(--scene-accent, #39D8F3) 35%, transparent), transparent 50%),
+    radial-gradient(ellipse at 72% 24%, color-mix(in srgb, var(--scene-accent, #C33B50) 35%, transparent), transparent 50%),
     linear-gradient(135deg, #131522, #090a10 62%, #210d19);
 }
 .anime-scene-image {
@@ -501,3 +501,133 @@ a, button { -webkit-tap-highlight-color: transparent; }
   .corps-showcase-card.corps-showcase-side { min-height: 225px; }
   .mission-art { aspect-ratio: 1 / 1; }
 }
+
+
+/* Shared Demon Slayer Corps palette: ink, indigo, crimson and wisteria. */
+:root { --background: #080805; --foreground: #F7EED1; --slayer-red: #C83F55; --slayer-water: #D33E52; --slayer-paper: #F4DEAC; }
+body { background: radial-gradient(ellipse at 82% 5%, rgba(255,183,35,.13), transparent 34rem), radial-gradient(ellipse at 12% 54%, rgba(177,107,20,.10), transparent 36rem), radial-gradient(ellipse at 78% 86%, rgba(245,188,47,.08), transparent 30rem), #080805; }
+::-webkit-scrollbar-thumb { background: #6F4E12; } ::-webkit-scrollbar-thumb:hover { background: #C33B50; }
+.corps-moon-orb { top: 5%; right: 5.5%; width: clamp(150px, 22vw, 326px); aspect-ratio: 1; border-radius: 50%; opacity: .72; mix-blend-mode: screen; background: radial-gradient(circle at 36% 30%, #FFF4B8 0%, #FFC33D 42%, #A65F12 76%, #241305 100%); box-shadow: 0 0 46px rgba(244,174,31,.25), 0 0 150px rgba(220,137,16,.18), inset -14px -15px 28px rgba(34,18,0,.5); animation: corps-moon-breathe 9s ease-in-out infinite; }
+@keyframes corps-moon-breathe { 0%,100% { transform: translateY(0) scale(1); filter: saturate(.95); } 50% { transform: translateY(8px) scale(1.025); filter: saturate(1.13); } }
+.hero-moon-glow { background: radial-gradient(circle at 76% 18%, rgba(255,194,45,.19), transparent 15rem), radial-gradient(ellipse at 75% 62%, rgba(255,153,24,.1), transparent 29rem); }
+.hero-brush { color: #D33E52; text-shadow: 0 8px 28px rgba(174,111,16,.25); }
+.corps-seal { background-image: linear-gradient(135deg, rgba(255,255,255,.08), transparent 48%), repeating-conic-gradient(#EBAE20 0% 25%, #110D05 0% 50%); background-size: auto, 12px 12px; }
+.corps-petal { background: radial-gradient(circle, #FFF3A6 0%, #B18ACF 65%, #E08A15 100%); border-radius: 50%; box-shadow: 0 0 12px rgba(255,196,54,.48); }
+.slayer-character-tab { display: none; }
+.section-shell::before { opacity: .12; background: repeating-linear-gradient(135deg, rgba(255,196,54,.12) 0 1px, transparent 1px 18px); }
+.section-shell::after { background: linear-gradient(90deg, transparent, rgba(200,63,85,.25), rgba(255,211,79,.18), transparent); }
+.section-about, .section-projects, .section-forge, .section-skills, .section-training, .section-github, .section-contact { background: radial-gradient(ellipse at 88% 16%, rgba(210,143,20,.12), transparent 29rem), radial-gradient(ellipse at 12% 80%, rgba(255,186,40,.055), transparent 31rem), linear-gradient(180deg, #0C0B07 0%, #100E08 52%, #070705 100%); }
+.slayer-panel { border-color: rgba(238,187,55,.22); background: linear-gradient(130deg, rgba(32,25,12,.96), rgba(9,9,6,.98) 65%); }
+.slayer-panel::before { background: linear-gradient(90deg, #D33E52, #9F88C8, transparent); }
+.mission-card { background: linear-gradient(145deg, rgba(32,25,12,.96), rgba(9,9,6,.98) 58%); border-color: rgba(245,184,46,.23); }
+.mission-card::after { background: linear-gradient(180deg, #D33E52, rgba(245,154,38,.7), transparent); }
+.breathing-style-card { background: linear-gradient(155deg, rgba(28,23,12,.96), rgba(8,8,5,.98) 72%); }
+.forge-bench { background: radial-gradient(ellipse at 55% 18%, rgba(255,188,37,.1), transparent 38%), linear-gradient(130deg, rgba(32,25,12,.96), rgba(9,9,6,.98) 65%); }
+.forge-ember-glow { background: radial-gradient(ellipse at 50% 90%, rgba(255,175,25,.15), transparent 63%); }
+.crow-dispatch { background: radial-gradient(ellipse at 76% 15%, rgba(255,187,40,.1), transparent 37%), linear-gradient(130deg, rgba(32,25,12,.96), rgba(9,9,6,.98) 65%); }
+.crow-moon { background: radial-gradient(circle at 35% 30%, #E6AA22, #68400D 72%, #220F02); box-shadow: 0 0 40px rgba(217,150,25,.19); }
+.corps-footer { background-image: repeating-linear-gradient(135deg, rgba(245,207,104,.025) 0 1px, transparent 1px 16px); }
+.corps-showcase-section { background: radial-gradient(ellipse at 12% 38%, rgba(200,63,85,.08), transparent 32rem), radial-gradient(ellipse at 90% 70%, rgba(198,132,31,.1), transparent 34rem), #070705; }
+.corps-showcase-atmosphere { background-image: repeating-linear-gradient(135deg, rgba(230,202,184,.04) 0 1px, transparent 1px 20px), radial-gradient(ellipse at 50% 100%, rgba(200,63,85,.09), transparent 40rem); }
+.corps-records-banner { background-color: #090906; }
+@media (max-width: 767px) { .corps-moon-orb { top: 18%; right: 2%; width: 35vw; opacity: .48; } }
+
+
+/* Image-led Demon Slayer Corps palette: ink-black, midnight indigo, Corps crimson and wisteria. */
+:root { color-scheme: dark; --background: #090B14; --foreground: #F1EDF4; --slayer-red: #C83F55; --slayer-water: #669FC5; --slayer-paper: #E4D8EA; }
+body {
+  background:
+    radial-gradient(ellipse at 78% 2%, rgba(115, 71, 120, .14), transparent 32rem),
+    radial-gradient(ellipse at 12% 43%, rgba(45, 78, 122, .13), transparent 35rem),
+    radial-gradient(ellipse at 85% 88%, rgba(160, 38, 63, .11), transparent 30rem),
+    #090B14;
+}
+::selection { background: rgba(200,63,85,.86); color: #FFF4F4; }
+::-webkit-scrollbar-thumb { background: #52364F; }
+::-webkit-scrollbar-thumb:hover { background: #C83F55; }
+.hero-vignette {
+  background:
+    linear-gradient(90deg, rgba(5,6,13,.94) 0%, rgba(5,6,13,.78) 25%, rgba(5,6,13,.42) 47%, rgba(5,6,13,.10) 74%, rgba(5,6,13,.25) 100%),
+    linear-gradient(180deg, rgba(4,5,11,.35) 0%, transparent 28%, transparent 62%, rgba(4,5,11,.72) 100%);
+}
+.hero-scene-wash {
+  z-index: 1;
+  background: linear-gradient(90deg, rgba(5,6,13,.55), rgba(5,6,13,.13) 45%, rgba(5,6,13,.04) 70%, rgba(5,6,13,.3)),
+    linear-gradient(180deg, rgba(5,6,13,.12), transparent 45%, rgba(5,6,13,.26));
+}
+.corps-moon-glow { background: radial-gradient(circle at 74% 18%, rgba(200,63,85,.2), transparent 17rem), radial-gradient(ellipse at 76% 62%, rgba(102,159,197,.12), transparent 29rem); mix-blend-mode: screen; }
+.hero-brush { color: #D94659; text-shadow: 0 8px 28px rgba(132,25,46,.28); }
+.corps-seal { background-image: linear-gradient(135deg, rgba(255,255,255,.08), transparent 48%), repeating-conic-gradient(#B5364F 0% 25%, #14101D 0% 50%); background-size: auto, 12px 12px; }
+.corps-petal { background: linear-gradient(140deg, #E7D2EF, #B84A60 75%); border-radius: 100% 0 100% 0; box-shadow: 0 0 10px rgba(184,74,96,.42); }
+.section-shell::before { opacity: .12; background: repeating-linear-gradient(135deg, rgba(159,136,200,.12) 0 1px, transparent 1px 18px); }
+.section-shell::after { background: linear-gradient(90deg, transparent, rgba(200,63,85,.25), rgba(159,136,200,.2), transparent); }
+.section-about, .section-projects, .section-forge, .section-skills, .section-training, .section-github, .section-contact {
+  background: radial-gradient(ellipse at 88% 16%, rgba(115,71,120,.12), transparent 29rem), radial-gradient(ellipse at 12% 80%, rgba(48,86,130,.08), transparent 31rem), linear-gradient(180deg, #0C0D18 0%, #100D18 52%, #070811 100%);
+}
+.slayer-panel { border-color: rgba(184,112,139,.25); background: linear-gradient(130deg, rgba(31,20,34,.96), rgba(9,10,18,.98) 65%); }
+.slayer-panel::before { background: linear-gradient(90deg, #C83F55, #9F88C8, transparent); }
+.mission-card { background: linear-gradient(145deg, rgba(31,20,34,.96), rgba(9,10,18,.98) 58%); border-color: rgba(200,63,85,.25); }
+.mission-card::after { background: linear-gradient(180deg, #C83F55, rgba(102,159,197,.7), transparent); }
+.breathing-style-card { background: linear-gradient(155deg, rgba(26,20,36,.96), rgba(8,9,16,.98) 72%); }
+.forge-bench { background: radial-gradient(ellipse at 55% 18%, rgba(185,63,76,.12), transparent 38%), linear-gradient(130deg, rgba(31,20,34,.96), rgba(9,10,18,.98) 65%); }
+.forge-ember-glow { background: radial-gradient(ellipse at 50% 90%, rgba(202,73,88,.16), transparent 63%); }
+.crow-dispatch { background: radial-gradient(ellipse at 76% 15%, rgba(115,71,120,.12), transparent 37%), linear-gradient(130deg, rgba(31,20,34,.96), rgba(9,10,18,.98) 65%); }
+.crow-moon { background: radial-gradient(circle at 35% 30%, #B84B60, #5A253B 72%, #220F20); box-shadow: 0 0 40px rgba(200,63,85,.19); }
+.corps-footer { background-image: repeating-linear-gradient(135deg, rgba(215,196,227,.025) 0 1px, transparent 1px 16px); }
+.corps-showcase-section { background: radial-gradient(ellipse at 12% 38%, rgba(102,159,197,.08), transparent 32rem), radial-gradient(ellipse at 90% 70%, rgba(200,63,85,.1), transparent 34rem), #070811; }
+.corps-showcase-atmosphere { background-image: repeating-linear-gradient(135deg, rgba(230,202,234,.04) 0 1px, transparent 1px 20px), radial-gradient(ellipse at 50% 100%, rgba(200,63,85,.09), transparent 40rem); }
+.corps-records-banner { background-color: #090B14; }
+@media (max-width: 767px) { .corps-moon-orb { top: 18%; right: 2%; width: 35vw; opacity: .48; } }
+
+
+/* Let the real photographic scenes lead; use CSS-only breathing trails instead of vector artwork. */
+.anime-scene-backdrop { background: #0A0B14; }
+.anime-scene-image { object-fit: cover; filter: saturate(.78) contrast(1.08) brightness(.7); }
+.corps-showcase-image { filter: saturate(.78) contrast(1.07) brightness(.66); }
+.breathing-trail {
+  pointer-events: none;
+  z-index: 2;
+  right: -8%;
+  bottom: -6%;
+  width: min(75vw, 980px);
+  height: min(48vh, 520px);
+  border-radius: 50%;
+  opacity: .72;
+  mix-blend-mode: screen;
+  filter: blur(1.5px);
+  transform: rotate(-19deg);
+  mask-image: linear-gradient(105deg, transparent 0%, #000 20%, #000 76%, transparent 100%);
+}
+.breathing-trail-water {
+  border: 18px solid transparent;
+  border-left-color: rgba(93, 161, 211, .5);
+  border-top-color: rgba(122, 194, 228, .66);
+  box-shadow: inset 0 0 24px rgba(88, 159, 214, .3), 0 0 26px rgba(88, 159, 214, .28);
+  animation: breathing-water 12s ease-in-out infinite;
+}
+.breathing-trail-flame {
+  right: -1%;
+  bottom: -16%;
+  width: min(69vw, 840px);
+  height: min(37vh, 380px);
+  border: 10px solid transparent;
+  border-right-color: rgba(200, 63, 85, .72);
+  border-bottom-color: rgba(226, 90, 102, .48);
+  box-shadow: 0 0 30px rgba(200, 63, 85, .24);
+  animation: breathing-flame 9s ease-in-out infinite;
+}
+.breathing-trail-wisteria {
+  right: 8%;
+  bottom: 0;
+  width: min(52vw, 660px);
+  height: min(28vh, 260px);
+  border: 5px solid transparent;
+  border-top-color: rgba(159, 136, 200, .75);
+  border-left-color: rgba(159, 136, 200, .48);
+  box-shadow: 0 0 24px rgba(159, 136, 200, .25);
+  animation: breathing-wisteria 14s ease-in-out infinite;
+}
+@keyframes breathing-water { 0%,100% { transform: rotate(-19deg) translateX(0) scale(.98); opacity: .35; } 50% { transform: rotate(-14deg) translateX(-2%) scale(1.04); opacity: .8; } }
+@keyframes breathing-flame { 0%,100% { transform: rotate(-13deg) translateX(0) scale(.98); opacity: .25; } 50% { transform: rotate(-20deg) translateX(-3%) scale(1.07); opacity: .65; } }
+@keyframes breathing-wisteria { 0%,100% { transform: rotate(-24deg) translateY(0); opacity: .25; } 50% { transform: rotate(-15deg) translateY(-2%); opacity: .52; } }
+@media (prefers-reduced-motion: reduce) { .breathing-trail { animation: none; } }

@@ -3,14 +3,14 @@
 import { motion, useReducedMotion } from "framer-motion";
 import { ArrowDownRight, BrainCircuit, CheckCheck, Code2, Route } from "lucide-react";
 import { SectionHeader } from "@/components/ui/section-header";
-import { animeScenes } from "@/lib/anime-art";
+import { corpsScenes } from "@/lib/anime-art";
 import { AnimeSceneBackdrop } from "@/components/ui/anime-scene-backdrop";
 
 const stages = [
   { number: "01", title: "Understand", subtitle: "Name the real problem.", detail: "Clarify the user, constraints and what a useful result should look like before reaching for a model or framework.", icon: BrainCircuit, tone: "water", kanji: "壱" },
-  { number: "02", title: "Architect", subtitle: "Choose a system that fits.", detail: "Break the work into components, define the data flow and make failure paths visible—not just the happy path.", icon: Route, tone: "ember", kanji: "弐" },
+  { number: "02", title: "Architect", subtitle: "Choose a system that fits.", detail: "Break the work into components, define the data flow and make failure paths visible—not just the happy path.", icon: Route, tone: "flame", kanji: "弐" },
   { number: "03", title: "Build", subtitle: "Connect intelligence to a product.", detail: "Bring models, APIs, interfaces and persistence together into something people can actually use.", icon: Code2, tone: "water", kanji: "参" },
-  { number: "04", title: "Validate", subtitle: "Make claims earn their place.", detail: "Test edge cases, inspect output, document trade-offs and publish only metrics the implementation can support.", icon: CheckCheck, tone: "ember", kanji: "肆" }
+  { number: "04", title: "Validate", subtitle: "Make claims earn their place.", detail: "Test edge cases, inspect output, document trade-offs and publish only metrics the implementation can support.", icon: CheckCheck, tone: "flame", kanji: "肆" }
 ];
 
 export function TimelineSection() {
@@ -26,7 +26,7 @@ export function TimelineSection() {
       <div className="training-path relative">
         <div className="pointer-events-none absolute left-[8%] right-[8%] top-5 hidden h-px overflow-hidden bg-netflix/20 xl:block">
           <motion.div
-            className="h-full origin-left bg-linear-to-r from-[#D93645] via-[#C3A2E2] to-[#39D8F3]"
+            className="h-full origin-left bg-linear-to-r from-[#C83F55] via-[#FFD967] to-[#C33B50]"
             initial={reduceMotion ? { scaleX: 1 } : { scaleX: 0 }}
             whileInView={{ scaleX: 1 }}
             viewport={{ once: true }}
@@ -36,7 +36,7 @@ export function TimelineSection() {
         <div className="relative grid gap-4 md:grid-cols-2 xl:grid-cols-4 xl:pt-12">
           {stages.map((stage, index) => {
             const Icon = stage.icon;
-            const accent = stage.tone === "water" ? "#39D8F3" : "#F0755C";
+            const accent = stage.tone === "water" ? "#659FC5" : "#D34A59";
             return (
               <motion.article
                 key={stage.number}
@@ -47,7 +47,7 @@ export function TimelineSection() {
                 whileHover={reduceMotion ? undefined : { y: -5 }}
                 className="training-scroll group relative overflow-hidden border border-[#E7C6AF]/17 bg-[#0B0B12]/60 p-6 transition-colors hover:border-[#EF5456]/55 md:p-7"
               >
-                <AnimeSceneBackdrop scene={animeScenes[(index * 2 + 2) % animeScenes.length]} className="absolute inset-0 z-0 opacity-90 transition-opacity duration-500 group-hover:opacity-100" />
+                <AnimeSceneBackdrop scene={corpsScenes[(index + 1) % corpsScenes.length]} className="absolute inset-0 z-0 opacity-90 transition-opacity duration-500 group-hover:opacity-100" />
                 <div aria-hidden="true" className="pointer-events-none absolute inset-0 z-[1] bg-[linear-gradient(180deg,rgba(7,7,12,.28)_0%,rgba(7,7,12,.72)_46%,rgba(7,7,12,.97)_100%)]" />
                 <div className="pointer-events-none absolute -right-4 -top-5 font-serif text-[116px] leading-none text-white/2.5">
                   {stage.kanji}

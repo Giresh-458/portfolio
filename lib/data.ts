@@ -1,14 +1,11 @@
 import { resolveSiteUrl } from "@/lib/site-url.mjs";
 import {
   Bot,
-  BrainCircuit,
   Database,
-  GitBranch,
-  MessagesSquare,
   Network,
   SlidersHorizontal
 } from "lucide-react";
-import type { Project, ResearchTopic, SkillCategory, Stat } from "@/types";
+import type { Project, ResearchTopic, SkillCategory } from "@/types";
 
 export const siteConfig = {
   name: "Giresh Komal Velaga",
@@ -20,13 +17,6 @@ export const siteConfig = {
   description:
     "Computer Science student at IIIT Sri City building AI systems and full-stack products, from retrieval and agent workflows to user-facing applications."
 };
-
-export const stats: Stat[] = [
-  { label: "Public repositories", value: 12 },
-  { label: "Engineering tracks", value: 2 },
-  { label: "Featured projects", value: 7 },
-  { label: "Live demos", value: 2 }
-];
 
 export const projects: Project[] = [
   {
@@ -48,7 +38,7 @@ export const projects: Project[] = [
     ],
     tech: ["Python", "LangGraph", "FastAPI", "PostgreSQL", "pgvector"],
     githubUrl: "https://github.com/Giresh-458/ai-operations-agent",
-    image: "/projects/ai-operations.svg",
+    image: "",
     accent: "from-cyan-950 via-slate-900 to-[#0B1015]"
   },
   {
@@ -70,7 +60,7 @@ export const projects: Project[] = [
     ],
     tech: ["Python", "RAG", "ChromaDB", "BM25", "FastAPI"],
     githubUrl: "https://github.com/Giresh-458/Healthcare-Document-RAG-Assitant",
-    image: "/projects/healthcare-rag.svg",
+    image: "",
     accent: "from-emerald-950 via-teal-950 to-[#0B1015]"
   },
   {
@@ -92,7 +82,7 @@ export const projects: Project[] = [
     ],
     tech: ["PyTorch", "Transformers", "Whisper", "LSTM", "QLoRA"],
     githubUrl: "https://github.com/Giresh-458/Multimodal-Mood-drift-analysis",
-    image: "/projects/mood-drift.svg",
+    image: "",
     accent: "from-violet-950 via-indigo-950 to-[#0B1015]"
   },
   {
@@ -113,7 +103,7 @@ export const projects: Project[] = [
     ],
     tech: ["React", "Vite", "Node.js", "Express", "MongoDB", "Docker"],
     githubUrl: "https://github.com/Giresh-458/RestoConnect-React",
-    image: "/projects/restoconnect.svg",
+    image: "",
     accent: "from-amber-950 via-orange-950 to-[#0B1015]"
   },
   {
@@ -135,7 +125,7 @@ export const projects: Project[] = [
     tech: ["Node.js", "Express", "EJS", "MongoDB", "Chart.js"],
     githubUrl: "https://github.com/Giresh-458/Mood_Tracker",
     liveUrl: "https://mood-tracker-1-h1l8.onrender.com/",
-    image: "/projects/mood-tracker.svg",
+    image: "https://image.thum.io/get/noanimate/maxAge/24/width/1200/crop/800/https://mood-tracker-1-h1l8.onrender.com/",
     accent: "from-rose-950 via-pink-950 to-[#0B1015]"
   },
   {
@@ -157,7 +147,7 @@ export const projects: Project[] = [
     tech: ["Node.js", "Express", "EJS", "MongoDB Atlas"],
     githubUrl: "https://github.com/Giresh-458/IIITS_CGPA_Calc",
     liveUrl: "https://iiits-cgpa-calculator.onrender.com/",
-    image: "/projects/cgpa-calculator.svg",
+    image: "https://image.thum.io/get/noanimate/maxAge/24/width/1200/crop/800/https://iiits-cgpa-calculator.onrender.com/",
     accent: "from-blue-950 via-slate-900 to-[#0B1015]"
   },
   {
@@ -178,7 +168,7 @@ export const projects: Project[] = [
     ],
     tech: ["Python", "Streamlit", "Blockchain", "Simulation"],
     githubUrl: "https://github.com/Giresh-458/BPoW_Simulator",
-    image: "/projects/bpow-simulator.svg",
+    image: "",
     accent: "from-purple-950 via-slate-900 to-[#0B1015]"
   }
 ];
@@ -187,10 +177,7 @@ export const researchTopics: ResearchTopic[] = [
   { name: "AI Agents", description: "Stateful tool use, bounded autonomy, workflow routing, and human checkpoints.", icon: Bot },
   { name: "RAG Systems", description: "Hybrid retrieval, grounding, chunking, routing, and answer quality.", icon: Database },
   { name: "Multimodal ML", description: "Combining speech, text, and temporal representations into richer signals.", icon: Network },
-  { name: "LLM Applications", description: "Turning language models into reliable product features and workflows.", icon: BrainCircuit },
-  { name: "Product Engineering", description: "Designing APIs, data flows, and responsive application experiences.", icon: MessagesSquare },
-  { name: "Evaluation & Safety", description: "Guardrails, validation, observability, and human review around AI systems.", icon: SlidersHorizontal },
-  { name: "Developer Workflow", description: "Version control, reproducible setup, containers, and deployment practices.", icon: GitBranch }
+  { name: "Evaluation & Safety", description: "Guardrails, validation, observability, and human review around AI systems.", icon: SlidersHorizontal }
 ];
 
 export const skillCategories: SkillCategory[] = [

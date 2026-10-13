@@ -3,10 +3,12 @@
 import * as Dialog from "@radix-ui/react-dialog";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { ExternalLink, Github, X } from "lucide-react";
-import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { TechBadge } from "@/components/ui/tech-badge";
 import type { Project } from "@/types";
+import { AnimeSceneBackdrop } from "@/components/ui/anime-scene-backdrop";
+import { corpsScenes } from "@/lib/anime-art";
+import { projects } from "@/lib/data";
 
 interface ProjectModalProps {
   project: Project | null;
@@ -48,7 +50,17 @@ export function ProjectModal({ project, open, onOpenChange }: ProjectModalProps)
                 className="glass-strong fixed left-1/2 top-1/2 z-101 max-h-[90vh] w-[calc(100%-2rem)] max-w-5xl -translate-x-1/2 -translate-y-1/2 overflow-y-auto rounded-2xl shadow-2xl"
               >
                 <div className="relative aspect-16/6 min-h-64 overflow-hidden">
-                  <Image src={project.image} alt="" fill className="object-cover" sizes="(max-width: 1024px) 100vw, 1024px" />
+                  <AnimeSceneBackdrop
+                    scene={{
+                      ...corpsScenes[Math.max(0, projects.findIndex((item) => item.id === project.id)) % corpsScenes.length],
+                      id: project.id,
+                      label: project.title,
+                      image: project.liveUrl ? project.image : corpsScenes[Math.max(0, projects.findIndex((item) => item.id === project.id)) % corpsScenes.length].image,
+                      fallbacks: [corpsScenes[Math.max(0, projects.findIndex((item) => item.id === project.id)) % corpsScenes.length].image, ...corpsScenes[Math.max(0, projects.findIndex((item) => item.id === project.id)) % corpsScenes.length].fallbacks]
+                    }}
+                    className="absolute inset-0"
+                    priority
+                  />
                   <div className="absolute inset-0 bg-linear-to-t from-surface via-surface/20 to-transparent" />
                   <Dialog.Close asChild>
                     <Button variant="outline" size="icon" className="absolute right-4 top-4 rounded-full bg-black/50" aria-label="Close project details">
