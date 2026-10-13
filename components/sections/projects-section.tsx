@@ -6,7 +6,7 @@ import { ProjectModal } from "@/components/project-modal";
 import { Button } from "@/components/ui/button";
 import { SectionHeader } from "@/components/ui/section-header";
 import { TechBadge } from "@/components/ui/tech-badge";
-import { corpsScene } from "@/lib/anime-art";
+import { corpsScenes } from "@/lib/anime-art";
 import { AnimeSceneBackdrop } from "@/components/ui/anime-scene-backdrop";
 import { projects } from "@/lib/data";
 import type { Project } from "@/types";
@@ -22,7 +22,7 @@ export function ProjectsSection() {
           <motion.article key={project.id} initial={reduceMotion ? undefined : { opacity: 0, y: 22 }} whileInView={reduceMotion ? undefined : { opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.14 }} transition={{ duration: 0.48, delay: reduceMotion ? 0 : (index % 3) * .07 }} whileHover={reduceMotion ? undefined : { y: -6 }} className="mission-card group flex h-full flex-col overflow-hidden border border-[#D05A55]/25 transition-colors duration-300 hover:border-[#EF4A51]/65">
             <button type="button" onClick={() => setSelected(project)} className="block flex-1 text-left" aria-label={"Open mission record for " + project.title}>
               <div className="mission-art relative aspect-16/10 overflow-hidden border-b border-[#D3A88C]/12 bg-[#0A0D16]">
-                <AnimeSceneBackdrop scene={{ ...corpsScene, id: project.id, label: project.title, image: project.image, fallbacks: [corpsScene.image, ...corpsScene.fallbacks] }} className="absolute inset-0" />
+                <AnimeSceneBackdrop scene={{ ...corpsScenes[index % corpsScenes.length], id: project.id, label: project.title, image: project.liveUrl ? project.image : corpsScenes[index % corpsScenes.length].image, fallbacks: [corpsScenes[index % corpsScenes.length].image, ...corpsScenes[index % corpsScenes.length].fallbacks] }} className="absolute inset-0" />
                 <div className="absolute inset-0 bg-linear-to-t from-[#09070E]/95 via-[#09070E]/10 to-[#090A10]/15" />
                 <span className="absolute bottom-4 left-4 right-4 text-[10px] font-semibold uppercase tracking-[0.13em] text-[#F4CEB5]">{project.eyebrow}</span>
               </div>
