@@ -38,7 +38,7 @@ export const projects: Project[] = [
     ],
     tech: ["Python", "LangGraph", "FastAPI", "PostgreSQL", "pgvector"],
     githubUrl: "https://github.com/Giresh-458/ai-operations-agent",
-    image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&fm=jpg&q=85&w=1800",
+    image: "",
     accent: "from-cyan-950 via-slate-900 to-[#0B1015]"
   },
   {
@@ -60,7 +60,7 @@ export const projects: Project[] = [
     ],
     tech: ["Python", "RAG", "ChromaDB", "BM25", "FastAPI"],
     githubUrl: "https://github.com/Giresh-458/Healthcare-Document-RAG-Assitant",
-    image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&fm=jpg&q=85&w=1800",
+    image: "",
     accent: "from-emerald-950 via-teal-950 to-[#0B1015]"
   },
   {
@@ -82,7 +82,7 @@ export const projects: Project[] = [
     ],
     tech: ["PyTorch", "Transformers", "Whisper", "LSTM", "QLoRA"],
     githubUrl: "https://github.com/Giresh-458/Multimodal-Mood-drift-analysis",
-    image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&fm=jpg&q=85&w=1800",
+    image: "",
     accent: "from-violet-950 via-indigo-950 to-[#0B1015]"
   },
   {
@@ -103,7 +103,7 @@ export const projects: Project[] = [
     ],
     tech: ["React", "Vite", "Node.js", "Express", "MongoDB", "Docker"],
     githubUrl: "https://github.com/Giresh-458/RestoConnect-React",
-    image: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&fm=jpg&q=85&w=1800",
+    image: "",
     accent: "from-amber-950 via-orange-950 to-[#0B1015]"
   },
   {
@@ -168,7 +168,7 @@ export const projects: Project[] = [
     ],
     tech: ["Python", "Streamlit", "Blockchain", "Simulation"],
     githubUrl: "https://github.com/Giresh-458/BPoW_Simulator",
-    image: "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?auto=format&fit=crop&fm=jpg&q=85&w=1800",
+    image: "",
     accent: "from-purple-950 via-slate-900 to-[#0B1015]"
   }
 ];
