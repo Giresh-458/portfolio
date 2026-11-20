@@ -1,7 +1,6 @@
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
-import { motion, useReducedMotion } from "framer-motion";
 import { ArrowUpRight, Github, Linkedin, Mail, Send } from "lucide-react";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
@@ -22,7 +21,6 @@ const labelClass = "grid gap-2 font-mono text-[10px] uppercase tracking-[0.14em]
 
 export function ContactSection() {
   const [sent, setSent] = useState(false);
-  const reduceMotion = useReducedMotion();
   const {
     register,
     handleSubmit,
@@ -84,12 +82,7 @@ export function ContactSection() {
             </div>
           </div>
 
-          <motion.div
-            initial={reduceMotion ? undefined : { opacity: 0, y: 16 }}
-            whileInView={reduceMotion ? undefined : { opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.2 }}
-            className="ticked panel p-6 md:p-8"
-          >
+          <div className="reveal ticked panel p-6 md:p-8">
             <div className="mb-6 flex items-center justify-between">
               <p className="mono-label">send a message</p>
               <span className="mono-label flex items-center gap-2">
@@ -135,7 +128,7 @@ export function ContactSection() {
                 ) : null}
               </div>
             </form>
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>

@@ -1,6 +1,5 @@
 "use client";
 
-import { motion, useReducedMotion } from "framer-motion";
 import { ArrowRight, Database, GitBranch, ScanSearch, ShieldCheck, Terminal, UserCheck } from "lucide-react";
 import { researchTopics } from "@/lib/data";
 
@@ -14,7 +13,6 @@ const trace = [
 ];
 
 export function PipelineSection() {
-  const reduceMotion = useReducedMotion();
 
   return (
     <section id="approach" className="shell relative scroll-mt-16 border-y border-[rgba(150,200,195,.08)]">
@@ -37,13 +35,10 @@ export function PipelineSection() {
               {trace.map((item, index) => {
                 const Icon = item.icon;
                 return (
-                  <motion.div
+                  <div
                     key={item.step}
-                    initial={reduceMotion ? undefined : { opacity: 0, x: -10 }}
-                    whileInView={reduceMotion ? undefined : { opacity: 1, x: 0 }}
-                    viewport={{ once: true, amount: 0.6 }}
-                    transition={{ duration: 0.4, delay: reduceMotion ? 0 : index * 0.05 }}
-                    className="group flex items-start gap-4 border-b border-[rgba(150,200,195,.1)] py-4"
+                    className="reveal group flex items-start gap-4 border-b border-[rgba(150,200,195,.1)] py-4"
+                    style={{ ["--d" as string]: `${index * 50}ms` }}
                   >
                     <span className="mt-0.5 font-mono text-[10px] tracking-[0.14em] text-[#3d4d51] transition group-hover:text-signal">
                       {item.step}
@@ -55,7 +50,7 @@ export function PipelineSection() {
                       </p>
                       <p className="mt-1 text-[13px] leading-[1.6] text-muted">{item.detail}</p>
                     </div>
-                  </motion.div>
+                  </div>
                 );
               })}
             </div>
@@ -63,13 +58,10 @@ export function PipelineSection() {
 
           <div className="grid content-start gap-3 sm:grid-cols-2">
             {researchTopics.map((topic, index) => (
-              <motion.div
+              <div
                 key={topic.name}
-                initial={reduceMotion ? undefined : { opacity: 0, y: 14 }}
-                whileInView={reduceMotion ? undefined : { opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.3 }}
-                transition={{ duration: 0.4, delay: reduceMotion ? 0 : index * 0.04 }}
-                className="ticked panel panel-hover p-5"
+                className="reveal ticked panel panel-hover p-5"
+                style={{ ["--d" as string]: `${index * 40}ms` }}
               >
                 <div className="flex items-start justify-between gap-3">
                   <topic.icon className="size-4 text-signal/80" />
@@ -79,7 +71,7 @@ export function PipelineSection() {
                 </div>
                 <h3 className="mt-4 text-[14px] font-medium text-ink">{topic.name}</h3>
                 <p className="mt-2 text-[12.5px] leading-[1.6] text-muted">{topic.description}</p>
-              </motion.div>
+              </div>
             ))}
             <div className="mono-label flex items-center gap-2 px-1 pt-2 sm:col-span-2">
               <ArrowRight className="size-3 text-signal/60" />

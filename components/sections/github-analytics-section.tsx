@@ -1,6 +1,5 @@
 "use client";
 
-import { motion, useReducedMotion } from "framer-motion";
 import { BookOpen, ExternalLink, GitFork, Star, Users } from "lucide-react";
 import { useEffect, useState } from "react";
 import { formatDate } from "@/lib/utils";
@@ -19,7 +18,6 @@ function Skeleton() {
 export function GitHubAnalyticsSection() {
   const [data, setData] = useState<GitHubAnalytics | null>(null);
   const [error, setError] = useState(false);
-  const reduceMotion = useReducedMotion();
 
   useEffect(() => {
     const controller = new AbortController();
@@ -62,12 +60,7 @@ export function GitHubAnalyticsSection() {
         ) : null}
 
         {data ? (
-          <motion.div
-            initial={reduceMotion ? undefined : { opacity: 0, y: 14 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="space-y-3"
-          >
+          <div className="space-y-3">
             <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
               {[
                 { icon: BookOpen, label: "public repos", value: data.publicRepos },
@@ -162,7 +155,7 @@ export function GitHubAnalyticsSection() {
             >
               github.com/Giresh-458 <ExternalLink className="size-3" />
             </a>
-          </motion.div>
+          </div>
         ) : null}
       </div>
     </section>

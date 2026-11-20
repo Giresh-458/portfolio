@@ -1,6 +1,5 @@
 "use client";
 
-import { motion, useReducedMotion } from "framer-motion";
 import { skillCategories } from "@/lib/data";
 
 const groupNotes = [
@@ -10,7 +9,6 @@ const groupNotes = [
 ];
 
 export function SkillsSection() {
-  const reduceMotion = useReducedMotion();
 
   return (
     <section id="stack" className="shell scroll-mt-16">
@@ -27,13 +25,10 @@ export function SkillsSection() {
 
         <div className="grid gap-4 md:grid-cols-3">
           {skillCategories.map((category, index) => (
-            <motion.div
+            <div
               key={category.title}
-              initial={reduceMotion ? undefined : { opacity: 0, y: 16 }}
-              whileInView={reduceMotion ? undefined : { opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.25 }}
-              transition={{ duration: 0.45, delay: reduceMotion ? 0 : index * 0.07 }}
-              className="ticked panel panel-hover flex flex-col p-6"
+              className="reveal ticked panel panel-hover flex flex-col p-6"
+              style={{ ["--d" as string]: `${index * 60}ms` }}
             >
               <span className="font-mono text-[10px] tracking-[0.16em] text-[#3d4d51]">
                 {String(index + 1).padStart(2, "0")}
@@ -51,7 +46,7 @@ export function SkillsSection() {
                   </span>
                 ))}
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>

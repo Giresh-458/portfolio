@@ -1,6 +1,5 @@
 "use client";
 
-import { motion, useReducedMotion } from "framer-motion";
 import { AnimatedCounter } from "@/components/ui/animated-counter";
 import { stats } from "@/lib/data";
 
@@ -11,7 +10,6 @@ const focus = [
 ];
 
 export function AboutSection() {
-  const reduceMotion = useReducedMotion();
 
   return (
     <section id="about" className="shell scroll-mt-16">
@@ -40,19 +38,16 @@ export function AboutSection() {
 
             <div className="mt-10 grid gap-px border-t border-[rgba(150,200,195,.1)]">
               {focus.map((item, index) => (
-                <motion.div
+                <div
                   key={item.title}
-                  initial={reduceMotion ? undefined : { opacity: 0, y: 10 }}
-                  whileInView={reduceMotion ? undefined : { opacity: 1, y: 0 }}
-                  viewport={{ once: true, amount: 0.5 }}
-                  transition={{ duration: 0.4, delay: reduceMotion ? 0 : index * 0.06 }}
-                  className="group flex flex-col gap-1 border-b border-[rgba(150,200,195,.1)] py-4 sm:flex-row sm:items-baseline sm:gap-6"
+                  className="reveal group flex flex-col gap-1 border-b border-[rgba(150,200,195,.1)] py-4 sm:flex-row sm:items-baseline sm:gap-6"
+                  style={{ ["--d" as string]: `${index * 50}ms` }}
                 >
                   <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-[#3d4d51] transition group-hover:text-signal sm:w-44 sm:shrink-0">
                     {item.title}
                   </span>
                   <span className="text-[13.5px] leading-[1.65] text-muted">{item.detail}</span>
-                </motion.div>
+                </div>
               ))}
             </div>
           </div>
