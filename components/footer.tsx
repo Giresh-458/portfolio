@@ -2,13 +2,31 @@ import { siteConfig } from "@/lib/data";
 
 export function Footer() {
   return (
-    <footer className="corps-footer relative overflow-hidden border-t border-[#E7C6AF]/15 bg-[#050509]/90 py-8">
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-linear-to-r from-transparent via-[#D93645] to-transparent" />
-      <div className="pointer-events-none absolute -right-8 -top-10 size-40 rounded-full border border-netflix/10 shadow-[0_0_80px_rgba(217,54,69,.08)]" />
-      <div className="container relative flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-        <div><p className="font-semibold tracking-[.04em] text-[#F2E3D2]">{siteConfig.name}</p><p className="mt-1 text-xs text-[#8E8285]">© {new Date().getFullYear()} · Built with curiosity and discipline.</p></div>
-        <p className="font-mono text-[9px] uppercase tracking-[.2em] text-[#AFA0A1]">Discipline <span className="px-2 text-netflix">×</span> Consistency <span className="px-2 text-[#39D8F3]">×</span> Growth</p>
-        <a href="#home" className="inline-flex items-center gap-2 font-mono text-[9px] uppercase tracking-[.16em] text-[#D6C9C7] transition hover:text-[#39D8F3]">Return to the night <span className="text-netflix">↑</span></a>
+    <footer className="relative overflow-hidden border-t border-[rgba(150,200,195,.1)]">
+      <div className="mx-auto w-full max-w-[1360px] px-5 py-10 md:px-8">
+        <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
+          <div>
+            <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-ink">{siteConfig.name}</p>
+            <p className="mt-1.5 font-mono text-[10px] tracking-[0.1em] text-muted">
+              © {new Date().getFullYear()} · built with next.js, three.js, and too much care
+            </p>
+          </div>
+
+          <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
+            <a href={siteConfig.github} target="_blank" rel="noreferrer" className="font-mono text-[10px] uppercase tracking-[0.14em] text-muted transition hover:text-signal">
+              github
+            </a>
+            <a href={siteConfig.linkedin} target="_blank" rel="noreferrer" className="font-mono text-[10px] uppercase tracking-[0.14em] text-muted transition hover:text-signal">
+              linkedin
+            </a>
+            <a href={"mailto:" + siteConfig.email} className="font-mono text-[10px] uppercase tracking-[0.14em] text-muted transition hover:text-signal">
+              email
+            </a>
+            <a href="#home" className="font-mono text-[10px] uppercase tracking-[0.14em] text-signal transition hover:text-[#96ffc0]">
+              top ↑
+            </a>
+          </div>
+        </div>
       </div>
     </footer>
   );

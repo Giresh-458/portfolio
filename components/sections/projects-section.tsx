@@ -1,59 +1,240 @@
 "use client";
-import { motion, useReducedMotion } from "framer-motion";
-import { ArrowUpRight, Github } from "lucide-react";
-import { useState } from "react";
+
+import { ArrowUpRight, CircleDot, Github } from "lucide-react";
+import { useReducedMotion } from "framer-motion";
+import { useRef, useState } from "react";
 import { ProjectModal } from "@/components/project-modal";
-import { Button } from "@/components/ui/button";
-import { SectionHeader } from "@/components/ui/section-header";
-import { TechBadge } from "@/components/ui/tech-badge";
-import { missionScenes } from "@/lib/anime-art";
-import { AnimeSceneBackdrop } from "@/components/ui/anime-scene-backdrop";
 import { projects } from "@/lib/data";
 import type { Project } from "@/types";
 
+const ACCENTS = ["#7bf1a8", "#6ec7ff", "#ff8a5b", "#ffc861", "#a8a4ff", "#7bf1a8", "#6ec7ff"];
+
+/**
+ * Each plate diagrams the project's actual shape rather than a generic motif:
+ * an agent loop, a fusion pipeline, a crawl fan-out, a request path, and so on.
+ * Different shapes are the point — identical cards read as template output.
+ */
+type Motif = "loop" | "fusion" | "fanout" | "layers" | "timeline" | "stack" | "chain";
+
+const MOTIFS: Motif[] = ["loop", "fusion", "fanout", "layers", "timeline", "stack", "chain"];
+
+function MotifSvg({ motif, accent }: { motif: Motif; accent: string }) {
+  const dim = accent + "55";
+
+  if (motif === "loop") {
+    // Corrective RAG: retrieve -> grade -> rewrite -> back
+    return (
+      <svg viewBox="0 0 100 56" className="absolute inset-0 h-full w-full" aria-hidden="true">
+        <path d="M22 34 C30 20, 48 20, 56 30 S74 42, 82 30" fill="none" stroke={accent} strokeWidth="0.5" strokeLinecap="round" />
+        <path d="M82 30 C74 46, 40 48, 26 40" fill="none" stroke={dim} strokeWidth="0.4" strokeDasharray="2 2" />
+        {[[22,34],[56,30],[82,30],[26,40]].map(([x,y],i)=>(
+          <circle key={i} cx={x} cy={y} r={i===1?2.2:1.5} fill={accent} opacity={i===0?1:0.85} />
+        ))}
+      </svg>
+    );
+  }
+
+  if (motif === "fusion") {
+    // BM25 + dense streams merging into one ranked list
+    return (
+      <svg viewBox="0 0 100 56" className="absolute inset-0 h-full w-full" aria-hidden="true">
+        <path d="M10 16 H40 Q54 16 60 28" fill="none" stroke={dim} strokeWidth="0.45" />
+        <path d="M10 40 H40 Q54 40 60 28" fill="none" stroke={dim} strokeWidth="0.45" />
+        <path d="M60 28 H90" fill="none" stroke={accent} strokeWidth="0.6" />
+        {[16,24,32,40,46].map((y,i)=>(<line key={i} x1="66" y1={24+i*2} x2="86" y2={24+i*2} stroke={accent} strokeWidth="0.4" opacity={0.75-i*0.1} />))}
+        <circle cx="60" cy="28" r="2.4" fill={accent} />
+      </svg>
+    );
+  }
+
+  if (motif === "fanout") {
+    // Crawler fanning across sources
+    return (
+      <svg viewBox="0 0 100 56" className="absolute inset-0 h-full w-full" aria-hidden="true">
+        <circle cx="20" cy="28" r="2.6" fill={accent} />
+        {[[48,10],[52,22],[50,34],[46,46],[76,16],[80,30],[74,44]].map(([x,y],i)=>(
+          <g key={i}>
+            <line x1="20" y1="28" x2={x} y2={y} stroke={dim} strokeWidth="0.3" />
+            <rect x={x-2} y={y-1.2} width="4" height="2.4" fill={accent} opacity={0.8} />
+          </g>
+        ))}
+      </svg>
+    );
+  }
+
+  if (motif === "layers") {
+    // Full-stack: client -> api -> db
+    return (
+      <svg viewBox="0 0 100 56" className="absolute inset-0 h-full w-full" aria-hidden="true">
+        {[0,1,2].map((i)=>(
+          <g key={i}>
+            <rect x={18+i*3} y={12+i*11} width="64" height="9" rx="1" fill="none" stroke={i===1?accent:dim} strokeWidth={i===1?0.6:0.35} />
+            <line x1={20+i*3} y1={16.5+i*11} x2={34+i*3} y2={16.5+i*11} stroke={accent} strokeWidth="0.3" opacity={0.6} />
+          </g>
+        ))}
+      </svg>
+    );
+  }
+
+  if (motif === "timeline") {
+    // Mood over time
+    return (
+      <svg viewBox="0 0 100 56" className="absolute inset-0 h-full w-full" aria-hidden="true">
+        <path d="M10 40 L24 28 L38 34 L52 18 L66 26 L80 14 L92 22" fill="none" stroke={accent} strokeWidth="0.6" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="M10 40 L24 28 L38 34 L52 18 L66 26 L80 14 L92 22 L92 48 L10 48 Z" fill={accent} opacity="0.1" />
+        {[[24,28],[52,18],[80,14]].map(([x,y],i)=>(<circle key={i} cx={x} cy={y} r="1.4" fill={accent} />))}
+      </svg>
+    );
+  }
+
+  if (motif === "stack") {
+    // Gradebook rows
+    return (
+      <svg viewBox="0 0 100 56" className="absolute inset-0 h-full w-full" aria-hidden="true">
+        {[12,22,32,42].map((y,i)=>(
+          <g key={y}>
+            <rect x="14" y={y} width="30" height="3" rx="1.5" fill={dim} />
+            <rect x="14" y={y} width={[18,26,11,22][i]} height="3" rx="1.5" fill={accent} opacity={0.85} />
+            <rect x="52" y={y} width="34" height="3" rx="1.5" fill={dim} opacity={0.5} />
+          </g>
+        ))}
+      </svg>
+    );
+  }
+
+  // chain: proof-of-work blocks
+  return (
+    <svg viewBox="0 0 100 56" className="absolute inset-0 h-full w-full" aria-hidden="true">
+      {[[14,20],[36,26],[58,18],[80,28]].map(([x,y],i)=>(
+        <g key={i}>
+          {i < 3 ? <line x1={x+8} y1={y+4} x2={[36,58,80][i]} y2={[26,18,28][i]+4} stroke={dim} strokeWidth="0.4" strokeDasharray="1.6 1.6" /> : null}
+          <rect x={x} y={y} width="9" height="9" rx="1" fill="none" stroke={accent} strokeWidth="0.5" opacity={0.9-i*0.14} />
+          <circle cx={x+4.5} cy={y+4.5} r="1.3" fill={accent} opacity={0.9-i*0.14} />
+        </g>
+      ))}
+    </svg>
+  );
+}
+
+function Plate({ index, accent }: { index: number; accent: string }) {
+  return (
+    <div
+      className="plate relative aspect-[16/9] w-full"
+      style={{
+        ["--plate-accent" as string]: accent,
+        ["--plate-x" as string]: `${28 + (index % 3) * 14}%`,
+        ["--plate-y" as string]: `${34 + (index % 2) * 16}%`
+      }}
+    >
+      <MotifSvg motif={MOTIFS[index % MOTIFS.length]} accent={accent} />
+      <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-[#070a0e] to-transparent" />
+    </div>
+  );
+}
+
+function ProjectCard({ project, index, onOpen }: { project: Project; index: number; onOpen: (p: Project) => void }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const reduceMotion = useReducedMotion();
+  const [tilt, setTilt] = useState({ x: 0, y: 0 });
+  const accent = ACCENTS[index % ACCENTS.length];
+
+  const onMove = (event: React.MouseEvent<HTMLDivElement>) => {
+    if (reduceMotion || !ref.current) return;
+    const rect = ref.current.getBoundingClientRect();
+    const px = (event.clientX - rect.left) / rect.width - 0.5;
+    const py = (event.clientY - rect.top) / rect.height - 0.5;
+    setTilt({ x: -py * 7, y: px * 9 });
+  };
+
+  return (
+    <div className="stage-3d h-full">
+      <div
+        ref={ref}
+        onMouseMove={onMove}
+        onMouseLeave={() => setTilt({ x: 0, y: 0 })}
+        className="card-3d ticked panel group relative flex h-full flex-col overflow-hidden"
+        style={{ transform: `rotateX(${tilt.x}deg) rotateY(${tilt.y}deg)` }}
+      >
+        <button type="button" onClick={() => onOpen(project)} className="block text-left" aria-label={`Open details for ${project.title}`}>
+          <div className="relative overflow-hidden">
+            <Plate index={index} accent={accent} />
+            <span
+              className="absolute left-3 top-3 inline-flex items-center gap-1.5 rounded-[2px] border px-2 py-1 font-mono text-[9px] uppercase tracking-[0.16em] backdrop-blur-sm"
+              style={{ borderColor: accent + "55", color: accent, background: "rgba(5,7,10,.72)" }}
+            >
+              <CircleDot className="size-2.5" />
+              {String(index + 1).padStart(2, "0")}
+            </span>
+          </div>
+
+          <div className="lift-sm p-5">
+            <p className="mono-label mb-2">{project.eyebrow}</p>
+            <h3 className="flex items-start justify-between gap-3 text-[17px] font-medium leading-snug tracking-[-0.01em] text-ink">
+              {project.title}
+              <ArrowUpRight className="mt-1 size-4 shrink-0 text-muted transition group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-signal" />
+            </h3>
+            <p className="mt-2.5 line-clamp-3 text-[13.5px] leading-[1.65] text-ink-dim">{project.description}</p>
+            <div className="mt-4 flex flex-wrap gap-1.5">
+              {project.tech.slice(0, 4).map((tech) => (
+                <span key={tech} className="rounded-[2px] border border-[rgba(150,200,195,.14)] px-2 py-0.5 font-mono text-[10px] text-muted">
+                  {tech}
+                </span>
+              ))}
+            </div>
+          </div>
+        </button>
+
+        <div className="mt-auto flex items-center gap-3 border-t border-[rgba(150,200,195,.1)] px-4 py-3">
+          <a href={project.githubUrl} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-[0.14em] text-muted transition hover:text-signal">
+            <Github className="size-3.5" /> source
+          </a>
+          {project.liveUrl ? (
+            <a href={project.liveUrl} target="_blank" rel="noreferrer" className="ml-auto inline-flex items-center gap-1 font-mono text-[10px] uppercase tracking-[0.14em] text-signal transition hover:text-[#96ffc0]">
+              live <ArrowUpRight className="size-3" />
+            </a>
+          ) : (
+            <span className="ml-auto font-mono text-[10px] uppercase tracking-[0.14em] text-[#3d4d51]">in progress</span>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export function ProjectsSection() {
   const [selected, setSelected] = useState<Project | null>(null);
-  const reduceMotion = useReducedMotion();
+
   return (
-    <section id="projects" className="section-shell section-projects scroll-mt-20">
-      <SectionHeader eyebrow="Mission archive · 任務記録" title="Real systems. Real constraints." description="Each project is a mission record: the problem, the architecture, and the decisions behind the result." />
-      <div className="mission-archive-banner relative mb-8 overflow-hidden border-y border-[#D3A88C]/20 py-4">
-        <div className="pointer-events-none absolute inset-0 bg-linear-to-r from-[#D93645]/10 via-transparent to-[#39D8F3]/[0.07]" />
-        <div className="relative flex flex-wrap items-center justify-between gap-3">
-          <div className="flex items-center gap-3"><span className="grid size-9 place-items-center border border-netflix/50 bg-[#2A1018] font-serif text-xl text-[#F3DCCB]">任</span><div><p className="font-mono text-[9px] uppercase tracking-[0.22em] text-[#E8797B]">Demon Slayer Corps / Engineering Division</p><p className="mt-1 text-xs text-[#BBAEB0]">Corps engineering records</p></div></div>
-          <div className="text-right"><p className="font-display text-3xl text-[#F3E5D5]">{String(projects.length).padStart(2, "0")}</p><p className="font-mono text-[8px] uppercase tracking-[0.2em] text-[#8E7D83]">Mission files</p></div>
+    <section id="work" className="shell scroll-mt-16">
+      <div className="shell-inner">
+        <div className="mb-12 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+          <div className="max-w-2xl">
+            <p className="mono-label mb-4 flex items-center gap-3">
+              <span className="h-px w-7 bg-signal/60" /> selected systems
+            </p>
+            <h2 className="text-[clamp(1.9rem,3.6vw,2.9rem)] font-medium leading-[1.08] tracking-[-0.03em] text-ink">
+              Systems built around the part
+              <br className="hidden sm:block" /> that usually breaks.
+            </h2>
+          </div>
+          <p className="max-w-xs text-sm leading-[1.7] text-muted">
+            Retrieval that abstains, tool calls that stay bounded, and execution that waits for a human.
+          </p>
         </div>
-        <motion.div aria-hidden="true" className="absolute bottom-0 left-0 h-[2px] w-full origin-left bg-linear-to-r from-[#D93645] via-[#C3A2E2] to-[#39D8F3]" initial={reduceMotion ? { scaleX: 1 } : { scaleX: 0 }} whileInView={{ scaleX: 1 }} viewport={{ once: true }} transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1] }} />
-      </div>
-      <div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
-        {projects.map((project, index) => (
-          <motion.article key={project.id} initial={reduceMotion ? undefined : { opacity: 0, y: 22 }} whileInView={reduceMotion ? undefined : { opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.14 }} transition={{ duration: 0.48, delay: reduceMotion ? 0 : (index % 3) * .07 }} whileHover={reduceMotion ? undefined : { y: -6 }} className="mission-card group flex h-full flex-col overflow-hidden border border-[#D05A55]/25 transition-colors duration-300 hover:border-[#EF4A51]/65">
-            <button type="button" onClick={() => setSelected(project)} className="block flex-1 text-left" aria-label={"Open mission record for " + project.title}>
-              <div className="mission-art relative aspect-16/10 overflow-hidden border-b border-[#D3A88C]/12 bg-[#0A0D16]">
-                <AnimeSceneBackdrop scene={missionScenes[index % missionScenes.length]} className="absolute inset-0" />
-                <div className="absolute inset-0 bg-linear-to-t from-[#09070E]/95 via-[#09070E]/10 to-[#090A10]/15" />
-                <div className="absolute left-4 top-4 flex items-center gap-2 border border-[#E7C6AF]/25 bg-[#08080D]/78 px-3 py-1.5 backdrop-blur-xs">
-                  <motion.span className="size-1.5 bg-[#E3444D]" animate={reduceMotion ? undefined : { opacity: [.5, 1, .5] }} transition={{ duration: 2.2, repeat: Infinity }} />
-                  <span className="font-mono text-[9px] uppercase tracking-[0.16em] text-[#EBD9C9]">Mission {String(index + 1).padStart(2, "0")}</span>
-                </div>
-                <span className="absolute right-4 top-[3.35rem] max-w-[48%] text-right font-mono text-[8px] uppercase tracking-[0.13em] text-white/75 sm:top-4">{missionScenes[index % missionScenes.length].character}</span>
-                <span className="absolute bottom-4 left-4 right-4 text-[10px] font-semibold uppercase tracking-[0.13em] text-[#F4CEB5]">{project.eyebrow}</span>
-                <motion.div aria-hidden="true" className="mission-slash pointer-events-none absolute -left-1/3 top-0 h-full w-1/3" initial={{ x: "-20%", skewX: -18 }} whileHover={{ x: "450%" }} transition={{ duration: .65, ease: "easeOut" }} />
-                <span className="absolute right-4 top-4 grid size-8 place-items-center border border-white/20 bg-black/40 text-white opacity-0 transition group-hover:opacity-100"><ArrowUpRight className="size-4" /></span>
-              </div>
-              <div className="px-5 pb-5 pt-5">
-                <h3 className="flex items-start justify-between gap-3 text-lg font-semibold leading-snug tracking-tight text-[#F5EBDD]">{project.title}<ArrowUpRight className="mt-1 size-4 shrink-0 text-[#42CDE5] opacity-65 transition group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:opacity-100" /></h3>
-                <p className="mt-3 line-clamp-3 text-sm leading-6 text-[#B3A8AB]">{project.description}</p>
-                <div className="mt-4 flex flex-wrap gap-1.5">{project.tech.slice(0, 4).map((tech) => <TechBadge key={tech}>{tech}</TechBadge>)}</div>
-              </div>
-            </button>
-            <div className="flex items-center gap-2 border-t border-[#D3A88C]/15 bg-[#07070C]/55 px-4 py-3">
-              <Button asChild variant="ghost" size="sm"><a href={project.githubUrl} target="_blank" rel="noreferrer" aria-label={project.title + " GitHub repository"}><Github className="size-4" /> Source</a></Button>
-              {project.liveUrl ? <Button asChild variant="ghost" size="sm"><a href={project.liveUrl} target="_blank" rel="noreferrer" aria-label={project.title + " live demo"}>Live build <ArrowUpRight className="size-4" /></a></Button> : <span className="ml-auto font-mono text-[8px] uppercase tracking-[0.13em] text-[#71666C]">Record / open</span>}
+
+        <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+          {projects.map((project, index) => (
+            <div
+              key={project.id}
+              className="reveal"
+              style={{ ["--d" as string]: `${(index % 3) * 70}ms` }}
+            >
+              <ProjectCard project={project} index={index} onOpen={setSelected} />
             </div>
-          </motion.article>
-        ))}
+          ))}
+        </div>
       </div>
+
       <ProjectModal project={selected} open={selected !== null} onOpenChange={(open) => !open && setSelected(null)} />
     </section>
   );

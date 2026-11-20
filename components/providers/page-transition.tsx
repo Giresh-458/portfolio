@@ -1,28 +1,11 @@
-"use client";
-
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
-import { usePathname } from "next/navigation";
 import type { ReactNode } from "react";
 
-interface PageTransitionProps {
-  children: ReactNode;
-}
-
-export function PageTransition({ children }: PageTransitionProps) {
-  const pathname = usePathname();
-  const reduceMotion = useReducedMotion();
-
-  return (
-    <AnimatePresence mode="wait">
-      <motion.div
-        key={pathname}
-        initial={reduceMotion ? undefined : { opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={reduceMotion ? undefined : { opacity: 0 }}
-        transition={{ duration: 0.25 }}
-      >
-        {children}
-      </motion.div>
-    </AnimatePresence>
-  );
+/**
+ * Previously this faded the whole page in on route change, which meant the
+ * server rendered `<div style="opacity:0">` around <main>. If hydration ever
+ * failed, the entire site was invisible. This is a single-page site, so the
+ * wrapper now only provides layout and never hides content.
+ */
+export function PageTransition({ children }: { children: ReactNode }) {
+  return <div className="contents">{children}</div>;
 }

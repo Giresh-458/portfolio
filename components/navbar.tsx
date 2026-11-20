@@ -1,44 +1,91 @@
 "use client";
+
 import { Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
-import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
 const links: Array<[string, string]> = [
-  ["Training", "#about"],
-  ["Missions", "#projects"],
-  ["The forge", "#ai-lab"],
-  ["Styles", "#skills"],
-  ["Records", "#github"],
-  ["Contact", "#contact"]
+  ["systems", "#work"],
+  ["approach", "#approach"],
+  ["about", "#about"],
+  ["stack", "#stack"],
+  ["contact", "#contact"]
 ];
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24);
+    const onScroll = () => setScrolled(window.scrollY > 20);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
   return (
-    <header className={cn("fixed inset-x-0 top-0 z-50 border-b transition-all duration-300", scrolled ? "border-[#E0B7A4]/15 bg-background/92 shadow-[0_12px_44px_rgba(0,0,0,.45)] backdrop-blur-xl" : "border-white/10 bg-linear-to-b from-[#050609]/80 to-transparent")}>
-      <nav className="container flex h-[72px] items-center justify-between" aria-label="Primary navigation">
-        <a href="#home" className="group flex items-center gap-3" aria-label="Giresh Velaga — home">
-          <span className="corps-seal grid size-10 place-items-center border border-[#D83B47]/70 bg-[#791420]/60 font-display text-xl text-[#F9E9D9] transition group-hover:border-[#53D8EB]">滅</span>
-          <span>
-            <span className="block text-sm font-semibold tracking-[0.04em] text-[#F6EBDD]">GIRESH VELAGA</span>
-            <span className="mt-0.5 block font-mono text-[8px] uppercase tracking-[0.2em] text-[#A8A1A3]">AI engineer · field journal</span>
+    <header
+      className={cn(
+        "fixed inset-x-0 top-0 z-50 transition-all duration-300",
+        scrolled ? "border-b border-[rgba(150,200,195,.12)] bg-[#05070a]/88 backdrop-blur-xl" : "border-b border-transparent"
+      )}
+    >
+      <nav className="mx-auto flex h-16 w-full max-w-[1360px] items-center justify-between px-5 md:px-8" aria-label="Primary">
+        <a href="#home" className="group flex items-center gap-2.5" aria-label="Giresh Velaga, back to top">
+          <span className="grid size-7 place-items-center rounded-[3px] border border-signal/40 bg-[rgba(123,241,168,.08)] font-mono text-[11px] font-semibold text-signal">
+            GV
+          </span>
+          <span className="hidden font-mono text-[11px] uppercase tracking-[0.18em] text-ink-dim transition group-hover:text-ink sm:block">
+            giresh velaga
           </span>
         </a>
-        <div className="hidden items-center gap-5 xl:flex">
-          {links.map(([label, href]) => <a key={href} href={href} className="relative text-[12px] uppercase tracking-[0.13em] text-[#C1B9B9] transition-colors hover:text-[#FFF0DB]">{label}<span className="absolute -bottom-2 left-0 h-px w-0 bg-[#E43D48] transition-all hover:w-full" /></a>)}
-          <Button asChild size="sm"><a href="#projects">View work <span aria-hidden>↗</span></a></Button>
+
+        <div className="hidden items-center gap-7 md:flex">
+          {links.map(([label, href]) => (
+            <a
+              key={href}
+              href={href}
+              className="group relative font-mono text-[11px] uppercase tracking-[0.16em] text-muted transition-colors hover:text-ink"
+            >
+              {label}
+              <span className="absolute -bottom-1.5 left-0 h-px w-0 bg-signal transition-all duration-300 group-hover:w-full" />
+            </a>
+          ))}
+          <a
+            href="#contact"
+            className="rounded-[3px] border border-signal/40 px-3.5 py-1.5 font-mono text-[11px] uppercase tracking-[0.14em] text-signal transition hover:bg-[rgba(123,241,168,.1)]"
+          >
+            get in touch
+          </a>
         </div>
-        <Button variant="ghost" size="icon" className="xl:hidden" onClick={() => setOpen((value) => !value)} aria-label={open ? "Close navigation" : "Open navigation"} aria-expanded={open}>{open ? <X /> : <Menu />}</Button>
+
+        <button
+          type="button"
+          onClick={() => setOpen((v) => !v)}
+          className="grid size-9 place-items-center rounded-[3px] border border-[rgba(150,200,195,.16)] text-ink-dim md:hidden"
+          aria-label={open ? "Close navigation" : "Open navigation"}
+          aria-expanded={open}
+        >
+          {open ? <X className="size-4" /> : <Menu className="size-4" />}
+        </button>
       </nav>
-      {open ? <div className="border-t border-white/10 bg-[#08080D]/95 p-4 backdrop-blur-xl xl:hidden"><div className="container grid gap-1 sm:grid-cols-2">{links.map(([label, href]) => <a key={href} href={href} onClick={() => setOpen(false)} className="border-b border-white/[0.07] px-4 py-3 text-sm uppercase tracking-widest text-[#CFC4C2] transition hover:text-[#FFEBDA]">{label} <span className="float-right text-[#E43D48]">↗</span></a>)}<a href="#projects" onClick={() => setOpen(false)} className="px-4 py-3 text-sm font-semibold text-[#F3767A]">Open mission archive ↗</a></div></div> : null}
+
+      {open ? (
+        <div className="border-t border-[rgba(150,200,195,.12)] bg-[#05070a]/97 backdrop-blur-xl md:hidden">
+          <div className="grid gap-1 px-5 py-3">
+            {links.map(([label, href]) => (
+              <a
+                key={href}
+                href={href}
+                onClick={() => setOpen(false)}
+                className="border-b border-[rgba(150,200,195,.08)] py-3 font-mono text-[12px] uppercase tracking-[0.16em] text-ink-dim transition hover:text-signal"
+              >
+                {label}
+              </a>
+            ))}
+          </div>
+        </div>
+      ) : null}
     </header>
   );
 }

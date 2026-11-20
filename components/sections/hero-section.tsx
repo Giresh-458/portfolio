@@ -1,61 +1,117 @@
 "use client";
-import { motion, useReducedMotion } from "framer-motion";
-import { ArrowDownRight, ArrowRight, Github } from "lucide-react";
-import { BreathingScene } from "@/components/ui/breathing-scene";
-import { GlowButton } from "@/components/ui/glow-button";
 
-const rise = { hidden: { opacity: 0, y: 24 }, visible: { opacity: 1, y: 0 } };
+import { ArrowDown, Github, Linkedin } from "lucide-react";
+import dynamic from "next/dynamic";
+import { siteConfig } from "@/lib/data";
+
+const AgentGraph = dynamic(() => import("@/components/ui/agent-graph").then((m) => m.AgentGraph), {
+  ssr: false,
+  loading: () => (
+    <div className="absolute inset-0 grid place-items-center">
+      <span className="mono-label flex items-center gap-2">
+        <span className="signal-dot" /> initialising agent graph
+      </span>
+    </div>
+  )
+});
+
+const KEYWORDS = ["retrieval evaluation", "abstention", "bounded tools", "audit logging"];
 
 export function HeroSection() {
-  const reduceMotion = useReducedMotion();
   return (
-    <section id="home" className="slayer-hero relative isolate min-h-[1000px] overflow-hidden bg-background pt-[72px] lg:h-svh lg:min-h-[860px]">
-      <BreathingScene />
-      <div className="hero-vignette pointer-events-none absolute inset-0 z-5" />
-      <div className="pointer-events-none absolute inset-x-0 top-0 z-20 h-px bg-linear-to-r from-transparent via-[#E33243]/80 to-transparent" />
-      <div className="pointer-events-none absolute bottom-0 left-0 right-0 z-20 h-28 bg-linear-to-t from-[#07070B] to-transparent" />
-
-      <div className="container relative z-10 flex min-h-[928px] items-start pt-24 md:pt-28 lg:h-full lg:min-h-0 lg:items-center lg:pt-0">
-        <motion.div initial={reduceMotion ? undefined : "hidden"} animate={reduceMotion ? undefined : "visible"} variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.12, delayChildren: 0.15 } } }} className="relative z-20 w-full max-w-[660px] pb-44 lg:pb-20">
-          <motion.div variants={reduceMotion ? undefined : rise} className="mb-7 flex items-center gap-3">
-            <span className="corps-seal grid size-11 shrink-0 place-items-center border border-[#E43D48]/80 bg-[#7C111F]/60 font-display text-2xl text-[#FFF0D8]">滅</span>
-            <div>
-              <p className="font-mono text-[10px] uppercase tracking-[0.28em] text-[#F27678]">Demon Slayer Corps · Field Journal</p>
-              <p className="mt-1 font-mono text-[9px] uppercase tracking-[0.2em] text-[#B3B2B7]">Aspiring AI engineer · IIIT Sri City</p>
-            </div>
-          </motion.div>
-
-          <motion.h1 variants={reduceMotion ? undefined : rise} className="hero-title max-w-[780px] text-balance font-display text-[clamp(4.3rem,8.5vw,8.3rem)] uppercase leading-[.78] tracking-[.01em] text-[#F8EFE1]">
-            <span className="block">Code with</span>
-            <span className="hero-brush mt-3 block pr-2 italic">purpose.</span>
-          </motion.h1>
-
-          <motion.div variants={reduceMotion ? undefined : rise} className="mt-7 flex items-start gap-4">
-            <span className="mt-1 h-[54px] w-[3px] shrink-0 bg-linear-to-b from-[#E73A47] via-[#E73A47] to-transparent" />
-            <p className="max-w-lg text-base leading-7 text-[#DED8D4] sm:text-lg sm:leading-8">
-              Building intelligent systems. Solving real problems.
-              <span className="block text-[#F2C9BC]">One project at a time.</span>
-            </p>
-          </motion.div>
-
-          <motion.div variants={reduceMotion ? undefined : rise} className="mt-8 flex flex-wrap gap-3">
-            <GlowButton href="#projects" variant="default">View missions <ArrowRight className="size-4" /></GlowButton>
-            <GlowButton href="#about" variant="outline">My training <ArrowDownRight className="size-4" /></GlowButton>
-            <a href="https://github.com/Giresh-458" target="_blank" rel="noreferrer" aria-label="GitHub profile" className="grid size-12 place-items-center border border-white/20 bg-black/30 text-[#F4E8DC] transition hover:border-[#E43D48] hover:text-white"><Github className="size-4" /></a>
-          </motion.div>
-
-          <motion.div variants={reduceMotion ? undefined : rise} className="mt-9 flex flex-wrap items-center gap-x-4 gap-y-2 font-mono text-[9px] uppercase tracking-[0.16em] text-[#B1AEB0]">
-            <span className="text-[#E85A60]">01</span><span>AI / ML</span><span className="text-[#E85A60]">×</span><span>Full-stack</span><span className="text-[#E85A60]">×</span><span>Build & learn</span>
-          </motion.div>
-        </motion.div>
+    <section
+      id="home"
+      className="relative isolate flex min-h-[min(100svh,54rem)] flex-col justify-end overflow-hidden pt-28 md:justify-center md:pt-24"
+    >
+      {/* The graph owns the upper-right mass; copy sits lower-left. */}
+      <div className="absolute inset-0 z-0">
+        <AgentGraph className="h-full w-full" />
       </div>
 
-      <div className="pointer-events-none absolute bottom-[136px] left-5 z-20 hidden items-center gap-3 lg:flex">
-        <span className="h-10 w-px bg-linear-to-b from-[#EA4550] to-transparent" />
-        <span className="font-mono text-[9px] uppercase tracking-[0.25em] text-white/65">Scroll to enter the archive</span>
+      {/* Keeps copy legible without hiding the graph. */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 z-10"
+        style={{
+          background:
+            "linear-gradient(100deg, #05070a 8%, rgba(5,7,10,.92) 30%, rgba(5,7,10,.42) 52%, rgba(5,7,10,.08) 74%, rgba(5,7,10,.55) 100%)"
+        }}
+      />
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-40"
+        style={{ background: "linear-gradient(to top, #05070a 6%, transparent)" }}
+      />
+
+      <div className="shell-inner relative z-20 w-full pb-16 md:pb-24">
+        <div className="max-w-[42rem]">
+          <p className="reveal mono-label mb-6 flex flex-wrap items-center gap-3" style={{ ["--d" as string]: "60ms" }}>
+            <span className="signal-dot" />
+            <span className="text-signal">available for agent engineering roles</span>
+            <span className="text-muted">/</span>
+            <span>iiit sri city · cse ’27</span>
+          </p>
+
+          <h1
+            className="reveal text-balance text-[clamp(2.4rem,5.6vw,4.25rem)] font-medium leading-[1.02] tracking-[-0.035em] text-ink"
+            style={{ ["--d" as string]: "150ms" }}
+          >
+            I build agents that
+            <br />
+            <span className="text-signal">know when to stop.</span>
+          </h1>
+
+          <p
+            className="reveal mt-7 max-w-xl text-[15px] leading-[1.75] text-ink-dim sm:text-base"
+            style={{ ["--d" as string]: "240ms" }}
+          >
+            Stateful LLM agents, hybrid retrieval and the reliability layer around them: evidence
+            grading, abstention, bounded tool calls and human approval. Python, LangGraph, FastAPI,
+            PostgreSQL.
+          </p>
+
+          <div className="reveal mt-9 flex flex-wrap items-center gap-3" style={{ ["--d" as string]: "330ms" }}>
+            <a
+              href="#work"
+              className="group inline-flex items-center gap-2 rounded-[3px] bg-signal px-5 py-3 text-sm font-semibold text-[#04100a] transition hover:bg-[#96ffc0]"
+            >
+              See the systems
+              <ArrowDown className="size-4 transition-transform group-hover:translate-y-0.5" />
+            </a>
+            <a
+              href={siteConfig.github}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-2 rounded-[3px] border border-[rgba(150,200,195,.24)] px-5 py-3 text-sm font-medium text-ink transition hover:border-signal/50 hover:text-signal"
+            >
+              <Github className="size-4" /> GitHub
+            </a>
+            <a
+              href={siteConfig.linkedin}
+              target="_blank"
+              rel="noreferrer"
+              aria-label="LinkedIn profile"
+              className="grid size-11 place-items-center rounded-[3px] border border-[rgba(150,200,195,.24)] text-ink-dim transition hover:border-signal/50 hover:text-signal"
+            >
+              <Linkedin className="size-4" />
+            </a>
+          </div>
+
+          <div className="reveal mt-12 flex flex-wrap items-center gap-x-6 gap-y-2" style={{ ["--d" as string]: "420ms" }}>
+            {KEYWORDS.map((item) => (
+              <span key={item} className="mono-label flex items-center gap-2">
+                <span className="h-px w-4 bg-[rgba(150,200,195,.3)]" />
+                {item}
+              </span>
+            ))}
+          </div>
+        </div>
       </div>
-      <div className="pointer-events-none absolute left-[3.6%] top-[36%] z-20 hidden select-none font-serif text-[14px] leading-[1.85] tracking-[.35em] text-[#F3D6C9]/75 [writing-mode:vertical-rl] lg:block">夢を現実に</div>
-      <div className="pointer-events-none absolute right-[3.6%] top-[23%] z-20 hidden border-y border-[#F0D5C1]/35 py-3 font-serif text-sm tracking-[.3em] text-[#F0D5C1]/80 [writing-mode:vertical-rl] lg:block">水の呼吸</div>
+
+      <div className="pointer-events-none absolute bottom-6 right-5 z-20 hidden items-center gap-3 lg:flex">
+        <span className="mono-label">scroll</span>
+        <span className="h-10 w-px bg-gradient-to-b from-signal/60 to-transparent" />
+      </div>
     </section>
   );
 }
