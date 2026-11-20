@@ -1,29 +1,31 @@
-import "@fontsource/space-grotesk/400.css";
-import "@fontsource/space-grotesk/500.css";
-import "@fontsource/space-grotesk/600.css";
-import "@fontsource/jetbrains-mono/400.css";
-import "@fontsource/jetbrains-mono/500.css";
+import "@fontsource/instrument-serif/400.css";
+import "@fontsource/instrument-serif/400-italic.css";
+import "@fontsource-variable/newsreader/index.css";
+import "@fontsource/ibm-plex-mono/400.css";
+import "@fontsource/ibm-plex-mono/500.css";
 import "@/styles/globals.css";
 import type { Metadata, Viewport } from "next";
 import { Footer } from "@/components/footer";
 import { Navbar } from "@/components/navbar";
-import { PageTransition } from "@/components/providers/page-transition";
 import { siteConfig } from "@/lib/data";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.siteUrl),
-  title: { default: siteConfig.name + " — Agentic AI Engineer", template: "%s — " + siteConfig.name },
+  title: {
+    default: siteConfig.name + " — Agentic AI Engineer",
+    template: "%s — " + siteConfig.name
+  },
   description:
-    "Agentic AI engineer building stateful LLM agents, hybrid retrieval pipelines and the reliability layer around them. Python, LangGraph, FastAPI, PostgreSQL.",
+    "Agentic AI engineer building stateful LLM agents, hybrid retrieval pipelines, and the reliability layer around them. Python, LangGraph, FastAPI, PostgreSQL.",
   keywords: [
     "agentic AI engineer",
     "LLM agents",
     "LangGraph",
     "corrective RAG",
     "hybrid retrieval",
+    "abstention",
     "FastAPI",
-    "PostgreSQL",
-    "AI backend engineer"
+    "PostgreSQL"
   ],
   authors: [{ name: siteConfig.name }],
   creator: siteConfig.name,
@@ -48,26 +50,24 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  themeColor: "#05070a",
-  colorScheme: "dark"
+  themeColor: "#f2eee3",
+  colorScheme: "light"
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className="dark">
-      <body>
+    <html lang="en">
+      <body className="page">
         <a
           href="#main-content"
-          className="fixed left-4 top-4 z-[300] -translate-y-24 rounded-[2px] bg-signal px-4 py-2 text-sm font-semibold text-[#04100a] transition focus:translate-y-0"
+          className="fixed left-4 top-3 z-[300] -translate-y-24 border border-ink bg-ink px-4 py-2 font-mono text-[11px] uppercase tracking-[0.13em] text-paper transition focus:translate-y-0"
         >
           Skip to content
         </a>
         <Navbar />
-        <PageTransition>
-          <main id="main-content" className="relative z-[1]">
-            {children}
-          </main>
-        </PageTransition>
+        <main id="main-content" className="relative z-[1]">
+          {children}
+        </main>
         <Footer />
       </body>
     </html>

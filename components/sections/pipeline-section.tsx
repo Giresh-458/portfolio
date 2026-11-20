@@ -1,83 +1,65 @@
 "use client";
 
-import { ArrowRight, Database, GitBranch, ScanSearch, ShieldCheck, Terminal, UserCheck } from "lucide-react";
 import { researchTopics } from "@/lib/data";
 
 const trace = [
-  { step: "01", name: "ingest", detail: "Parse the request, normalise and scope it.", icon: Terminal },
-  { step: "02", name: "route", detail: "Pick retrieval, tool use, or a direct answer.", icon: GitBranch },
-  { step: "03", name: "retrieve", detail: "Hybrid BM25 + dense, fused with RRF.", icon: Database },
-  { step: "04", name: "grade", detail: "Is the evidence actually sufficient?", icon: ScanSearch },
-  { step: "05", name: "approve", detail: "Human gate before anything irreversible.", icon: UserCheck },
-  { step: "06", name: "log", detail: "Every decision written to an audit trail.", icon: ShieldCheck }
+  { step: "i", name: "ingest", detail: "Parse the request, normalise, and scope it before anything else runs." },
+  { step: "ii", name: "route", detail: "Decide between retrieval, tool use, or a direct answer." },
+  { step: "iii", name: "retrieve", detail: "Hybrid BM25 and dense search, fused with reciprocal rank fusion." },
+  { step: "iv", name: "grade", detail: "Is the evidence sufficient? If not, rewrite and search again, bounded." },
+  { step: "v", name: "approve", detail: "A human gate sits before anything irreversible." },
+  { step: "vi", name: "log", detail: "Every decision is written to an audit trail that outlives the session." }
 ];
 
 export function PipelineSection() {
-
   return (
-    <section id="approach" className="shell relative scroll-mt-16 border-y border-[rgba(150,200,195,.08)]">
-      <div className="shell-inner">
-        <div className="grid gap-12 lg:grid-cols-[0.95fr_1.05fr] lg:gap-16">
+    <section id="approach" className="section">
+      <div className="wrap">
+        <p className="section-index">02 — the reliability layer</p>
+
+        <div className="mt-10 grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20">
           <div>
-            <p className="mono-label mb-4 flex items-center gap-3">
-              <span className="h-px w-7 bg-signal/60" /> the reliability layer
-            </p>
-            <h2 className="text-[clamp(1.9rem,3.6vw,2.9rem)] font-medium leading-[1.08] tracking-[-0.03em] text-ink">
-              The model is the
-              <br /> easy part.
+            <h2 className="display text-[clamp(2.1rem,4.4vw,3.4rem)] text-ink">
+              The model is
+              <br />
+              the easy part.
             </h2>
-            <p className="mt-6 max-w-md text-[15px] leading-[1.75] text-ink-dim">
-              Getting a plausible answer is one API call. Getting an answer that is grounded, bounded
-              and reviewable is the engineering. That is the layer I work on.
+            <p className="body-text mt-7 max-w-[26rem]">
+              A plausible answer is one API call. An answer that is grounded, bounded, and
+              reviewable is engineering. That is the layer I work on.
             </p>
-
-            <div className="mt-9 space-y-px border-t border-[rgba(150,200,195,.1)]">
-              {trace.map((item, index) => {
-                const Icon = item.icon;
-                return (
-                  <div
-                    key={item.step}
-                    className="reveal group flex items-start gap-4 border-b border-[rgba(150,200,195,.1)] py-4"
-                    style={{ ["--d" as string]: `${index * 50}ms` }}
-                  >
-                    <span className="mt-0.5 font-mono text-[10px] tracking-[0.14em] text-[#3d4d51] transition group-hover:text-signal">
-                      {item.step}
-                    </span>
-                    <Icon className="mt-0.5 size-4 shrink-0 text-muted transition group-hover:text-signal" />
-                    <div className="min-w-0 flex-1">
-                      <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-ink transition group-hover:text-signal">
-                        {item.name}
-                      </p>
-                      <p className="mt-1 text-[13px] leading-[1.6] text-muted">{item.detail}</p>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
+            <p className="body-text mt-4 max-w-[26rem] text-ink-faint">
+              These six stages are not a diagram drawn for a portfolio. They are the loop my
+              <span className="text-ink"> AI Operations Agent</span> actually runs.
+            </p>
           </div>
 
-          <div className="grid content-start gap-3 sm:grid-cols-2">
-            {researchTopics.map((topic, index) => (
-              <div
-                key={topic.name}
-                className="reveal ticked panel panel-hover p-5"
-                style={{ ["--d" as string]: `${index * 40}ms` }}
+          <ol className="border-t border-[var(--rule-strong)]">
+            {trace.map((item, index) => (
+              <li
+                key={item.step}
+                className="reveal grid grid-cols-[2.5rem_6rem_1fr] items-baseline gap-x-4 border-b border-[var(--rule)] py-4 sm:grid-cols-[3rem_7rem_1fr]"
+                style={{ ["--d" as string]: `${index * 45}ms` }}
               >
-                <div className="flex items-start justify-between gap-3">
-                  <topic.icon className="size-4 text-signal/80" />
-                  <span className="font-mono text-[9px] tracking-[0.16em] text-[#3d4d51]">
-                    {String(index + 1).padStart(2, "0")}
-                  </span>
-                </div>
-                <h3 className="mt-4 text-[14px] font-medium text-ink">{topic.name}</h3>
-                <p className="mt-2 text-[12.5px] leading-[1.6] text-muted">{topic.description}</p>
-              </div>
+                <span className="font-serif text-[15px] italic text-vermilion">{item.step}</span>
+                <span className="font-mono text-[11px] uppercase tracking-[0.13em] text-ink">{item.name}</span>
+                <span className="text-[0.94rem] leading-[1.6] text-ink-soft">{item.detail}</span>
+              </li>
             ))}
-            <div className="mono-label flex items-center gap-2 px-1 pt-2 sm:col-span-2">
-              <ArrowRight className="size-3 text-signal/60" />
-              each of these shows up in the projects above
+          </ol>
+        </div>
+
+        <div className="mt-16 grid gap-x-10 gap-y-7 border-t border-[var(--rule)] pt-10 sm:grid-cols-2 lg:grid-cols-4">
+          {researchTopics.map((topic, index) => (
+            <div key={topic.name} className="reveal" style={{ ["--d" as string]: `${index * 40}ms` }}>
+              <div className="mb-2 flex items-center gap-2">
+                <span className="h-px w-4 bg-vermilion" />
+                <span className="mono">{String(index + 1).padStart(2, "0")}</span>
+              </div>
+              <h3 className="font-serif text-[1.15rem] leading-snug text-ink">{topic.name}</h3>
+              <p className="mt-1.5 text-[0.875rem] leading-[1.6] text-ink-faint">{topic.description}</p>
             </div>
-          </div>
+          ))}
         </div>
       </div>
     </section>

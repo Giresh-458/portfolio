@@ -8,7 +8,7 @@ import { SkillsSection } from "@/components/sections/skills-section";
 
 const GitHubAnalyticsSection = dynamic(
   () => import("@/components/sections/github-analytics-section").then((m) => m.GitHubAnalyticsSection),
-  { loading: () => <div className="shell-inner h-72 animate-pulse" /> }
+  { loading: () => <div className="wrap h-56 animate-pulse" /> }
 );
 
 export default function HomePage() {

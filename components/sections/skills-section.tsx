@@ -5,49 +5,55 @@ import { skillCategories } from "@/lib/data";
 const groupNotes = [
   "the models and the retrieval around them",
   "the interfaces and APIs that ship it",
-  "storage, tooling and how it runs"
+  "storage, tooling, and how it runs"
 ];
 
 export function SkillsSection() {
-
   return (
-    <section id="stack" className="shell scroll-mt-16">
-      <div className="shell-inner">
-        <div className="mb-12 max-w-xl">
-          <p className="mono-label mb-4 flex items-center gap-3">
-            <span className="h-px w-7 bg-signal/60" /> toolchain
-          </p>
-          <h2 className="text-[clamp(1.9rem,3.6vw,2.9rem)] font-medium leading-[1.08] tracking-[-0.03em] text-ink">
-            What I reach for,
-            <br /> and what I use it for.
-          </h2>
-        </div>
+    <section id="stack" className="section">
+      <div className="wrap">
+        <p className="section-index">04 — apparatus</p>
 
-        <div className="grid gap-4 md:grid-cols-3">
-          {skillCategories.map((category, index) => (
-            <div
-              key={category.title}
-              className="reveal ticked panel panel-hover flex flex-col p-6"
-              style={{ ["--d" as string]: `${index * 60}ms` }}
-            >
-              <span className="font-mono text-[10px] tracking-[0.16em] text-[#3d4d51]">
-                {String(index + 1).padStart(2, "0")}
-              </span>
-              <h3 className="mt-3 text-[15px] font-medium text-ink">{category.title}</h3>
-              <p className="mt-1.5 text-[12.5px] leading-[1.6] text-muted">{groupNotes[index]}</p>
+        <div className="mt-10 grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
+          <div>
+            <h2 className="display text-[clamp(2.1rem,4.4vw,3.4rem)] text-ink">
+              What I reach
+              <br />
+              for, and why.
+            </h2>
+            <p className="body-text mt-7 max-w-[24rem] text-ink-faint">
+              Tools I have shipped with, grouped by the job they do rather than by how they look on
+              a résumé.
+            </p>
+          </div>
 
-              <div className="mt-6 flex flex-wrap gap-1.5 border-t border-[rgba(150,200,195,.1)] pt-5">
-                {category.skills.map((skill) => (
-                  <span
-                    key={skill.name}
-                    className="rounded-[2px] border border-[rgba(150,200,195,.14)] bg-[rgba(123,241,168,.03)] px-2.5 py-1 font-mono text-[10.5px] text-ink-dim transition-colors hover:border-signal/40 hover:text-signal"
-                  >
-                    {skill.name}
-                  </span>
-                ))}
+          <div>
+            {skillCategories.map((category, index) => (
+              <div
+                key={category.title}
+                className="reveal grid gap-3 border-t border-[var(--rule)] py-6 sm:grid-cols-[11rem_1fr] sm:gap-8"
+                style={{ ["--d" as string]: `${index * 60}ms` }}
+              >
+                <div>
+                  <span className="mono">{String(index + 1).padStart(2, "0")}</span>
+                  <h3 className="mt-1.5 font-serif text-[1.2rem] leading-tight text-ink">{category.title}</h3>
+                  <p className="mt-1 text-[0.8rem] leading-[1.5] text-ink-faint">{groupNotes[index]}</p>
+                </div>
+                <ul className="flex flex-wrap content-start gap-x-3 gap-y-2">
+                  {category.skills.map((skill) => (
+                    <li
+                      key={skill.name}
+                      className="font-mono text-[11px] tracking-[0.02em] text-ink-soft"
+                    >
+                      {skill.name}
+                      <span className="ml-3 text-ink-faint/50">·</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
-            </div>
-          ))}
+            ))}
+            <div className="border-t border-[var(--rule-strong)]" />
+          </div>
         </div>
       </div>
     </section>

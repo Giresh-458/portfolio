@@ -2,10 +2,9 @@
 
 import { Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
-import { cn } from "@/lib/utils";
 
 const links: Array<[string, string]> = [
-  ["systems", "#work"],
+  ["work", "#work"],
   ["approach", "#approach"],
   ["about", "#about"],
   ["stack", "#stack"],
@@ -17,7 +16,7 @@ export function Navbar() {
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20);
+    const onScroll = () => setScrolled(window.scrollY > 16);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
@@ -25,44 +24,39 @@ export function Navbar() {
 
   return (
     <header
-      className={cn(
-        "fixed inset-x-0 top-0 z-50 transition-all duration-300",
-        scrolled ? "border-b border-[rgba(150,200,195,.12)] bg-[#05070a]/88 backdrop-blur-xl" : "border-b border-transparent"
-      )}
+      className={
+        "fixed inset-x-0 top-0 z-50 transition-all duration-300 " +
+        (scrolled
+          ? "border-b border-[var(--rule)] bg-paper/94 backdrop-blur-md"
+          : "border-b border-transparent bg-transparent")
+      }
     >
-      <nav className="mx-auto flex h-16 w-full max-w-[1360px] items-center justify-between px-5 md:px-8" aria-label="Primary">
-        <a href="#home" className="group flex items-center gap-2.5" aria-label="Giresh Velaga, back to top">
-          <span className="grid size-7 place-items-center rounded-[3px] border border-signal/40 bg-[rgba(123,241,168,.08)] font-mono text-[11px] font-semibold text-signal">
-            GV
-          </span>
-          <span className="hidden font-mono text-[11px] uppercase tracking-[0.18em] text-ink-dim transition group-hover:text-ink sm:block">
-            giresh velaga
+      <nav className="wrap flex h-14 items-center justify-between" aria-label="Primary">
+        <a href="#home" className="group flex items-baseline gap-2.5" aria-label="Giresh Velaga, back to top">
+          <span className="font-serif text-[19px] leading-none text-ink">Giresh Velaga</span>
+          <span className="mono hidden text-ink-faint transition-colors group-hover:text-vermilion sm:inline">
+            / agent engineering
           </span>
         </a>
 
-        <div className="hidden items-center gap-7 md:flex">
-          {links.map(([label, href]) => (
+        <div className="hidden items-center gap-6 md:flex">
+          {links.map(([label, href], index) => (
             <a
               key={href}
               href={href}
-              className="group relative font-mono text-[11px] uppercase tracking-[0.16em] text-muted transition-colors hover:text-ink"
+              className="mono link-underline hover:text-ink"
+              aria-label={`Jump to ${label}`}
             >
+              <span className="mr-1.5 text-vermilion/70">{String(index + 1).padStart(2, "0")}</span>
               {label}
-              <span className="absolute -bottom-1.5 left-0 h-px w-0 bg-signal transition-all duration-300 group-hover:w-full" />
             </a>
           ))}
-          <a
-            href="#contact"
-            className="rounded-[3px] border border-signal/40 px-3.5 py-1.5 font-mono text-[11px] uppercase tracking-[0.14em] text-signal transition hover:bg-[rgba(123,241,168,.1)]"
-          >
-            get in touch
-          </a>
         </div>
 
         <button
           type="button"
           onClick={() => setOpen((v) => !v)}
-          className="grid size-9 place-items-center rounded-[3px] border border-[rgba(150,200,195,.16)] text-ink-dim md:hidden"
+          className="grid size-8 place-items-center border border-[var(--rule-strong)] text-ink-soft md:hidden"
           aria-label={open ? "Close navigation" : "Open navigation"}
           aria-expanded={open}
         >
@@ -71,15 +65,16 @@ export function Navbar() {
       </nav>
 
       {open ? (
-        <div className="border-t border-[rgba(150,200,195,.12)] bg-[#05070a]/97 backdrop-blur-xl md:hidden">
-          <div className="grid gap-1 px-5 py-3">
-            {links.map(([label, href]) => (
+        <div className="border-t border-[var(--rule)] bg-paper md:hidden">
+          <div className="wrap py-2">
+            {links.map(([label, href], index) => (
               <a
                 key={href}
                 href={href}
                 onClick={() => setOpen(false)}
-                className="border-b border-[rgba(150,200,195,.08)] py-3 font-mono text-[12px] uppercase tracking-[0.16em] text-ink-dim transition hover:text-signal"
+                className="flex items-baseline gap-3 border-b border-[var(--rule)] py-3 font-mono text-[11px] uppercase tracking-[0.14em] text-ink-soft last:border-b-0"
               >
+                <span className="text-vermilion/70">{String(index + 1).padStart(2, "0")}</span>
                 {label}
               </a>
             ))}

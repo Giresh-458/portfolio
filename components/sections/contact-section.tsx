@@ -1,7 +1,7 @@
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
-import { ArrowUpRight, Github, Linkedin, Mail, Send } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
@@ -16,8 +16,8 @@ const schema = z.object({
 });
 
 const inputClass =
-  "w-full rounded-[2px] border border-[rgba(150,200,195,.18)] bg-[#070a0e] px-3.5 py-3 text-[14px] text-ink placeholder:text-[#4a5a5e] transition focus:border-signal/60 focus:outline-none";
-const labelClass = "grid gap-2 font-mono text-[10px] uppercase tracking-[0.14em] text-muted";
+  "w-full border-0 border-b border-[var(--rule-strong)] bg-transparent px-0 py-2.5 font-mono text-[12px] text-ink placeholder:text-ink-faint/60 transition-colors focus:border-vermilion focus:outline-none";
+const labelClass = "grid gap-1 font-mono text-[9.5px] uppercase tracking-[0.15em] text-ink-faint";
 
 export function ContactSection() {
   const [sent, setSent] = useState(false);
@@ -35,97 +35,87 @@ export function ContactSection() {
   };
 
   const channels = [
-    { label: "email", value: siteConfig.email, href: "mailto:" + siteConfig.email, icon: Mail },
-    { label: "github", value: "Giresh-458", href: siteConfig.github, icon: Github },
-    { label: "linkedin", value: "giresh-komal-velaga", href: siteConfig.linkedin, icon: Linkedin }
+    { label: "email", value: siteConfig.email, href: "mailto:" + siteConfig.email },
+    { label: "github", value: "github.com/Giresh-458", href: siteConfig.github },
+    { label: "linkedin", value: "in/giresh-komal-velaga", href: siteConfig.linkedin }
   ];
 
   return (
-    <section id="contact" className="shell scroll-mt-16 border-t border-[rgba(150,200,195,.08)]">
-      <div className="shell-inner">
-        <div className="grid gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">
+    <section id="contact" className="section">
+      <div className="wrap">
+        <p className="section-index">06 — correspondence</p>
+
+        <div className="mt-10 grid gap-12 lg:grid-cols-[0.92fr_1.08fr] lg:gap-20">
           <div>
-            <p className="mono-label mb-4 flex items-center gap-3">
-              <span className="h-px w-7 bg-signal/60" /> contact
-            </p>
-            <h2 className="text-[clamp(1.9rem,3.6vw,2.9rem)] font-medium leading-[1.08] tracking-[-0.03em] text-ink">
-              Building agents?
-              <br /> Let&rsquo;s talk.
+            <h2 className="display max-w-[16ch] text-[clamp(2.1rem,4.4vw,3.4rem)] text-ink">
+              Building agents? Let&rsquo;s talk.
             </h2>
-            <p className="mt-6 max-w-sm text-[15px] leading-[1.75] text-ink-dim">
-              Open to agent engineering and AI backend roles. If you are working on retrieval,
-              evaluation or agent reliability, I would like to hear about it.
+            <p className="body-text mt-7 max-w-[26rem]">
+              Open to agent engineering and AI backend roles. If you work on retrieval, evaluation,
+              or agent reliability, I would like to hear about it.
             </p>
 
-            <div className="mt-8 grid gap-px border-t border-[rgba(150,200,195,.1)]">
-              {channels.map((channel) => {
-                const Icon = channel.icon;
-                return (
+            <dl className="mt-9 border-t border-[var(--rule-strong)]">
+              {channels.map((channel) => (
+                <div key={channel.label} className="border-b border-[var(--rule)]">
                   <a
-                    key={channel.label}
                     href={channel.href}
                     target={channel.href.startsWith("mailto") ? undefined : "_blank"}
                     rel="noreferrer"
-                    className="group flex items-center gap-3 border-b border-[rgba(150,200,195,.1)] py-3.5"
+                    className="group flex items-baseline justify-between gap-4 py-3.5"
                   >
-                    <Icon className="size-4 shrink-0 text-muted transition group-hover:text-signal" />
-                    <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-[#3d4d51] transition group-hover:text-signal">
-                      {channel.label}
-                    </span>
-                    <span className="ml-auto truncate text-[13px] text-ink-dim transition group-hover:text-ink">
+                    <dt className="mono">{channel.label}</dt>
+                    <dd className="flex items-center gap-2 font-mono text-[11.5px] text-ink-soft transition-colors group-hover:text-vermilion">
                       {channel.value}
-                    </span>
-                    <ArrowUpRight className="size-3.5 shrink-0 text-[#3d4d51] transition group-hover:text-signal" />
+                      <ArrowUpRight className="size-3 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                    </dd>
                   </a>
-                );
-              })}
-            </div>
+                </div>
+              ))}
+            </dl>
           </div>
 
-          <div className="reveal ticked panel p-6 md:p-8">
-            <div className="mb-6 flex items-center justify-between">
-              <p className="mono-label">send a message</p>
-              <span className="mono-label flex items-center gap-2">
-                <span className="signal-dot" /> direct
-              </span>
-            </div>
+          <div className="reveal">
+            <p className="mono mb-6">or send a note</p>
 
-            <form onSubmit={handleSubmit(onSubmit)} noValidate className="grid gap-4">
-              <div className="grid gap-4 sm:grid-cols-2">
+            <form onSubmit={handleSubmit(onSubmit)} noValidate className="grid gap-6">
+              <div className="grid gap-6 sm:grid-cols-2">
                 <label className={labelClass}>
                   name
-                  <input {...register("name")} className={inputClass} placeholder="Your name" aria-invalid={Boolean(errors.name)} />
-                  {errors.name ? <span className="text-[11px] normal-case tracking-normal text-alert">{errors.name.message}</span> : null}
+                  <input {...register("name")} className={inputClass} placeholder="your name" aria-invalid={Boolean(errors.name)} />
+                  {errors.name ? <span className="mt-1 font-mono text-[10px] normal-case tracking-normal text-vermilion">{errors.name.message}</span> : null}
                 </label>
                 <label className={labelClass}>
                   email
                   <input {...register("email")} type="email" className={inputClass} placeholder="you@company.com" aria-invalid={Boolean(errors.email)} />
-                  {errors.email ? <span className="text-[11px] normal-case tracking-normal text-alert">{errors.email.message}</span> : null}
+                  {errors.email ? <span className="mt-1 font-mono text-[10px] normal-case tracking-normal text-vermilion">{errors.email.message}</span> : null}
                 </label>
               </div>
               <label className={labelClass}>
                 subject
-                <input {...register("subject")} className={inputClass} placeholder="Role, internship, or collaboration" aria-invalid={Boolean(errors.subject)} />
-                {errors.subject ? <span className="text-[11px] normal-case tracking-normal text-alert">{errors.subject.message}</span> : null}
+                <input {...register("subject")} className={inputClass} placeholder="role, internship, or collaboration" aria-invalid={Boolean(errors.subject)} />
+                {errors.subject ? <span className="mt-1 font-mono text-[10px] normal-case tracking-normal text-vermilion">{errors.subject.message}</span> : null}
               </label>
               <label className={labelClass}>
                 message
-                <textarea {...register("message")} rows={5} className={inputClass} placeholder="What are you building, and where would I fit?" aria-invalid={Boolean(errors.message)} />
-                {errors.message ? <span className="text-[11px] normal-case tracking-normal text-alert">{errors.message.message}</span> : null}
+                <textarea {...register("message")} rows={4} className={inputClass} placeholder="what are you building, and where would I fit?" aria-invalid={Boolean(errors.message)} />
+                {errors.message ? <span className="mt-1 font-mono text-[10px] normal-case tracking-normal text-vermilion">{errors.message.message}</span> : null}
               </label>
 
-              <div className="mt-1 flex flex-wrap items-center gap-4">
+              <div className="mt-2 flex flex-wrap items-center gap-5">
                 <button
                   type="submit"
-                  className="inline-flex items-center gap-2 rounded-[3px] bg-signal px-5 py-3 text-sm font-semibold text-[#04100a] transition hover:bg-[#96ffc0]"
+                  className="border border-ink px-5 py-2.5 font-mono text-[11px] uppercase tracking-[0.14em] text-ink transition-colors hover:bg-ink hover:text-paper"
                 >
-                  <Send className="size-4" /> Send message
+                  send
                 </button>
                 {sent ? (
-                  <p role="status" className="font-mono text-[10px] uppercase tracking-[0.14em] text-signal">
+                  <p role="status" className="mono text-vermilion">
                     email client opened
                   </p>
-                ) : null}
+                ) : (
+                  <p className="mono">no tracking, no forms server</p>
+                )}
               </div>
             </form>
           </div>

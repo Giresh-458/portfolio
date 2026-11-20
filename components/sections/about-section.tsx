@@ -1,72 +1,89 @@
 "use client";
 
-import { AnimatedCounter } from "@/components/ui/animated-counter";
 import { stats } from "@/lib/data";
 
 const focus = [
-  { title: "Agent architecture", detail: "Stateful graphs, intent routing, bounded retries, failure paths that are visible." },
-  { title: "Retrieval quality", detail: "Hybrid search, rank fusion, evidence grading, and knowing when to abstain." },
-  { title: "Production surfaces", detail: "FastAPI, PostgreSQL, migrations, and interfaces people can actually operate." }
+  {
+    title: "Agent architecture",
+    detail: "Stateful graphs, intent routing, bounded retries, and failure paths that are visible rather than hidden."
+  },
+  {
+    title: "Retrieval quality",
+    detail: "Hybrid search, rank fusion, evidence grading, and the discipline to abstain when the evidence is thin."
+  },
+  {
+    title: "Production surfaces",
+    detail: "FastAPI, PostgreSQL, migrations, and interfaces that someone can actually operate under pressure."
+  }
 ];
 
 export function AboutSection() {
-
   return (
-    <section id="about" className="shell scroll-mt-16">
-      <div className="shell-inner">
-        <div className="grid gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:gap-16">
+    <section id="about" className="section">
+      <div className="wrap">
+        <p className="section-index">03 — colophon</p>
+
+        <div className="mt-10 grid gap-12 lg:grid-cols-[1.15fr_0.85fr] lg:gap-20">
           <div>
-            <p className="mono-label mb-4 flex items-center gap-3">
-              <span className="h-px w-7 bg-signal/60" /> about
-            </p>
-            <h2 className="text-[clamp(1.9rem,3.6vw,2.9rem)] font-medium leading-[1.08] tracking-[-0.03em] text-ink">
-              Computer science at IIIT Sri City,
-              <br className="hidden md:block" /> agent engineering by habit.
+            <h2 className="display max-w-[24ch] text-[clamp(2.1rem,4.4vw,3.4rem)] text-ink">
+              Computer science at IIIT Sri City, agent engineering by habit.
             </h2>
 
-            <div className="mt-7 max-w-xl space-y-4 text-[15px] leading-[1.75] text-ink-dim">
-              <p>
+            <div className="mt-8 max-w-[34rem] space-y-4">
+              <p className="body-text">
                 I am a final-year CSE student. Most of what I build sits between a language model and
                 the real system it is supposed to act on, which is where the interesting failures live.
               </p>
-              <p>
+              <p className="body-text">
                 My projects share one assumption: a confident wrong answer is worse than an honest
                 refusal. So they grade their own evidence, abstain when it is thin, and stop for a
                 human before doing anything they cannot undo.
               </p>
             </div>
 
-            <div className="mt-10 grid gap-px border-t border-[rgba(150,200,195,.1)]">
+            <dl className="mt-11 border-t border-[var(--rule-strong)]">
               {focus.map((item, index) => (
                 <div
                   key={item.title}
-                  className="reveal group flex flex-col gap-1 border-b border-[rgba(150,200,195,.1)] py-4 sm:flex-row sm:items-baseline sm:gap-6"
-                  style={{ ["--d" as string]: `${index * 50}ms` }}
+                  className="reveal grid gap-1 border-b border-[var(--rule)] py-5 sm:grid-cols-[12rem_1fr] sm:gap-8"
+                  style={{ ["--d" as string]: `${index * 55}ms` }}
                 >
-                  <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-[#3d4d51] transition group-hover:text-signal sm:w-44 sm:shrink-0">
-                    {item.title}
-                  </span>
-                  <span className="text-[13.5px] leading-[1.65] text-muted">{item.detail}</span>
+                  <dt className="font-mono text-[10.5px] uppercase tracking-[0.13em] text-ink">{item.title}</dt>
+                  <dd className="text-[0.96rem] leading-[1.68] text-ink-soft">{item.detail}</dd>
+                </div>
+              ))}
+            </dl>
+          </div>
+
+          <aside className="lg:border-l lg:border-[var(--rule)] lg:pl-12">
+            <p className="mono mb-5">at a glance</p>
+            <div className="grid grid-cols-2 gap-px bg-[var(--rule)]">
+              {stats.map((stat) => (
+                <div key={stat.label} className="bg-paper px-4 py-5">
+                  <p className="font-serif text-[2.1rem] leading-none text-ink">
+                    {stat.value}
+                    {stat.suffix ?? ""}
+                  </p>
+                  <p className="mono mt-2 leading-[1.6]">{stat.label}</p>
                 </div>
               ))}
             </div>
-          </div>
 
-          <div className="grid content-start gap-3 sm:grid-cols-2 lg:grid-cols-1">
-            {stats.map((stat) => (
-              <div key={stat.label} className="ticked panel px-5 py-5">
-                <AnimatedCounter value={stat.value} suffix={stat.suffix} />
-                <p className="mono-label mt-2">{stat.label}</p>
-              </div>
-            ))}
-            <div className="panel px-5 py-5">
-              <p className="mono-label mb-3">currently</p>
-              <p className="text-[13.5px] leading-[1.65] text-ink-dim">
-                Build passes, validation pending on the placement pipeline. Everything else is deployed
-                and linked above.
+            <div className="mt-8 border-t border-[var(--rule)] pt-5">
+              <p className="mono mb-2">currently</p>
+              <p className="text-[0.9rem] leading-[1.65] text-ink-soft">
+                Build passes on the placement pipeline, validation pending. Everything else is
+                deployed and linked above.
               </p>
             </div>
-          </div>
+
+            <div className="mt-8 border-t border-[var(--rule)] pt-5">
+              <p className="mono mb-2">basis</p>
+              <p className="text-[0.9rem] leading-[1.65] text-ink-soft">
+                B.Tech CSE, 2023–2027. CGPA 8.33/10.
+              </p>
+            </div>
+          </aside>
         </div>
       </div>
     </section>
