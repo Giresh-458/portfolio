@@ -1,7 +1,7 @@
 "use client";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { motion, useReducedMotion } from "framer-motion";
-import { Github, Mail, Send } from "lucide-react";
+import { Github, Linkedin, Mail, Send } from "lucide-react";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
@@ -79,7 +79,7 @@ export function ContactSection() {
             <h3 className="mt-4 font-display text-3xl uppercase leading-tight text-[#F2E3D2] md:text-4xl">Let’s talk about the work.</h3>
             <p className="mt-4 leading-7 text-[#B3A8AB]">For a role, a technical question or an ambitious idea, email is the simplest way to reach me.</p>
           </div>
-          <div className="mt-10 grid gap-3">{[{ label: "Email", href: "mailto:" + siteConfig.email, icon: Mail }, { label: "GitHub", href: siteConfig.github, icon: Github }].map((link) => <a key={link.label} href={link.href} className="flex items-center gap-3 border border-[#E7C6AF]/15 bg-black/25 px-4 py-3.5 text-sm text-[#D6C9C7] transition hover:border-netflix/60 hover:text-white"><link.icon className="size-4 text-[#44D5ED]" /> {link.label}<span className="ml-auto font-mono text-[8px] uppercase tracking-[.18em] text-[#83747A]">Open ↗</span></a>)}</div>
+          <div className="mt-10 grid gap-3">{[{ label: "Email", href: "mailto:" + siteConfig.email, icon: Mail }, { label: "GitHub", href: siteConfig.github, icon: Github }, ...(siteConfig.linkedin ? [{ label: "LinkedIn", href: siteConfig.linkedin, icon: Linkedin }] : [])].map((link) => <a key={link.label} href={link.href} className="flex items-center gap-3 border border-[#E7C6AF]/15 bg-black/25 px-4 py-3.5 text-sm text-[#D6C9C7] transition hover:border-netflix/60 hover:text-white"><link.icon className="size-4 text-[#44D5ED]" /> {link.label}<span className="ml-auto font-mono text-[8px] uppercase tracking-[.18em] text-[#83747A]">Open ↗</span></a>)}</div>
         </GlassCard>
         <GlassCard className="slayer-panel p-7 md:p-9">
           <div className="mb-6 flex items-center justify-between"><p className="font-mono text-[9px] uppercase tracking-[.2em] text-[#F17477]">Message scroll / 02</p><span className="font-serif text-2xl text-netflix">文</span></div>

@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" fill="none">
+<defs><linearGradient id="bg" x1="42" y1="20" x2="1180" y2="660" gradientUnits="userSpaceOnUse"><stop stop-color="#0E1B22"/><stop offset=".5" stop-color="#101A26"/><stop offset="1" stop-color="#090D13"/></linearGradient><radialGradient id="glow"><stop stop-color="#5BC8E8" stop-opacity=".19"/><stop offset="1" stop-color="#5BC8E8" stop-opacity="0"/></radialGradient></defs><rect width="1200" height="675" fill="url(#bg)"/><circle cx="720" cy="330" r="320" fill="url(#glow)"/>
+<g stroke="#D6F0FA" stroke-opacity=".06"><path d="M0 135H1200M0 270H1200M0 405H1200M0 540H1200"/><path d="M150 0V675M300 0V675M450 0V675M600 0V675M750 0V675M900 0V675M1050 0V675"/></g>
+<text x="78" y="90" fill="#8FE3F5" font-family="monospace" font-size="15" letter-spacing="4">PLACEMENT INTELLIGENCE / DISCOVERY PIPELINE</text>
+
+<rect x="76" y="133" width="300" height="130" rx="16" fill="#08141B" fill-opacity=".8" stroke="#CFEFF9" stroke-opacity=".13"/>
+<text x="100" y="168" fill="#B9D6DF" font-family="monospace" font-size="12" letter-spacing="2">SOURCE DISCOVERY</text>
+<text x="100" y="198" fill="#6FD7EE" font-family="monospace" font-size="11" letter-spacing="1">static HTML</text>
+<text x="100" y="222" fill="#6FD7EE" font-family="monospace" font-size="11" letter-spacing="1">JS-rendered (Playwright)</text>
+<text x="100" y="246" fill="#6FD7EE" font-family="monospace" font-size="11" letter-spacing="1">PDF notices</text>
+
+<rect x="450" y="133" width="300" height="130" rx="16" fill="#08141B" fill-opacity=".8" stroke="#CFEFF9" stroke-opacity=".13"/>
+<text x="474" y="168" fill="#B9D6DF" font-family="monospace" font-size="12" letter-spacing="2">BOUNDED CRAWLER</text>
+<text x="474" y="198" fill="#F2B27C" font-family="monospace" font-size="11" letter-spacing="1">max depth / max pages</text>
+<text x="474" y="222" fill="#F2B27C" font-family="monospace" font-size="11" letter-spacing="1">per-domain delay</text>
+<text x="474" y="246" fill="#F2B27C" font-family="monospace" font-size="11" letter-spacing="1">retry + timeout caps</text>
+
+<rect x="824" y="133" width="300" height="130" rx="16" fill="#08141B" fill-opacity=".8" stroke="#CFEFF9" stroke-opacity=".13"/>
+<text x="848" y="168" fill="#B9D6DF" font-family="monospace" font-size="12" letter-spacing="2">EXTRACTION</text>
+<text x="848" y="198" fill="#A8AAF9" font-family="monospace" font-size="11" letter-spacing="1">company / role / CTC</text>
+<text x="848" y="222" fill="#A8AAF9" font-family="monospace" font-size="11" letter-spacing="1">branch / batch / CGPA</text>
+<text x="848" y="246" fill="#A8AAF9" font-family="monospace" font-size="11" letter-spacing="1">deadline normalisation</text>
+
+<g stroke="#69D8F0" stroke-width="2" stroke-opacity=".55"><path d="M376 198H444"/><path d="M750 198H818"/></g>
+<g fill="#69D8F0"><path d="M444 198l-11 -5v10z"/><path d="M818 198l-11 -5v10z"/></g>
+
+<rect x="76" y="300" width="1048" height="90" rx="16" fill="#071018" fill-opacity=".85" stroke="#CFEFF9" stroke-opacity=".13"/>
+<text x="100" y="333" fill="#B9D6DF" font-family="monospace" font-size="12" letter-spacing="2">QUALIFICATION + PERSISTENCE</text>
+<g font-family="monospace" font-size="11" letter-spacing="1"><text x="100" y="362" fill="#8CE5B4">freshness window</text><text x="330" y="362" fill="#8CE5B4">branch eligibility</text><text x="560" y="362" fill="#8CE5B4">CTC threshold</text><text x="790" y="362" fill="#8CE5B4">FastAPI + PostgreSQL</text></g>
+
+<g stroke="#69D8F0" stroke-linecap="round" stroke-width="3"><path d="M112 470L150 470L168 440L188 500L210 452L232 486L254 462L276 474L298 424L320 512L342 456L364 484L386 468L408 470L430 446L452 496L474 460L496 474L518 470L540 424L562 512L584 452L606 488L628 468L650 470"/></g>
+<text x="112" y="556" fill="#7FD8EC" font-family="monospace" font-size="11" letter-spacing="2">INGESTION THROUGHPUT</text>
+<text x="880" y="556" fill="#8FA6B0" font-family="monospace" font-size="11" letter-spacing="2">VALIDATION IN PROGRESS</text>
+</svg>

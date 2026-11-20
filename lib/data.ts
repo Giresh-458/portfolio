@@ -15,7 +15,7 @@ export const siteConfig = {
   role: "Aspiring AI Engineer · Full-Stack Developer",
   email: "gireshvelaga@gmail.com",
   github: "https://github.com/Giresh-458",
-  linkedin: "",
+  linkedin: "https://www.linkedin.com/in/giresh-komal-velaga/",
   siteUrl: resolveSiteUrl(),
   description:
     "Computer Science student at IIIT Sri City building AI systems and full-stack products, from retrieval and agent workflows to user-facing applications."
@@ -25,7 +25,7 @@ export const stats: Stat[] = [
   { label: "Public repositories", value: 12 },
   { label: "Engineering tracks", value: 2 },
   { label: "Featured projects", value: 7 },
-  { label: "Live demos", value: 2 }
+  { label: "Live demos", value: 3 }
 ];
 
 export const projects: Project[] = [
@@ -48,6 +48,7 @@ export const projects: Project[] = [
     ],
     tech: ["Python", "LangGraph", "FastAPI", "PostgreSQL", "pgvector"],
     githubUrl: "https://github.com/Giresh-458/ai-operations-agent",
+    liveUrl: "https://ai-operations-agent.streamlit.app",
     image: "/projects/ai-operations.svg",
     accent: "from-cyan-950 via-slate-900 to-[#0B1015]"
   },
@@ -70,30 +71,31 @@ export const projects: Project[] = [
     ],
     tech: ["Python", "RAG", "ChromaDB", "BM25", "FastAPI"],
     githubUrl: "https://github.com/Giresh-458/Healthcare-Document-RAG-Assitant",
+    liveUrl: "https://healthrag.streamlit.app",
     image: "/projects/healthcare-rag.svg",
     accent: "from-emerald-950 via-teal-950 to-[#0B1015]"
   },
   {
-    id: "multimodal-mood",
-    title: "Multimodal Mood Drift Analysis",
-    eyebrow: "Machine Learning · Multimodal",
+    id: "placement-intelligence",
+    title: "Placement Intelligence Agent",
+    eyebrow: "AI Systems · Data Engineering",
     description:
-      "An end-to-end pipeline that combines speech, text, temporal mood trends, and language-model reasoning to describe how a speaker’s mood changes over time.",
+      "A hiring-intelligence pipeline that discovers campus recruitment notices across fragmented institutional portals, JavaScript-rendered pages, and PDF documents.",
     problem:
-      "Single emotion predictions miss the broader story. This pipeline aims to move from isolated audio and text predictions toward a sequence-level explanation of mood changes.",
+      "Placement notices are scattered across dynamic portals, noticeboards, CMS tables, and scanned PDFs in inconsistent formats. Manual tracking misses deadlines and misreads eligibility rules.",
     architecture:
-      "Audio emotion recognition + text emotion classification + Whisper transcription → multimodal fusion → per-speaker timelines → temporal trend modelling → LLM-generated explanations.",
+      "Bounded crawler (Playwright + Crawlee) → structural extraction and normalisation → eligibility and freshness qualification → FastAPI + PostgreSQL persistence with Alembic migrations.",
     models:
-      "CRNN, fine-tuned DistilRoBERTa, Whisper Base, attention-based fusion, LSTM, and Mistral-7B with QLoRA.",
+      "FastAPI, PostgreSQL, Crawlee, Playwright, LangGraph-style orchestration, and Ollama for local extraction.",
     contributions: [
-      "Organized the workflow into reproducible pipeline stages",
-      "Combined separate audio and text signals into mood timelines",
-      "Added a reasoning stage to explain temporal patterns in natural language"
+      "Built bounded, rate-limited crawling across static, JS-rendered, and PDF sources",
+      "Extracted and normalised company, role, CTC, branch, batch, CGPA, and deadline fields",
+      "Added idempotent PostgreSQL persistence with schema migrations and change detection"
     ],
-    tech: ["PyTorch", "Transformers", "Whisper", "LSTM", "QLoRA"],
-    githubUrl: "https://github.com/Giresh-458/Multimodal-Mood-drift-analysis",
-    image: "/projects/mood-drift.svg",
-    accent: "from-violet-950 via-indigo-950 to-[#0B1015]"
+    tech: ["Python", "FastAPI", "PostgreSQL", "Crawlee", "Playwright", "Docker"],
+    githubUrl: "https://github.com/Giresh-458/IIITS-Placements",
+    image: "/projects/placement-intelligence.svg",
+    accent: "from-slate-900 via-cyan-950 to-[#0B1015]"
   },
   {
     id: "restoconnect",
@@ -134,7 +136,6 @@ export const projects: Project[] = [
     ],
     tech: ["Node.js", "Express", "EJS", "MongoDB", "Chart.js"],
     githubUrl: "https://github.com/Giresh-458/Mood_Tracker",
-    liveUrl: "https://mood-tracker-1-h1l8.onrender.com/",
     image: "/projects/mood-tracker.svg",
     accent: "from-rose-950 via-pink-950 to-[#0B1015]"
   },
